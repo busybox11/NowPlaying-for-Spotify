@@ -31,6 +31,7 @@ PHP (ouais là non plus jugez pas sivouplé)
  - Support des pubs
  - Affichage de l'appareil en cours de lecture (si possible)
  - Thèmes
+ - Transitions (merci @quentin3157 pour ta suggestion !)
 
 ## **Comment l'héberger ?**
 
