@@ -10,13 +10,25 @@ body {
     right: 0;
     top: 0;
     bottom: 0;
-    background-size: cover;
-    background-position: center center;
+    background-color:black;
     position: absolute;
     filter: blur(8px);
-    transform: scale(1.2);
-    background-image: url('no_song.png');
+    z-index: inherit;
 }
+
+#background-image-div #image{
+top:0;
+left:0;
+width: 100%;
+min-height:100%;
+height: auto;
+z-index:0;
+transform: scale(1.2);
+background-size: cover;
+background-position: center center;
+transition: background-image ease 3s;
+}
+
 
 .darken {
     left: 0;
@@ -24,8 +36,9 @@ body {
     top: 0;
     bottom: 0;
     background-position: center top;
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+    background: rgba(0, 0, 0, 0.3);
     position: absolute;
+    z-index: 1;
 }
 
 #playing-div {
@@ -139,4 +152,101 @@ i.large {
 
 .notbold {
     font-weight: normal !important;
+}
+
+/* For mobile and tablets */
+
+@media only screen and (max-width:767px) and (orientation: portrait) {
+    #playing-div{
+        flex-direction: column;
+    }
+
+    #playing-img {
+        margin-right: 5px;
+        max-width:80%;
+        max-height:65%;
+        box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+    }
+
+    #song-info-div {
+        margin-left: 5px;
+        width: 80%;
+    }
+
+    h1 {
+        font-size: 30px;
+        margin: 5px;
+    }
+
+    h2 {
+        font-size: 20px;
+        margin: 5px;
+    }
+
+    h3 {
+        font-size: 25px;
+    }
+
+}
+
+@media only screen and (orientation: landscape) and (max-width:1199px){
+#playing-div{
+        flex-direction: row;
+    }
+
+    #playing-img {
+        margin-right: 5px;
+        max-width:45%;
+        height:auto;
+        max-height:45%;
+        box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+    }
+
+    #song-info-div {
+        margin-left: 5px;
+        width: 45%;
+    }
+
+    h1 {
+        font-size: 50px;
+        margin: 5px;
+    }
+
+    h2 {
+        font-size: 35px;
+        margin: 5px;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+}
+
+@media only screen and (max-width: 1199px) and (orientation: portrait){
+    #playing-div{
+        flex-direction: column;
+    }
+
+    #playing-img {
+        margin-right: 10px;
+    }
+
+    #song-info-div {
+        margin-left: 10px;
+        width: 80%;
+    }
+
+    h1 {
+        font-size: 70px;
+        margin: 5px;
+    }
+
+    h2 {
+        font-size: 50px;
+        margin: 5px;
+    }
+
+    h3 {
+        font-size: 25px;
+    }
 }

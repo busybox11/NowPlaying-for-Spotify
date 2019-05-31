@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <head>
     <title>Spotify Connect - Now Playing</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
     <link rel="icon" type="image/png" href="favicon.png">
     <link href="playing.css?ts=<?=time ()?>" rel="stylesheet">
     <link href="productsans.css?ts=<?=time ()?>" rel="stylesheet">
@@ -64,7 +65,7 @@
             console.log('Updated time')
             $("#playing-div img").attr("src", albumPicture);
             console.log('Updated cover');
-            $("#background-image-div").attr("style", "background-image: url('" + albumPicture + "')");
+            $("#image").attr("style", "background-image: url('" + albumPicture + "')");
             console.log('Updated background');
             $("#playing-div #song-info-div #seekbar-now").attr("style", "width : " + seekbarProgress + "%");
             console.log('Updated seekbar');
@@ -88,5 +89,5 @@
             <h3 class="left"><i class="material-icons left">speaker</i>Spotify Connect<h3 class="right" id="time-song"></h3>
         </div>
     </div>
-    <div id="background-image-div" style="background-image: url('no_song.png')"><div class="darken"></div></div>
+    <div id="background-image-div"><img id="image" style="background-image: url('no_song.png');"><div class="darken"></div></div>
 </body>
