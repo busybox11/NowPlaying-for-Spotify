@@ -64,6 +64,7 @@ body {
     border-radius: 50px;
     background-color: #ffffff90;
     height: 15px;
+    transition: linear width 0.1s;
 }
 
 span,
