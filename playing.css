@@ -237,16 +237,16 @@ i.large {
     }
 
     h1 {
-        font-size: 70px;
+        font-size: 60px;
         margin: 5px;
     }
 
     h2 {
-        font-size: 50px;
+        font-size: 40px;
         margin: 5px;
     }
 
     h3 {
-        font-size: 25px;
+        font-size: 20px;
     }
 }
