@@ -38,18 +38,20 @@
                 progressSong = response.progress_ms;
                 progressSongFormatted = msToTime(response.progress_ms);
                 seekbarProgress = Math.round(progressSong * 100 / lenghtSong);
+                $("#playing-div #song-info-div #reconnect-link").attr("style", "display : none");
             }
 
             function noInformations () {
                 titleSong = "Aucune musique en cours de lecture";
                 artistSong = "Veuillez patienter quelques secondes pour l'actualisation";
-                albumSong = "Si la page ne fonctionne pas, <a href=\"login.php\">reconnectez-vous</a>";
+                albumSong = 'Si la page ne fonctionne pas, ';
                 albumPicture = "no_song.png";
                 lenghtSong = " ";
                 lenghtSongFormatted = " ";
                 progressSong = " ";
                 progressSongFormatted = " ";
                 seekbarProgress = 0;
+                $("#playing-div #song-info-div #reconnect-link").attr("style", "display : block");
             }
             
             $("#playing-div #song-info-div #song-title").text(titleSong);
@@ -79,7 +81,7 @@
         <img src="no_song.png" id="playing-img">
         <div id="song-info-div">
             <h1 id="song-title">Aucune musique en cours de lecture</h1>
-            <h2 id="song-artist">Veuillez patienter quelques secondes pour l'actualisation</h2><h2 id="song-album">Si la page ne fonctionne pas, <a href="login.php">reconnectez-vous</a></h2>
+            <h2 id="song-artist">Veuillez patienter quelques secondes pour l'actualisation</h2><h2 id="song-album">Si la page ne fonctionne pas, </h2><a id="reconnect-link" href="login.php"><h2>reconnectez-vous</h2></a>
             <div id="seekbar-bg">
                 <div id="seekbar-now" style="width : 0%"></div>
             </div>
