@@ -1,0 +1,141 @@
+body {
+    overflow: hidden;
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+#background-image-div {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center center;
+    position: absolute;
+    filter: blur(8px);
+    transform: scale(1.2);
+    background-image: url('no_song.png');
+}
+
+.darken {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-position: center top;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+    position: absolute;
+}
+
+#playing-div {
+    max-width: 100%;
+    min-width: 85%;
+    z-index: 2;
+    position: absolute;
+    display: flex;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#playing-img {
+    margin-right: 25px;
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+#song-info-div {
+    margin-left: 25px;
+    width: 100%;
+    vertical-align: middle;
+    align-self: center;
+}
+
+#seekbar-bg {
+    border-radius: 50px;
+    margin-top: 40px;
+    margin-left: 5px;
+    height: 15px;
+    width: 100%;
+    background-color: #ffffff50;
+}
+
+#seekbar-now {
+    border-radius: 50px;
+    background-color: #ffffff90;
+    height: 15px;
+}
+
+span,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a {
+    color: #FFFFFF;
+}
+
+h1 {
+    font-size: 70px;
+    margin: 5px;
+}
+
+h2 {
+    font-size: 50px;
+    margin: 5px;
+}
+
+h3 {
+    font-size: 25px;
+}
+
+i.left {
+    float: left;
+    margin-right: 15px;
+    margin-top: 3px;
+}
+
+.left {
+    float: left;
+}
+
+i.right {
+    float: right;
+    margin-left: 15px;
+    margin-top: 3px;
+}
+
+.right {
+    float: right;
+}
+
+i.tiny {
+    font-size: 1rem
+}
+
+i.small {
+    font-size: 2rem
+}
+
+i.medium {
+    font-size: 4rem
+}
+
+i.large {
+    font-size: 6rem
+}
+
+.left-align {
+    text-align: left;
+}
+
+.left {
+    float: left !important;
+}
+
+.notbold {
+    font-weight: normal !important;
+}
