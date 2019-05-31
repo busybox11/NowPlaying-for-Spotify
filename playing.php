@@ -43,7 +43,7 @@
             function noInformations () {
                 titleSong = "Aucune musique en cours de lecture";
                 artistSong = "Veuillez patienter quelques secondes pour l'actualisation";
-                albumSong = "Si la page ne fonctionne pas, actualisez-la manuellement";
+                albumSong = "Si la page ne fonctionne pas, <a href=\"login.php\">reconnectez-vous</a>";
                 albumPicture = "no_song.png";
                 lenghtSong = " ";
                 lenghtSongFormatted = " ";
@@ -79,7 +79,7 @@
         <img src="no_song.png" id="playing-img">
         <div id="song-info-div">
             <h1 id="song-title">Aucune musique en cours de lecture</h1>
-            <h2 id="song-artist">Veuillez patienter quelques secondes pour l'actualisation</h2><h2 id="song-album">Si la page ne fonctionne pas, actualisez-la manuellement</h2>
+            <h2 id="song-artist">Veuillez patienter quelques secondes pour l'actualisation</h2><h2 id="song-album">Si la page ne fonctionne pas, <a href="login.php">reconnectez-vous</a></h2>
             <div id="seekbar-bg">
                 <div id="seekbar-now" style="width : 0%"></div>
             </div>
