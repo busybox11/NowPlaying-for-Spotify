@@ -12,23 +12,13 @@ body {
     bottom: 0;
     background-color:black;
     position: absolute;
+    background-size: cover;
+    background-position: center center;
     filter: blur(8px);
+    transform: scale(1.2);
     z-index: inherit;
+    transition: background ease 2s;
 }
-
-#background-image-div #image{
-top:0;
-left:0;
-width: 100%;
-min-height:100%;
-height: auto;
-z-index:0;
-transform: scale(1.2);
-background-size: cover;
-background-position: center center;
-transition: background-image ease 3s;
-}
-
 
 .darken {
     left: 0;
@@ -47,6 +37,7 @@ transition: background-image ease 3s;
     z-index: 2;
     position: absolute;
     display: flex;
+    align-items: center;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -159,12 +150,13 @@ i.large {
 @media only screen and (max-width:767px) and (orientation: portrait) {
     #playing-div{
         flex-direction: column;
+        justify-content: center;
     }
 
     #playing-img {
         margin-right: 5px;
         max-width:80%;
-        max-height:65%;
+        max-height:60%;
         box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
     }
 
@@ -189,6 +181,39 @@ i.large {
 
 }
 
+@media only screen and (orientation: landscape) and (max-width:767px){
+#playing-div{
+        flex-direction: row;
+    }
+
+    #playing-img {
+        margin-right: 5px;
+        max-width:45%;
+        height:auto;
+        max-height:45%;
+        box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+    }
+
+    #song-info-div {
+        margin-left: 5px;
+        width: 55%;
+    }
+
+    h1 {
+        font-size: 40px;
+        margin: 5px;
+    }
+
+    h2 {
+        font-size: 30px;
+        margin: 5px;
+    }
+
+    h3 {
+        font-size: 15px;
+    }
+}
+
 @media only screen and (orientation: landscape) and (max-width:1199px){
 #playing-div{
         flex-direction: row;
@@ -204,7 +229,7 @@ i.large {
 
     #song-info-div {
         margin-left: 5px;
-        width: 45%;
+        width: 50%;
     }
 
     h1 {
@@ -225,6 +250,7 @@ i.large {
 @media only screen and (max-width: 1199px) and (orientation: portrait){
     #playing-div{
         flex-direction: column;
+        justify-content: center;
     }
 
     #playing-img {
@@ -237,16 +263,16 @@ i.large {
     }
 
     h1 {
-        font-size: 60px;
+        font-size: 50px;
         margin: 5px;
     }
 
     h2 {
-        font-size: 40px;
+        font-size: 30px;
         margin: 5px;
     }
 
     h3 {
-        font-size: 20px;
+        font-size: 15px;
     }
 }

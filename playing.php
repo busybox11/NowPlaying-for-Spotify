@@ -65,7 +65,7 @@
             console.log('Updated time')
             $("#playing-div img").attr("src", albumPicture);
             console.log('Updated cover');
-            $("#image").attr("style", "background-image: url('" + albumPicture + "')");
+            $("#background-image-div").attr("style", "background: url('" + albumPicture + "')");
             console.log('Updated background');
             $("#playing-div #song-info-div #seekbar-now").attr("style", "width : " + seekbarProgress + "%");
             console.log('Updated seekbar');
@@ -89,5 +89,5 @@
             <h3 class="left"><i class="material-icons left">speaker</i>Spotify Connect<h3 class="right" id="time-song"></h3>
         </div>
     </div>
-    <div id="background-image-div"><img id="image" style="background-image: url('no_song.png');"><div class="darken"></div></div>
+    <div id="background-image-div" style="background: url('no_song.png');"><div class="darken"></div></div>
 </body>
