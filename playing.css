@@ -10,10 +10,7 @@ body {
     right: 0;
     top: 0;
     bottom: 0;
-    background-color:black;
     position: absolute;
-    background-size: cover;
-    background-position: center center;
     filter: blur(8px);
     transform: scale(1.2);
     z-index: inherit;
