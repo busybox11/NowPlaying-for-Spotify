@@ -7,6 +7,8 @@ Par contre, je ne suis pas contre un peu d'aide ^^
 Discord : @busybox#2540
 Serveur : https://discord.io/techcordfr
 
+Site : [nowplayingforspotify.ga](nowplayingforspotify.ga)
+
 Version actuelle : 1.0
 
 ![Screenshot](https://github.com/busybox11/NowPlaying-for-Spotify/blob/master/Screenshot.png?raw=true)
