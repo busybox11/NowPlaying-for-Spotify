@@ -58,12 +58,12 @@ body {
     margin-left: 5px;
     height: 15px;
     width: 100%;
-    background-color: #ffffff50;
+    background-color: rgba(255, 255, 255, 0.50);;
 }
 
 #seekbar-now {
     border-radius: 50px;
-    background-color: #ffffff90;
+    background-color: rgba(255, 255, 255, 0.90);;
     height: 15px;
     transition: linear width 1s;
 }
