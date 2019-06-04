@@ -38,7 +38,7 @@
                 lenghtSongFormatted = msToTime(response["item"].duration_ms);
                 progressSong = response.progress_ms;
                 progressSongFormatted = msToTime(response.progress_ms);
-                seekbarProgress = Math.round(progressSong * 100 / lenghtSong);
+                seekbarProgress = progressSong * 100 / lenghtSong;
                 $("#playing-div #song-info-div #reconnect-link").attr("style", "display : none");
             }
 
