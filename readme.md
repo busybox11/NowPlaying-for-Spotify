@@ -9,7 +9,12 @@ Serveur : https://discord.io/techcordfr
 
 Site : [nowplayingforspotify.ga](http://nowplayingforspotify.ga)
 
-Version actuelle : 1.0
+Version actuelle : 1.1
+
+## **Changelog**
+- Ajout d'animations
+- Responsive ajouté
+- Réglages de bugs divers
 
 ![Screenshot](https://github.com/busybox11/NowPlaying-for-Spotify/blob/master/Screenshot.png?raw=true)
 
