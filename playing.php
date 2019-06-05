@@ -12,6 +12,8 @@
     <script>
     let response;
     let parsedResult;
+    let idSong;
+    let currentlyPlayingType;
 
     function loopForever () {
         setInterval(function() {
@@ -31,14 +33,15 @@
 
             function getInformations () {
                 titleSong = response["item"].name;
-                artistSong = response["item"]["album"]["artists"]["0"].name;
+                artistSong = response["item"]["artists"]["0"].name;
                 albumSong = response["item"]["album"].name;
                 albumPicture = response["item"]["album"]["images"]["0"].url;
                 lenghtSong = response["item"].duration_ms;
                 lenghtSongFormatted = msToTime(response["item"].duration_ms);
                 progressSong = response.progress_ms;
                 progressSongFormatted = msToTime(response.progress_ms);
-                seekbarProgress = progressSong * 100 / lenghtSong;
+                seekbarProgress = Math.round(progressSong * 100 / lenghtSong);
+                currentlyPlayingType = response.currently_playing_type;
                 $("#playing-div #song-info-div #reconnect-link").attr("style", "display : none");
             }
 
@@ -55,18 +58,21 @@
                 $("#playing-div #song-info-div #reconnect-link").attr("style", "display : block");
             }
             
-            $("#playing-div #song-info-div #song-title").text(titleSong);
-            console.log('Updated song');
-            $("#playing-div #song-info-div #song-artist").text(artistSong);
-            console.log('Updated artist');
-            $("#playing-div #song-info-div #song-album").text(albumSong);
-            console.log('Updated album');
+            if ($("#playing-div #song-info-div #song-title").text() == "Aucune musique en cours de lecture" || response["item"].id != idSong) {
+                $("#playing-div #song-info-div #song-title").text(titleSong);
+                console.log('Updated song');
+                $("#playing-div #song-info-div #song-artist").text(artistSong);
+                console.log('Updated artist');
+                $("#playing-div #song-info-div #song-album").text(albumSong);
+                console.log('Updated album');
+                $("#playing-div img").attr("src", albumPicture);
+                console.log('Updated cover');
+                $("#background-image-div").attr("style", "background: url('" + albumPicture + "');background-size:cover;background-position: center center;");
+                console.log('Updated background');
+                idSong = response["item"].id;
+            }
             $("#playing-div #song-info-div #time-song").text(progressSongFormatted + " · " + lenghtSongFormatted);
             console.log('Updated time')
-            $("#playing-div img").attr("src", albumPicture);
-            console.log('Updated cover');
-            $("#background-image-div").attr("style", "background: url('" + albumPicture + "');background-size:cover;background-position: center center;");
-            console.log('Updated background');
             $("#playing-div #song-info-div #seekbar-now").attr("style", "width : " + seekbarProgress + "%");
             console.log('Updated seekbar');
 
