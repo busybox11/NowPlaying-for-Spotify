@@ -23,10 +23,11 @@
                 console.log(response);
             });
 
-            if (response != "") {
+            if (response != "" && response!=null) {
                 console.log('Response not empty');
                 getInformations();
             } else {
+                // if response ==null it's surely an ad
                 console.log('Response empty');
                 noInformations();
             }
