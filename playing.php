@@ -42,7 +42,8 @@
                 progressSongFormatted = msToTime(response.progress_ms);
                 seekbarProgress = Math.round(progressSong * 100 / lenghtSong);
                 currentlyPlayingType = response.currently_playing_type;
-                $("#playing-div #song-info-div #reconnect-link").attr("style", "display : none");
+                title = titleSong + " - " + artistSong + " · Spotify Connect - Now Playing";
+                $("#playing-div #song-info-div #reconnect-link").attr("style", "display : none;");
             }
 
             function noInformations () {
@@ -55,26 +56,27 @@
                 progressSong = " ";
                 progressSongFormatted = " ";
                 seekbarProgress = 0;
-                $("#playing-div #song-info-div #reconnect-link").attr("style", "display : block");
+                title = "No song · Spotify Connect - Now Playing";
+                $("#playing-div #song-info-div #reconnect-link").attr("style", "display : block;");
             }
             
             if ($("#playing-div #song-info-div #song-title").text() == "Aucune musique en cours de lecture" || response["item"].id != idSong) {
                 $("#playing-div #song-info-div #song-title").text(titleSong);
-                console.log('Updated song');
                 $("#playing-div #song-info-div #song-artist").text(artistSong);
-                console.log('Updated artist');
+                document.title = title;
+                // Updated artist
                 $("#playing-div #song-info-div #song-album").text(albumSong);
-                console.log('Updated album');
+                // Updated album
                 $("#playing-div img").attr("src", albumPicture);
-                console.log('Updated cover');
+                // Updated cover
                 $("#background-image-div").attr("style", "background: url('" + albumPicture + "');background-size:cover;background-position: center center;");
-                console.log('Updated background');
+                // Updated background
                 idSong = response["item"].id;
             }
             $("#playing-div #song-info-div #time-song").text(progressSongFormatted + " · " + lenghtSongFormatted);
-            console.log('Updated time')
+            // Updated time
             $("#playing-div #song-info-div #seekbar-now").attr("style", "width : " + seekbarProgress + "%");
-            console.log('Updated seekbar');
+             // Updated seekbar
 
         }, 1000);
     }
