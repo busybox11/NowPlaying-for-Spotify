@@ -23,7 +23,7 @@
                 console.log(response);
             });
 
-            if (response != "" && response!=null) {
+            if (response != "" && response["item"]!=null) {
                 console.log('Response not empty');
                 getInformations();
             } else {
