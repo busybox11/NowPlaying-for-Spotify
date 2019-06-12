@@ -20,9 +20,7 @@ Version actuelle : 1.1
 
 ## **Langages utilisés :**
 
-HTML , CSS ("langages")
-JS (jugez pas mon niveau, j'en fais depuis une demi-journée)
-PHP (ouais là non plus jugez pas sivouplé)
+HTML, CSS, JS, PHP
 
 ## **Librairies utilisées :**
 
