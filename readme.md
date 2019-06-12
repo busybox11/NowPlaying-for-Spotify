@@ -4,10 +4,10 @@ Vous voici sur la page GitHub de mon projet **NowPlaying for Spotify** !
 Cet visualiseur a été programmé en une après-midi, ne jugez pas la propreté du code...
 Par contre, je ne suis pas contre un peu d'aide ^^
 
+Site : [nowplayingforspotify.ga](http://nowplayingforspotify.ga)
+
 Discord : @busybox#2540
 Serveur : https://discord.io/techcordfr
-
-Site : [nowplayingforspotify.ga](http://nowplayingforspotify.ga)
 
 Version actuelle : 1.1
 
