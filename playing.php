@@ -60,21 +60,14 @@
             
             if ($("#playing-div #song-info-div #song-title").text() == "Aucune musique en cours de lecture" || response["item"].id != idSong) {
                 $("#playing-div #song-info-div #song-title").text(titleSong);
-                console.log('Updated song');
                 $("#playing-div #song-info-div #song-artist").text(artistSong);
-                console.log('Updated artist');
                 $("#playing-div #song-info-div #song-album").text(albumSong);
-                console.log('Updated album');
                 $("#playing-div img").attr("src", albumPicture);
-                console.log('Updated cover');
                 $("#background-image-div").attr("style", "background: url('" + albumPicture + "');background-size:cover;background-position: center center;");
-                console.log('Updated background');
                 idSong = response["item"].id;
             }
             $("#playing-div #song-info-div #time-song").text(progressSongFormatted + " · " + lenghtSongFormatted);
-            console.log('Updated time')
             $("#playing-div #song-info-div #seekbar-now").attr("style", "width : " + seekbarProgress + "%");
-            console.log('Updated seekbar');
 
         }, 1000);
     }
