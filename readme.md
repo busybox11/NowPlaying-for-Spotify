@@ -9,11 +9,11 @@ Site : [nowplayingforspotify.ga](http://nowplayingforspotify.ga)
 Discord : @busybox#2540
 Serveur : https://discord.io/techcordfr
 
-Version actuelle : 1.1
+Version actuelle : 1.2
 
 ## **Changelog**
-- Ajout d'animations
-- Responsive ajouté
+- Actualisation du token automatique
+- Enlevé le token dans l'URL
 - Réglages de bugs divers
 
 ![Screenshot](https://github.com/busybox11/NowPlaying-for-Spotify/blob/master/Screenshot.png?raw=true)
@@ -28,8 +28,6 @@ HTML, CSS, JS, PHP
 [Spotify Web API JS par JMPerez](https://github.com/jmperez/spotify-web-api-js) pour l'obtention du titre en cours de lecture
 
 ## **Bugs connus**
- - Non responsive
- - Token dans l'URL du visualiseur (peut être fixé rapidement)
  - Ne reconnaît pas les pubs
 
 ## **Fonctionnalités à venir**
