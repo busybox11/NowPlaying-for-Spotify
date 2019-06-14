@@ -22,8 +22,12 @@ if (!isset($_GET['action'])) {
     $session->refreshAccessToken($_COOKIE['refreshToken']);
 
     $accessToken = $session->getAccessToken();
+    setcookie('accessToken', $accessToken, time() + 3600);
+    setcookie('refreshTime', time() + 3600, time() + (3600 * 365));
+    $refreshToken = $session->getRefreshToken();
+    setcookie('refreshToken', $refreshToken, time() + (3600 * 365));
 }
 
-header('Location: playing.php?token='.$accessToken);
+header('Location: playing.php');
 die();
 ?>

@@ -16,6 +16,9 @@
     let currentlyPlayingType;
     let refreshTime;
     refreshTime = readCookie('refreshTime');
+    var spotifyApi = new SpotifyWebApi();
+    spotifyApi.setAccessToken(readCookie('accessToken'));
+    loopForever();
 
     function loopForever () {
         setInterval(function() {
@@ -77,9 +80,6 @@
 
         }, 1000);
     }
-    var spotifyApi = new SpotifyWebApi();
-    spotifyApi.setAccessToken($_GET('token'));
-    loopForever();
     </script>
 </head>
 <body>
