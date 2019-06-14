@@ -14,6 +14,8 @@
     let parsedResult;
     let idSong;
     let currentlyPlayingType;
+    let refreshTime;
+    refreshTime = readCookie('refreshTime');
 
     function loopForever () {
         setInterval(function() {
@@ -22,6 +24,10 @@
                 response = value;
                 console.log(response);
             });
+
+            if (Math.floor(Date.now() / 1000) >= refreshTime) {
+                window.location.replace('token.php?action=refresh');
+            }
 
             if (response != "") {
                 console.log('Response not empty');
