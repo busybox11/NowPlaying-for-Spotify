@@ -44,6 +44,7 @@
                 titleSong = response["item"].name;
                 artistSong = response["item"]["artists"]["0"].name;
                 albumSong = response["item"]["album"].name;
+                title = titleSong + " de " + artistSong + " - Spotify Connect - Now Playing";
                 albumPicture = response["item"]["album"]["images"]["0"].url;
                 lenghtSong = response["item"].duration_ms;
                 lenghtSongFormatted = msToTime(response["item"].duration_ms);
@@ -58,6 +59,7 @@
                 titleSong = "Aucune musique en cours de lecture";
                 artistSong = "Veuillez patienter quelques secondes pour l'actualisation";
                 albumSong = 'Si la page ne fonctionne pas, ';
+                title = "Pas de musique - Spotify Connect - Now Playing";
                 albumPicture = "no_song.png";
                 lenghtSong = " ";
                 lenghtSongFormatted = " ";
@@ -71,6 +73,7 @@
                 $("#playing-div #song-info-div #song-title").text(titleSong);
                 $("#playing-div #song-info-div #song-artist").text(artistSong);
                 $("#playing-div #song-info-div #song-album").text(albumSong);
+                document.title = title;
                 $("#playing-div img").attr("src", albumPicture);
                 $("#background-image-div").attr("style", "background: url('" + albumPicture + "');background-size:cover;background-position: center center;");
                 idSong = response["item"].id;
