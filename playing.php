@@ -1,4 +1,13 @@
+<?php
+switch($_COOKIE['lang']){
+    case 'fr': include_once 'lang/fr.php';
+    break;
+    case 'en': default: include_once 'lang/en.php';
+    break;
+}
+?>
 <!DOCTYPE html>
+<html>
 <head>
     <title>Spotify Connect - Now Playing</title>
     <meta name="viewport" content="width=device-width, user-scalable=no">
@@ -44,7 +53,7 @@
                 titleSong = response["item"].name;
                 artistSong = response["item"]["artists"]["0"].name;
                 albumSong = response["item"]["album"].name;
-                title = titleSong + " de " + artistSong + " - Spotify Connect - Now Playing";
+                title = titleSong + " <?=by;?> " + artistSong + " - Spotify Connect - Now Playing";
                 albumPicture = response["item"]["album"]["images"]["0"].url;
                 lenghtSong = response["item"].duration_ms;
                 lenghtSongFormatted = msToTime(response["item"].duration_ms);
@@ -60,10 +69,10 @@
             }
 
             function noInformations () {
-                titleSong = "Aucune musique en cours de lecture";
-                artistSong = "Veuillez patienter quelques secondes pour l'actualisation";
+                titleSong = "<?=defaultTitleSong;?>";
+                artistSong = "<?=defaultArtistSong;?>";
                 albumSong = "";
-                title = "Pas de musique - Spotify Connect - Now Playing";
+                title = "<?=defaultTitle;?>";
                 albumPicture = "no_song.png";
                 lenghtSong = " ";
                 lenghtSongFormatted = " ";
@@ -73,7 +82,7 @@
                 $("#playing-div #song-info-div #activestate #activeicon").text("pause");
             }
             
-            if ($("#playing-div #song-info-div #song-title").text() == "Aucune musique en cours de lecture" || response["item"].id != idSong) {
+            if ($("#playing-div #song-info-div #song-title").text() == "<?=defaultTitleSong; ?>" || response["item"].id != idSong) {
                 $("#playing-div #song-info-div #song-title").text(titleSong);
                 $("#playing-div #song-info-div #song-artist").text(artistSong);
                 $("#playing-div #song-info-div #song-album").text(albumSong);
@@ -93,8 +102,8 @@
     <div id="playing-div">
         <img src="no_song.png" id="playing-img">
         <div id="song-info-div">
-            <h1 id="song-title">Aucune musique en cours de lecture</h1>
-            <h2 id="song-artist">Veuillez patienter quelques secondes pour l'actualisation</h2><h2 id="song-album"></h2>
+            <h1 id="song-title"><?=defaultTitleSong;?></h1>
+            <h2 id="song-artist"><?=defaultArtistSong;?></h2><h2 id="song-album"></h2>
             <div id="seekbar-bg">
                 <div id="seekbar-now" style="width : 0%"></div>
             </div>
@@ -103,3 +112,4 @@
     </div>
     <div id="background-image-div" style="background: url('no_song.png'); background-size: cover;background-position: center center;"><div class="darken"></div></div>
 </body>
+</html>
