@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-
+<html>
 <head>
     <title>Now Playing for Spotify</title>
     <link rel="icon" type="image/png" href="favicon.png">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="productsans.css?ts=<?=time ()?>" rel="stylesheet">
     <style>
+        html{
+            font-size: 1rem;
+        }
         body {
-        background-color: #000020;
+            background-color: #000020;
         }
 
         p,
@@ -42,8 +46,7 @@
 </head>
 
 <body>
-    <center>
-        <div class="content">
+        <div class="content" style="margin:0 auto;text-align:center;">
             <h1>Bienvenue sur NowPlaying for Spotify !</h1>
             <h2>Veuillez vous connecter avec votre compte Spotify.</h2>
             <p class="space20"></p>
@@ -51,5 +54,5 @@
             <p class="space20"></p>
             <h3>En cliquant sur 'CONNEXION', vous acceptez l'utilisation des cookies nécessaires au bon fonctionnement du site.</h3>
         </div>
-    </center>
 </body>
+</html>

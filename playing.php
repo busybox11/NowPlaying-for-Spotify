@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 <head>
     <title>Spotify Connect - Now Playing</title>
     <meta name="viewport" content="width=device-width, user-scalable=no">
@@ -103,3 +104,4 @@
     </div>
     <div id="background-image-div" style="background: url('no_song.png'); background-size: cover;background-position: center center;"><div class="darken"></div></div>
 </body>
+</html>
