@@ -76,13 +76,9 @@ if(isset($_GET['lang'])){
             <h2><?=IndexPleaseConnect;?></h2>
             <p class="space20"></p>
             <a href="login.php" class="spotify-btn"><?=IndexConnection;?></a>
-            <p class="space20"></p><h3>Language:</h3><form method="get">
-                <select name="lang">
-                    <option value="en" <?php if($_COOKIE['lang']=='en'){ echo 'selected'; }?>>English</option>
-                    <option value="fr" <?php if($_COOKIE['lang']=='fr'){ echo 'selected'; }?>>Français</option>
-                </select>
-                <input type="submit" value="Change language">
-            </form>
+            <p class="space20"></p>
+            <h3>Change language:</h3>
+               <a href="?lang=en"><img src="lang/united-kingdom.png" title="English" style="height:32px;width:auto;" /></a>&nbsp;<a href="?lang=fr"><img src="lang/france.png" title="Français" style="height:32px;width:auto;" /></a>
             <p class="space20"></p>
             <h3><?=IndexCookie;?></h3>
         </div>
