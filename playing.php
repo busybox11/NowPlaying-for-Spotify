@@ -52,13 +52,17 @@
                 progressSongFormatted = msToTime(response.progress_ms);
                 seekbarProgress = Math.round(progressSong * 100 / lenghtSong);
                 currentlyPlayingType = response.currently_playing_type;
-                $("#playing-div #song-info-div #reconnect-link").attr("style", "display : none");
+                if (response.is_playing == true) {
+                    $("#playing-div #song-info-div #activestate #activeicon").text("speaker");
+                } else {
+                    $("#playing-div #song-info-div #activestate #activeicon").text("pause");  
+                }
             }
 
             function noInformations () {
                 titleSong = "Aucune musique en cours de lecture";
                 artistSong = "Veuillez patienter quelques secondes pour l'actualisation";
-                albumSong = 'Si la page ne fonctionne pas, ';
+                albumSong = "";
                 title = "Pas de musique - Spotify Connect - Now Playing";
                 albumPicture = "no_song.png";
                 lenghtSong = " ";
@@ -66,7 +70,7 @@
                 progressSong = " ";
                 progressSongFormatted = " ";
                 seekbarProgress = 0;
-                $("#playing-div #song-info-div #reconnect-link").attr("style", "display : block");
+                $("#playing-div #song-info-div #activestate #activeicon").text("pause");
             }
             
             if ($("#playing-div #song-info-div #song-title").text() == "Aucune musique en cours de lecture" || response["item"].id != idSong) {
@@ -90,11 +94,11 @@
         <img src="no_song.png" id="playing-img">
         <div id="song-info-div">
             <h1 id="song-title">Aucune musique en cours de lecture</h1>
-            <h2 id="song-artist">Veuillez patienter quelques secondes pour l'actualisation</h2><h2 id="song-album">Si la page ne fonctionne pas, </h2><a id="reconnect-link" href="login.php"><h2>reconnectez-vous</h2></a>
+            <h2 id="song-artist">Veuillez patienter quelques secondes pour l'actualisation</h2><h2 id="song-album"></h2>
             <div id="seekbar-bg">
                 <div id="seekbar-now" style="width : 0%"></div>
             </div>
-            <h3 class="left"><i class="material-icons left">speaker</i>Spotify Connect<h3 class="right" id="time-song"></h3>
+            <h3 class="left" id="activestate"><i id="activeicon" class="material-icons left">pause</i>Spotify Connect<h3 class="right" id="time-song"></h3>
         </div>
     </div>
     <div id="background-image-div" style="background: url('no_song.png'); background-size: cover;background-position: center center;"><div class="darken"></div></div>
