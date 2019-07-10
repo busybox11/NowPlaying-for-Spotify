@@ -9,4 +9,8 @@ define('defaultArtistSong', 'Please wait a few seconds for the update');
 define('defaultTitle', 'No music - Spotify Connect - Now Playing');
 
 define('by', 'by');
+
+define('Error', 'Error');
+define('IndexError404', 'This page doesn\'t exist. Aren\'t you trying to hack me ?');
+define('IndexGoBack', 'Go back');
 ?>
