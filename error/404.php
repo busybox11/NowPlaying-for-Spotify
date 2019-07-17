@@ -68,7 +68,7 @@ if(isset($_GET['lang'])){
             <a href="javascript:window.history.back()" class="spotify-btn"><?=IndexGoBack;?></a>
             <p class="space20"></p>
             <h3>Change language:</h3>
-               <a href="?lang=en"><img src="lang/united-kingdom.png" title="English" style="height:32px;width:auto;" /></a>&nbsp;<a href="?lang=fr"><img src="lang/france.png" title="Français" style="height:32px;width:auto;" /></a>
+               <a href="?lang=en"><img src="../lang/united-kingdom.png" title="English" style="height:32px;width:auto;" /></a>&nbsp;<a href="?lang=fr"><img src="../lang/france.png" title="Français" style="height:32px;width:auto;" /></a>
             <p class="space20"></p>
         </div>
 </body>
