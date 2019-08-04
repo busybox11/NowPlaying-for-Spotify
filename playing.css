@@ -11,7 +11,7 @@ body {
     top: 0;
     bottom: 0;
     position: absolute;
-    filter: blur(8px);
+    filter: blur(20px);
     transform: scale(1.2);
     z-index: inherit;
     transition: background ease 2s;
@@ -42,6 +42,7 @@ body {
 
 #playing-img {
     margin-right: 25px;
+    border-radius: 20px;
     box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
 
