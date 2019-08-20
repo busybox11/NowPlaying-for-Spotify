@@ -15,7 +15,7 @@ Version actuelle : 1.2.1
 
 - Reconnaîsance de la pause d'un morceau
 
-![Screenshot](https://github.com/busybox11/NowPlaying-for-Spotify/blob/master/Screenshot.png?raw=true)
+![Screenshot](https://github.com/busybox11/NowPlaying-for-Spotify/blob/master/Screenshot.png?)
 
 ## **Langages utilisés :**
 
