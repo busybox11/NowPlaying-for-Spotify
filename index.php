@@ -77,6 +77,7 @@ if(isset($_GET['lang'])){
             <p class="space20"></p>
             <a href="login.php" class="spotify-btn"><?=IndexConnection;?></a>
             <p class="space20"></p>
+            <h3><?=OpenSourceProject;?><a href="https://github.com/busybox11/NowPlaying-for-Spotify"><?=OpenSourceLink;?></h3>
             <h3>Change language:</h3>
                <a href="?lang=en"><img src="lang/united-kingdom.png" title="English" style="height:32px;width:auto;" /></a>&nbsp;<a href="?lang=fr"><img src="lang/france.png" title="Français" style="height:32px;width:auto;" /></a>
             <p class="space20"></p>
