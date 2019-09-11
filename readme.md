@@ -1,4 +1,4 @@
-![Logo](https://github.com/busybox11/NowPlaying-for-Spotify/blob/master/favicon.png?  =100x100)
+![Logo](https://github.com/busybox11/NowPlaying-for-Spotify/blob/master/favicon.png?){:height="100px" width="100px"}
 # NowPlaying for Spotify
 
 Vous voici sur la page GitHub de mon projet **NowPlaying for Spotify** !
