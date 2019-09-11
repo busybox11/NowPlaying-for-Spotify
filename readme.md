@@ -1,3 +1,4 @@
+![Logo](https://github.com/busybox11/NowPlaying-for-Spotify/blob/master/favicon.png?)
 # NowPlaying for Spotify
 
 Vous voici sur la page GitHub de mon projet **NowPlaying for Spotify** !
