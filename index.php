@@ -72,6 +72,7 @@ if(isset($_GET['lang'])){
 
 <body>
         <div class="content" style="margin:0 auto;text-align:center;">
+            <img src="favicon.png" alt="Logo" width="100px" height="100px">
             <h1><?=IndexWelcome;?></h1>
             <h2><?=IndexPleaseConnect;?></h2>
             <p class="space20"></p>
