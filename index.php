@@ -10,7 +10,7 @@ if(!isset($_COOKIE['lang']) OR empty($_COOKIE['lang'])){
     setcookie('lang', 'en', time() + 60*60*24*30);
 }
 
-switch($_COOKIE['lang']){
+switch(@$_COOKIE['lang']){
     case 'fr': include_once 'lang/fr.php';
     break;
     case 'en': default: include_once 'lang/en.php';
