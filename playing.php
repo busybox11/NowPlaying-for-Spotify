@@ -24,9 +24,6 @@ switch($_COOKIE['lang']){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="scripts.js?ts=<?=time ()?>"></script>
     <script>
-    // Prevent sleep
-    sleep.prevent()
-    
     // Check if cookie refreshToken is set
     let cookie = document.cookie;
     if (!cookie.includes("refreshToken")) { window.location.replace('login.php'); }
