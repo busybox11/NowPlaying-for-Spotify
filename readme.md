@@ -12,12 +12,13 @@ Discord : @busybox#2540
 
 Serveur : [https://discord.io/techcordfr](https://discord.io/techcordfr)
 
-Version actuelle : 1.3.1
+Version actuelle : 1.3.2
 
 ## **Changelog**
 
 - Reconnaîsance de l'appareil en cours de lecture
 - Curseur rendu invisible après un cours laps de temps
+- Bouton plein écran
 
 ![Screenshot](https://github.com/busybox11/NowPlaying-for-Spotify/blob/master/Screenshot.png?)
 
