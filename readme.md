@@ -12,7 +12,7 @@ Discord : @busybox#2540
 
 Serveur : [https://discord.io/techcordfr](https://discord.io/techcordfr)
 
-Version actuelle : 1.2.1
+Version actuelle : 1.3
 
 ## **Changelog**
 
