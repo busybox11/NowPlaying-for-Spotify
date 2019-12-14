@@ -21,8 +21,9 @@ switch($_COOKIE['lang']){
     <link href="productsans.css?ts=<?=time ()?>" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="spotify-web-api.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="scripts.js?ts=<?=time ()?>"></script>
+    <script src="cursor.js?ts=<?=time ()?>"></script>
     <script>
     // Check if cookie refreshToken is set
     let cookie = document.cookie;
@@ -72,18 +73,18 @@ switch($_COOKIE['lang']){
                 progressSongFormatted = msToTime(response.progress_ms);
                 seekbarProgress = Math.round(progressSong * 100 / lenghtSong);
                 currentlyPlayingType = response.currently_playing_type;
-                deviceName = response["device"].name;
-		        deviceType = response["device"].type;
+		deviceName = response["device"].name;
+		deviceType = response["device"].type;
                 if (response.is_playing == true) {
-		            if (deviceType == "Computer") {
-			            $("#playing-div #song-info-div #activestate #activeicon").text("computer");
-		            } else if (deviceType == "Smartphone") {
-			            $("#playing-div #song-info-div #activestate #activeicon").text("smartphone");
-		            } else if (deviceType == "Tablet") {
-			            $("#playing-div #song-info-div #activestate #activeicon").text("tablet_android");
-		            } else {
-			            $("#playing-div #song-info-div #activestate #activeicon").text("speaker");
-		            }
+		    if (deviceType == "Computer") {
+			$("#playing-div #song-info-div #activestate #activeicon").text("computer");
+		    } else if (deviceType == "Smartphone") {
+			$("#playing-div #song-info-div #activestate #activeicon").text("smartphone");
+		    } else if (deviceType == "Tablet") {
+			$("#playing-div #song-info-div #activestate #activeicon").text("tablet_android");
+		    } else {
+			$("#playing-div #song-info-div #activestate #activeicon").text("speaker");
+		    }
                 } else {
                     $("#playing-div #song-info-div #activestate #activeicon").text("pause");  
                 }
