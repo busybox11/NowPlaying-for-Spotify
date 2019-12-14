@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php 
+<?php
 
 if(!isset($_COOKIE['lang']) OR empty($_COOKIE['lang'])){
     setcookie('lang', 'en', time() + 60*60*24*30);
@@ -86,7 +86,7 @@ switch($_COOKIE['lang']){
 			$("#playing-div #song-info-div #activestate #activeicon").text("speaker");
 		    }
                 } else {
-                    $("#playing-div #song-info-div #activestate #activeicon").text("pause");  
+                    $("#playing-div #song-info-div #activestate #activeicon").text("pause");
                 }
 		$("#playing-div #song-info-div #activestate #device-name").text(deviceName);
             }
@@ -104,7 +104,7 @@ switch($_COOKIE['lang']){
                 seekbarProgress = 0;
                 $("#playing-div #song-info-div #activestate #activeicon").text("pause");
             }
-            
+
             if ($("#playing-div #song-info-div #song-title").text() == "<?=defaultTitleSong; ?>" || response["item"].id != idSong) {
                 $("#playing-div #song-info-div #song-title").text(titleSong);
                 $("#playing-div #song-info-div #song-artist").text(artistSong);
@@ -122,6 +122,9 @@ switch($_COOKIE['lang']){
     </script>
 </head>
 <body>
+	<div class="settings-div fadeInOut">
+		<a id="fullscreen-button" href="#" onclick="fullscreen();"><i id="fullscreen-icon" class="material-icons settings-icon">fullscreen</i></a>
+    </div>
     <div id="playing-div">
         <img src="no_song.png" id="playing-img">
         <div id="song-info-div">

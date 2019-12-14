@@ -7,12 +7,13 @@ $(document).ready(function() {
         $("body").mousemove(function(ev) {
                 if(!forceMouseHide) {
                         $("body").css('cursor', '');
+						$(".settings-div").removeClass('hidden');
 
                         clearTimeout(idleMouseTimer);
 
                         idleMouseTimer = setTimeout(function() {
                                 $("body").css('cursor', 'none');
-
+								$(".settings-div").addClass('hidden');
                                 forceMouseHide = true;
                                 setTimeout(function() {
                                         forceMouseHide = false;
