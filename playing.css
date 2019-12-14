@@ -69,6 +69,36 @@ body {
     transition: linear width 1s;
 }
 
+.settings-div {
+	padding: 5px 10px 5px 10px;
+	margin: 10px;
+	background-color: #FFFFFF20;
+	border-radius: 25px;
+	z-index: 2;
+}
+
+.settings-icons {
+	font-size: 26px;
+} 
+
+.fadeInOut {
+    transition-duration: 200ms;
+    transition-property: visibility, opacity;
+    transition-delay: 0ms;
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition-duration: 200ms;
+    transition-property: opacity, visibility;
+    transition-delay: 200ms;
+}
+
+.material-icons {
+	vertical-align: middle;
+}
+
 span,
 p,
 h1,
