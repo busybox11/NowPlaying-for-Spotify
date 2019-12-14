@@ -42,7 +42,7 @@ switch($_COOKIE['lang']){
     // loop function
     function loopForever () {
         setInterval(function() {
-            var promise = Promise.resolve(spotifyApi.getMyCurrentPlayingTrack(null));
+            var promise = Promise.resolve(spotifyApi.getMyCurrentPlaybackState(null));
             promise.then(function(value) {
                 response = value;
                 console.log(response);
@@ -72,11 +72,22 @@ switch($_COOKIE['lang']){
                 progressSongFormatted = msToTime(response.progress_ms);
                 seekbarProgress = Math.round(progressSong * 100 / lenghtSong);
                 currentlyPlayingType = response.currently_playing_type;
+                deviceName = response["device"].name;
+		        deviceType = response["device"].type;
                 if (response.is_playing == true) {
-                    $("#playing-div #song-info-div #activestate #activeicon").text("speaker");
+		            if (deviceType == "Computer") {
+			            $("#playing-div #song-info-div #activestate #activeicon").text("computer");
+		            } else if (deviceType == "Smartphone") {
+			            $("#playing-div #song-info-div #activestate #activeicon").text("smartphone");
+		            } else if (deviceType == "Tablet") {
+			            $("#playing-div #song-info-div #activestate #activeicon").text("tablet_android");
+		            } else {
+			            $("#playing-div #song-info-div #activestate #activeicon").text("speaker");
+		            }
                 } else {
                     $("#playing-div #song-info-div #activestate #activeicon").text("pause");  
                 }
+		$("#playing-div #song-info-div #activestate #device-name").text(deviceName);
             }
 
             function noInformations () {
