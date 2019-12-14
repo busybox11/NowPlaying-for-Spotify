@@ -129,7 +129,7 @@ switch($_COOKIE['lang']){
             <div id="seekbar-bg">
                 <div id="seekbar-now" style="width : 0%"></div>
             </div>
-            <h3 class="left" id="activestate"><i id="activeicon" class="material-icons left">pause</i>Spotify Connect<h3 class="right" id="time-song"></h3>
+            <h3 class="left" id="activestate"><i id="activeicon" class="material-icons left">pause</i><span id="device-name">Spotify Connect</span><h3 class="right" id="time-song"></h3>
         </div>
     </div>
     <div id="background-image-div" style="background: url('no_song.png'); background-size: cover;background-position: center center;"><div class="darken"></div></div>
