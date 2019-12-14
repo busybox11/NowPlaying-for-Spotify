@@ -16,7 +16,7 @@ Version actuelle : 1.2.1
 
 ## **Changelog**
 
-- Reconnaîsance de la pause d'un morceau
+- Reconnaîsance de l'appareil en cours de lecture
 
 ![Screenshot](https://github.com/busybox11/NowPlaying-for-Spotify/blob/master/Screenshot.png?)
 
@@ -36,7 +36,6 @@ HTML, CSS, JS, PHP
 ## **Fonctionnalités à venir**
 
 - Support des pubs
-- Affichage de l'appareil en cours de lecture (si possible)
 - Thèmes
 
 ## **Comment l'héberger ?**
