@@ -35,6 +35,8 @@ switch($_COOKIE['lang']){
     let idSong;
     let currentlyPlayingType;
     let refreshTime;
+	const AVAILABLE_DEVICES = ['Computer', 'Tablet', 'Smartphone', 'Speaker', 'TV', 'AVR', 'STB', 'AudioDongle', 'GameConsole', 'CastVideo', 'CastAudio', 'Automobile', 'Unknown']
+	const DEVICES_ICON = ['computer', 'tablet_android', 'smartphone', 'speaker', 'tv', 'speaker_group', 'speaker_group', 'cast_connected', 'gamepad', 'cast_connected', 'cast_connected', 'directions_car', 'device_unknown']
     refreshTime = readCookie('refreshTime');
     var spotifyApi = new SpotifyWebApi();
     spotifyApi.setAccessToken(readCookie('accessToken'));
@@ -76,20 +78,11 @@ switch($_COOKIE['lang']){
 		deviceName = response["device"].name;
 		deviceType = response["device"].type;
                 if (response.is_playing == true) {
-		    if (deviceType == "Computer") {
-			$("#playing-div #song-info-div #activestate #activeicon").text("computer");
-		    } else if (deviceType == "Smartphone") {
-			$("#playing-div #song-info-div #activestate #activeicon").text("smartphone");
-		    } else if (deviceType == "Tablet") {
-			$("#playing-div #song-info-div #activestate #activeicon").text("tablet_android");
-		    } else {
-			$("#playing-div #song-info-div #activestate #activeicon").text("speaker");
-		    }
+					$("#playing-div #song-info-div #activestate #activeicon").text(DEVICES_ICON[AVAILABLE_DEVICES.indexOf(deviceType)]);
                 } else {
                     $("#playing-div #song-info-div #activestate #activeicon").text("pause");
                 }
-		$("#playing-div #song-info-div #activestate #device-name").text(deviceName);
-            }
+				$("#playing-div #song-info-div #activestate #device-name").text(deviceName);
 
             function noInformations () {
                 titleSong = "<?=defaultTitleSong;?>";
