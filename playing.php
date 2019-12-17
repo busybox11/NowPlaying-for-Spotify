@@ -35,8 +35,8 @@ switch($_COOKIE['lang']){
     let idSong;
     let currentlyPlayingType;
     let refreshTime;
-    const AVAILABLE_DEVICES = ['Computer', 'Tablet', 'Smartphone', 'Speaker', 'TV', 'AVR', 'STB', 'AudioDongle', 'GameConsole', 'CastVideo', 'CastAudio', 'Automobile', 'Unknown']
-    const DEVICES_ICON = ['computer', 'tablet_android', 'smartphone', 'speaker', 'tv', 'speaker_group', 'speaker_group', 'cast_connected', 'gamepad', 'cast_connected', 'cast_connected', 'directions_car', 'device_unknown']
+	const AVAILABLE_DEVICES = ['Computer', 'Tablet', 'Smartphone', 'Speaker', 'TV', 'AVR', 'STB', 'AudioDongle', 'GameConsole', 'CastVideo', 'CastAudio', 'Automobile', 'Unknown']
+	const DEVICES_ICON = ['computer', 'tablet_android', 'smartphone', 'speaker', 'tv', 'speaker_group', 'speaker_group', 'cast_connected', 'gamepad', 'cast_connected', 'cast_connected', 'directions_car', 'device_unknown']
     refreshTime = readCookie('refreshTime');
     var spotifyApi = new SpotifyWebApi();
     spotifyApi.setAccessToken(readCookie('accessToken'));
@@ -75,14 +75,17 @@ switch($_COOKIE['lang']){
                 progressSongFormatted = msToTime(response.progress_ms);
                 seekbarProgress = Math.round(progressSong * 100 / lenghtSong);
                 currentlyPlayingType = response.currently_playing_type;
-		deviceName = response["device"].name;
-		deviceType = response["device"].type;
+		        deviceName = response["device"].name;
+		        deviceType = response["device"].type;
                 if (response.is_playing == true) {
 					$("#playing-div #song-info-div #activestate #activeicon").text(DEVICES_ICON[AVAILABLE_DEVICES.indexOf(deviceType)]);
                 } else {
                     $("#playing-div #song-info-div #activestate #activeicon").text("pause");
                 }
 				$("#playing-div #song-info-div #activestate #device-name").text(deviceName);
+                $("#playing-div #song-info-div #time-song").text(progressSongFormatted + " · " + lenghtSongFormatted);
+                $("#playing-div #song-info-div #seekbar-now").attr("style", "width : " + seekbarProgress + "%");
+            }
 
             function noInformations () {
                 titleSong = "<?=defaultTitleSong;?>";
@@ -107,8 +110,6 @@ switch($_COOKIE['lang']){
                 $("#background-image-div").attr("style", "background: url('" + albumPicture + "');background-size:cover;background-position: center center;");
                 idSong = response["item"].id;
             }
-            $("#playing-div #song-info-div #time-song").text(progressSongFormatted + " · " + lenghtSongFormatted);
-            $("#playing-div #song-info-div #seekbar-now").attr("style", "width : " + seekbarProgress + "%");
 
         }, 1000);
     }
