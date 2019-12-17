@@ -12,10 +12,14 @@ Discord : @busybox#2540
 
 Serveur : [https://discord.io/techcordfr](https://discord.io/techcordfr)
 
-Version actuelle : 1.3.3
+Version actuelle : 1.4
 
 ## **Changelog**
 
+v1.4.X
+- Reconnaîssance des publicités
+
+v1.3.X
 - Reconnaîsance de l'appareil en cours de lecture et de son type
 - Curseur rendu invisible après un cours laps de temps
 - Bouton plein écran
@@ -37,7 +41,6 @@ HTML, CSS, JS, PHP
 
 ## **Fonctionnalités à venir**
 
-- Support des pubs
 - Thèmes
 
 ## **Comment l'héberger ?**
