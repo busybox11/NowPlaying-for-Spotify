@@ -9,6 +9,7 @@ define('OpenSourceLink', 'here.');
 define('defaultTitleSong', 'No music being played');
 define('defaultArtistSong', 'Please wait a few seconds for the update');
 define('defaultTitle', 'No music - Spotify Connect - Now Playing');
+define('ad', 'Advertisement');
 
 define('by', 'by');
 

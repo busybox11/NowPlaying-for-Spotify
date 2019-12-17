@@ -11,7 +11,6 @@ switch($_COOKIE['lang']){
     case 'en': default: include_once 'lang/en.php';
     break;
 }
-
 ?>
 <head>
     <title>Spotify Connect - Now Playing</title>
@@ -35,8 +34,8 @@ switch($_COOKIE['lang']){
     let idSong;
     let currentlyPlayingType;
     let refreshTime;
-	const AVAILABLE_DEVICES = ['Computer', 'Tablet', 'Smartphone', 'Speaker', 'TV', 'AVR', 'STB', 'AudioDongle', 'GameConsole', 'CastVideo', 'CastAudio', 'Automobile', 'Unknown']
-	const DEVICES_ICON = ['computer', 'tablet_android', 'smartphone', 'speaker', 'tv', 'speaker_group', 'speaker_group', 'cast_connected', 'gamepad', 'cast_connected', 'cast_connected', 'directions_car', 'device_unknown']
+    const AVAILABLE_DEVICES = ['Computer', 'Tablet', 'Smartphone', 'Speaker', 'TV', 'AVR', 'STB', 'AudioDongle', 'GameConsole', 'CastVideo', 'CastAudio', 'Automobile', 'Unknown']
+    const DEVICES_ICON = ['computer', 'tablet_android', 'smartphone', 'speaker', 'tv', 'speaker_group', 'speaker_group', 'cast_connected', 'gamepad', 'cast_connected', 'cast_connected', 'directions_car', 'device_unknown']
     refreshTime = readCookie('refreshTime');
     var spotifyApi = new SpotifyWebApi();
     spotifyApi.setAccessToken(readCookie('accessToken'));
@@ -64,26 +63,38 @@ switch($_COOKIE['lang']){
             }
 
             function getInformations () {
-                titleSong = response["item"].name;
-                artistSong = response["item"]["artists"]["0"].name;
-                albumSong = response["item"]["album"].name;
-                title = titleSong + " <?=by;?> " + artistSong + " - Spotify Connect - Now Playing";
-                albumPicture = response["item"]["album"]["images"]["0"].url;
-                lenghtSong = response["item"].duration_ms;
-                lenghtSongFormatted = msToTime(response["item"].duration_ms);
+                currentlyPlayingType = response.currently_playing_type;
                 progressSong = response.progress_ms;
                 progressSongFormatted = msToTime(response.progress_ms);
-                seekbarProgress = Math.round(progressSong * 100 / lenghtSong);
-                currentlyPlayingType = response.currently_playing_type;
-		        deviceName = response["device"].name;
-		        deviceType = response["device"].type;
+                deviceName = response["device"].name;
+                deviceType = response["device"].type;
                 if (response.is_playing == true) {
-					$("#playing-div #song-info-div #activestate #activeicon").text(DEVICES_ICON[AVAILABLE_DEVICES.indexOf(deviceType)]);
+                    $("#playing-div #song-info-div #activestate #activeicon").text(DEVICES_ICON[AVAILABLE_DEVICES.indexOf(deviceType)]);
                 } else {
                     $("#playing-div #song-info-div #activestate #activeicon").text("pause");
                 }
-				$("#playing-div #song-info-div #activestate #device-name").text(deviceName);
-                $("#playing-div #song-info-div #time-song").text(progressSongFormatted + " · " + lenghtSongFormatted);
+                $("#playing-div #song-info-div #activestate #device-name").text(deviceName);
+                if (currentlyPlayingType != "ad") {
+                    lenghtSong = response["item"].duration_ms;
+                    lenghtSongFormatted = msToTime(response["item"].duration_ms);
+                    seekbarProgress = Math.round(progressSong * 100 / lenghtSong);
+                    titleSong = response["item"].name;
+                    artistSong = response["item"]["artists"]["0"].name;
+                    albumSong = response["item"]["album"].name;
+                    title = titleSong + " <?=by;?> " + artistSong + " - " + deviceName + " - Now Playing for Spotify";
+                    albumPicture = response["item"]["album"]["images"]["0"].url;
+                    $("#playing-div #song-info-div #time-song").text(progressSongFormatted + " · " + lenghtSongFormatted);
+                } else {
+                    titleSong = "<?=ad;?>";
+                    artistSong = "Spotify";
+                    albumSong = "";
+                    title = "<?=ad;?> -" + deviceName + "- Now Playing for Spotify";
+                    albumPicture = "no_song.png";
+                    lenghtSong = " ";
+                    lenghtSongFormatted = " ";
+                    seekbarProgress = 0;
+                    $("#playing-div #song-info-div #time-song").text(progressSongFormatted);
+                }
                 $("#playing-div #song-info-div #seekbar-now").attr("style", "width : " + seekbarProgress + "%");
             }
 
