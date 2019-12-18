@@ -56,30 +56,29 @@ body {
 #seekbar-bg {
     border-radius: 50px;
     margin-top: 40px;
-    margin-left: 5px;
     height: 15px;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.50);;
+    background-color: rgba(255, 255, 255, 0.50);
 }
 
 #seekbar-now {
     border-radius: 50px;
-    background-color: rgba(255, 255, 255, 0.90);;
+    background-color: rgba(255, 255, 255, 0.90);
     height: 15px;
     transition: linear width 1s;
 }
 
 .settings-div {
-	padding: 5px 10px 5px 10px;
-	margin: 10px;
-	background-color: #FFFFFF20;
-	border-radius: 25px;
-	z-index: 2;
+    padding: 5px 10px 5px 10px;
+    margin: 10px;
+    background-color: #FFFFFF20;
+    border-radius: 25px;
+    z-index: 2;
 }
 
 .settings-icons {
-	font-size: 26px;
-} 
+    font-size: 26px;
+}
 
 .fadeInOut {
     transition-duration: 200ms;
@@ -96,7 +95,7 @@ body {
 }
 
 .material-icons {
-	vertical-align: middle;
+    vertical-align: middle;
 }
 
 span,
@@ -113,12 +112,10 @@ a {
 
 h1 {
     font-size: 70px;
-    margin: 5px;
 }
 
 h2 {
     font-size: 50px;
-    margin: 5px;
 }
 
 h3 {
@@ -173,133 +170,103 @@ i.large {
     font-weight: normal !important;
 }
 
+
 /* For mobile and tablets */
 
 @media only screen and (max-width:767px) and (orientation: portrait) {
-    #playing-div{
+    #playing-div {
         flex-direction: column;
         justify-content: center;
     }
-
     #playing-img {
-        margin-right: 5px;
-        max-width:80%;
-        max-height:60%;
+        max-width: 80%;
+        max-height: 60%;
         box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+        margin-bottom: 15px;
     }
-
     #song-info-div {
-        margin-left: 5px;
         width: 80%;
     }
-
     h1 {
         font-size: 30px;
-        margin: 5px;
     }
-
     h2 {
         font-size: 20px;
-        margin: 5px;
     }
-
     h3 {
         font-size: 25px;
     }
-
 }
 
-@media only screen and (orientation: landscape) and (max-width:767px){
-#playing-div{
+@media only screen and (orientation: landscape) and (max-width:767px) {
+    #playing-div {
         flex-direction: row;
     }
-
     #playing-img {
-        margin-right: 5px;
-        max-width:45%;
-        height:auto;
-        max-height:45%;
+        margin-right: 10px;
+        max-width: 45%;
+        height: auto;
+        max-height: 45%;
         box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
     }
-
     #song-info-div {
         margin-left: 5px;
         width: 55%;
     }
-
     h1 {
         font-size: 40px;
-        margin: 5px;
     }
-
     h2 {
         font-size: 30px;
-        margin: 5px;
     }
-
     h3 {
         font-size: 15px;
     }
 }
 
-@media only screen and (orientation: landscape) and (max-width:1199px){
-#playing-div{
+@media only screen and (orientation: landscape) and (max-width:1199px) {
+    #playing-div {
         flex-direction: row;
     }
-
     #playing-img {
-        margin-right: 5px;
-        max-width:45%;
-        height:auto;
-        max-height:45%;
+        margin-right: 10px;
+        max-width: 45%;
+        height: auto;
+        max-height: 45%;
         box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
     }
-
     #song-info-div {
         margin-left: 5px;
         width: 50%;
     }
-
     h1 {
         font-size: 50px;
-        margin: 5px;
     }
-
     h2 {
         font-size: 35px;
-        margin: 5px;
     }
-
     h3 {
         font-size: 20px;
     }
 }
 
-@media only screen and (max-width: 1199px) and (orientation: portrait){
-    #playing-div{
+@media only screen and (max-width: 1199px) and (orientation: portrait) {
+    #playing-div {
         flex-direction: column;
         justify-content: center;
     }
-
     #playing-img {
-        margin-right: 10px;
+        margin-bottom: 10px;
     }
-
     #song-info-div {
-        margin-left: 10px;
         width: 80%;
     }
-
     h1 {
         font-size: 50px;
-        margin: 5px;
     }
-
     h2 {
         font-size: 30px;
-        margin: 5px;
     }
-
     h3 {
         font-size: 15px;
     }
