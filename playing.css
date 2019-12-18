@@ -112,10 +112,12 @@ a {
 
 h1 {
     font-size: 70px;
+    margin: 0px;
 }
 
 h2 {
     font-size: 50px;
+    margin: 0px;
 }
 
 h3 {
@@ -179,19 +181,22 @@ i.large {
         justify-content: center;
     }
     #playing-img {
+        margin-bottom: 10px;
         max-width: 80%;
         max-height: 60%;
         box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
-        margin-bottom: 15px;
     }
     #song-info-div {
+        margin-left: 0px;
         width: 80%;
     }
     h1 {
         font-size: 30px;
+        margin: 0px;
     }
     h2 {
         font-size: 20px;
+        margin: 0px;
     }
     h3 {
         font-size: 25px;
@@ -215,9 +220,11 @@ i.large {
     }
     h1 {
         font-size: 40px;
+        margin: 0px;
     }
     h2 {
         font-size: 30px;
+        margin: 0px;
     }
     h3 {
         font-size: 15px;
@@ -241,9 +248,11 @@ i.large {
     }
     h1 {
         font-size: 50px;
+        margin: 0px;
     }
     h2 {
         font-size: 35px;
+        margin: 0px;
     }
     h3 {
         font-size: 20px;
@@ -263,9 +272,11 @@ i.large {
     }
     h1 {
         font-size: 50px;
+        margin: 0px;
     }
     h2 {
         font-size: 30px;
+        margin: 0px;
     }
     h3 {
         font-size: 15px;
