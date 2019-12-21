@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php
 
 if(!isset($_COOKIE['lang']) OR empty($_COOKIE['lang'])){
@@ -12,6 +11,7 @@ switch($_COOKIE['lang']){
     break;
 }
 ?>
+<!DOCTYPE html>
 <head>
     <title>Spotify Connect - Now Playing</title>
     <meta name="viewport" content="width=device-width, user-scalable=no">
@@ -79,7 +79,14 @@ switch($_COOKIE['lang']){
                     lenghtSongFormatted = msToTime(response["item"].duration_ms);
                     seekbarProgress = Math.round(progressSong * 100 / lenghtSong);
                     titleSong = response["item"].name;
-                    artistSong = response["item"]["artists"]["0"].name;
+                    let tempArtist = "";
+                    for (let i = 0; i < response["item"]["artists"].length; i++) {
+                        tempArtist = tempArtist + response["item"]["artists"][i].name;
+                        if (i != response["item"]["artists"].length - 1) {
+                            tempArtist = tempArtist + ", ";
+                        }
+                    }
+                    artistSong = tempArtist;
                     albumSong = response["item"]["album"].name;
                     title = titleSong + " <?=by;?> " + artistSong + " - " + deviceName + " - Now Playing for Spotify";
                     albumPicture = response["item"]["album"]["images"]["0"].url;
