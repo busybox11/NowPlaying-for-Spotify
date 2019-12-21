@@ -12,12 +12,13 @@ Discord : @busybox#2540
 
 Serveur : [https://discord.io/techcordfr](https://discord.io/techcordfr)
 
-Version actuelle : 1.4
+Version actuelle : 1.4.2
 
 ## **Changelog**
 
 v1.4.X
 - Reconnaîssance des publicités
+- Reconnaîssance des artistes multiples
 
 v1.3.X
 - Reconnaîsance de l'appareil en cours de lecture et de son type
