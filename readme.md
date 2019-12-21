@@ -2,70 +2,69 @@
 
 # NowPlaying for Spotify
 
-Vous voici sur la page GitHub de mon projet **NowPlaying for Spotify** !
-Cet visualiseur a été programmé en une après-midi, ne jugez pas la propreté du code...
-Par contre, je ne suis pas contre un peu d'aide ^^
+Welcome on my project's GitHub page **NowPlaying for Spotify** !
+This is a Spotify Connect visualizer, which has had its codebase made in half a day.
 
-Site : [nowplayingforspotify.ga](http://nowplayingforspotify.ga)
+Website : [nowplayingforspotify.ga](http://nowplayingforspotify.ga)
 
-Discord : @busybox#2540
+Personal Discord account : `@busybox#2540`
 
-Serveur : [https://discord.io/techcordfr](https://discord.io/techcordfr)
+French tech Discord server : [https://discord.io/techcordfr](https://discord.io/techcordfr)
 
-Version actuelle : 1.4.2
+Last release : 1.4.2
 
 ## **Changelog**
 
 v1.4.X
-- Reconnaîssance des publicités
-- Reconnaîssance des artistes multiples
+- Advertisements are recognized
+- Multiple artists are recognized
 
 v1.3.X
-- Reconnaîsance de l'appareil en cours de lecture et de son type
-- Curseur rendu invisible après un cours laps de temps
-- Bouton plein écran
+- Now playing device name and type is showing
+- Cursor is hidden after a couple of seconds
+- Fullscreen button
 
 ![Screenshot](https://github.com/busybox11/NowPlaying-for-Spotify/blob/master/Screenshot.png?)
 
-## **Langages utilisés :**
+## **Coded in :**
 
 HTML, CSS, JS, PHP
 
-## **Librairies utilisées :**
+## **Used libraries :**
 
-[Spotify Web API PHP par jwilsson](https://github.com/jwilsson/spotify-web-api-php) pour l'obtention du token,
-[Spotify Web API JS par JMPerez](https://github.com/jmperez/spotify-web-api-js) pour l'obtention du titre en cours de lecture
+[Spotify Web API PHP by jwilsson](https://github.com/jwilsson/spotify-web-api-php) pour l'obtention du token,
+[Spotify Web API JS by JMPerez](https://github.com/jmperez/spotify-web-api-js) pour l'obtention du titre en cours de lecture
 
-## **Bugs connus**
+## **Known bugs**
 
-- Ne reconnaît pas les pubs, ni les podcasts
+- Podcasts aren't recognized
 
-## **Fonctionnalités à venir**
+## **Upcoming features**
 
-- Thèmes
+- Themes
 
-## **Comment l'héberger ?**
+## **How to host ?**
 
-Vous pouvez utiliser XAMPP (si vous êtes sous Linux) ou Wamp (si vous êtes sous Windows) mais n'importe quel serveur avec PHP 7.0 ou supérieur fera l'affaire.
+You can use XAMPP (multi-plateform) or Wampserver (Windows only) but any webserver with PHP 7.0 or greater is good to use.
 
-## **Quels modifications sont nécéssaires ?**
+## **What modifications are required ?**
 
-Vous devrez tout d'abord avoir une application déclarée chez Spotify pour avoir un `Client ID`.
+You should have a declared app in Spotify's developer dashboard to obtain a `Client ID`.
 
-*La marche à suivre :*
-Pour faire les modifications, vous devrez tout d'abord créer un ID client (bouton `Create a Client ID`) sur le [dashboard développeurs de Spotify](https://developer.spotify.com/dashboard/applications).
-Mettez le nom de votre appli dans `App or Hardware name`, puis sa description dans `App or Hardware description`. Indiquez pour quelle plateforme vous créez cette appli dans `What are you building ?` puis cliquez sur le bouton `NEXT`. Répondez oui ou non à la question vous demandant si vous créez une intégration commerciale suivant votre cas puis continuez. Remplissez si nécessaire le formulaire puis cochez toutes les cases lors de la troisième étape, puis continuez. Votre application est crée !
+*How to do it :*
+As I said, the first thing is to create a Client ID (`Create a Client ID` button) on [Spotify's developer dashboard](https://developer.spotify.com/dashboard/applications).
+Type your app's name in the `App or Hardware name` text field, and its description on the `App or Hardware description` text field. In the `What are you building ?` section, indicate the platform which you are building the app for, then click on the `NEXT` button. Answer to the commercial integration question, and continue. If necessary, fill the form and check all the boxes at the 3rd stage and you're ready to go. Your app is declared in Spotify's developer dashboard !
 
-Maintenant que vous avez votre application, vous pouvez faire les modifications nécessaires dans les fichiers `login.php` et `token.php`.
+Now that you have your app, you have some modifications to do in two files : `login.php` and `token.php`.
 
-Remplacez :
+Edit those values :
 
-- `YOUR_CLIENT_ID` par votre ID Client disponible sur le panel de votre application,
-- `YOUR_CLIENT_SECRET` par votre `Client Secret` disponible en cliquant sur `Show Client Secret` sur la même page,
-- `YOUR_DOMAIN` par votre domaine, dans le cas d'un hébergement local remplacez par `http://localhost` . Remplacez selon votre cas.
+- `YOUR_CLIENT_ID` by your Client ID available on your app's panel,
+- `YOUR_CLIENT_SECRET` by your `Client Secret` available by clicking on the `Show Client Secret` button situated on the same webpage as your client ID,
+- `YOUR_DOMAIN` by your redirect URL, in the case of a local hosting replace it by `http://localhost/token.php` in most cases. Basicaly, it's the accessible URL for the `token.php` page.
 
-Retournons dans le panel de l'application. Il faut déclarer l'URL où se trouve la page traitant le `token`, ici `http://localhost/token.php`. Cliquez sur le bouton `Edit settings` se trouvant en haut de la page, puis dans le champ `Redirect URIs` ajoutez le vôtre, ici `http://localhost/token.php`. ***ATTENTION*** : ce champ doit correspondre **PARFAITEMENT** avec ce qui est indiqué dans les pages modifiées précédemment ! Pour finir, sauvegardez en cliant sur le bouton `SAVE` tout en bas de la page.
+Let's go back on our app's panel. You need to declare the URL where the `token.php` page is located, for a local hosting it would be in most cases `http://localhost/token.php`. Click on the green `Edit settings` button situated on the top of the page, then in the `Redirect URIs` text field, indicate yours. ***ATTENTION*** : what you typed should **IMPERATIVELY** be the same as what you wrote in the two precedent files ! Then click on the `SAVE` button on the very bottom of the form. Your app is declared and ready to use !
 
-## **Credit**
+## **Credits**
 
-Icones de pays par [Freepik](https://www.freepik.com/) de [www.flaticon.com](https://www.flaticon.com/) sous licence [Creative Commons BY 3.0](http://creativecommons.org/licenses/by/3.0/)
+Flags by [Freepik](https://www.freepik.com/) of the [www.flaticon.com](https://www.flaticon.com/) website under [Creative Commons BY 3.0](http://creativecommons.org/licenses/by/3.0/) license.
