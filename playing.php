@@ -16,7 +16,8 @@ switch($_COOKIE['lang']){
     <title>Spotify Connect - Now Playing</title>
     <meta name="viewport" content="width=device-width, user-scalable=no">
     <link rel="icon" type="image/png" href="favicon.png">
-    <link href="playing.css?ts=<?=time ()?>" rel="stylesheet">
+    <link id="playingcss" href="playing.css?ts=<?=time ()?>" rel="stylesheet">
+    <link id="playingcss-test" href="playingtest.css?ts=<?=time ()?>" rel="stylesheet alternate">
     <link href="productsans.css?ts=<?=time ()?>" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="spotify-web-api.js"></script>
@@ -27,6 +28,11 @@ switch($_COOKIE['lang']){
     // Check if cookie refreshToken is set
     let cookie = document.cookie;
     if (!cookie.includes("refreshToken")) { window.location.replace('login.php'); }
+
+	if (readCookie('theme') == "test") {
+        $('#playingcss-test').attr('rel', 'stylesheet');
+		$('#playingcss').attr('rel', 'stylesheet alternate');
+	}
 
     // declare all variables
     let response;
@@ -44,7 +50,7 @@ switch($_COOKIE['lang']){
     // loop function
     function loopForever () {
         setInterval(function() {
-            var promise = Promise.resolve(spotifyApi.getMyCurrentPlaybackState(null));
+            let promise = Promise.resolve(spotifyApi.getMyCurrentPlaybackState(null));
             promise.then(function(value) {
                 response = value;
                 console.log(response);
@@ -136,6 +142,7 @@ switch($_COOKIE['lang']){
 <body>
 	<div class="settings-div fadeInOut">
 		<a id="fullscreen-button" href="#" onclick="fullscreen();"><i id="fullscreen-icon" class="material-icons settings-icon">fullscreen</i></a>
+        <a id="theme-button" href="#" onclick="theme();"><i id="theme-icon" class="material-icons theme-icon">palette</i></a>
     </div>
     <div id="playing-div">
         <img src="no_song.png" id="playing-img">

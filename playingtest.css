@@ -44,6 +44,7 @@ body {
     margin-right: 25px;
     border-radius: 20px;
     box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+	height: 640px;
 }
 
 #song-info-div {
@@ -56,22 +57,23 @@ body {
 #seekbar-bg {
     border-radius: 50px;
     margin-top: 40px;
-    height: 15px;
-    width: 100%;
+    padding: 5px;
     background-color: rgba(255, 255, 255, 0.50);
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.30), 0 5px 15px rgba(0, 0, 0, 0.22);
 }
 
 #seekbar-now {
     border-radius: 50px;
     background-color: rgba(255, 255, 255, 0.90);
-    height: 15px;
+    height: 8px;
     transition: linear width 1s;
 }
 
 .settings-div {
     padding: 5px 10px 5px 10px;
     margin: 10px;
-    background-color: #FFFFFF20;
+    background-color: #FFFFFF40;
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.30), 0 5px 15px rgba(0, 0, 0, 0.22);
     border-radius: 25px;
     z-index: 2;
 }
@@ -89,7 +91,7 @@ body {
 .hidden {
     visibility: hidden;
     opacity: 0;
-    transition-duration: 150ms;
+    transition-duration: 200ms;
     transition-property: opacity, visibility;
     transition-delay: 200ms;
 }

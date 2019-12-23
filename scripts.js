@@ -19,40 +19,61 @@ function readCookie(name) {
     return null;
 }
 
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + d.toGMTString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
 /* Fullscreen */
 let elem = document.documentElement;
 
 /* View in fullscreen */
 function openFullscreen() {
-  if (elem.requestFullscreen) {
-    elem.requestFullscreen();
-  } else if (elem.mozRequestFullScreen) { /* Firefox */
-    elem.mozRequestFullScreen();
-  } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
-    elem.webkitRequestFullscreen();
-  } else if (elem.msRequestFullscreen) { /* IE/Edge */
-    elem.msRequestFullscreen();
-  }
+    if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+    } else if (elem.mozRequestFullScreen) { /* Firefox */
+        elem.mozRequestFullScreen();
+    } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+        elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { /* IE/Edge */
+        elem.msRequestFullscreen();
+    }
 }
 
 /* Close fullscreen */
 function closeFullscreen() {
-  if (document.exitFullscreen) {
-    document.exitFullscreen();
-  } else if (document.mozCancelFullScreen) { /* Firefox */
-    document.mozCancelFullScreen();
-  } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
-    document.webkitExitFullscreen();
-  } else if (document.msExitFullscreen) { /* IE/Edge */
-    document.msExitFullscreen();
-  }
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) { /* Firefox */
+        document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+        document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) { /* IE/Edge */
+        document.msExitFullscreen();
+    }
 }
 
 function fullscreen() {
-	let isFullscreen = document.fullscreen;
-	if (isFullscreen == true) {
-		closeFullscreen();
-	} else {
-		openFullscreen();
-	}
+    let isFullscreen = document.fullscreen;
+    if (isFullscreen == true) {
+        closeFullscreen();
+    } else {
+        openFullscreen();
+    }
+}
+
+function theme() {
+    if (readCookie('theme') == null || readCookie('theme') == 'original') {
+        setCookie('theme', 'test', 1000);
+        console.log('test theme');
+        $('#playingcss-test').attr('rel', 'stylesheet');
+        $('#playingcss').attr('rel', 'stylesheet alternate');
+    } else {
+        setCookie('theme', 'original', 1000);
+        console.log('original theme');
+        $('#playingcss').attr('rel', 'stylesheet');
+        $('#playingcss-test').attr('rel', 'stylesheet alternate');
+    }
 }
