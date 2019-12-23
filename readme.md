@@ -11,13 +11,14 @@ Personal Discord account : `@busybox#2540`
 
 French tech Discord server : [https://discord.io/techcordfr](https://discord.io/techcordfr)
 
-Last release : 1.4.2
+Last release : 1.4.3
 
 ## **Changelog**
 
 v1.4.X
 - Advertisements are recognized
 - Multiple artists are recognized
+- Experimental theme / teme switcher
 
 v1.3.X
 - Now playing device name and type is showing
@@ -41,7 +42,7 @@ HTML, CSS, JS, PHP
 
 ## **Upcoming features**
 
-- Themes
+- Themes (experimental theme / theme switcher since v1.4.3)
 
 ## **How to host ?**
 
