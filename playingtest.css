@@ -12,9 +12,10 @@ body {
     bottom: 0;
     position: absolute;
     filter: blur(20px);
+    -webkit-filter: blur(20px);
     transform: scale(1.2);
     z-index: inherit;
-    transition: background ease 2s;
+    transition: background ease 2s;    
 }
 
 .darken {
@@ -24,8 +25,9 @@ body {
     bottom: 0;
     background-position: center top;
     background: rgba(0, 0, 0, 0.3);
-    position: absolute;
+    position: fixed;
     z-index: 1;
+    height: auto;
 }
 
 #playing-div {
@@ -44,7 +46,7 @@ body {
     margin-right: 25px;
     border-radius: 20px;
     box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
-	height: 640px;
+    height: 640px;
 }
 
 #song-info-div {
@@ -75,7 +77,7 @@ body {
     background-color: #FFFFFF40;
     box-shadow: 0 0px 0px rgba(0, 0, 0, 0.30), 0 5px 15px rgba(0, 0, 0, 0.22);
     border-radius: 25px;
-    z-index: 2;
+    z-index: 3;
 }
 
 .settings-icons {
@@ -178,14 +180,23 @@ i.large {
 /* For mobile and tablets */
 
 @media only screen and (max-width:767px) and (orientation: portrait) {
+    body {
+        overflow: auto;
+        display: flex;
+        margin: 0 auto;
+        justify-content: center;
+    }
     #playing-div {
         flex-direction: column;
         justify-content: center;
+        transform: translate(-50%, -35%);
     }
     #playing-img {
         margin-bottom: 10px;
+        margin-right: 0px;
         max-width: 80%;
         max-height: 60%;
+        height: auto;
         box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
     }
     #song-info-div {
@@ -262,12 +273,24 @@ i.large {
 }
 
 @media only screen and (max-width: 1199px) and (orientation: portrait) {
+    body {
+        overflow: auto;
+        display: flex;
+        margin: 0 auto;
+        justify-content: center;
+    }
     #playing-div {
         flex-direction: column;
         justify-content: center;
+        transform: translate(-50%, -35%);
     }
     #playing-img {
         margin-bottom: 10px;
+        margin-right: 0px;
+        max-width: 80%;
+        max-height: 60%;
+        height: auto;
+        box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
     }
     #song-info-div {
         width: 80%;
