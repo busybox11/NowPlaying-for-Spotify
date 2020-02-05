@@ -14,7 +14,8 @@ switch($_COOKIE['lang']){
 <!DOCTYPE html>
 <head>
     <title>Spotify Connect - Now Playing</title>
-    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="NowPlaying-For-Spotify is a smooth Spotify Connect visualizer, which display the music playing on Spotify" />
     <link rel="icon" type="image/png" href="favicon.png">
     <link id="playingcss" href="playing.css?ts=<?=time ()?>" rel="stylesheet">
     <link id="playingcss-test" href="playingtest.css?ts=<?=time ()?>" rel="stylesheet alternate">
