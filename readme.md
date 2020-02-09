@@ -21,7 +21,7 @@ v1.5
 v1.4.X
 - Advertisements are recognized
 - Multiple artists are recognized
-- Experimental theme / teme switcher
+- Experimental theme switcher
 
 v1.3.X
 - Now playing device name and type is showing
