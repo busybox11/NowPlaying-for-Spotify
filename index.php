@@ -29,15 +29,22 @@ if(isset($_GET['lang'])){
 <head>
     <title>Now Playing for Spotify</title>
     <link rel="icon" type="image/png" href="favicon.png">
-    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="NowPlaying-For-Spotify is a smooth Spotify Connect visualizer, which display the music playing on Spotify" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="productsans.css?ts=<?=time ()?>" rel="stylesheet">
     <style>
+        *{
+            box-sizing: border-box;
+        }
+
         body {
             background-color: #000020;
             color:white;
             font-family: "Product Sans";
+            font-size: 16px;
             font-size: 1rem;
+            margin: 0;
         }
 
         p,
@@ -50,10 +57,12 @@ if(isset($_GET['lang'])){
         }
 
         .content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-top: 35px;
         }
 
         .spotify-btn {
@@ -72,15 +81,19 @@ if(isset($_GET['lang'])){
 
 <body>
         <div class="content" style="margin:0 auto;text-align:center;">
-            <img src="favicon.png" alt="Logo" width="100px" height="100px">
-            <h1><?=IndexWelcome;?></h1>
-            <h2><?=IndexPleaseConnect;?></h2>
+            <div>
+                <img src="favicon.png" alt="Logo" width="100px" height="100px">
+                <h1><?=IndexWelcome;?></h1>
+                <h2><?=IndexPleaseConnect;?></h2>
+            </div>
             <p class="space20"></p>
             <a href="login.php" class="spotify-btn"><?=IndexConnection;?></a>
             <p class="space20"></p>
             <h3><?=OpenSourceProject;?><a href="https://github.com/busybox11/NowPlaying-for-Spotify"><?=OpenSourceLink;?></h3>
-            <h3>Change language:</h3>
-               <a href="?lang=en"><img src="lang/united-kingdom.png" title="English" style="height:32px;width:auto;" /></a>&nbsp;<a href="?lang=fr"><img src="lang/france.png" title="Français" style="height:32px;width:auto;" /></a>
+            <div>
+                <h3>Change language:</h3>
+                <a href="?lang=en"><img src="lang/united-kingdom.png" title="English" style="height:32px;width:auto;" /></a>&nbsp;<a href="?lang=fr"><img src="lang/france.png" title="Français" style="height:32px;width:auto;" /></a>
+            </div>
             <p class="space20"></p>
             <h3><?=IndexCookie;?></h3>
         </div>
