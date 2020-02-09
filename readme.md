@@ -17,6 +17,8 @@ Latest release : 1.5
 
 v1.5
 - Added playback support (Premium account should be needed)
+- CSS improvements added for better responsive (#15 #16)
+- SEO improvements (#16)
 
 v1.4.X
 - Advertisements are recognized
