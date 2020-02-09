@@ -11,9 +11,12 @@ Personal Discord account : `@busybox#2540`
 
 French tech Discord server : [https://discord.io/techcordfr](https://discord.io/techcordfr)
 
-Last release : 1.4.3
+Latest release : 1.5
 
 ## **Changelog**
+
+v1.5
+- Added playback support (Premium account should be needed)
 
 v1.4.X
 - Advertisements are recognized
