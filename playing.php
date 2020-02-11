@@ -6,12 +6,15 @@ if(!isset($_COOKIE['lang']) OR empty($_COOKIE['lang'])){
 
 switch($_COOKIE['lang']){
     case 'fr': include_once 'lang/fr.php';
+    $lang = 'fr';
     break;
     case 'en': default: include_once 'lang/en.php';
+    $lang = 'en';
     break;
 }
 ?>
 <!DOCTYPE html>
+<html lang="<?=$lang;?>">
 <head>
     <title>Spotify Connect - Now Playing</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -193,3 +196,4 @@ switch($_COOKIE['lang']){
     };
     </script>
 </body>
+</html>
