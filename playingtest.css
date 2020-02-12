@@ -61,7 +61,9 @@ body {
     transform: translateX(-50%);
     cursor:pointer;
     border-radius:50%;
-    border:1px solid black;
+    border:1px solid white;
+    color:white;
+    background-color: black;
 }
 
 #song-info-div {

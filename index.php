@@ -31,6 +31,14 @@ if(isset($_GET['lang'])){
     <link rel="icon" type="image/png" href="favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="NowPlaying-For-Spotify is a smooth Spotify Connect visualizer, which display the music playing on Spotify" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content="@busybox11" />
+    <meta name="twitter:image" content="https://<?=$_SERVER['SERVER_NAME'];?>/favicon.png" />
+    <meta property="og:title" content="Now Playing For Spotify" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="NowPlaying-For-Spotify is a smooth Spotify Connect visualizer, which display the music playing on Spotify" />
+    <meta name="og:image" content="https://<?=$_SERVER['SERVER_NAME'];?>/favicon.png" />
+    <meta name="theme-color" content="#23a92a" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="productsans.css?ts=<?=time ()?>" rel="stylesheet">
     <style>
