@@ -129,7 +129,7 @@ switch($_COOKIE['lang']){
                 progressSongFormatted = " ";
                 seekbarProgress = 0;
                 $("#activeicon").text("pause");
-                $("#pause-button").text(" ");
+                $("#pause-button").text("");
             }
 
             if ($("#song-title").text() == "<?=defaultTitleSong; ?>" || response["item"].id != idSong) {
@@ -152,7 +152,7 @@ switch($_COOKIE['lang']){
         <a id="theme-button" href="#" onclick="theme();"><i id="theme-icon" class="material-icons theme-icon">palette</i></a>
     </div>
     <div id="playing-div">
-        <div id="img-wrapper"><img src="no_song.png" id="playing-img"><div id="pause-button" class="material-icons"></div></div>
+        <div id="img-wrapper"><img src="no_song.png" id="playing-img"><div id="pause-button" style="display:none;" class="material-icons"></div></div>
         <div id="song-info-div">
             <h1 id="song-title"><?=defaultTitleSong;?></h1>
             <h2 id="song-artist"><?=defaultArtistSong;?></h2><h2 id="song-album"></h2>
@@ -177,7 +177,16 @@ switch($_COOKIE['lang']){
     player.addListener('account_error', ({ message }) => { console.error(message); });
     player.addListener('playback_error', ({ message }) => { console.error(message); });
     // Playback status updates
-    player.addListener('player_state_changed', state => { console.log(state); });
+    player.addListener('player_state_changed', ({position, duration, track_window: { current_track }}) => { 
+        player.getCurrentState().then(state => {
+                if(!state) {
+                    // currently not playing through web playback
+                    $("#pause-button").css("display","none");
+                }else{
+                    $("#pause-button").css("display", "initial");
+                }
+        });
+     });
     // Ready
     player.addListener('ready', ({ device_id }) => {
     console.log('Ready with Device ID', device_id);
@@ -192,7 +201,7 @@ switch($_COOKIE['lang']){
     $("#pause-button").bind("click", () => {
         player.togglePlay();
         // toggle pause/resume playback
-        });
+    });
     };
     </script>
 </body>
