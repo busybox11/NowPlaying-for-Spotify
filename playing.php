@@ -183,7 +183,7 @@ switch($_COOKIE['lang']){
                     // currently not playing through web playback
                     $("#pause-button").css("display","none");
                 }else{
-                    $("#pause-button").css("display", "initial");
+                    $("#pause-button").css("display", "inline-block");
                 }
         });
      });
