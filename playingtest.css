@@ -57,13 +57,14 @@ body {
 #pause-button{
     position:relative;
     left:50%;
-    bottom: 35px;
+    bottom: 45px;
     transform: translateX(-50%);
     cursor:pointer;
-    border-radius:50%;
-    border:1px solid white;
-    color:white;
-    background-color: black;
+    color: white;
+    background-color: #FFFFFF40;
+    padding: 5px 10px 5px 10px;
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.30), 0 5px 15px rgba(0, 0, 0, 0.22);
+    border-radius: 25px;
 }
 
 #song-info-div {
