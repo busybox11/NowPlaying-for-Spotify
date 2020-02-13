@@ -47,7 +47,8 @@ body {
     margin-right: 25px;
     border-radius: 20px;
     box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
-    height : auto;
+    height : 640px !important;
+    width : 640px !important;
 }
 
 #song-info-div {
