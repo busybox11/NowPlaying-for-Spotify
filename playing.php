@@ -6,12 +6,15 @@ if(!isset($_COOKIE['lang']) OR empty($_COOKIE['lang'])){
 
 switch($_COOKIE['lang']){
     case 'fr': include_once 'lang/fr.php';
+    $lang = 'fr';
     break;
     case 'en': default: include_once 'lang/en.php';
+    $lang = 'en';
     break;
 }
 ?>
 <!DOCTYPE html>
+<html lang="<?=$lang;?>">
 <head>
     <title>Spotify Connect - Now Playing</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -77,8 +80,10 @@ switch($_COOKIE['lang']){
                 deviceType = response["device"].type;
                 if (response.is_playing == true) {
                     $("#playing-div #song-info-div #activestate #activeicon").text(DEVICES_ICON[AVAILABLE_DEVICES.indexOf(deviceType)]);
+                    $("#pause-button").text("pause");
                 } else {
                     $("#playing-div #song-info-div #activestate #activeicon").text("pause");
+                    $("#pause-button").text("play_arrow");
                 }
                 $("#playing-div #song-info-div #activestate #device-name").text(deviceName);
                 if (currentlyPlayingType != "ad") {
@@ -123,13 +128,14 @@ switch($_COOKIE['lang']){
                 progressSong = " ";
                 progressSongFormatted = " ";
                 seekbarProgress = 0;
-                $("#playing-div #song-info-div #activestate #activeicon").text("pause");
+                $("#activeicon").text("pause");
+                $("#pause-button").text("");
             }
 
-            if ($("#playing-div #song-info-div #song-title").text() == "<?=defaultTitleSong; ?>" || response["item"].id != idSong) {
-                $("#playing-div #song-info-div #song-title").text(titleSong);
-                $("#playing-div #song-info-div #song-artist").text(artistSong);
-                $("#playing-div #song-info-div #song-album").text(albumSong);
+            if ($("#song-title").text() == "<?=defaultTitleSong; ?>" || response["item"].id != idSong) {
+                $("#song-title").text(titleSong);
+                $("#song-artist").text(artistSong);
+                $("#song-album").text(albumSong);
                 document.title = title;
                 $("#playing-div img").attr("src", albumPicture);
                 $("#background-image-div").attr("style", "background: url('" + albumPicture + "');background-size:cover;background-position: center center;");
@@ -146,7 +152,7 @@ switch($_COOKIE['lang']){
         <a id="theme-button" href="#" onclick="theme();"><i id="theme-icon" class="material-icons theme-icon">palette</i></a>
     </div>
     <div id="playing-div">
-        <img src="no_song.png" id="playing-img">
+        <div id="img-wrapper"><img src="no_song.png" id="playing-img"><div id="pause-button" style="display:none;" class="material-icons"></div></div>
         <div id="song-info-div">
             <h1 id="song-title"><?=defaultTitleSong;?></h1>
             <h2 id="song-artist"><?=defaultArtistSong;?></h2><h2 id="song-album"></h2>
@@ -171,7 +177,16 @@ switch($_COOKIE['lang']){
     player.addListener('account_error', ({ message }) => { console.error(message); });
     player.addListener('playback_error', ({ message }) => { console.error(message); });
     // Playback status updates
-    player.addListener('player_state_changed', state => { console.log(state); });
+    player.addListener('player_state_changed', ({position, duration, track_window: { current_track }}) => { 
+        player.getCurrentState().then(state => {
+                if(!state) {
+                    // currently not playing through web playback
+                    $("#pause-button").css("display","none");
+                }else{
+                    $("#pause-button").css("display", "inline-block");
+                }
+        });
+     });
     // Ready
     player.addListener('ready', ({ device_id }) => {
     console.log('Ready with Device ID', device_id);
@@ -182,6 +197,12 @@ switch($_COOKIE['lang']){
     });
     // Connect to the player!
     player.connect();
+
+    $("#pause-button").bind("click", () => {
+        player.togglePlay();
+        // toggle pause/resume playback
+    });
     };
     </script>
 </body>
+</html>
