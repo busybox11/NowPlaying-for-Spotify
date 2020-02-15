@@ -12,6 +12,19 @@ switch($_COOKIE['lang']){
     $lang = 'en';
     break;
 }
+
+if (!isset($_COOKIE["deviceId"])) {
+    function randomString($length = 4) {
+        $characters = '0123456789';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
+    setcookie('deviceId', randomString(4), time() + (3600 * 365));
+}
 ?>
 <!DOCTYPE html>
 <html lang="<?=$lang;?>">
@@ -168,7 +181,7 @@ switch($_COOKIE['lang']){
     window.onSpotifyWebPlaybackSDKReady = () => {
     const token = readCookie('accessToken');
     const player = new Spotify.Player({
-    name: 'NowPlaying for Spotify',
+    name: 'NowPlaying for Spotify #' + readCookie('deviceId'),
     getOAuthToken: cb => { cb(token); }
     });
     // Error handling
