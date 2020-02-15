@@ -9,7 +9,7 @@ Website : [nowplayingforspotify.ga](http://nowplayingforspotify.ga)
 
 Personal Discord account : `@busybox#2540`
 
-French tech Discord server : [https://discord.io/techcordfr](https://discord.io/techcordfr)
+French tech Discord server : [https://techcord.me/invite](https://techcord.me/invite)
 
 Latest release : 1.5
 
@@ -38,8 +38,8 @@ HTML, CSS, JS, PHP
 
 ## **Used libraries :**
 
-[Spotify Web API PHP by jwilsson](https://github.com/jwilsson/spotify-web-api-php) for token retrieving,
-[Spotify Web API JS by JMPerez](https://github.com/jmperez/spotify-web-api-js) for global use (NowPlaying retrieving, artwork, etc...)
+[Spotify Web API PHP by jwilsson](https://github.com/jwilsson/spotify-web-api-php) pour l'obtention du token,
+[Spotify Web API JS by JMPerez](https://github.com/jmperez/spotify-web-api-js) pour l'obtention du titre en cours de lecture
 
 ## **Known bugs**
 
