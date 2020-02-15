@@ -61,10 +61,11 @@ body {
     transform: translateX(-50%);
     cursor:pointer;
     color: white;
-    background-color: #FFFFFF40;
+    background-color: #00000040;
     padding: 5px 10px 5px 10px;
     box-shadow: 0 0px 0px rgba(0, 0, 0, 0.30), 0 5px 15px rgba(0, 0, 0, 0.22);
     border-radius: 25px;
+    backdrop-filter: blur(25px);
 }
 
 #song-info-div {
