@@ -11,14 +11,17 @@ Personal Discord account : `@busybox#2540`
 
 French tech Discord server : [https://techcord.me/invite](https://techcord.me/invite)
 
-Latest release : 1.5
+Latest release : 1.5.2
 
 ## **Changelog**
 
-v1.5
+v1.5.X
 - Added playback support (Premium account should be needed)
+- Added playback information
+- Added pause button (#17)
 - CSS improvements added for better responsive (#15 #16)
 - SEO improvements (#16)
+- Minor CSS improvements
 
 v1.4.X
 - Advertisements are recognized
