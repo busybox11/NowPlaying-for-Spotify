@@ -51,7 +51,7 @@ HTML, CSS, JS, PHP
 
 ## **How to host ?**
 
-You can use XAMPP (multi-plateform) or Wampserver (Windows only) but any webserver with PHP 7.0 or greater is good to use.
+You can use XAMPP (multi-platform) or Wampserver (Windows only) but any webserver with PHP 7.0 or greater is good to use.
 
 ## **What modifications are required ?**
 
