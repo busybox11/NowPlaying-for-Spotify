@@ -209,8 +209,10 @@ if (!isset($_COOKIE["deviceId"])) {
                 if(!state) {
                     // currently not playing through web playback
                     $("#pause-button").css("display","none");
+                    $("#playing-img").css("margin-top","0px");
                 }else{
                     $("#pause-button").css("display", "inline-block");
+                    $("#playing-img").css("margin-top","34px");
                 }
         });
      });
