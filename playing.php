@@ -57,6 +57,7 @@ if (!isset($_COOKIE["deviceId"])) {
     let idSong;
     let currentlyPlayingType;
     let refreshTime;
+    let iCast = 0;
     const AVAILABLE_DEVICES = ['Computer', 'Tablet', 'Smartphone', 'Speaker', 'TV', 'AVR', 'STB', 'AudioDongle', 'GameConsole', 'CastVideo', 'CastAudio', 'Automobile', 'Unknown']
     const DEVICES_ICON = ['computer', 'tablet_android', 'smartphone', 'speaker', 'tv', 'speaker_group', 'speaker_group', 'cast_connected', 'gamepad', 'cast_connected', 'cast_connected', 'directions_car', 'device_unknown']
     refreshTime = readCookie('refreshTime');
@@ -92,13 +93,25 @@ if (!isset($_COOKIE["deviceId"])) {
                 deviceName = response["device"].name;
                 deviceType = response["device"].type;
                 if (response.is_playing == true) {
-                    $("#playing-div #song-info-div #activestate #activeicon").text(DEVICES_ICON[AVAILABLE_DEVICES.indexOf(deviceType)]);
-                    $("#pause-button").text("pause");
+	                $("#playing-div #song-info-div #activestate #activeicon").text(DEVICES_ICON[AVAILABLE_DEVICES.indexOf(deviceType)]);
+	                $("#pause-button").text("pause");
+	            	$("#playing-div #song-info-div #activestate #device-name").text(deviceName);
+	            	if (iCast < 11) {
+	            		iCast = 0;
+	            	}
                 } else {
                     $("#playing-div #song-info-div #activestate #activeicon").text("pause");
                     $("#pause-button").text("play_arrow");
+                	if (iCast <= 4) {
+                    	$("#playing-div #song-info-div #activestate #device-name").text('Ready to cast on NowPlaying for Spotify #' + readCookie('deviceId'));
+                	} else {
+                		$("#playing-div #song-info-div #activestate #device-name").text(deviceName);
+                		if (iCast == 9) {
+                			iCast = -1;
+                		}
+                    }
+                  	iCast++;
                 }
-                $("#playing-div #song-info-div #activestate #device-name").text(deviceName);
                 if (currentlyPlayingType != "ad") {
                     lenghtSong = response["item"].duration_ms;
                     lenghtSongFormatted = msToTime(response["item"].duration_ms);
@@ -172,7 +185,7 @@ if (!isset($_COOKIE["deviceId"])) {
             <div id="seekbar-bg">
                 <div id="seekbar-now" style="width : 0%"></div>
             </div>
-            <h3 class="left" id="activestate"><i id="activeicon" class="material-icons left">pause</i><span id="device-name">Spotify Connect</span><h3 class="right" id="time-song"></h3>
+            <h3 class="left fadeInOut" id="activestate"><i id="activeicon" class="material-icons left">pause</i><span id="device-name">Spotify Connect</span><h3 class="right" id="time-song"></h3>
         </div>
     </div>
     <div id="background-image-div" style="background: url('no_song.png'); background-size: cover;background-position: center center;"><div class="darken"></div></div>
@@ -184,6 +197,7 @@ if (!isset($_COOKIE["deviceId"])) {
     name: 'NowPlaying for Spotify #' + readCookie('deviceId'),
     getOAuthToken: cb => { cb(token); }
     });
+
     // Error handling
     player.addListener('initialization_error', ({ message }) => { console.error(message); });
     player.addListener('authentication_error', ({ message }) => { console.error(message); });
@@ -203,6 +217,8 @@ if (!isset($_COOKIE["deviceId"])) {
     // Ready
     player.addListener('ready', ({ device_id }) => {
     console.log('Ready with Device ID', device_id);
+
+    $("#playing-div #song-info-div #activestate #device-name").text('Ready to cast on NowPlaying for Spotify #' + readCookie('deviceId'));
     });
     // Not Ready
     player.addListener('not_ready', ({ device_id }) => {
