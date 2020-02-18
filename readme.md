@@ -77,3 +77,6 @@ Let's go back on our app's panel. You need to declare the URL where the `token.p
 ## **Credits**
 
 Flags by [Freepik](https://www.freepik.com/) of the [www.flaticon.com](https://www.flaticon.com/) website under [Creative Commons BY 3.0](http://creativecommons.org/licenses/by/3.0/) license.
+
+## **Related projects**
+[NowPlaying Dashboard for Spotify by peterdconradie](https://github.com/peterdconradie/Now-Playing-Dashboard-for-Spotify)
