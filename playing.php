@@ -17,133 +17,23 @@ switch($_COOKIE['lang']){
 <html lang="<?=$lang;?>">
 <head>
     <title>Spotify Connect - Now Playing</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="NowPlaying-For-Spotify is a smooth Spotify Connect visualizer, which display the music playing on Spotify" />
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link id="playingcss" href="playing.css?ts=<?=time ()?>" rel="stylesheet">
-    <link id="playingcss-test" href="playingtest.css?ts=<?=time ()?>" rel="stylesheet alternate">
-    <link href="productsans.css?ts=<?=time ()?>" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="spotify-web-api.js"></script>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link id="playingcss" href="playing.css?ts=<?=time ()?>" rel="stylesheet" />
+    <link id="playingcss-test" href="playingtest.css?ts=<?=time ()?>" rel="stylesheet alternate" />
+    <link href="productsans.css?ts=<?=time ()?>" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="scripts.js?ts=<?=time ()?>"></script>
-    <script src="cursor.js?ts=<?=time ()?>"></script>
     <script>
     // Check if cookie refreshToken is set
     let cookie = document.cookie;
     if (!cookie.includes("refreshToken")) { window.location.replace('login.php'); }
 
-	if (readCookie('theme') == "test") {
+	if (readCookie('theme') === "test") {
         $('#playingcss-test').attr('rel', 'stylesheet');
 		$('#playingcss').attr('rel', 'stylesheet alternate');
 	}
-
-    // declare all variables
-    let response;
-    let parsedResult;
-    let idSong;
-    let currentlyPlayingType;
-    let refreshTime;
-    const AVAILABLE_DEVICES = ['Computer', 'Tablet', 'Smartphone', 'Speaker', 'TV', 'AVR', 'STB', 'AudioDongle', 'GameConsole', 'CastVideo', 'CastAudio', 'Automobile', 'Unknown']
-    const DEVICES_ICON = ['computer', 'tablet_android', 'smartphone', 'speaker', 'tv', 'speaker_group', 'speaker_group', 'cast_connected', 'gamepad', 'cast_connected', 'cast_connected', 'directions_car', 'device_unknown']
-    refreshTime = readCookie('refreshTime');
-    var spotifyApi = new SpotifyWebApi();
-    spotifyApi.setAccessToken(readCookie('accessToken'));
-    loopForever();
-
-    // loop function
-    function loopForever () {
-        setInterval(function() {
-            let promise = Promise.resolve(spotifyApi.getMyCurrentPlaybackState(null));
-            promise.then(function(value) {
-                response = value;
-                console.log(response);
-            });
-
-            if (Math.floor(Date.now() / 1000) >= refreshTime) {
-                window.location.replace('token.php?action=refresh');
-            }
-
-            if (response != "") {
-                console.log('Response not empty');
-                getInformations();
-            } else {
-                console.log('Response empty');
-                noInformations();
-            }
-
-            function getInformations () {
-                currentlyPlayingType = response.currently_playing_type;
-                progressSong = response.progress_ms;
-                progressSongFormatted = msToTime(response.progress_ms);
-                deviceName = response["device"].name;
-                deviceType = response["device"].type;
-                if (response.is_playing == true) {
-                    $("#playing-div #song-info-div #activestate #activeicon").text(DEVICES_ICON[AVAILABLE_DEVICES.indexOf(deviceType)]);
-                    $("#pause-button").text("pause");
-                } else {
-                    $("#playing-div #song-info-div #activestate #activeicon").text("pause");
-                    $("#pause-button").text("play_arrow");
-                }
-                $("#playing-div #song-info-div #activestate #device-name").text(deviceName);
-                if (currentlyPlayingType != "ad") {
-                    lenghtSong = response["item"].duration_ms;
-                    lenghtSongFormatted = msToTime(response["item"].duration_ms);
-                    seekbarProgress = Math.round(progressSong * 100 / lenghtSong);
-                    titleSong = response["item"].name;
-                    let tempArtist = "";
-                    for (let i = 0; i < response["item"]["artists"].length; i++) {
-                        tempArtist = tempArtist + response["item"]["artists"][i].name;
-                        if (i != response["item"]["artists"].length - 1) {
-                            tempArtist = tempArtist + ", ";
-                        }
-                    }
-                    artistSong = tempArtist;
-                    albumSong = response["item"]["album"].name;
-                    title = titleSong + " <?=by;?> " + artistSong + " - " + deviceName + " - Now Playing for Spotify";
-                    albumPicture = response["item"]["album"]["images"]["0"].url;
-                    $("#playing-div #song-info-div #time-song").text(progressSongFormatted + " · " + lenghtSongFormatted);
-                } else {
-                    titleSong = "<?=ad;?>";
-                    artistSong = "Spotify";
-                    albumSong = "";
-                    title = "<?=ad;?> -" + deviceName + "- Now Playing for Spotify";
-                    albumPicture = "no_song.png";
-                    lenghtSong = " ";
-                    lenghtSongFormatted = " ";
-                    seekbarProgress = 0;
-                    $("#playing-div #song-info-div #time-song").text(progressSongFormatted);
-                }
-                $("#playing-div #song-info-div #seekbar-now").attr("style", "width : " + seekbarProgress + "%");
-            }
-
-            function noInformations () {
-                titleSong = "<?=defaultTitleSong;?>";
-                artistSong = "<?=defaultArtistSong;?>";
-                albumSong = "";
-                title = "<?=defaultTitle;?>";
-                albumPicture = "no_song.png";
-                lenghtSong = " ";
-                lenghtSongFormatted = " ";
-                progressSong = " ";
-                progressSongFormatted = " ";
-                seekbarProgress = 0;
-                $("#activeicon").text("pause");
-                $("#pause-button").text("");
-            }
-
-            if ($("#song-title").text() == "<?=defaultTitleSong; ?>" || response["item"].id != idSong) {
-                $("#song-title").text(titleSong);
-                $("#song-artist").text(artistSong);
-                $("#song-album").text(albumSong);
-                document.title = title;
-                $("#playing-div img").attr("src", albumPicture);
-                $("#background-image-div").attr("style", "background: url('" + albumPicture + "');background-size:cover;background-position: center center;");
-                idSong = response["item"].id;
-            }
-
-        }, 1000);
-    }
     </script>
 </head>
 <body>
@@ -152,7 +42,13 @@ switch($_COOKIE['lang']){
         <a id="theme-button" href="#" onclick="theme();"><i id="theme-icon" class="material-icons theme-icon">palette</i></a>
     </div>
     <div id="playing-div">
-        <div id="img-wrapper"><img src="no_song.png" id="playing-img"><div id="pause-button" style="display:none;" class="material-icons"></div></div>
+        <div id="img-wrapper"><img src="no_song.png" id="playing-img">
+            <div id="command-wrapper" style="display:none;">
+                <div id="previous-track"  class="material-icons">skip_previous</div>
+                <div id="pause-button" class="material-icons">cached</div>
+                <div id="next-track" class="material-icons">skip_next</div>
+            </div>
+        </div>
         <div id="song-info-div">
             <h1 id="song-title"><?=defaultTitleSong;?></h1>
             <h2 id="song-artist"><?=defaultArtistSong;?></h2><h2 id="song-album"></h2>
@@ -163,46 +59,81 @@ switch($_COOKIE['lang']){
         </div>
     </div>
     <div id="background-image-div" style="background: url('no_song.png'); background-size: cover;background-position: center center;"><div class="darken"></div></div>
-    <script src="https://sdk.scdn.co/spotify-player.js"></script>
-    <script>
-    window.onSpotifyWebPlaybackSDKReady = () => {
-    const token = readCookie('accessToken');
-    const player = new Spotify.Player({
-    name: 'NowPlaying for Spotify',
-    getOAuthToken: cb => { cb(token); }
-    });
-    // Error handling
-    player.addListener('initialization_error', ({ message }) => { console.error(message); });
-    player.addListener('authentication_error', ({ message }) => { console.error(message); });
-    player.addListener('account_error', ({ message }) => { console.error(message); });
-    player.addListener('playback_error', ({ message }) => { console.error(message); });
-    // Playback status updates
-    player.addListener('player_state_changed', ({position, duration, track_window: { current_track }}) => { 
-        player.getCurrentState().then(state => {
-                if(!state) {
-                    // currently not playing through web playback
-                    $("#pause-button").css("display","none");
-                }else{
-                    $("#pause-button").css("display", "inline-block");
-                }
-        });
-     });
-    // Ready
-    player.addListener('ready', ({ device_id }) => {
-    console.log('Ready with Device ID', device_id);
-    });
-    // Not Ready
-    player.addListener('not_ready', ({ device_id }) => {
-    console.log('Device ID has gone offline', device_id);
-    });
-    // Connect to the player!
-    player.connect();
 
-    $("#pause-button").bind("click", () => {
-        player.togglePlay();
-        // toggle pause/resume playback
-    });
-    };
+    <script src="spotify-web-api.js"></script>
+    <script src="scripts.js?ts=<?=time ()?>"></script>
+    <script src="cursor.js?ts=<?=time ()?>"></script>
+    <script>
+
+    function noInformations() {
+        titleSong = "<?=defaultTitleSong;?>";
+        artistSong = "<?=defaultArtistSong;?>";
+        albumSong = "";
+        title = "<?=defaultTitle;?>";
+        albumPicture = "no_song.png";
+        lenghtSong = " ";
+        lenghtSongFormatted = " ";
+        progressSong = " ";
+        progressSongFormatted = " ";
+        seekbarProgress = 0;
+        $("#activeicon").text("pause");
+    }
+
+    function getInformations(response) {
+        currentlyPlayingType = response.currently_playing_type;
+        progressSong = response.progress_ms;
+        progressSongFormatted = msToTime(response.progress_ms);
+        deviceName = response["device"].name;
+        deviceType = response["device"].type;
+        if (response.is_playing == true) {
+            $("#playing-div #song-info-div #activestate #activeicon").text(DEVICES_ICON[AVAILABLE_DEVICES.indexOf(deviceType)]);
+        } else {
+            $("#playing-div #song-info-div #activestate #activeicon").text("pause");
+        }
+        $("#playing-div #song-info-div #activestate #device-name").text(deviceName);
+        if (currentlyPlayingType !== "ad") {
+            lenghtSong = response["item"].duration_ms;
+            lenghtSongFormatted = msToTime(response["item"].duration_ms);
+            seekbarProgress = Math.round(progressSong * 100 / lenghtSong);
+            titleSong = response["item"].name;
+            let tempArtist = "";
+            for (let i = 0; i < response["item"]["artists"].length; i++) {
+                tempArtist = tempArtist + response["item"]["artists"][i].name;
+                if (i !== response["item"]["artists"].length - 1) {
+                    tempArtist = tempArtist + ", ";
+                }
+            }
+            artistSong = tempArtist;
+            albumSong = response["item"]["album"].name;
+            title = titleSong + " <?=by;?> " + artistSong + " - " + deviceName + " - Now Playing for Spotify";
+            albumPicture = response["item"]["album"]["images"]["0"].url;
+            $("#time-song").text(progressSongFormatted + " · " + lenghtSongFormatted);
+
+            if ($("#song-title").text() === "<?=defaultTitleSong; ?>" || response["item"].id !== idSong) {
+                $("#song-title").text(titleSong);
+                $("#song-artist").text(artistSong);
+                $("#song-album").text(albumSong);
+                document.title = title;
+                $("#playing-div img").attr("src", albumPicture);
+                $("#background-image-div").attr("style", "background: url('" + albumPicture + "');background-size:cover;background-position: center center;");
+                idSong = response["item"].id;
+            }
+        } else {
+            titleSong = "<?=ad;?>";
+            artistSong = "Spotify";
+            albumSong = "";
+            title = "<?=ad;?> -" + deviceName + "- Now Playing for Spotify";
+            albumPicture = "no_song.png";
+            lenghtSong = " ";
+            lenghtSongFormatted = " ";
+            seekbarProgress = 0;
+            $("#time-song").text(progressSongFormatted);
+        }
+        $("#seekbar-now").attr("style", "width : " + seekbarProgress + "%");
+    }
+
     </script>
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+    <script src="spotify-script.js"></script>
 </body>
 </html>

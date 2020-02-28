@@ -54,17 +54,22 @@ body {
     margin-right: 25px;
 }
 
-#pause-button{
+#command-wrapper{
     position:relative;
     left:50%;
     bottom: 45px;
     transform: translateX(-50%);
+    text-align:center;
+}
+
+#pause-button, #previous-track, #next-track{
     cursor:pointer;
     color: white;
     background-color: #FFFFFF40;
     padding: 5px 10px 5px 10px;
     box-shadow: 0 0px 0px rgba(0, 0, 0, 0.30), 0 5px 15px rgba(0, 0, 0, 0.22);
     border-radius: 25px;
+    margin:0px 5px;
 }
 
 #song-info-div {
