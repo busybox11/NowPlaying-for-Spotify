@@ -34,7 +34,7 @@ if(isset($_GET['lang'])){
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:creator" content="@busybox11" />
     <meta name="twitter:image" content="https://<?=$_SERVER['SERVER_NAME'];?>/favicon.png" />
-    <meta property="og:title" content="Now Playing For Spotify" />
+    <meta property="og:title" content="NowPlaying for Spotify" />
     <meta property="og:type" content="website" />
     <meta property="og:description" content="NowPlaying-For-Spotify is a smooth Spotify Connect visualizer, which display the music playing on Spotify" />
     <meta name="og:image" content="https://<?=$_SERVER['SERVER_NAME'];?>/favicon.png" />
