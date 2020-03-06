@@ -36,7 +36,7 @@ if(isset($_GET['lang'])){
     <meta name="twitter:image" content="https://<?=$_SERVER['SERVER_NAME'];?>/favicon.png" />
     <meta property="og:title" content="NowPlaying for Spotify" />
     <meta property="og:type" content="website" />
-    <meta property="og:description" content="NowPlaying-For-Spotify is a smooth Spotify Connect visualizer, which display the music playing on Spotify" />
+    <meta property="og:description" content="NowPlaying for Spotify is a smooth Spotify Connect visualizer, which display the music playing on Spotify" />
     <meta name="og:image" content="https://<?=$_SERVER['SERVER_NAME'];?>/favicon.png" />
     <meta name="theme-color" content="#23a92a" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -97,7 +97,8 @@ if(isset($_GET['lang'])){
             <p class="space20"></p>
             <a href="login.php" class="spotify-btn"><?=IndexConnection;?></a>
             <p class="space20"></p>
-            <h3><?=OpenSourceProject;?><a href="https://github.com/busybox11/NowPlaying-for-Spotify"><?=OpenSourceLink;?></h3>
+            <h3><?=OpenSourceProject;?><a href="https://github.com/busybox11/NowPlaying-for-Spotify"><?=OpenSourceLink;?></a></h3>
+            <h3><a href="https://discord.gg/DMmk8Sc"><?=DiscordServer;?></a></h3>
             <div>
                 <h3>Change language:</h3>
                 <a href="?lang=en"><img src="lang/united-kingdom.png" title="English" style="height:32px;width:auto;" /></a>&nbsp;<a href="?lang=fr"><img src="lang/france.png" title="Français" style="height:32px;width:auto;" /></a>

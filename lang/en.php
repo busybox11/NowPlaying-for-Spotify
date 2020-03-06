@@ -6,6 +6,8 @@ define('IndexCookie', 'By clicking on \'LOGIN\', you accept the use of cookies n
 define('OpenSourceProject', 'This project is totally Open Source and is available on GitHub ');
 define('OpenSourceLink', 'here.');
 
+define('DiscordServer', 'Join our Discord server !');
+
 define('defaultTitleSong', 'No music being played');
 define('defaultArtistSong', 'Please wait a few seconds for the update');
 define('defaultTitle', 'No music - Spotify Connect - Now Playing');
