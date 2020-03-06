@@ -9,7 +9,7 @@ Website : [nowplayingforspotify.ga](http://nowplayingforspotify.ga)
 
 Personal Discord account : `@busybox#2540`
 
-French tech Discord server : [https://techcord.me/invite](https://techcord.me/invite)
+Dedicated Discord server : [nowplayingforspotify.ga/discord](nowplayingforspotify.ga/discord)
 
 Latest release : 1.5.2
 
