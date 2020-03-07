@@ -5,11 +5,11 @@
 Welcome on my project's GitHub page **NowPlaying for Spotify** !
 This is a Spotify Connect visualizer, which has had its codebase made in half a day.
 
-Website : [nowplayingforspotify.ga](http://nowplayingforspotify.ga)
+Website : [nowplayingforspotify.ga](https://nowplayingforspotify.ga)
 
 Personal Discord account : `@busybox#2540`
 
-Dedicated Discord server : [nowplayingforspotify.ga/discord](nowplayingforspotify.ga/discord)
+Dedicated Discord server : [nowplayingforspotify.ga/discord](https://nowplayingforspotify.ga/discord)
 
 Latest release : 1.5.2
 
