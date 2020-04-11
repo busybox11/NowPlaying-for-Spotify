@@ -41,8 +41,8 @@ HTML, CSS, JS, PHP
 
 ## **Used libraries :**
 
-[Spotify Web API PHP by jwilsson](https://github.com/jwilsson/spotify-web-api-php) pour l'obtention du token,
-[Spotify Web API JS by JMPerez](https://github.com/jmperez/spotify-web-api-js) pour l'obtention du titre en cours de lecture
+[Spotify Web API PHP by jwilsson](https://github.com/jwilsson/spotify-web-api-php) to obtain the token and refresh token,
+[Spotify Web API JS by JMPerez](https://github.com/jmperez/spotify-web-api-js) to retrieve and display the currently playing song
 
 ## **Known bugs**
 
@@ -54,7 +54,7 @@ HTML, CSS, JS, PHP
 
 ## **How to host ?**
 
-You can use XAMPP (multi-platform) or Wampserver (Windows only) but any webserver with PHP 7.0 or greater is good to use.
+You can use XAMPP (multi-platform) or Wampserver (Windows only) but any webserver with PHP 7.0 or greater is good to use, with the `php-curl` module.
 
 ## **What modifications are required ?**
 
