@@ -238,6 +238,10 @@ if (!isset($_COOKIE["deviceId"])) {
     });
     };
 
+    if(!document.pictureInPictureEnabled) {
+        $("#PIP-button").css("display","none");
+    }
+
     //define canvas and video
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d', { alpha: false });
