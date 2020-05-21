@@ -248,7 +248,7 @@ if (!isset($_COOKIE["deviceId"])) {
     const img = document.getElementById("playing-img")
     const video = document.createElement('video');
 
-    canvas.width = canvas.height = 200;
+    canvas.width = canvas.height = 640;
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
     video.srcObject = canvas.captureStream();
     img.crossOrigin = 'anonymous'
@@ -268,16 +268,8 @@ if (!isset($_COOKIE["deviceId"])) {
         requestAnimationFrame(_ => { drawCanvas(); });
     }
     video.addEventListener('enterpictureinpicture', event => {
-        updateCanvasSize(event.pictureInPictureWindow);
-        event.pictureInPictureWindow.onresize = event => updateCanvasSize(event.target);
         drawCanvas();
     })
-
-    function updateCanvasSize(pictureInPictureWindow) {
-        // Update canvas based on Picture-in-Picture window size.
-        canvas.width = pictureInPictureWindow.width * devicePixelRatio;
-        canvas.height = pictureInPictureWindow.height * devicePixelRatio;
-    }
     </script>
 </body>
 </html>
