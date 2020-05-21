@@ -252,14 +252,16 @@ if (!isset($_COOKIE["deviceId"])) {
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
     video.srcObject = canvas.captureStream();
     img.crossOrigin = 'anonymous'
-
     function PIP(){
         video.play();
-        if (document.pictureInPictureEnabled) {
-                video.requestPictureInPicture();
-            } else {
-                video.webkitSetPresentationMode('picture-in-picture');
-            }
+        if (!document.pictureInPictureElement) {
+            video.requestPictureInPicture();
+            $("#PIP-button").css("color","#2857b5")
+        } else {
+            document.exitPictureInPicture()
+            $("#PIP-button").css("color","#ffffff")
+
+        }
     }
     function drawCanvas() {
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
