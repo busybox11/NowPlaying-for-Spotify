@@ -270,6 +270,9 @@ if (!isset($_COOKIE["deviceId"])) {
     video.addEventListener('enterpictureinpicture', event => {
         drawCanvas();
     })
+    video.addEventListener('leavepictureinpicture', () => {
+        $("#PIP-button").css("color","#ffffff")
+    });
     </script>
 </body>
 </html>
