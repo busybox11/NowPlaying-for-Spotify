@@ -69,11 +69,9 @@ function theme() {
         setCookie('theme', 'test', 1000);
         console.log('test theme');
         $('#playingcss-test').attr('rel', 'stylesheet');
-        $('#playingcss').attr('rel', 'stylesheet alternate');
     } else {
         setCookie('theme', 'original', 1000);
         console.log('original theme');
-        $('#playingcss').attr('rel', 'stylesheet');
         $('#playingcss-test').attr('rel', 'stylesheet alternate');
     }
 }

@@ -48,7 +48,6 @@ if (!isset($_COOKIE["deviceId"])) {
 
 	if (readCookie('theme') == "test") {
         $('#playingcss-test').attr('rel', 'stylesheet');
-		$('#playingcss').attr('rel', 'stylesheet alternate');
 	}
 
     // declare all variables
@@ -80,13 +79,13 @@ if (!isset($_COOKIE["deviceId"])) {
 
             if (response != "") {
                 console.log('Response not empty');
-                getInformations();
+                getInformations(response);
             } else {
                 console.log('Response empty');
                 noInformations();
             }
 
-            function getInformations () {
+            function getInformations (response) {
                 currentlyPlayingType = response.currently_playing_type;
                 progressSong = response.progress_ms;
                 progressSongFormatted = msToTime(response.progress_ms);
@@ -94,14 +93,14 @@ if (!isset($_COOKIE["deviceId"])) {
                 deviceType = response["device"].type;
                 if (response.is_playing == true) {
 	                $("#playing-div #song-info-div #activestate #activeicon").text(DEVICES_ICON[AVAILABLE_DEVICES.indexOf(deviceType)]);
-	                $("#pause-button").text("pause");
+	                // $("#pause-button").text("pause");
 	            	$("#playing-div #song-info-div #activestate #device-name").text(deviceName);
 	            	if (iCast < 11) {
 	            		iCast = 0;
 	            	}
                 } else {
                     $("#playing-div #song-info-div #activestate #activeicon").text("pause");
-                    $("#pause-button").text("play_arrow");
+                    // $("#pause-button").text("play_arrow");
                 	if (iCast <= 4) {
                     	$("#playing-div #song-info-div #activestate #device-name").text('Ready to cast on NowPlaying for Spotify #' + readCookie('deviceId'));
                 	} else {
@@ -141,6 +140,16 @@ if (!isset($_COOKIE["deviceId"])) {
                     $("#playing-div #song-info-div #time-song").text(progressSongFormatted);
                 }
                 $("#playing-div #song-info-div #seekbar-now").attr("style", "width : " + seekbarProgress + "%");
+
+                if ($("#song-title").text() == "<?=defaultTitleSong; ?>" || response["item"].id != idSong) {
+                $("#song-title").text(titleSong);
+                $("#song-artist").text(artistSong);
+                $("#song-album").text(albumSong);
+                document.title = title;
+                $("#playing-div img").attr("src", albumPicture);
+                $("#background-image-div").attr("style", "background: url('" + albumPicture + "');background-size:cover;background-position: center center;");
+                idSong = response["item"].id;
+            }
             }
 
             function noInformations () {
@@ -155,17 +164,7 @@ if (!isset($_COOKIE["deviceId"])) {
                 progressSongFormatted = " ";
                 seekbarProgress = 0;
                 $("#activeicon").text("pause");
-                $("#pause-button").text("");
-            }
-
-            if ($("#song-title").text() == "<?=defaultTitleSong; ?>" || response["item"].id != idSong) {
-                $("#song-title").text(titleSong);
-                $("#song-artist").text(artistSong);
-                $("#song-album").text(albumSong);
-                document.title = title;
-                $("#playing-div img").attr("src", albumPicture);
-                $("#background-image-div").attr("style", "background: url('" + albumPicture + "');background-size:cover;background-position: center center;");
-                idSong = response["item"].id;
+                // $("#pause-button").text("");
             }
 
         }, 1000);
@@ -178,7 +177,13 @@ if (!isset($_COOKIE["deviceId"])) {
         <a id="theme-button" href="#" onclick="theme();"><i id="theme-icon" class="material-icons theme-icon">palette</i></a>
     </div>
     <div id="playing-div">
-        <div id="img-wrapper"><img src="no_song.png" id="playing-img"><div id="pause-button" style="display:none;" class="material-icons"></div></div>
+        <div id="img-wrapper"><img src="no_song.png" id="playing-img">
+            <div id="playback-container" style="display:none;">
+                <div id="previous-button" class="material-icons">skip_previous</div>
+                <div id="pause-button" class="material-icons"></div>
+                <div id="next-button" class="material-icons">skip_next</div>
+            </div>
+        </div>
         <div id="song-info-div">
             <h1 id="song-title"><?=defaultTitleSong;?></h1>
             <h2 id="song-artist"><?=defaultArtistSong;?></h2><h2 id="song-album"></h2>
@@ -208,11 +213,18 @@ if (!isset($_COOKIE["deviceId"])) {
         player.getCurrentState().then(state => {
                 if(!state) {
                     // currently not playing through web playback
-                    $("#pause-button").css("display","none");
-                    $("#playing-img").css("margin-top","0px");
+                    $("#playback-container").css("display","none");
+                    // $("#playing-img").css("margin-top","0px");
                 }else{
-                    $("#pause-button").css("display", "inline-block");
-                    $("#playing-img").css("margin-top","34px");
+                    $("#playback-container").css("display", "inline-block");
+                    $("#pause-button").text(state.paused ? "play_arrow" : "pause");
+                    let {
+                        previous_tracks: [previous_track],
+                        next_tracks: [next_track]
+                    } = state.track_window;
+                    $("#previous-button").css("visibility", "visible");
+                    $("#next-button").text(next_track != undefined > 0 ? "skip_next" : "");
+                    // $("#playing-img").css("margin-top","34px");
                 }
         });
      });
@@ -232,6 +244,20 @@ if (!isset($_COOKIE["deviceId"])) {
     $("#pause-button").bind("click", () => {
         player.togglePlay();
         // toggle pause/resume playback
+    });
+    $("#next-button").bind("click", () => {
+        player.nextTrack();
+    });
+    $("#previous-button").bind("click", () => {
+        player.getCurrentState().then(state => {
+            if(state) {
+                console.log(state);
+                if(state.position > 5000 || state.track_window.previous_tracks.length === 0)
+                    player.seek(0);
+                else
+                    player.previousTrack();
+            }
+        });
     });
     };
     </script>
