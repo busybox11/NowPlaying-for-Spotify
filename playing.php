@@ -209,7 +209,7 @@ if (!isset($_COOKIE["deviceId"])) {
     player.addListener('account_error', ({ message }) => { console.error(message); });
     player.addListener('playback_error', ({ message }) => { console.error(message); });
     // Playback status updates
-    player.addListener('player_state_changed', ({position, duration, track_window: { current_track }}) => { 
+    player.addListener('player_state_changed', () => { 
         player.getCurrentState().then(state => {
                 if(!state) {
                     // currently not playing through web playback
@@ -232,7 +232,7 @@ if (!isset($_COOKIE["deviceId"])) {
     player.addListener('ready', ({ device_id }) => {
     console.log('Ready with Device ID', device_id);
 
-    $("#playing-div #song-info-div #activestate #device-name").text('Ready to cast on NowPlaying for Spotify #' + readCookie('deviceId'));
+    $("#device-name").text('Ready to cast on NowPlaying for Spotify #' + readCookie('deviceId'));
     });
     // Not Ready
     player.addListener('not_ready', ({ device_id }) => {
