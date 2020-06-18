@@ -170,15 +170,12 @@ if (!isset($_COOKIE["deviceId"])) {
 
         }, 1000);
     }
-
-   
     </script>
 </head>
 <body>
 	<div class="settings-div fadeInOut">
 		<a id="fullscreen-button" href="#" onclick="fullscreen();"><i id="fullscreen-icon" class="material-icons settings-icon">fullscreen</i></a>
         <a id="theme-button" href="#" onclick="theme();"><i id="theme-icon" class="material-icons theme-icon">palette</i></a>
-        <a id="PIP-button" href="#" onclick="PIP();"><i id="PIP-icon" class="material-icons">picture_in_picture_alt</i></a>
     </div>
     <div id="playing-div">
         <div id="img-wrapper"><img src="no_song.png" id="playing-img"><div id="pause-button" style="display:none;" class="material-icons"></div></div>
@@ -237,42 +234,6 @@ if (!isset($_COOKIE["deviceId"])) {
         // toggle pause/resume playback
     });
     };
-
-    if(!document.pictureInPictureEnabled) {
-        $("#PIP-button").css("display","none");
-    }
-
-    //define canvas and video
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d', { alpha: false });
-    const img = document.getElementById("playing-img")
-    const video = document.createElement('video');
-
-    canvas.width = canvas.height = 640;
-    ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
-    video.srcObject = canvas.captureStream();
-    img.crossOrigin = 'anonymous'
-    function PIP(){
-        video.play();
-        if (!document.pictureInPictureElement) {
-            video.requestPictureInPicture();
-            $("#PIP-button").css("color","#2857b5")
-        } else {
-            document.exitPictureInPicture()
-            $("#PIP-button").css("color","#ffffff")
-
-        }
-    }
-    function drawCanvas() {
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
-        requestAnimationFrame(_ => { drawCanvas(); });
-    }
-    video.addEventListener('enterpictureinpicture', event => {
-        drawCanvas();
-    })
-    video.addEventListener('leavepictureinpicture', () => {
-        $("#PIP-button").css("color","#ffffff")
-    });
     </script>
 </body>
 </html>
