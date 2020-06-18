@@ -170,6 +170,8 @@ if (!isset($_COOKIE["deviceId"])) {
 
         }, 1000);
     }
+
+   
     </script>
 </head>
 <body>
