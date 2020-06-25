@@ -1,12 +1,8 @@
 <?php
-define('IndexWelcome', 'Bienvenue sur NowPlaying for Spotify !');
-define('IndexPleaseConnect', 'Veuillez vous connecter avec votre compte Spotify.');
-define('IndexConnection', 'CONNEXION');
-define('IndexCookie', 'En cliquant sur \'CONNEXION\', vous acceptez l\'utilisation des cookies nécessaires au bon fonctionnement du site.');
-define('OpenSourceProject', 'Ce projet est totalement Open Source et est disponible sur GitHub ');
-define('OpenSourceLink', 'à cette adresse.');
-
-define('DiscordServer', 'Rejoignez notre serveur Discord !');
+define('IndexTitle', 'Bienvenue sur NowPlaying for Spotify !');
+define('IndexDescription', 'Veuillez vous connecter avec votre compte Spotify.');
+define('IndexConnection', 'Se connecter à Spotify');
+define('IndexCookie', 'En cliquant sur \'SE CONNECTER À SPOTIFY\', vous acceptez l\'utilisation de cookies nécessaires au bon fonctionnement du site.');
 
 define('defaultTitleSong', 'Aucune musique en cours de lecture');
 define('defaultArtistSong', 'Veuillez patienter quelques secondes pour l\'actualisation');
