@@ -23,88 +23,141 @@ if(isset($_GET['lang'])){
 
 ?>
 
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Now Playing for Spotify</title>
-    <link rel="icon" type="image/png" href="favicon.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="NowPlaying-For-Spotify is a smooth Spotify Connect visualizer, which display the music playing on Spotify" />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:creator" content="@busybox11" />
-    <meta name="twitter:image" content="https://<?=$_SERVER['SERVER_NAME'];?>/favicon.png" />
-    <meta property="og:title" content="NowPlaying for Spotify" />
-    <meta property="og:type" content="website" />
-    <meta property="og:description" content="NowPlaying for Spotify is a smooth Spotify Connect visualizer, which display the music playing on Spotify" />
-    <meta name="og:image" content="https://<?=$_SERVER['SERVER_NAME'];?>/favicon.png" />
-    <meta name="theme-color" content="#23a92a" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="productsans.css?ts=<?=time ()?>" rel="stylesheet">
-    <style>
-        *{
-            box-sizing: border-box;
-        }
+	<title>NowPlaying for Spotify</title>
+	<link rel="icon" type="image/png" href="favicon.png">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="NowPlaying for Spotify is a smooth Spotify Connect visualizer, which display the music playing on Spotify" />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:creator" content="@busybox11" />
+	<meta name="twitter:image" content="https://<?=$_SERVER['SERVER_NAME'];?>/favicon.png" />
+	<meta property="og:title" content="NowPlaying for Spotify" />
+	<meta property="og:type" content="website" />
+	<meta property="og:description" content="NowPlaying for Spotify is a smooth Spotify Connect visualizer, which display the music playing on Spotify" />
+	<meta name="og:image" content="https://<?=$_SERVER['SERVER_NAME'];?>/favicon.png" />
+	<meta name="theme-color" content="#23a92a" />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="productsans.css?ts=1593120039" rel="stylesheet">
+	<style>
+		* {
+			box-sizing: border-box;
+		}
 
-        body {
-            background-color: #000020;
-            color:white;
-            font-family: "Product Sans";
-            font-size: 16px;
-            font-size: 1rem;
-            margin: 0;
-        }
+		body {
+			background-color: #000020;
+			color:white;
+			font-family: "Product Sans";
+			font-size: 16px;
+			font-size: 1rem;
+			margin: 0;
+		}
 
-        p,
-        h1,
-        h2,
-        h3,
-        a {
-            color: white;
-            text-decoration: none;
-        }
+		p,
+		h1,
+		h2,
+		h3,
+		a {
+			color: white;
+			text-decoration: none;
+		}
 
-        .content {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding-top: 35px;
-        }
+		.content {
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			padding-top: 35px;
+		}
 
-        .spotify-btn {
-            background-color: #1DB954;
-            border-radius: 500px;
-            padding: 19px 56px 21px;
-            color: white;
-            font-size: 16px;
-        }
+		.spotify_btn {
+			background-color: #15883D;
+			border-radius: 500px;
+			padding: 19px 56px 21px;
+			color: white;
+			font-size: 16px;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			font-weight: 700;
+			transition: all .5s;
+		}
 
-        .space20 {
-            height: 20px;
-        }       
-    </style>
+		.spotify_btn:hover {
+			background-color: #1DB954;
+			transform: scale(1.025);
+		}
+
+		#login_btn {
+			margin-bottom: 20px;
+		}
+
+		.space20 {
+			height: 20px;
+		}
+
+		#app_title {
+			margin-bottom: 5px;
+		}
+
+		#app_desc {
+			margin-top: 5px;
+			margin-bottom: 15px;
+			font-weight: 300;
+		}
+
+		#links_icons_div {
+			margin-bottom: 20px;
+		}
+
+		.links_icons {
+			fill: gray;
+			transition: all .5s;
+		}
+
+		.links_icons:hover {
+			fill: white;
+		}
+
+		#disclaimer {
+			font-weight: lighter;
+			opacity: 50%;
+			font-size: 12px;
+		}
+
+		.flag_icons {
+			height: 32px;
+			width: auto;
+			opacity: 50%;
+			transition: all .5s;
+			margin: 5px;
+		}
+
+		.flag_icons:hover {
+			opacity: 100%;
+			transform: scale(1.025);
+		}
+	</style>
 </head>
 
 <body>
-        <div class="content" style="margin:0 auto;text-align:center;">
-            <div>
-                <img src="favicon.png" alt="Logo" width="100px" height="100px">
-                <h1><?=IndexWelcome;?></h1>
-                <h2><?=IndexPleaseConnect;?></h2>
-            </div>
-            <p class="space20"></p>
-            <a href="login.php" class="spotify-btn"><?=IndexConnection;?></a>
-            <p class="space20"></p>
-            <h3><?=OpenSourceProject;?><a href="https://github.com/busybox11/NowPlaying-for-Spotify"><?=OpenSourceLink;?></a></h3>
-            <h3><a href="https://discord.gg/DMmk8Sc"><?=DiscordServer;?></a></h3>
-            <div>
-                <h3>Change language:</h3>
-                <a href="?lang=en"><img src="lang/united-kingdom.png" title="English" style="height:32px;width:auto;" /></a>&nbsp;<a href="?lang=fr"><img src="lang/france.png" title="Français" style="height:32px;width:auto;" /></a>
-            </div>
-            <p class="space20"></p>
-            <h3><?=IndexCookie;?></h3>
-        </div>
+		<div class="content" style="margin:0 auto;text-align:center;">
+			<div>
+				<img src="favicon.png" alt="Logo" width="100px" height="100px">
+				<h1 id="app_title"><?=IndexWelcome;?></h1>
+				<h2 id="app_desc"><?=IndexPleaseConnect;?></h2>
+				<div id="links_icons_div">
+					<a href="https://github.com/busybox11/NowPlaying-for-Spotify"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24" class="links_icons"><path d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" /></svg></a>
+					<a href="https://discord.gg/DMmk8Sc"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24" class="links_icons"><path d="M22,24L16.75,19L17.38,21H4.5A2.5,2.5 0 0,1 2,18.5V3.5A2.5,2.5 0 0,1 4.5,1H19.5A2.5,2.5 0 0,1 22,3.5V24M12,6.8C9.32,6.8 7.44,7.95 7.44,7.95C8.47,7.03 10.27,6.5 10.27,6.5L10.1,6.33C8.41,6.36 6.88,7.53 6.88,7.53C5.16,11.12 5.27,14.22 5.27,14.22C6.67,16.03 8.75,15.9 8.75,15.9L9.46,15C8.21,14.73 7.42,13.62 7.42,13.62C7.42,13.62 9.3,14.9 12,14.9C14.7,14.9 16.58,13.62 16.58,13.62C16.58,13.62 15.79,14.73 14.54,15L15.25,15.9C15.25,15.9 17.33,16.03 18.73,14.22C18.73,14.22 18.84,11.12 17.12,7.53C17.12,7.53 15.59,6.36 13.9,6.33L13.73,6.5C13.73,6.5 15.53,7.03 16.56,7.95C16.56,7.95 14.68,6.8 12,6.8M9.93,10.59C10.58,10.59 11.11,11.16 11.1,11.86C11.1,12.55 10.58,13.13 9.93,13.13C9.29,13.13 8.77,12.55 8.77,11.86C8.77,11.16 9.28,10.59 9.93,10.59M14.1,10.59C14.75,10.59 15.27,11.16 15.27,11.86C15.27,12.55 14.75,13.13 14.1,13.13C13.46,13.13 12.94,12.55 12.94,11.86C12.94,11.16 13.45,10.59 14.1,10.59Z" /></svg></a>
+				</div>
+			</div>
+			<a href="login.php" class="spotify_btn" id="login_btn"><?=IndexPleaseConnect;?></a>
+			<div>
+				<a href="?lang=en"><img src="lang/united-kingdom.png" title="English" class="flag_icons" /></a><a href="?lang=fr"><img src="lang/france.png" title="Français" class="flag_icons" /></a>
+			</div>
+			<p class="space20"></p>
+			<h3 id="disclaimer"><?=IndexCookie;?></h3>
+		</div>
 </body>
 </html>
