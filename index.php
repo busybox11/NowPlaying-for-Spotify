@@ -80,7 +80,7 @@ if(isset($_GET['lang'])){
 			font-size: 16px;
 			text-transform: uppercase;
 			letter-spacing: 1px;
-			font-weight: 700;
+			font-weight: 600;
 			transition: all .5s;
 		}
 
@@ -121,10 +121,16 @@ if(isset($_GET['lang'])){
 		}
 
 		#disclaimer {
-			font-weight: lighter;
+			font-weight: normal;
 			opacity: 50%;
 			font-size: 12px;
+			transition: all .5s;
 		}
+
+		#disclaimer:hover {
+			opacity: 100%;
+		}
+
 
 		.flag_icons {
 			height: 32px;
