@@ -24,7 +24,7 @@ body {
     top: 0;
     bottom: 0;
     background-position: center top;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.3) !important;
     position: fixed;
     z-index: 1;
     height: auto;
@@ -66,10 +66,10 @@ body {
 #previous-button,
 #next-button{
     cursor:pointer;
-    color: white;
-    background-color: #00000040;
+    color: white !important;
+    background-color: #00000040 !important;
     padding: 0px 10px;
-    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.30), 0 5px 15px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.30), 0 5px 15px rgba(0, 0, 0, 0.22) !important;
     border-radius: 25px;
     backdrop-filter: blur(25px);
 }
@@ -86,12 +86,12 @@ body {
     margin-top: 40px;
     height: 15px;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.50);
+    background-color: rgba(255, 255, 255, 0.50) !important;
 }
 
 #seekbar-now {
     border-radius: 50px;
-    background-color: rgba(255, 255, 255, 0.90);
+    background-color: rgba(255, 255, 255, 0.90) !important;
     height: 15px;
     transition: linear width 1s;
 }
@@ -99,7 +99,7 @@ body {
 .settings-div {
     padding: 5px 10px 5px 10px;
     margin: 10px;
-    background-color: #FFFFFF20;
+    background-color: #FFFFFF20 !important;
     border-radius: 25px;
     z-index: 3;
 }
@@ -199,7 +199,7 @@ i.large {
     #playing-img {
         width:100%;
         height:auto;
-        box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+        box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22) !important;
     }
     #img-wrapper {
         margin-bottom: 10px;
@@ -216,7 +216,7 @@ i.large {
         margin-top: 20px;
         height: 15px;
         width: 100%;
-        background-color: rgba(255, 255, 255, 0.50);
+        background-color: rgba(255, 255, 255, 0.50) !important;
     }
     #device-name {
         vertical-align: sub;
@@ -243,7 +243,7 @@ i.large {
     #playing-img {
         width:100%;
         height: auto;
-        box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+        box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22) !important;
     }
     #img-wrapper{
         margin-bottom: 10px;
@@ -259,7 +259,7 @@ i.large {
         margin-top: 20px;
         height: 15px;
         width: 100%;
-        background-color: rgba(255, 255, 255, 0.50);
+        background-color: rgba(255, 255, 255, 0.50) !important;
     }
     #device-name {
         vertical-align: sub;
@@ -284,7 +284,7 @@ i.large {
     #playing-img {
         width:100%;
         height: auto;
-        box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+        box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22) !important;
     }
     #img-wrapper{
         margin-right: 10px;
@@ -315,7 +315,7 @@ i.large {
         margin-right: 10px;
         height: auto;
         max-height: 45%;
-        box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+        box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22) !important;
     }
     #song-info-div {
         margin-left: 5px;
