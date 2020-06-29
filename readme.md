@@ -12,13 +12,14 @@ Personal Discord account : `@busybox#2540`
 
 Dedicated Discord server : [nowplaying.ga/discord](https://nowplaying.ga/discord)
 
-Latest release : 1.6
+Latest release : 1.6.1
 
 ## **Changelog**
 
-v1.6
+v1.6.X
 - Updated Index page design 
 - Updated French and English sentences 
+- Compatibility with Dark Reader
 
 v1.5.X
 - Added playback support (Premium account should be needed)
