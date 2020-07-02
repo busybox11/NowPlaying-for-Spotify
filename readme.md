@@ -12,7 +12,7 @@ Personal Discord account: `@busybox#2540`
 
 Dedicated Discord server: [nowplaying.ga/discord](https://nowplaying.ga/discord)
 
-Tip to me: [https://paypal.me/busybox11](paypal.me/busybox11)
+Tip to me: [paypal.me/busybox11](https://paypal.me/busybox11)
 
 Latest release: 1.6.1
 
