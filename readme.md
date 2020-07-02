@@ -6,13 +6,15 @@ Welcome on my project's GitHub page: **NowPlaying for Spotify** !
 
 This is a Spotify Connect visualizer, which has had its codebase made in half a day.
 
-Website : [nowplaying.ga](https://nowplaying.ga)
+Website: [nowplaying.ga](https://nowplaying.ga)
 
-Personal Discord account : `@busybox#2540`
+Personal Discord account: `@busybox#2540`
 
-Dedicated Discord server : [nowplaying.ga/discord](https://nowplaying.ga/discord)
+Dedicated Discord server: [nowplaying.ga/discord](https://nowplaying.ga/discord)
 
-Latest release : 1.6.1
+Tip to me: [https://paypal.me/busybox11](paypal.me/busybox11)
+
+Latest release: 1.6.1
 
 ## **Changelog**
 
