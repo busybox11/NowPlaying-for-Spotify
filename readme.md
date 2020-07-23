@@ -61,6 +61,9 @@ HTML, CSS, JS, PHP
 
 ## **Upcoming features**
 
+- OBS source
+- Local players support
+- Chromecast integration
 - Themes (experimental theme / theme switcher since v1.4.3)
 
 ## **How to host this?**
