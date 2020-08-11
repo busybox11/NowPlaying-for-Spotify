@@ -61,10 +61,10 @@ HTML, CSS, JS, PHP
 
 ## **Upcoming features**
 
+- Local players support (coming with [lcalmusic-api](https://github.com/busybox11/localmusic-api/projects))
 - OBS source
-- Local players support
-- Chromecast integration
 - Themes (experimental theme / theme switcher since v1.4.3)
+- Chromecast integration
 
 ## **How to host this?**
 
@@ -78,7 +78,7 @@ You should have a declared app in Spotify's developer dashboard to obtain a `Cli
 As I said, the first thing is to create a Client ID (`Create a Client ID` button) on [Spotify's developer dashboard](https://developer.spotify.com/dashboard/applications).
 Type your app's name in the `App or Hardware name` text field, and its description on the `App or Hardware description` text field. In the `What are you building ?` section, indicate the platform which you are building the app for, then click on the `NEXT` button. Answer to the commercial integration question, and continue. If necessary, fill the form and check all the boxes at the 3rd stage and you're ready to go. Your app is declared in Spotify's developer dashboard!
 
-Now that you have your app, you have some modifications to do in two files : `login.php` and `token.php`.
+Now that you have your app, you have some modifications to do in two files: `login.php` and `token.php`.
 
 Edit those values:
 
