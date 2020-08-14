@@ -2,7 +2,7 @@
 
 # NowPlaying for Spotify
 
-Welcome on my project's GitHub page: **NowPlaying for Spotify** !
+Welcome on my project's GitHub page: **NowPlaying for Spotify**!
 
 This is a Spotify Connect visualizer, which has had its codebase made in half a day.
 
@@ -61,6 +61,7 @@ HTML, CSS, JS, PHP
 
 ## **Upcoming features**
 
+- Small padding on left of playing bar (quick and easy)
 - Local players support (coming with [lcalmusic-api](https://github.com/busybox11/localmusic-api/projects))
 - OBS source
 - Themes (experimental theme / theme switcher since v1.4.3)
