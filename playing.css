@@ -94,6 +94,7 @@ body {
     background-color: rgba(255, 255, 255, 0.90) !important;
     height: 15px;
     transition: linear width 1s;
+    min-width: 1rem;
 }
 
 .settings-div {
