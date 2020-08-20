@@ -62,6 +62,7 @@ HTML, CSS, JS, PHP
 ## **Upcoming features**
 
 - Local players support (coming with [lcalmusic-api](https://github.com/busybox11/localmusic-api/projects))
+- Better config handling (e.g. automatic deployment, **HELP WANTED!**)
 - OBS source
 - Themes (experimental theme / theme switcher since v1.4.3)
 - Chromecast integration
