@@ -1,3 +1,8 @@
+#background-image-div {
+    filter: blur(48px);
+    -webkit-filter: blur(48px);
+}
+
 #seekbar-bg {
     border-radius: 50px;
     margin-top: 40px;
