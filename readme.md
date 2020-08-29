@@ -16,7 +16,7 @@ Dedicated Discord server: [nowplaying.ga/discord](https://nowplaying.ga/discord)
 
 Tip to me: [paypal.me/busybox11](https://paypal.me/busybox11)
 
-Latest release: 1.6.1
+Latest release: 1.6.2
 
 ## **Changelog**
 
@@ -25,6 +25,7 @@ v1.6.X
 - Updated Index page design 
 - Updated French and English sentences 
 - Compatibility with Dark Reader
+- Better UI consistency / CSS tweaks
 
 v1.5.X
 - Added playback support (Premium account should be needed)
