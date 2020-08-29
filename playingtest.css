@@ -6,7 +6,7 @@
 #seekbar-bg {
     border-radius: 50px;
     margin-top: 40px;
-    padding: 5px;
+    display: flex;
     height: auto;
     background-color: rgba(255, 255, 255, 0.50) !important;
     box-shadow: 0 0px 0px rgba(0, 0, 0, 0.30), 0 5px 15px rgba(0, 0, 0, 0.22) !important;
@@ -17,6 +17,7 @@
     background-color: rgba(255, 255, 255, 0.90) !important;
     height: 8px;
     transition: linear width 1s;
+    margin: 5px;
 }
 
 .settings-div {
@@ -42,14 +43,12 @@
 
 @media only screen and (max-width:767px) and (orientation: portrait) {
     #seekbar-bg {
-        padding: 5px;
         box-shadow: 0 0px 0px rgba(0, 0, 0, 0.30), 0 5px 15px rgba(0, 0, 0, 0.22) !important;
     }
 }
 
 @media only screen and (min-width: 768p) and (max-width: 1199px) and (orientation: portrait) {
     #seekbar-bg {
-        padding: 5px;
         box-shadow: 0 0px 0px rgba(0, 0, 0, 0.30), 0 5px 15px rgba(0, 0, 0, 0.22) !important;
     }
 }
