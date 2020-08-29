@@ -27,23 +27,32 @@ v1.6.X
 - Compatibility with Dark Reader
 - Better UI consistency / CSS tweaks
 
-v1.5.X
-- Added playback support (Premium account should be needed)
-- Added playback information
-- Added pause button (#17)
-- CSS improvements added for better responsive (#15 #16)
-- SEO improvements (#16)
-- Minor CSS improvements
+<details>
+  <summary>v1.5.X</summary>
+  
+    - Added playback support (Premium account should be needed)
+    - Added playback information
+    - Added pause button (#17)
+    - CSS improvements added for better responsive (#15 #16)
+    - SEO improvements (#16)
+    - Minor CSS improvements
+</details>
 
-v1.4.X
-- Advertisements are recognized
-- Multiple artists are recognized
-- Experimental theme switcher
+<details>
+  <summary>v1.4.X</summary>
+  
+    - Advertisements are recognized
+    - Multiple artists are recognized
+    - Experimental theme switcher
+</details>
 
-v1.3.X
-- Now playing device name and type is showing
-- Cursor is hidden after a couple of seconds
-- Fullscreen button
+<details>
+  <summary>v1.3.X</summary>
+  
+    - Now playing device name and type is showing
+    - Cursor is hidden after a couple of seconds
+    - Fullscreen button
+</details>
 
 ![Screenshot](https://github.com/busybox11/NowPlaying-for-Spotify/blob/master/Screenshot.png?)
 
