@@ -5,7 +5,6 @@
 
 #seekbar-bg {
     border-radius: 50px;
-    margin-top: 40px;
     display: flex;
     height: auto;
     background-color: rgba(255, 255, 255, 0.50) !important;
@@ -45,10 +44,18 @@
     #seekbar-bg {
         box-shadow: 0 0px 0px rgba(0, 0, 0, 0.30), 0 5px 15px rgba(0, 0, 0, 0.22) !important;
     }
+
+    #background-image-div {
+        transform: scale(1.45);
+    }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1199px) and (orientation: portrait) {
     #seekbar-bg {
         box-shadow: 0 0px 0px rgba(0, 0, 0, 0.30), 0 5px 15px rgba(0, 0, 0, 0.22) !important;
+    }
+
+    #background-image-div {
+        transform: scale(1.3);
     }
 }
