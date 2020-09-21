@@ -116,6 +116,7 @@ if(isset($_GET['lang'])){
 		.links_icons {
 			fill: gray;
 			transition: all .5s;
+			margin: 4px;
 		}
 
 		.links_icons:hover {
