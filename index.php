@@ -107,6 +107,7 @@ if(isset($_GET['lang'])){
 			margin-top: 5px;
 			margin-bottom: 15px;
 			font-weight: 300;
+			letter-spacing: 1px;
 		}
 
 		#links_icons_div {
