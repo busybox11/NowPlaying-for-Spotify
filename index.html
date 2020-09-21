@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Spotify Connect - Now Playing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="NowPlaying-For-Spotify is a smooth Spotify Connect visualizer, which display the music playing on Spotify" />
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link id="playingcss" href="playing.css?ts=<?=time ()?>" rel="stylesheet">
+    <link id="playingcss-test" href="playingtest.css?ts=<?=time ()?>" rel="stylesheet alternate">
+    <link href="productsans.css?ts=<?=time ()?>" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="spotify-web-api.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="scripts.js?ts=<?=time ()?>"></script>
+    <script src="cursor.js?ts=<?=time ()?>"></script>
+</head>
+<body>
+	<div class="settings-div fadeInOut">
+		<a id="fullscreen-button" href="#" onclick="fullscreen();"><i id="fullscreen-icon" class="material-icons settings-icon">fullscreen</i></a>
+        <a id="theme-button" href="#" onclick="theme();"><i id="theme-icon" class="material-icons theme-icon">palette</i></a>
+    </div>
+    <div id="playing-div">
+        <div id="img-wrapper"><img src="no_song.png" id="playing-img">
+            <div id="playback-container" style="display:none;">
+                <div id="previous-button" class="material-icons">skip_previous</div>
+                <div id="pause-button" class="material-icons"></div>
+                <div id="next-button" class="material-icons">skip_next</div>
+            </div>
+        </div>
+        <div id="song-info-div">
+            <h1 id="song-title">Titre de la musique</h1>
+            <h2 id="song-artist">Artiste</h2><h2 id="song-album">Album</h2>
+            <div id="seekbar-bg">
+                <div id="seekbar-now" style="width : 46%"></div>
+            </div>
+            <h3 class="left fadeInOut" id="activestate"><i id="activeicon" class="material-icons left">pause</i><span id="device-name">Spotify Connect</span><h3 class="right" id="time-song">01:29 · 02:49</h3>
+        </div>
+    </div>
+    <div id="background-image-div" style="background: url('no_song.png'); background-size: cover;background-position: center center;"><div class="darken"></div></div>
+</body>
+</html>
