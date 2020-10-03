@@ -14,4 +14,7 @@ define('by', 'de');
 define('Error', 'Erreur');
 define('IndexError404', 'Cette page n\'existe pas. N\'essayerais-tu pas de me hacker ?');
 define('IndexGoBack', 'Retourner en arrière');
+
+define('streamTitleSong', 'Pas de musique');
+define('streamArtistSong', '');
 ?>
