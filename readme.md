@@ -8,11 +8,11 @@ This is a Spotify Connect visualizer, which has had its codebase made in half a 
 
 This project is licensed under GNU GPL-3.0 license.
 
-Website: [nowplaying.ga](https://nowplaying.ga)
+Website: [nowplayi.ng](https://nowplayi.ng)
 
 Personal Discord account: `@busybox#2540`
 
-Dedicated Discord server: [nowplaying.ga/discord](https://nowplaying.ga/discord)
+Dedicated Discord server: [nowplayi.ng/discord](https://nowplayi.ng/discord)
 
 Tip to me: [paypal.me/busybox11](https://paypal.me/busybox11)
 
