@@ -73,7 +73,6 @@ if (!isset($_COOKIE["deviceId"])) {
             let promise = Promise.resolve(spotifyApi.getMyCurrentPlaybackState(null));
             promise.then(function(value) {
                 response = value;
-                console.log(response);
             });
 
             if (Math.floor(Date.now() / 1000) >= refreshTime) {
@@ -81,10 +80,8 @@ if (!isset($_COOKIE["deviceId"])) {
             }
 
             if (response != "") {
-                console.log('Response not empty');
                 getInformations(response);
             } else {
-                console.log('Response empty');
                 noInformations();
             }
 
