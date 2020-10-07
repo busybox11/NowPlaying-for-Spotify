@@ -8,6 +8,9 @@ switch($_COOKIE['lang']){
     case 'fr': include_once 'lang/fr.php';
     $lang = 'fr';
     break;
+    case 'it': include_once 'lang/it.php';
+    $lang = 'it';
+    break;
     case 'en': default: include_once 'lang/en.php';
     $lang = 'en';
     break;
