@@ -3,6 +3,7 @@ body {
     display: flex;
     margin: 0 auto;
     justify-content: center;
+    font-variant-ligatures: no-common-ligatures;
 }
 
 #background-image-div {
