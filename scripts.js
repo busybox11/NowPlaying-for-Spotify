@@ -1,3 +1,16 @@
+if (localStorage.getItem('deviceId') == null) {
+	function makeId(length) {
+		var out = '';
+		var numbers = '0123456789';
+		for ( let i = 0; i < length; i++ ) {
+			out += numbers.charAt(Math.floor(Math.random() * numbers.length));
+		}
+		return out;
+	}
+
+	localStorage.setItem('deviceId', makeId(4))
+}
+
 function msToTime(duration) {
     var milliseconds = parseInt((duration % 1000) / 100),
         seconds = parseInt((duration / 1000) % 60),
@@ -65,13 +78,11 @@ function fullscreen() {
 }
 
 function theme() {
-    if (readCookie('theme') == null || readCookie('theme') == 'original') {
-        setCookie('theme', 'test', 1000);
-        console.log('test theme');
+    if (localStorage.getItem('theme') == null || localStorage.getItem('theme') == 'original') {
+        localStorage.setItem('theme', 'test');
         $('#playingcss-test').attr('rel', 'stylesheet');
     } else {
-        setCookie('theme', 'original', 1000);
-        console.log('original theme');
+        localStorage.setItem('theme', 'original');
         $('#playingcss-test').attr('rel', 'stylesheet alternate');
     }
 }
