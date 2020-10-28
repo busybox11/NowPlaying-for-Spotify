@@ -21,6 +21,7 @@ Latest release: 1.6.2
 ## **Changelog**
 
 v1.6.X
+- Use of localStorage
 - Added GNU GPL-3.0 license
 - Updated Index page design 
 - Updated French and English sentences 
@@ -54,7 +55,11 @@ v1.6.X
     - Fullscreen button
 </details>
 
-![Screenshot](https://github.com/busybox11/NowPlaying-for-Spotify/blob/master/Screenshot.png?)
+![Regular theme](screenshots/regular.png)
+*Regular theme*
+
+![New theme](screenshots/new.png)
+*New theme*
 
 ## **Coded in:**
 
