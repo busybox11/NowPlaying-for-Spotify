@@ -168,7 +168,7 @@ if(isset($_GET['lang'])){
 			</div>
 			<a href="login.php" class="spotify_btn" id="login_btn"><?=IndexConnection;?></a>
 			<div>
-				<a href="?lang=en"><img src="lang/united-kingdom.png" title="English" class="flag_icons" /></a><a href="?lang=fr"><img src="lang/france.png" title="Français" class="flag_icons" /></a><a href="?lang=it"><img src="lang/italy.png" title="Italiano" class="flag_icons" /></a>
+				<a href="?lang=en"><img src="lang/united-kingdom.png" title="English" class="flag_icons" /></a><a href="?lang=fr"><img src="lang/france.png" title="Français" class="flag_icons" /></a><a href="?lang=it"><img src="lang/italy.png" title="Italiano" class="flag_icons" /></a><a href="?lang=es"><img src="lang/spain.png" title="Español" class="flag_icons" /></a><a href="?lang=ru"><img src="lang/russia.png" title="Pусский" class="flag_icons" /></a>
 			</div>
 			<p class="space20"></p>
 			<h3 id="disclaimer"><?=IndexCookie;?></h3>
