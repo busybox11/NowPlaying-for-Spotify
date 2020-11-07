@@ -5,14 +5,20 @@ if(!isset($_COOKIE['lang']) OR empty($_COOKIE['lang'])){
 }
 
 switch($_COOKIE['lang']){
+    case 'en': default: include_once 'lang/en.php';
+    $lang = 'en';
+    break;
     case 'fr': include_once 'lang/fr.php';
     $lang = 'fr';
     break;
     case 'it': include_once 'lang/it.php';
     $lang = 'it';
     break;
-    case 'en': default: include_once 'lang/en.php';
-    $lang = 'en';
+    case 'es': include_once 'lang/es.php';
+    $lang = 'es';
+    break;
+    case 'ru': include_once 'lang/ru.php';
+    $lang = 'ru';
     break;
 }
 ?>
