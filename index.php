@@ -11,11 +11,15 @@ if(!isset($_COOKIE['lang']) OR empty($_COOKIE['lang'])){
 }
 
 switch(@$_COOKIE['lang']){
-	case 'en': default: include_once 'lang/en.php';
+    case 'en': default: include_once 'lang/en.php';
     break;
     case 'fr': include_once 'lang/fr.php';
     break;
     case 'it': include_once 'lang/it.php';
+    break;
+    case 'es': include_once 'lang/es.php';
+    break;
+    case 'ru': include_once 'lang/ru.php';
     break;
 }
 
