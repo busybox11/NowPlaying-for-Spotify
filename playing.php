@@ -20,6 +20,9 @@ switch($_COOKIE['lang']){
     case 'ru': include_once 'lang/ru.php';
     $lang = 'ru';
     break;
+    case 'de': include_once 'lang/de.php';
+    $lang = 'de';
+    break;
 }
 ?>
 <!DOCTYPE html>
