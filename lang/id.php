@@ -2,7 +2,7 @@
 define('IndexTitle', 'Selamat datang di NowPlaying untuk Spotify !');
 define('IndexDescription', 'Silakan login dengan akun Spotify Anda.');
 define('IndexConnection', 'Login ke Spotify');
-define('IndexCookie', 'Dengan mengklik \ 'LOGIN KE SPOTIFY \', Anda menerima penggunaan cookie yang diperlukan untuk memfungsikan situs dengan benar.');
+define('IndexCookie', 'Dengan mengklik \'LOGIN KE SPOTIFY\', Anda menerima penggunaan cookie yang diperlukan untuk memfungsikan situs dengan benar.');
 
 define('defaultTitleSong', 'Tidak ada musik yang sedang diputar');
 define('defaultArtistSong', 'Harap tunggu beberapa detik saat status sedang diperbarui');
