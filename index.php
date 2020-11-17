@@ -23,6 +23,8 @@ switch(@$_COOKIE['lang']){
     break;
     case 'de': include_once 'lang/de.php';
     break;
+    case 'id': include_once 'lang/id.php';
+    break;
 }
 
 if(isset($_GET['lang'])){
@@ -176,6 +178,7 @@ if(isset($_GET['lang'])){
 				<a href="?lang=es"><img src="lang/spain.png" title="Español" class="flag_icons"></a>
 				<a href="?lang=ru"><img src="lang/russia.png" title="Pусский" class="flag_icons"></a>
 				<a href="?lang=de"><img src="lang/germany.png" title="Deutsche" class="flag_icons"></a>
+				<a href="?lang=id"><img src="lang/indonesia.png" title="Indonesia" class="flag_icons"></a>
 			</div>
 			<p class="space20"></p>
 			<h3 id="disclaimer"><?=IndexCookie;?></h3>

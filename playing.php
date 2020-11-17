@@ -23,6 +23,9 @@ switch($_COOKIE['lang']){
     case 'de': include_once 'lang/de.php';
     $lang = 'de';
     break;
+    case 'id': include_once 'lang/id.php';
+    $lang = 'id';
+    break;
 }
 ?>
 <!DOCTYPE html>
