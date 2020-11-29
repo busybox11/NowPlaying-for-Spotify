@@ -91,7 +91,7 @@ if(isset($_GET['lang'])){
 			text-transform: uppercase;
 			letter-spacing: 1px;
 			font-weight: 600;
-			transition: all .5s;
+			transition: all .25s;
 		}
 
 		.spotify_btn:hover {
@@ -124,7 +124,7 @@ if(isset($_GET['lang'])){
 
 		.links_icons {
 			fill: gray;
-			transition: all .5s;
+			transition: all .25s;
 			margin: 4px;
 		}
 
@@ -136,7 +136,7 @@ if(isset($_GET['lang'])){
 			font-weight: normal;
 			opacity: 50%;
 			font-size: 12px;
-			transition: all .5s;
+			transition: all .25s;
 		}
 
 		#disclaimer:hover {
@@ -148,7 +148,7 @@ if(isset($_GET['lang'])){
 			height: 32px;
 			width: auto;
 			opacity: 50%;
-			transition: all .5s;
+			transition: all .25s;
 			margin: 5px;
 		}
 
