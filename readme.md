@@ -82,6 +82,10 @@ HTML, CSS, JS, PHP
 - Themes (experimental theme / theme switcher since v1.4.3)
 - Chromecast integration
 
+## **Feature ideas**
+
+- Analytics panel
+
 ## **How to host this?**
 
 You can use XAMPP (multi-platform) or Wampserver (Windows only) but any webserver with PHP 7.0 or greater is good to use, with the `php-curl` module.
