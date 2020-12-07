@@ -1,5 +1,5 @@
 <?php
-define('IndexTitle', 'Welcome to NowPlaying for Spotify !');
+define('IndexTitle', 'Welcome to NowPlaying for Spotify!');
 define('IndexDescription', 'Please login with your Spotify account.');
 define('IndexConnection', 'Login to Spotify');
 define('IndexCookie', 'By clicking on \'LOGIN TO SPOTIFY\', you accept the use of cookies necessary for the proper functioning of the site.');
@@ -12,7 +12,7 @@ define('ad', 'Advertisement');
 define('by', 'by');
 
 define('Error', 'Error');
-define('IndexError404', 'This page doesn\'t exist. Ain\'t you trying to hack me ?');
+define('IndexError404', 'This page doesn\'t exist. Ain\'t you trying to hack me?');
 define('IndexGoBack', 'Go back');
 
 define('streamTitleSong', 'No music currently playing');
