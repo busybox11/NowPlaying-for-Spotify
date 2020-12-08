@@ -8,11 +8,22 @@ if(!isset($_COOKIE['lang']) OR empty($_COOKIE['lang'])){
     setcookie('lang', 'en', time() + 60*60*24*30);
 }
 switch(@$_COOKIE['lang']){
-    case 'fr': include_once '../lang/fr.php';
-    break;
     case 'en': default: include_once '../lang/en.php';
     break;
+    case 'fr': include_once '../lang/fr.php';
+    break;
+    case 'it': include_once '../lang/it.php';
+    break;
+    case 'es': include_once '../lang/es.php';
+    break;
+    case 'ru': include_once '../lang/ru.php';
+    break;
+    case 'de': include_once '../lang/de.php';
+    break;
+    case 'id': include_once '../lang/id.php';
+    break;
 }
+
 if(isset($_GET['lang'])){
     header('Location: '.$_SERVER['PHP_SELF']);
 }
