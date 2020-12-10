@@ -238,6 +238,9 @@ i.large {
     #device-name {
         vertical-align: sub;
     }
+    #song-artist {
+        margin-top: 8px;
+    }
     h1 {
         font-size: 30px;
         margin: 0px;
@@ -289,6 +292,7 @@ i.large {
     }
     h2 {
         font-size: 30px;
+        margin-top: 8px;
     }
     h3 {
         font-size: 15px;
