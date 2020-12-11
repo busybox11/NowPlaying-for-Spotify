@@ -4,6 +4,7 @@ body {
     margin: 0 auto;
     justify-content: center;
     font-variant-ligatures: no-common-ligatures;
+    font-family: "Product Sans", sans-serif;
 }
 
 #background-image-div {
