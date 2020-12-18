@@ -73,6 +73,7 @@ HTML, CSS, JS, PHP
 ## **Known bugs**
 
 - Podcasts aren't recognized
+- White flash when loading new artwork
 
 ## **Upcoming features**
 
