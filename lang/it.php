@@ -1,8 +1,8 @@
 <?php
 define('IndexTitle', 'Benvenuto su NowPlaying for Spotify!');
 define('IndexDescription', 'Per favore connettiti a Spotify.');
-define('IndexConnection', 'Connetterti a Spotify');
-define('IndexCookie', 'Cliccando \'Connetterti a Spotify\', accetti l\'utilizazzione dei cookies necessari al funzionamento del sito.');
+define('IndexConnection', 'Connettersi a Spotify');
+define('IndexCookie', 'Cliccando \'Connettersi a Spotify\', accetti l\'utilizazzione dei cookies necessari al funzionamento del sito.');
 
 define('defaultTitleSong', 'Nessuna canzone sta giocando');
 define('defaultArtistSong', 'Per favore aspetta qualche secondi per l\'aggiornamento');
