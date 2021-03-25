@@ -6,26 +6,7 @@ if(isset($_GET)){
     }
 }
 
-if(!isset($_COOKIE['lang']) OR empty($_COOKIE['lang'])){
-    setcookie('lang', 'en', time() + 60*60*24*30);
-}
-
-switch(@$_COOKIE['lang']){
-    case 'en': default: include_once 'lang/en.php';
-    break;
-    case 'fr': include_once 'lang/fr.php';
-    break;
-    case 'it': include_once 'lang/it.php';
-    break;
-    case 'es': include_once 'lang/es.php';
-    break;
-    case 'ru': include_once 'lang/ru.php';
-    break;
-    case 'de': include_once 'lang/de.php';
-    break;
-    case 'id': include_once 'lang/id.php';
-    break;
-}
+include_once('lang.php');
 
 if(isset($_GET['lang'])){
     header('Location: '.$_SERVER['PHP_SELF']);
@@ -34,135 +15,30 @@ if(isset($_GET['lang'])){
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="<?=$lang;?>">
 <head>
 	<title>NowPlaying for Spotify</title>
-	<link rel="icon" type="image/png" href="favicon.png">
+	<link rel="icon" type="image/png" href="assets/images/favicon.png">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="NowPlaying for Spotify is a smooth Spotify Connect visualizer, which display the music playing on Spotify" />
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:creator" content="@busybox11" />
-	<meta name="twitter:image" content="https://<?=$_SERVER['SERVER_NAME'];?>/favicon.png" />
+	<meta name="twitter:image" content="https://<?=$_SERVER['SERVER_NAME'];?>/assets/images/favicon.png" />
 	<meta property="og:title" content="NowPlaying for Spotify" />
 	<meta property="og:type" content="website" />
 	<meta property="og:description" content="NowPlaying for Spotify is a smooth Spotify Connect visualizer, which display the music playing on Spotify" />
-	<meta name="og:image" content="https://<?=$_SERVER['SERVER_NAME'];?>/favicon.png" />
+	<meta name="og:image" content="https://<?=$_SERVER['SERVER_NAME'];?>/assets/images/favicon.png" />
 	<meta name="theme-color" content="#23a92a" />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link href="productsans.css?ts=1593120039" rel="stylesheet">
-	<style>
-		* {
-			box-sizing: border-box;
-		}
-
-		body {
-			background-color: #000020;
-			color:white;
-			font-family: "Product Sans";
-			font-size: 16px;
-			font-size: 1rem;
-			margin: 0;
-		}
-
-		p,
-		h1,
-		h2,
-		h3,
-		a {
-			color: white;
-			text-decoration: none;
-		}
-
-		.content {
-			min-height: 100vh;
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			padding-top: 35px;
-		}
-
-		.spotify_btn {
-			background-color: #15883D;
-			border-radius: 500px;
-			padding: 19px 56px 21px;
-			color: white;
-			font-size: 16px;
-			text-transform: uppercase;
-			letter-spacing: 1px;
-			font-weight: 600;
-			transition: all .25s;
-		}
-
-		.spotify_btn:hover {
-			background-color: #1DB954;
-			transform: scale(1.025);
-		}
-
-		#login_btn {
-			margin-bottom: 20px;
-		}
-
-		.space20 {
-			height: 20px;
-		}
-
-		#app_title {
-			margin-bottom: 5px;
-		}
-
-		#app_desc {
-			margin-top: 5px;
-			margin-bottom: 15px;
-			font-weight: 300;
-			letter-spacing: 1px;
-		}
-
-		#links_icons_div {
-			margin-bottom: 20px;
-		}
-
-		.links_icons {
-			fill: gray;
-			transition: all .25s;
-			margin: 4px;
-		}
-
-		.links_icons:hover {
-			fill: white;
-		}
-
-		#disclaimer {
-			font-weight: normal;
-			opacity: 50%;
-			font-size: 12px;
-			transition: all .25s;
-		}
-
-		#disclaimer:hover {
-			opacity: 100%;
-		}
-
-
-		.flag_icons {
-			height: 32px;
-			width: auto;
-			opacity: 50%;
-			transition: all .25s;
-			margin: 5px;
-		}
-
-		.flag_icons:hover {
-			opacity: 100%;
-			transform: scale(1.025);
-		}
+	<link href="assets/styles/productsans.css?ts=1593120039" rel="stylesheet">
+	<link href="assets/styles/index.css" rel="stylesheet" />
 	</style>
 </head>
 
 <body>
 		<div class="content" style="margin:0 auto;text-align:center;">
 			<div>
-				<img src="favicon.png" alt="Logo" width="100px" height="100px">
+				<img src="assets/images/favicon.png" alt="Logo" width="100px" height="100px">
 				<h1 id="app_title"><?=IndexTitle;?></h1>
 				<h2 id="app_desc"><?=IndexDescription;?></h2>
 				<div id="links_icons_div">
@@ -173,13 +49,13 @@ if(isset($_GET['lang'])){
 			</div>
 			<a href="login.php" class="spotify_btn" id="login_btn"><?=IndexConnection;?></a>
 			<div>
-				<a href="?lang=en"><img src="lang/united-kingdom.png" title="English" class="flag_icons"></a>
-				<a href="?lang=fr"><img src="lang/france.png" title="Français" class="flag_icons"></a>
-				<a href="?lang=it"><img src="lang/italy.png" title="Italiano" class="flag_icons"></a>
-				<a href="?lang=es"><img src="lang/spain.png" title="Español" class="flag_icons"></a>
-				<a href="?lang=ru"><img src="lang/russia.png" title="Pусский" class="flag_icons"></a>
-				<a href="?lang=de"><img src="lang/germany.png" title="Deutsche" class="flag_icons"></a>
-				<a href="?lang=id"><img src="lang/indonesia.png" title="Indonesia" class="flag_icons"></a>
+				<a href="?lang=en"><img src="assets/images/united-kingdom.png" title="English" class="flag_icons"></a>
+				<a href="?lang=fr"><img src="assets/images/france.png" title="Français" class="flag_icons"></a>
+				<a href="?lang=it"><img src="assets/images/italy.png" title="Italiano" class="flag_icons"></a>
+				<a href="?lang=es"><img src="assets/images/spain.png" title="Español" class="flag_icons"></a>
+				<a href="?lang=ru"><img src="assets/images/russia.png" title="Pусский" class="flag_icons"></a>
+				<a href="?lang=de"><img src="assets/images/germany.png" title="Deutsche" class="flag_icons"></a>
+				<a href="?lang=id"><img src="assets/images/indonesia.png" title="Indonesia" class="flag_icons"></a>
 			</div>
 			<p class="space20"></p>
 			<h3 id="disclaimer"><?=IndexCookie;?></h3>
