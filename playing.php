@@ -91,19 +91,19 @@ switch($_COOKIE['lang']){
                 deviceName = response["device"].name;
                 deviceType = response["device"].type;
                 if (response.is_playing == true) {
-                    $("#playing-div #song-info-div #activestate #activeicon").text(DEVICES_ICON[AVAILABLE_DEVICES.indexOf(deviceType)]);
+                    $("#activeicon").text(DEVICES_ICON[AVAILABLE_DEVICES.indexOf(deviceType)]);
                     // $("#pause-button").text("pause");
-                    $("#playing-div #song-info-div #activestate #device-name").text(deviceName);
+                    $("#device-name").text(deviceName);
                     if (iCast < 11) {
                         iCast = 0;
                     }
                 } else {
-                    $("#playing-div #song-info-div #activestate #activeicon").text("pause");
+                    $("#activeicon").text("pause");
                     // $("#pause-button").text("play_arrow");
                     if (iCast <= 4) {
-                        $("#playing-div #song-info-div #activestate #device-name").text('Ready to cast on NowPlaying for Spotify #' + localStorage.getItem('deviceId'));
+                        $("#device-name").text('Ready to cast on NowPlaying for Spotify #' + localStorage.getItem('deviceId'));
                     } else {
-                        $("#playing-div #song-info-div #activestate #device-name").text(deviceName);
+                        $("#device-name").text(deviceName);
                         if (iCast == 9) {
                             iCast = -1;
                         }
@@ -126,7 +126,7 @@ switch($_COOKIE['lang']){
                     albumSong = response["item"]["album"].name;
                     title = titleSong + " <?=by;?> " + artistSong + " - " + deviceName + " - Now Playing for Spotify";
                     albumPicture = response["item"]["album"]["images"]["0"].url;
-                    $("#playing-div #song-info-div #time-song").text(progressSongFormatted + " · " + lenghtSongFormatted);
+                    $("#time-song").text(progressSongFormatted + " · " + lenghtSongFormatted);
                 } else {
                     titleSong = "<?=ad;?>";
                     artistSong = "Spotify";
@@ -136,19 +136,24 @@ switch($_COOKIE['lang']){
                     lenghtSong = " ";
                     lenghtSongFormatted = " ";
                     seekbarProgress = 0;
-                    $("#playing-div #song-info-div #time-song").text(progressSongFormatted);
+                    $("#time-song").text(progressSongFormatted);
                 }
-                $("#playing-div #song-info-div #seekbar-now").attr("style", "width : " + seekbarProgress + "%");
+                let img = new Image();
+                $(img).on("load", function() {
+                    $("#playing-div img").attr("src", albumPicture);
+                    $("#background-image-div").attr("style", "background: url('" + albumPicture + "');background-size:cover;background-position: center center;");
+                });
+                img.src = albumPicture;
+
+                $("#seekbar-now").attr("style", "width : " + seekbarProgress + "%");
 
                 if ($("#song-title").text() == "<?=defaultTitleSong; ?>" || response["item"].id != idSong) {
-                $("#song-title").text(titleSong);
-                $("#song-artist").text(artistSong);
-                $("#song-album").text(albumSong);
-                document.title = title;
-                $("#playing-div img").attr("src", albumPicture);
-                $("#background-image-div").attr("style", "background: url('" + albumPicture + "');background-size:cover;background-position: center center;");
-                idSong = response["item"].id;
-            }
+                    $("#song-title").text(titleSong);
+                    $("#song-artist").text(artistSong);
+                    $("#song-album").text(albumSong);
+                    document.title = title;
+                    idSong = response["item"].id;
+                }
             }
 
             function noInformations () {
