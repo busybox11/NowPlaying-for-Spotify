@@ -9,7 +9,7 @@ define('defaultArtistSong', 'Per favore aspetta qualche secondi per l\'aggiornam
 define('defaultTitle', 'Nessuna canzone - Spotify Connect - Now Playing');
 define('ad', 'Publicità');
 
-define('by', 'di');
+define('title_artistSong', "%title% di %artist%")
 
 define('Error', 'Errore');
 define('IndexError404', 'Questa pagine non esiste. Non stai provando di hackarmi, eh?');

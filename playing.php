@@ -97,7 +97,7 @@ include_once('lang.php');
                     }
                     artistSong = tempArtist;
                     albumSong = response["item"]["album"].name;
-                    title = titleSong + " <?=by;?> " + artistSong + " - " + deviceName + " - Now Playing for Spotify";
+                    title = "<?=title_artistSong;?>".replace("%title%", titleSong).replace("%artist%", artistSong);
                     albumPicture = response["item"]["album"]["images"]["0"].url;
                     $("#time-song").text(progressSongFormatted + " · " + lenghtSongFormatted);
                 } else {

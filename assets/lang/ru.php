@@ -10,6 +10,7 @@ define('defaultTitle', 'Никакой музыки - Spotify Connect - Now Play
 define('ad', 'Реклама');
 
 define('by', 'с');
+define('title_artistSong', "%title% с %artist%");
 
 define('Error', 'Ошибка');
 define('IndexError404', 'Эта страница не существует. Разве ты не пытаешься меня взломать?');

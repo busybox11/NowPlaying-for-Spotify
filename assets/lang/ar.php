@@ -9,7 +9,7 @@ define('defaultArtistSong', 'من فضلك انتظر بضع ثوان حتى ي�
 define('defaultTitle', 'لا موسيقى - Spotify Connect - Now Playing');
 define('ad', 'إعلانات');
 
-define('by', 'de'); //le "de" en arabe change beacoup avec les circonstanes donc il n'y a pas un mot/lettre que je peux mettre sans des circonstances specifiques
+define('title_artistSong', "%title% de %artist%"); // "de" need to be translated
 
 define('Error', 'خطأ');
 define('IndexError404', 'هذه الصفحة غير موجودة. ألن تحاول اختراقي؟');
