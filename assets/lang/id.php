@@ -9,7 +9,7 @@ define('defaultArtistSong', 'Harap tunggu beberapa detik saat status sedang dipe
 define('defaultTitle', 'Tidak ada musik - Spotify Connect - Now Playing');
 define('ad', 'Iklan');
 
-define('title_artistSong', "%title% oleh %artist%")
+define('title_artistSong', "%title% oleh %artist%");
 
 define('Error', 'Kesalahan');
 define('IndexError404', 'Halaman ini tidak ada. Apakah Anda tidak mencoba meretas saya ?');
