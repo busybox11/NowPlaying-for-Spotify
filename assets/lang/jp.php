@@ -10,6 +10,7 @@ define('defaultTitle', '音楽はありません。 - Spotify Connect - Now Play
 define('ad', '広告');
 
 define('by', 'から');
+define('title_artistSong', "%title% から %artist%");
 
 define('Error', 'エラー');
 define('IndexError404', 'そのページは存在しません。私をハッキングしようとしてるんじゃないの？');

@@ -1,4 +1,1 @@
-ErrorDocument 404 /error/404.php
-
-php_flag display_errors On
-php_value error_reporting "E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED"
+ErrorDocument 404 /404.php

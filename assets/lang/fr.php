@@ -10,6 +10,7 @@ define('defaultTitle', 'Pas de musique - Spotify Connect - Now Playing');
 define('ad', 'Publicité');
 
 define('by', 'de');
+define('title_artistSong', "%title% de %artist%");
 
 define('Error', 'Erreur');
 define('IndexError404', 'Cette page n\'existe pas. N\'essayerais-tu pas de me hacker ?');
