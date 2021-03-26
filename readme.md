@@ -1,4 +1,4 @@
-<img src="https://github.com/busybox11/NowPlaying-for-Spotify/blob/master/favicon.png?" alt="Logo" width="100px" height="100px">
+<img src="https://github.com/busybox11/NowPlaying-for-Spotify/blob/master/assets/images/favicon.png?" alt="Logo" width="100px" height="100px">
 
 # NowPlaying for Spotify
 
