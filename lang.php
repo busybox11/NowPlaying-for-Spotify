@@ -40,5 +40,9 @@ switch(@$_COOKIE['lang']){
         include_once 'assets/lang/gr.php'
         $lang = 'gr'
     break;
+    case 'zh_tw':
+        include_once 'assets/lang/zh_tw.php'
+        $lang = 'zh_tw'
+    break;
 }
 ?>
