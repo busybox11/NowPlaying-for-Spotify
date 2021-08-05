@@ -2,7 +2,7 @@
 define('IndexTitle', 'Bonvenon al NowPlaying for Spotify!');
 define('IndexDescription', 'Bonvolu ensaluti kun via konto Spotify.');
 define('IndexConnection', 'Ensaluti Spotify');
-define('IndexCookie', 'Alklakante \'LOGIN TO SPOTIFY\', vi akceptas la uzado de kuketoj necesataj por la bona funkciado de la retejo.');
+define('IndexCookie', 'Alklakante \'ENSALUTI SPOTIFY\', vi akceptas la uzadon de kuketoj necesataj por la bona funkciado de la retejo.');
 
 define('defaultTitleSong', 'Neniu muziko nune ludantas');
 define('defaultArtistSong', 'Bonvolu atendi kelkajn sekundojn, dum la statuto ĝisdatiĝas');
