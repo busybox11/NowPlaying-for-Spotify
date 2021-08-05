@@ -4,6 +4,10 @@ if(!isset($_COOKIE['lang']) || empty($_COOKIE['lang'])) {
 }
 
 switch(@$_COOKIE['lang']){
+    case 'ar':
+        include_once 'assets/lang/ar.php';
+        $lang = 'ar';
+    break;
     case 'fr': 
         include_once 'assets/lang/fr.php';
         $lang = 'fr';
@@ -51,10 +55,6 @@ switch(@$_COOKIE['lang']){
     case 'zh_tw':
         include_once 'assets/lang/zh_tw.php';
         $lang = 'zh_tw';
-    break;
-    case 'ar':
-        include_once 'assets/lang/ar.php';
-        $lang = 'ar';
     break;
 }
 ?>
