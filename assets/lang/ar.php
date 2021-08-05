@@ -2,7 +2,7 @@
 define('IndexTitle', '!NowPlaying for Spotify مرحبًا بك في');
 define('IndexDescription', '.يرجى تسجيل الدخول باستخدام حساب Spotify الخاص بك');
 define('IndexConnection', 'Spotifyاتصل بـ');
-define('IndexCookie', 'بابالنقر فوق هذا الزر ، فإنك تقبل استخدام ملفات تعريف الارتباط اللازمة لسير عمل الموقع بشكل صحيح.');
+define('IndexCookie', 'بالنقر فوق \' Spotifyاتصل بـ \'، فإنك تقبل استخدام ملفات تعريف الارتباط اللازمة للتشغيل السليم للموقع.');
 
 define('defaultTitleSong', 'ليس هناك موسيقى قيد التشغيل');
 define('defaultArtistSong', 'من فضلك انتظر بضع ثوان حتى يتم التشغيل');
