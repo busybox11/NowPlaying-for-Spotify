@@ -1,5 +1,5 @@
 <?php
-define('IndexTitle', 'Bonvenon al NowPlaying por Spotify!');
+define('IndexTitle', 'Bonvenon al NowPlaying for Spotify!');
 define('IndexDescription', 'Bonvolu ensaluti kun via konto Spotify.');
 define('IndexConnection', 'Ensaluti Spotify');
 define('IndexCookie', 'Alklakante \'LOGIN TO SPOTIFY\', vi akceptas la uzado de kuketoj necesataj por la bona funkciado de la retejo.');
