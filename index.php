@@ -60,6 +60,7 @@ if(isset($_GET['lang'])){
  				<a href="?lang=tr"><img src="assets/images/turkey.png" title="Turkish" class="flag_icons"></a>
 				<a href="?lang=gr"><img src="assets/images/greece.png" title="Greece" class="flag_icons"></a>
 				<a href="?lang=zh_tw"><img src="assets/images/taiwan.png" title="Traditionnal Chinese" class="flag_icons"></a>
+				<a href="?lang=ar"><img src="assets/images/arabic.png" title="Arabic" class="flag_icons"></a>
 			</div>
 			<p class="space20"></p>
 			<h6 id="disclaimer"><?=IndexCookie;?></h6>
