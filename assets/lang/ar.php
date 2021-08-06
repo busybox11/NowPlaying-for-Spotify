@@ -1,7 +1,7 @@
 <?php
 define('IndexTitle', '!NowPlaying for Spotify مرحبًا بك في');
 define('IndexDescription', '.يرجى تسجيل الدخول باستخدام حساب Spotify الخاص بك');
-define('IndexConnection', 'تسجيل الدخول إلى SPOTIFY');
+define('IndexConnection', 'تتسجيل الدخول إلى SPOTIFY');
 define('IndexCookie', 'بالنقر فوق \' تتسجيل الدخول إلى SPOTIFY \' ، فإنك تقبل استخدام ملفات تعريف الارتباط اللازمة للتشغيل السليم للموقع.');
 
 define('defaultTitleSong', 'ليس هناك موسيقى قيد التشغيل');
