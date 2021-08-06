@@ -49,19 +49,19 @@ if(isset($_GET['lang'])){
 			</div>
 			<a href="login.php" class="spotify_btn" id="login_btn"><?=IndexConnection;?></a>
 			<div>
-				<a href="?lang=en"><img src="assets/images/united-kingdom.png" title="English" class="flag_icons"></a>
-				<a href="?lang=fr"><img src="assets/images/france.png" title="Français" class="flag_icons"></a>
-				<a href="?lang=it"><img src="assets/images/italy.png" title="Italiano" class="flag_icons"></a>
-				<a href="?lang=es"><img src="assets/images/spain.png" title="Español" class="flag_icons"></a>
-				<a href="?lang=ru"><img src="assets/images/russia.png" title="Pусский" class="flag_icons"></a>
-				<a href="?lang=de"><img src="assets/images/germany.png" title="Deutsche" class="flag_icons"></a>
-				<a href="?lang=id"><img src="assets/images/indonesia.png" title="Indonesia" class="flag_icons"></a>
-				<a href="?lang=cz"><img src="assets/images/czech.png" title="Czech" class="flag_icons"></a>
- 				<a href="?lang=tr"><img src="assets/images/turkey.png" title="Turkish" class="flag_icons"></a>
-				<a href="?lang=gr"><img src="assets/images/greece.png" title="Greece" class="flag_icons"></a>
-				<a href="?lang=zh_tw"><img src="assets/images/taiwan.png" title="Traditionnal Chinese" class="flag_icons"></a>
-				<a href="?lang=ar"><img src="assets/images/arabic.png" title="Arabic" class="flag_icons"></a>
-				<a href="?lang=eo"><img src="assets/images/esperanto.png" title="Esperanto" class="flag_icons"></a>
+				<a href="?lang=en"><img src="assets/images/flags/uk.svg" title="English" class="flag_icons"></a>
+				<a href="?lang=fr"><img src="assets/images/flags/fr.svg" title="Français" class="flag_icons"></a>
+				<a href="?lang=it"><img src="assets/images/flags/it.svg" title="Italiano" class="flag_icons"></a>
+				<a href="?lang=es"><img src="assets/images/flags/es.svg" title="Español" class="flag_icons"></a>
+				<a href="?lang=ru"><img src="assets/images/flags/ru.svg" title="Pусский" class="flag_icons"></a>
+				<a href="?lang=de"><img src="assets/images/flags/de.svg" title="Deutsche" class="flag_icons"></a>
+				<a href="?lang=id"><img src="assets/images/flags/id.svg" title="Indonesia" class="flag_icons"></a>
+				<a href="?lang=cz"><img src="assets/images/flags/cz.svg" title="Czech" class="flag_icons"></a>
+ 				<a href="?lang=tr"><img src="assets/images/flags/tr.svg" title="Turkish" class="flag_icons"></a>
+				<a href="?lang=gr"><img src="assets/images/flags/gr.svg" title="Greece" class="flag_icons"></a>
+				<a href="?lang=zh_tw"><img src="assets/images/flags/zh_tw.svg" title="Traditionnal Chinese" class="flag_icons"></a>
+				<a href="?lang=ar"><img src="assets/images/flags/ar.svg" title="Arabic" class="flag_icons"></a>
+				<a href="?lang=eo"><img src="assets/images/flags/eo.svg" title="Esperanto" class="flag_icons"></a>
 			</div>
 			<p class="space20"></p>
 			<h6 id="disclaimer"><?=IndexCookie;?></h6>
