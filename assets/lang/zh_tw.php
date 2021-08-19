@@ -2,8 +2,8 @@
 <?php
 define('IndexTitle', '歡迎來到 NowPlaying For Spotify!');
 define('IndexDescription', '請登入你的Spotify帳號');
-define('IndexConnection', '登入至Spotify');
-define('IndexCookie', '單擊“登錄到 SPOTIFY”，即表示您接受使用網站正常運行所需的 cookie');
+define('IndexConnection', '使用Spotify登入');
+define('IndexCookie', '單擊“使用Spotify登入”，即表示您接受使用網站正常運行所需的 cookie');
 
 define('defaultTitleSong', '當前沒有音樂播放');
 define('defaultArtistSong', '狀態正在更新中，請等待幾秒鐘');
