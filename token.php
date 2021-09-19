@@ -9,9 +9,9 @@ $dotenv->load();
 
 
 $session = new SpotifyWebAPI\Session(
-$CLIENT_ID = getenv("CLIENT_ID"),
-$CLIENT_SECRET = getenv("CLIENT_SECRET"),
-$REDIRECT_URI = getenv("REDIRECT_URI")
+$CLIENT_ID = $_ENV['CLIENT_ID'],
+$CLIENT_SECRET = $_ENV['CLIENT_SECRET'],
+$REDIRECT_URI = $_ENV['REDIRECT_URI'],
 
 );
 
@@ -39,4 +39,3 @@ if (!isset($_GET['action'])) {
 header('Location: playing.php');
 die();
 ?>
-
