@@ -1,10 +1,18 @@
 <?php
 require_once 'vendor/autoload.php';
 
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+
+
 $session = new SpotifyWebAPI\Session(
-    'YOUR_CLIENT_ID',
-    'YOUR_CLIENT_SECRET',
-    'YOUR_DOMAIN/token.php'
+$CLIENT_ID = $_ENV['CLIENT_ID'],
+$CLIENT_SECRET = $_ENV['CLIENT_SECRET'],
+$REDIRECT_URI = $_ENV['REDIRECT_URI'],
+
+
 );
 
 $options = [
@@ -18,3 +26,4 @@ $options = [
 header('Location: ' . $session->getAuthorizeUrl($options));
 die();
 ?>
+
