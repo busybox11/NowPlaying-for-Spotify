@@ -1,3 +1,4 @@
+<?php
 
 define('IndexTitle', 'Welkom bij NowPlaying voor Spotify!');
 define('IndexDescription', 'Log in met je Spotify-account.');
