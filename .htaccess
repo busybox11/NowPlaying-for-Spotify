@@ -1,1 +1,4 @@
 ErrorDocument 404 /404.php
+ErrorDocument 403 /403.php
+
+RedirectMatch 403 /.env
