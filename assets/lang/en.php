@@ -13,6 +13,7 @@ define('title_artistSong', "%title% by %artist%");
 
 define('Error', 'Error');
 define('IndexError404', 'This page doesn\'t exist. Ain\'t you trying to hack me?');
+define('IndexError403', 'Forbidden access');
 define('IndexGoBack', 'Go back');
 
 define('streamTitleSong', 'No music currently playing');

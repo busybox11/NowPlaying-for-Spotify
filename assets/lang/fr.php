@@ -14,6 +14,7 @@ define('title_artistSong', "%title% de %artist%");
 
 define('Error', 'Erreur');
 define('IndexError404', 'Cette page n\'existe pas. N\'essayerais-tu pas de me hacker ?');
+define('IndexError403', 'Accès interdit');
 define('IndexGoBack', 'Retourner en arrière');
 
 define('streamTitleSong', 'Pas de musique');
