@@ -42,16 +42,6 @@ if(isset($_GET['lang'])){
 				<h2 id="app_desc"><?=IndexError404;?></h2>
             </div>
             <a href="javascript:window.history.back()" id="login_btn" class="spotify_btn"><?=IndexGoBack;?></a>
-            <div>
-				<a href="index.php?lang=en"><img src="assets/images/united-kingdom.png" title="English" class="flag_icons"></a>
-				<a href="index.php?lang=fr"><img src="assets/images/france.png" title="Français" class="flag_icons"></a>
-				<a href="index.php?lang=it"><img src="assets/images/italy.png" title="Italiano" class="flag_icons"></a>
-				<a href="index.php?lang=es"><img src="assets/images/spain.png" title="Español" class="flag_icons"></a>
-				<a href="index.php?lang=ru"><img src="assets/images/russia.png" title="Pусский" class="flag_icons"></a>
-				<a href="index.php?lang=de"><img src="assets/images/germany.png" title="Deutsche" class="flag_icons"></a>
-				<a href="index.php?lang=id"><img src="assets/images/indonesia.png" title="Indonesia" class="flag_icons"></a>
-			</div>
-            <p class="space20"></p>
         </div>
 </body>
 </html>
