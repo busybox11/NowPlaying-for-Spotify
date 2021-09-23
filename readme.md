@@ -16,7 +16,7 @@ Dedicated Discord server: [nowplayi.ng/discord](https://nowplayi.ng/discord)
 
 Tip to me: [paypal.me/busybox11](https://paypal.me/busybox11)
 
-Latest release: 1.6.2
+Latest release: 1.6.6
 
 ## **Changelog**
 
@@ -27,6 +27,8 @@ v1.6.X
 - Updated French and English sentences 
 - Compatibility with Dark Reader
 - Better UI consistency / CSS tweaks
+- More languages
+- .env support (thanks @finnie2006!)
 
 <details>
   <summary>v1.5.X</summary>
@@ -72,16 +74,16 @@ HTML, CSS, JS, PHP
 
 ## **Known bugs**
 
-- Podcasts aren't recognized
-- White flash when loading new artwork
+- [ ] Podcasts aren't recognized
+- [X] ~~White flash when loading new artwork~~
 
 ## **Upcoming features**
 
-- OBS source (In progress!)
-- Local players support (coming with [localmusic-api](https://github.com/busybox11/localmusic-api/projects))
-- Better config handling (e.g. automatic deployment, **HELP WANTED!**)
-- Themes (experimental theme / theme switcher since v1.4.3)
-- Chromecast integration
+- [ ] OBS source (In progress!)
+- [ ] Local players support (coming with [localmusic-api](https://github.com/busybox11/localmusic-api/projects))
+- [X] ~~Better config handling (e.g. automatic deployment, **HELP WANTED!**)~~
+- [ ] Themes (experimental theme / theme switcher since v1.4.3)
+- [ ] Chromecast integration
 
 ## **Feature ideas**
 
