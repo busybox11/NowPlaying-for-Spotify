@@ -90,6 +90,7 @@ HTML, CSS, JS, PHP
 ## **How to host this?**
 
 You can use XAMPP (multi-platform) or Wampserver (Windows only) but any webserver with PHP 7.0 or greater is good to use, with the `php-curl` module.
+
 !!! If you are on Nginx you need to add this to your config, or else your .env will be exposed to the internet !!!
 ```
 location /.env {
