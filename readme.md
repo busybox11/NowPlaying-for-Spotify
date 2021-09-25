@@ -77,13 +77,14 @@ HTML, CSS, JS, PHP
 - [ ] Podcasts aren't recognized
 - [X] ~~White flash when loading new artwork~~
 
-## **Upcoming features**
+## **Upcoming changes**
 
 - [ ] OBS source (In progress!)
-- [ ] Local players support (coming with [localmusic-api](https://github.com/busybox11/localmusic-api/projects))
+- [ ] Local players support (coming with [localmusic-api](https://github.com/busybox11/localmusic-api/projects) - [MPRIS electron app by @AryToNeX](https://github.com/AryToNeX/nowplaying-electron))
 - [X] ~~Better config handling (e.g. automatic deployment, **HELP WANTED!**)~~
 - [ ] Themes (experimental theme / theme switcher since v1.4.3)
 - [ ] Chromecast integration
+- [ ] Refactor everything (I'm sorry)
 
 ## **Feature ideas**
 
@@ -123,5 +124,6 @@ Let's go back on our app's panel. You need to declare the URL where the `token.p
 ## **Credits**
 Flags by [Freepik](https://www.freepik.com/) of the [www.flaticon.com](https://www.flaticon.com/) website under [Creative Commons BY 3.0](http://creativecommons.org/licenses/by/3.0/) license.
 
-## **Forked repos**
-[NowPlaying Dashboard for Spotify by peterdconradie](https://github.com/peterdconradie/Now-Playing-Dashboard-for-Spotify)
+## **Featured similar projects / forks**
+- [NowPlaying Dashboard for Spotify by @peterdconradie](https://github.com/peterdconradie/Now-Playing-Dashboard-for-Spotify)
+- [MPRIS electron app by @AryToNeX](https://github.com/AryToNeX/nowplaying-electron)
