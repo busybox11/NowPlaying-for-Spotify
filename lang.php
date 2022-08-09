@@ -3,6 +3,7 @@ if(!isset($_COOKIE['lang']) || empty($_COOKIE['lang'])) {
     setcookie('lang', 'en', time() + 60*60*24*30);
 }
 
+// TODO: Use single function instead of switch
 switch(@$_COOKIE['lang']){
     case 'ar':
         include_once 'assets/lang/ar.php';
@@ -59,6 +60,10 @@ switch(@$_COOKIE['lang']){
          case 'nl':
         include_once 'assets/lang/nl.php';
         $lang = 'nl';
+    break;
+         case 'az':
+        include_once 'assets/lang/az.php';
+        $lang = 'az';
     break;
 }
 ?>
