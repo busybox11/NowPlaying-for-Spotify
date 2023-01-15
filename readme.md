@@ -80,7 +80,7 @@ HTML, CSS, JS, PHP
 ## **Upcoming changes**
 
 - [ ] OBS source (In progress!)
-- [ ] Local players support (coming with [localmusic-api](https://github.com/busybox11/localmusic-api/projects) - [MPRIS electron app by @AryToNeX](https://github.com/AryToNeX/nowplaying-electron))
+- [ ] Local players support (coming with [localmusic-api](https://github.com/busybox11/localmusic-api/projects) - [Sunamu by @NyaomiDEV](https://github.com/NyaomiDEV/Sunamu))
 - [X] ~~Better config handling (e.g. automatic deployment, **HELP WANTED!**)~~
 - [ ] Themes (experimental theme / theme switcher since v1.4.3)
 - [ ] Chromecast integration
