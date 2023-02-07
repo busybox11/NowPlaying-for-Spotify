@@ -79,12 +79,12 @@ HTML, CSS, JS, PHP
 
 ## **Upcoming changes**
 
+- [ ] Rewrite (see [discussion #76](https://github.com/busybox11/NowPlaying-for-Spotify/discussions/76) about the possible use of web frameworks)
 - [ ] OBS source (In progress!)
 - [ ] Local players support (coming with [localmusic-api](https://github.com/busybox11/localmusic-api/projects) - [Sunamu by @NyaomiDEV](https://github.com/NyaomiDEV/Sunamu))
 - [X] ~~Better config handling (e.g. automatic deployment, **HELP WANTED!**)~~
 - [ ] Themes (experimental theme / theme switcher since v1.4.3)
 - [ ] Chromecast integration
-- [ ] Refactor everything (I'm sorry)
 
 ## **Feature ideas**
 
