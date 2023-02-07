@@ -54,7 +54,7 @@ if(isset($_GET['lang'])){
 				<a href="?lang=it"><img src="assets/images/flags/it.svg" title="Italiano" class="flag_icons"></a>
 				<a href="?lang=es"><img src="assets/images/flags/es.svg" title="Español" class="flag_icons"></a>
 				<a href="?lang=ru"><img src="assets/images/flags/ru.svg" title="Pусский" class="flag_icons"></a>
-				<a href="?lang=de"><img src="assets/images/flags/de.svg" title="Deutsche" class="flag_icons"></a>
+				<a href="?lang=de"><img src="assets/images/flags/de.svg" title="Deutsch" class="flag_icons"></a>
 				<a href="?lang=id"><img src="assets/images/flags/id.svg" title="Indonesia" class="flag_icons"></a>
 				<a href="?lang=cz"><img src="assets/images/flags/cz.svg" title="Czech" class="flag_icons"></a>
  				<a href="?lang=tr"><img src="assets/images/flags/tr.svg" title="Turkish" class="flag_icons"></a>
