@@ -115,6 +115,47 @@ body {
     z-index: 3;
 }
 
+#up-next-div {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding: 16px 32px;
+
+    background: #00000030;
+}
+
+#up-next-song {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+#up-next-img {
+    height: 100px;
+    width: 100px;
+
+    border-radius: 12px;
+
+    box-shadow: 0px 4px 8px #00000030;
+}
+
+#up-next-song-title {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0px;
+}
+
+#up-next-song-artist {
+    font-size: 26px;
+    margin: 0px;
+}
+
 .fadeInOut {
     transition-duration: 200ms;
     transition-property: visibility, opacity;

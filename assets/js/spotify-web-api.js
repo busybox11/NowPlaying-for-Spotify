@@ -1688,6 +1688,21 @@ var SpotifyWebApi = (function() {
     };
 
     /**
+     * Gets the user's playing queue
+     *
+     * See [Get the User's Queue](https://developer.spotify.com/documentation/web-api/reference/#/operations/get-queue) on
+     * the Spotify Developer site for more information about the endpoint.
+     *
+     * @return {Object} Null if a callback is provided, a `Promise` object otherwise
+     */
+    Constr.prototype.getMyCurrentQueue = function(options, callback) {
+        var requestData = {
+            url: _baseUri + '/me/player/queue'
+        };
+        return _checkParamsAndPerformRequest(requestData, options, callback);
+    }
+
+    /**
      * Gets the access token in use.
      *
      * @return {string} accessToken The access token

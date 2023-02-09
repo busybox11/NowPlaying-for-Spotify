@@ -1,24 +1,28 @@
 if (localStorage.getItem('deviceId') == null) {
-	function makeId(length) {
-		var out = '';
-		var numbers = '0123456789';
-		for ( let i = 0; i < length; i++ ) {
-			out += numbers.charAt(Math.floor(Math.random() * numbers.length));
-		}
-		return out;
-	}
+    function makeId(length) {
+        var out = '';
+        var numbers = '0123456789';
+        for ( let i = 0; i < length; i++ ) {
+            out += numbers.charAt(Math.floor(Math.random() * numbers.length));
+        }
+        return out;
+        }
 
-	localStorage.setItem('deviceId', makeId(4))
+    localStorage.setItem('deviceId', makeId(4))
 }
 
 function msToTime(duration) {
-    var milliseconds = parseInt((duration % 1000) / 100),
-        seconds = parseInt((duration / 1000) % 60),
+    let seconds = parseInt((duration / 1000) % 60),
         minutes = parseInt((duration / (1000 * 60)) % 60)
+
     minutes = (minutes < 10) ? "0" + minutes : minutes;
     seconds = (seconds < 10) ? "0" + seconds : seconds;
 
-    return minutes + ":" + seconds;
+    if (minutes !== NaN && seconds !== NaN) {
+        return minutes + ":" + seconds;
+    } else {
+        return undefined;
+    }
 }
 
 function readCookie(name) {
@@ -70,11 +74,7 @@ function closeFullscreen() {
 
 function fullscreen() {
     let isFullscreen = document.fullscreen;
-    if (isFullscreen == true) {
-        closeFullscreen();
-    } else {
-        openFullscreen();
-    }
+    (isFullscreen) ? closeFullscreen() : openFullscreen()
 }
 
 function theme() {
