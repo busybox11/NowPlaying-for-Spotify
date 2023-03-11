@@ -12,6 +12,5 @@ jobs:
         host: ${{ secrets.SSH_SERVER }}
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
-        port: ${{ secrets.PORT }}
         script: |
           ${{ secrets.SSH_SCRIPT }} ${{ env.GITHUB_REF_NAME }}
