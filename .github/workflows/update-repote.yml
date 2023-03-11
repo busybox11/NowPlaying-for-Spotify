@@ -14,5 +14,6 @@ jobs:
         host: ${{ secrets.SSH_SERVER }}
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
+        envs: GH_REF_NAME
         script: |
           ${{ secrets.SSH_SCRIPT }} $GH_REF_NAME
