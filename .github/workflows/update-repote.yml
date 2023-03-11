@@ -1,0 +1,16 @@
+name: Update remote server
+on: [push]
+jobs:
+
+  update:
+    name: Update
+    runs-on: ubuntu-latest
+    steps:
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@v0.1.4
+      with:
+        host: ${{ secrets.SSH_SERVER }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
+          ${{ secrets.SSH_SCRIPT }} ${{ env.GITHUB_REF_NAME }}
