@@ -7,10 +7,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: executing remote ssh commands using password
-      uses: appleboy/ssh-action@v0.1.4
+      uses: appleboy/ssh-action@master
+      env:
+        GH_REF_NAME: ${{ env.GITHUB_REF_NAME }}
       with:
         host: ${{ secrets.SSH_SERVER }}
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
-          ${{ secrets.SSH_SCRIPT }} ${{ env.GITHUB_REF_NAME }}
+          ${{ secrets.SSH_SCRIPT }} $GH_REF_NAME
