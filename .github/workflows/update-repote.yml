@@ -9,11 +9,11 @@ jobs:
     - name: executing remote ssh commands using password
       uses: appleboy/ssh-action@master
       env:
-        GH_REF_NAME: ${{ env.GITHUB_REF_NAME }}
+        SCRIPT_STR: ${{ secrets.SSH_SCRIPT }}
       with:
         host: ${{ secrets.SSH_SERVER }}
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
-        envs: GH_REF_NAME
+        envs: SCRIPT_STR, GITHUB_REF_NAME
         script: |
-          ${{ secrets.SSH_SCRIPT }} $GH_REF_NAME
+          $SCRIPT_STR $GITHUB_REF_NAME
