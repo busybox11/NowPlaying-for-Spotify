@@ -8,15 +8,13 @@ This is a Spotify Connect visualizer, which has had its codebase made in half a 
 
 This project is licensed under GNU GPL-3.0 license.
 
-Website: [nowplayi.ng](https://nowplayi.ng)
+---
 
-Personal Discord account: `@busybox#2540`
+Available at [nowplayi.ng](https://nowplayi.ng)
 
-Dedicated Discord server: [nowplayi.ng/discord](https://nowplayi.ng/discord)
+Try the ongoing AlpineJS rewrite at [dev.nowplayi.ng](https://dev.nowplayi.ng)!
 
-Tip to me: [paypal.me/busybox11](https://paypal.me/busybox11)
-
-Latest release: 1.6.6
+###### Dedicated Discord server: [nowplayi.ng/discord](https://nowplayi.ng/discord) - tip to me: [paypal.me/busybox11](https://paypal.me/busybox11) (thank you!)
 
 ## **Changelog**
 
@@ -97,7 +95,7 @@ You can use XAMPP (multi-platform) or Wampserver (Windows only) but any webserve
 **!!! If you are on Nginx you need to add this to your config, or else your .env will be exposed to the internet !!!**
 ```
 location /.env {
-    allow [YourIP]; # Allow your IP if you wanna, if not delete this line.
+    allow [YourIP]; # Allow your IP if you want to, if not delete this line.
     deny all;
 }
 ```
