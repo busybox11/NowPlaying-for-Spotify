@@ -10,6 +10,14 @@ include_once('lang.php');
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
     <link id="playingcss" href="assets/styles/playing.css?ts=<?=time ()?>" rel="stylesheet">
     <link id="playingcss-test" href="assets/styles/playingtest.css?ts=<?=time ()?>" rel="stylesheet alternate">
+
+    <?php
+    // If GET variable "transparent" is set to "true", add the playingtransparent.css stylesheet
+    if (isset($_GET['transparent']) && $_GET['transparent'] == "true") {
+        echo '<link href="assets/styles/playingtransparent.css?ts='.time ().'" rel="stylesheet">';
+    }
+    ?>
+
     <link href="assets/styles/productsans.css?ts=<?=time ()?>" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="assets/js/spotify-web-api.js"></script>
