@@ -12,6 +12,8 @@ Available at [nowplayi.ng](https://nowplayi.ng)
 
 Try the ongoing AlpineJS rewrite at [dev.nowplayi.ng](https://dev.nowplayi.ng)!
 
+[Status page](https://uptime.busybox.colabois.fr/status/nowplaying)
+
 ###### Dedicated Discord server: [nowplayi.ng/discord](https://nowplayi.ng/discord) - tip to me: [paypal.me/busybox11](https://paypal.me/busybox11) (thank you!)
 
 ## **Changelog**
