@@ -61,7 +61,7 @@ v1.6.X
 ![New theme](screenshots/new.png)
 *New theme*
 
-## **Coded in:**
+## **Made with**
 
 HTML, CSS, JS, PHP
 
