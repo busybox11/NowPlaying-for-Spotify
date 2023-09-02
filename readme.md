@@ -82,7 +82,6 @@ HTML, CSS, JS, PHP
 - [ ] Local players support (coming with [localmusic-api](https://github.com/busybox11/localmusic-api/projects) - [Sunamu by @NyaomiDEV](https://github.com/NyaomiDEV/Sunamu))
 - [X] ~~Better config handling (e.g. automatic deployment, **HELP WANTED!**)~~
 - [ ] Themes (experimental theme / theme switcher since v1.4.3)
-- [ 
 ## **Feature ideas**
 
 - Analytics panel] Chromecast integration
