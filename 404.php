@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 if(isset($_GET)){
     if(isset($_GET['lang']) && !empty($_GET['lang'])){
@@ -17,21 +17,25 @@ if(isset($_GET['lang'])){
 <!DOCTYPE html>
 <html lang="<?=$lang;?>">
 <head>
-    <title><?=Error;?> 404 - Now Playing for Spotify</title>
-    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <title><?=Error;?> 404 - Now Playing</title>
+	<link rel="icon" type="image/png" href="assets/images/favicon.png">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="NowPlaying for Spotify is a smooth Spotify Connect visualizer, which display the music playing on Spotify" />
+	<meta name="description" content="NowPlaying is a smooth Spotify Connect visualizer, updating in real-time and with playback support." />
+
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:creator" content="@busybox11" />
 	<meta name="twitter:image" content="https://<?=$_SERVER['SERVER_NAME'];?>/assets/images/favicon.png" />
-	<meta property="og:title" content="NowPlaying for Spotify" />
+
+	<meta property="og:title" content="NowPlaying" />
 	<meta property="og:type" content="website" />
-	<meta property="og:description" content="NowPlaying for Spotify is a smooth Spotify Connect visualizer, which display the music playing on Spotify" />
-	<meta name="og:image" content="https://<?=$_SERVER['SERVER_NAME'];?>/assets/images/favicon.png" />
+	<meta property="og:description" content="NowPlaying is a smooth Spotify Connect visualizer, updating in real-time and with playback support." />
+	<meta property="og:image" content="https://<?=$_SERVER['SERVER_NAME'];?>/assets/images/favicon.png" />
+
 	<meta name="theme-color" content="#23a92a" />
-    <link href="assets/styles/index.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="assets/styles/productsans.css?ts=<?=time ()?>" rel="stylesheet">
+
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200..900&display=swap" rel="stylesheet">
+	<link href="assets/styles/index.css" rel="stylesheet" />
 </head>
 
 <body>

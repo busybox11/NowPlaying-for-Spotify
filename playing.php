@@ -6,7 +6,7 @@ include_once('lang.php');
 <head>
     <title x-text="`${$store.player.playbackObj.item?.name} - ${$store.player.playbackObj.item?.artists[0].name}">Spotify Connect - Now Playing</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta name="description" content="NowPlaying-For-Spotify is a smooth Spotify Connect visualizer, which display the music playing on Spotify" />
+    <meta name="description" content="NowPlaying is a smooth Spotify Connect visualizer, updating in real-time and with playback support." />
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
 
     <script src="https://cdn.tailwindcss.com/"></script>

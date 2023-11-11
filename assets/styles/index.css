@@ -5,7 +5,7 @@
 body {
     background-color: #000020;
     color:white;
-    font-family: "Product Sans";
+    font-family: "Outfit", "Product Sans", sans-serif;
     font-size: 16px;
     font-size: 1rem;
     margin: 0;
