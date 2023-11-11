@@ -2,3 +2,18 @@ ErrorDocument 404 /404.php
 ErrorDocument 403 /403.php
 
 RedirectMatch 403 /.env
+
+# vendor
+RewriteRule ^vendor/.*$ - [F,L,NC]
+
+# disable .git folder
+RedirectMatch 404 /\.git
+
+# disable .devcontainer, .vscode, .github folders
+RedirectMatch 404 /(\.devcontainer|\.vscode|\.github)
+
+# disable directory browsing
+Options -Indexes
+
+# disable server signature
+ServerSignature Off
