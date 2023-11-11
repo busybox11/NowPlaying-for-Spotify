@@ -15,9 +15,9 @@ if(isset($_GET['lang'])){
 ?>
 
 <!DOCTYPE html>
-<html lang="<?=$lang;?>">
+<html lang="<?=$lang;?>" class="bg-[#000020] text-white">
 <head>
-    <title><?=Error;?> 404 - Now Playing</title>
+	<title><?=Error;?> 404 - NowPlaying</title>
 	<link rel="icon" type="image/png" href="assets/images/favicon.png">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="NowPlaying is a smooth Spotify Connect visualizer, updating in real-time and with playback support." />
@@ -35,17 +35,29 @@ if(isset($_GET['lang'])){
 
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200..900&display=swap" rel="stylesheet">
-	<link href="assets/styles/index.css" rel="stylesheet" />
+
+	<script src="https://cdn.tailwindcss.com/"></script>
+	<script>
+		tailwind.config = {
+			theme: {
+				extend: {
+					fontFamily: {
+						'sans': ['Outfit', 'sans-serif']
+					},
+				}
+			}
+		}
+	</script>
 </head>
 
-<body>
-        <div class="content" style="margin:0 auto;text-align:center;">
-            <div>
-                <img src="assets/images/favicon.png" alt="Logo" width="100px" height="100px">
-				<h1 id="app_title"><?=Error;?> 404</h1>
-				<h2 id="app_desc"><?=IndexError404;?></h2>
-            </div>
-            <a href="javascript:window.history.back()" id="login_btn" class="spotify_btn"><?=IndexGoBack;?></a>
-        </div>
+<body class="flex flex-col h-screen px-4 py-auto gap-8 items-center justify-center text-center">
+	<div class="flex flex-col items-center justify-center">
+		<img src="assets/images/favicon.png" alt="Logo" width="100px" height="100px" class="mb-4">
+
+		<h1 class="text-3xl lg:text-4xl font-bold"><?=Error;?> 404</h1>
+		<h2 class="text-xl lg:text-2xl font-light mb-2"><?=IndexError404;?></h2>
+	</div>
+
+	<a href="javascript:window.history.back()" class="bg-[#15883D] px-12 py-3 rounded-full text-lg tracking-wide active:scale-95 transition transform"><?=IndexGoBack;?></a>
 </body>
 </html>
