@@ -10,7 +10,7 @@ This project is licensed under GNU GPL-3.0 license.
 
 Available at [nowplayi.ng](https://nowplayi.ng)
 
-Try the ongoing AlpineJS rewrite at [dev.nowplayi.ng](https://dev.nowplayi.ng)!
+![Website screenshot](screenshots/regular.png)
 
 [Status page](https://uptime.busybox.colabois.fr/status/nowplaying)
 
@@ -18,19 +18,28 @@ Try the ongoing AlpineJS rewrite at [dev.nowplayi.ng](https://dev.nowplayi.ng)!
 
 ## **Changelog**
 
-v1.6.X
-- Use of localStorage
-- Added GNU GPL-3.0 license
-- Updated Index page design 
-- Updated French and English sentences 
-- Compatibility with Dark Reader
-- Better UI consistency / CSS tweaks
-- More languages
-- .env support (thanks @finnie2006!)
+v2.0
+
+- Rewrite with TailwindCSS and AlpineJS
+- Improve performance
+- Fix blur edges
+
+<details>
+  <summary>v1.6.X</summary>
+
+    - Use of localStorage
+    - Added GNU GPL-3.0 license
+    - Updated Index page design
+    - Updated French and English sentences
+    - Compatibility with Dark Reader
+    - Better UI consistency / CSS tweaks
+    - More languages
+    - .env support (thanks @finnie2006!)
+</details>
 
 <details>
   <summary>v1.5.X</summary>
-  
+
     - Added playback support (Premium account should be needed)
     - Added playback information
     - Added pause button (#17)
@@ -41,7 +50,7 @@ v1.6.X
 
 <details>
   <summary>v1.4.X</summary>
-  
+
     - Advertisements are recognized
     - Multiple artists are recognized
     - Experimental theme switcher
@@ -49,21 +58,15 @@ v1.6.X
 
 <details>
   <summary>v1.3.X</summary>
-  
+
     - Now playing device name and type is showing
     - Cursor is hidden after a couple of seconds
     - Fullscreen button
 </details>
 
-![Regular theme](screenshots/regular.png)
-*Regular theme*
-
-![New theme](screenshots/new.png)
-*New theme*
-
 ## **Made with**
 
-HTML, CSS, JS, PHP
+HTML, TailwindCSS, JS / AlpineJS, PHP
 
 ## **Used libraries:**
 
@@ -77,14 +80,16 @@ HTML, CSS, JS, PHP
 
 ## **Upcoming changes**
 
-- [ ] Rewrite (see [discussion #76](https://github.com/busybox11/NowPlaying-for-Spotify/discussions/76) about the possible use of web frameworks)
+- [X] ~~Rewrite (see [discussion #76](https://github.com/busybox11/NowPlaying-for-Spotify/discussions/76) about the possible use of web frameworks)~~
 - [ ] OBS source (In progress!)
 - [ ] Local players support (coming with [localmusic-api](https://github.com/busybox11/localmusic-api/projects) - [Sunamu by @NyaomiDEV](https://github.com/NyaomiDEV/Sunamu))
 - [X] ~~Better config handling (e.g. automatic deployment, **HELP WANTED!**)~~
-- [ ] Themes (experimental theme / theme switcher since v1.4.3)
+- [ ] Themes
+
 ## **Feature ideas**
 
-- Analytics panel] Chromecast integration
+- Chromecast integration
+- Analytics panel
 
 ## **How to host this?**
 
