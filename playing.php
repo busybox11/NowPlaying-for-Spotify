@@ -49,11 +49,11 @@ include_once('lang.php');
   class="flex h-screen w-screen overflow-hidden"
 >
     <div id="background-image-div"
-         class="h-screen w-screen bg-cover bg-center fixed inset-0 blur-2xl scale-[1.3] lg:scale-[1.2] z-[-10] bg-cover bg-center transition-[background] duration-[2s] ease-in-out"
-         style="background-image: url('assets/images/no_song.png')"
-         :style="{
-           backgroundImage: `url(${$store.player.targetImg ?? 'assets/images/no_song.png'})`
-         }"
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[max(115vh,115vw)] h-[max(115vh,115vw)] aspect-square bg-cover bg-center blur-2xl z-[-10] bg-cover bg-center transition-[background] duration-[2s] ease-in-out"
+        style="background-image: url('assets/images/no_song.png')"
+        :style="{
+        backgroundImage: `url(${$store.player.targetImg ?? 'assets/images/no_song.png'})`
+        }"
     >
         <div class="h-full w-full bg-black/30"></div>
     </div>
