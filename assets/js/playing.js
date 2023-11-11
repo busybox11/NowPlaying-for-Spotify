@@ -21,30 +21,39 @@ document.addEventListener('alpine:init', x => {
 
     async poolingLoop() {
       setInterval(async () => {
-        if (Math.floor(Date.now() / 1000) >= refreshTime) {
-          window.location.replace('token.php?action=refresh');
-        }
-
-        const response = await spotifyApi.getMyCurrentPlaybackState();
-        if (response) {
-          this.lastPlaybackObj = this.playbackObj;
-          this.playbackObj = response;
-
-          if (this.playbackObj.item?.name) {
-            document.title = `${this.playbackObj.item?.name} - ${this.playbackObj.item?.artists[0].name} - NowPlaying`;
-          }
-
-          // Fetch album art
-          if (this.playbackObj.item?.album?.images[0]?.url) {
-            // Load image in new element and then set it on the target
-            const img = new Image();
-            img.src = this.playbackObj.item?.album?.images[0]?.url;
-            img.onload = () => {
-              this.targetImg = this.playbackObj.item?.album?.images[0]?.url;
-            }
-          }
-        }
+        await this.fetchState();
       }, 1000)
+    },
+
+    async fetchState() {
+      if (Math.floor(Date.now() / 1000) >= refreshTime) {
+        window.location.replace('token.php?action=refresh');
+      }
+
+      const response = await spotifyApi.getMyCurrentPlaybackState();
+      if (response) {
+        this.handleChange(response);
+      }
+    },
+
+    handleChange(obj) {
+      this.lastPlaybackObj = this.playbackObj;
+      this.playbackObj = obj;
+
+      if (this.playbackObj.item?.name) {
+        document.title = `${this.playbackObj.item?.name} - ${this.playbackObj.item?.artists[0].name} - NowPlaying`;
+      }
+
+      // Fetch album art
+      const imgUrl = this.playbackObj.item?.album?.images[0]?.url;
+      if (imgUrl !== this.lastPlaybackObj.item?.album?.images[0]?.url) {
+        // Load image in new element and then set it on the target
+        const img = new Image();
+        img.src = (imgUrl !== undefined) ? imgUrl : 'assets/images/no_song.png'
+        img.onload = () => {
+          this.targetImg = this.playbackObj.item?.album?.images[0]?.url;
+        }
+      }
     }
   })
 })
