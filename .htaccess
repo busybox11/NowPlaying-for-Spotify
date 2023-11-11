@@ -17,3 +17,7 @@ Options -Indexes
 
 # disable server signature
 ServerSignature Off
+
+# disable php errors
+php_flag display_errors Off
+php_flag display_startup_errors Off
