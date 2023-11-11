@@ -4,7 +4,7 @@ ErrorDocument 403 /403.php
 RedirectMatch 403 /.env
 
 # vendor
-RewriteRule ^vendor/.*$ - [F,L,NC]
+RedirectMatch 403 /vendor(/|$)
 
 # disable .git folder
 RedirectMatch 404 /\.git
