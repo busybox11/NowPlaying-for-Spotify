@@ -197,7 +197,7 @@ include_once('lang.php');
 
     <div
         x-cloak
-        x-show="$store.webPlayback.isAvailable && showOverlay && deviceName"
+        x-show="$store.webPlayback?.isAvailable && showOverlay && deviceName"
         x-transition:enter.duration.100ms
         x-transition:leave.duration.500ms
         class="absolute bottom-8 left-12 z-30 flex flex-row items-center gap-2 px-4 py-1 bg-white/10 border border-white/40 text-white/80 rounded-full"

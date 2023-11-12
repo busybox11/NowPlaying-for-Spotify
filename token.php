@@ -35,6 +35,15 @@ if (!isset($_GET['action'])) {
     setcookie('refreshToken', $refreshToken, time() + (3600 * 365));
 }
 
+if (isset($_GET['response']) && $_GET['response'] == "data") {
+    echo json_encode(array(
+        'accessToken' => $accessToken,
+        'refreshToken' => $refreshToken,
+        'refreshTime' => $_COOKIE['refreshTime'],
+    ));
+    die();
+}
+
 header('Location: playing.php');
 die();
 ?>
