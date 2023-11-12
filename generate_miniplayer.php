@@ -134,7 +134,7 @@ if(isset($_GET['lang'])){
     <span class="mt-4 text-white/70 hover:text-white transition">550 x 130</span>
 
     <!-- Config player -->
-    <div class="flex flex-row gap-4 flex-wrap mt-4">
+    <div class="flex flex-row gap-8 flex-wrap mt-4">
       <div class="flex flex-row gap-3 items-center">
         <input type="checkbox" id="showAlbum" x-model="playerConfig.showAlbum" class="accent-[#15883D] h-5 w-5">
         <label for="showAlbum">
@@ -145,21 +145,28 @@ if(isset($_GET['lang'])){
       <div class="flex flex-row gap-3 items-center">
         <input type="checkbox" id="showArtwork" x-model="playerConfig.showArtwork" class="accent-[#15883D] h-5 w-5">
         <label for="showArtwork">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-8 w-8" fill="currentColor"><path d="M6,19L9,15.14L11.14,17.72L14.14,13.86L18,19H6M6,4H11V12L8.5,10.5L6,12M18,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V4A2,2 0 0,0 18,2Z" /></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-8 w-8" fill="currentColor"><path d="M6,19L9,15.14L11.14,17.72L14.14,13.86L18,19H6M6,4H11V12L8.5,10.5L6,12M18,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V4A2,2 0 0,0 18,2Z" /></svg>
         </label>
       </div>
 
       <div class="flex flex-row gap-3 items-center">
         <input type="checkbox" id="showProgress" x-model="playerConfig.showProgress" class="accent-[#15883D] h-5 w-5">
         <label for="showProgress">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-8 w-8" fill="currentColor"><path d="M13,2.03V2.05L13,4.05C17.39,4.59 20.5,8.58 19.96,12.97C19.5,16.61 16.64,19.5 13,19.93V21.93C18.5,21.38 22.5,16.5 21.95,11C21.5,6.25 17.73,2.5 13,2.03M11,2.06C9.05,2.25 7.19,3 5.67,4.26L7.1,5.74C8.22,4.84 9.57,4.26 11,4.06V2.06M4.26,5.67C3,7.19 2.25,9.04 2.05,11H4.05C4.24,9.58 4.8,8.23 5.69,7.1L4.26,5.67M2.06,13C2.26,14.96 3.03,16.81 4.27,18.33L5.69,16.9C4.81,15.77 4.24,14.42 4.06,13H2.06M7.1,18.37L5.67,19.74C7.18,21 9.04,21.79 11,22V20C9.58,19.82 8.23,19.25 7.1,18.37M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z" /></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-8 w-8" fill="currentColor"><path d="M13,2.03V2.05L13,4.05C17.39,4.59 20.5,8.58 19.96,12.97C19.5,16.61 16.64,19.5 13,19.93V21.93C18.5,21.38 22.5,16.5 21.95,11C21.5,6.25 17.73,2.5 13,2.03M11,2.06C9.05,2.25 7.19,3 5.67,4.26L7.1,5.74C8.22,4.84 9.57,4.26 11,4.06V2.06M4.26,5.67C3,7.19 2.25,9.04 2.05,11H4.05C4.24,9.58 4.8,8.23 5.69,7.1L4.26,5.67M2.06,13C2.26,14.96 3.03,16.81 4.27,18.33L5.69,16.9C4.81,15.77 4.24,14.42 4.06,13H2.06M7.1,18.37L5.67,19.74C7.18,21 9.04,21.79 11,22V20C9.58,19.82 8.23,19.25 7.1,18.37M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z" /></svg>
         </label>
       </div>
 
       <div class="flex flex-row gap-3 items-center">
         <input type="checkbox" id="showPause" x-model="playerConfig.showPause" class="accent-[#15883D] h-5 w-5">
         <label for="showPause">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-8 w-8" fill="currentColor"><path d="M13,16V8H15V16H13M9,16V8H11V16H9M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4Z" /></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-8 w-8" fill="currentColor"><path d="M13,16V8H15V16H13M9,16V8H11V16H9M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4Z" /></svg>
+        </label>
+      </div>
+
+      <div class="flex flex-row gap-3 items-center">
+        <input type="checkbox" id="transparentBackground" x-model="playerConfig.transparentBackground" class="accent-[#15883D] h-5 w-5">
+        <label for="transparentBackground">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-8 w-8" fill="currentColor"><path d="M16 14V12H17.61C17.85 12.71 18 13.39 18 14H16M15.58 8C15.12 7.29 14.65 6.61 14.2 6H14V8H15.58M16 12V10H14V12H16M16 8.68V10H16.74C16.5 9.56 16.26 9.11 16 8.68M12 16V14H14V12H12V10H14V8H12V6H14V5.73C12.9 4.26 12 3.25 12 3.25S6 10 6 14C6 17.31 8.69 20 12 20V18H14V16H12M14 19.65C14.75 19.39 15.42 19 16 18.46V18H14V19.65M14 16H16V14H14V16M16 18H16.46C17 17.42 17.39 16.75 17.65 16H16V18Z" /></svg>
         </label>
       </div>
     </div>
@@ -174,6 +181,7 @@ if(isset($_GET['lang'])){
           showArtwork: true,
           showProgress: true,
           showPause: true,
+          transparentBackground: false,
         },
 
         makeUrl() {

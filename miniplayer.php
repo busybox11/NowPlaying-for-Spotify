@@ -39,6 +39,7 @@ include_once('lang.php');
         showProgress: urlParams.get('showProgress') !== 'false',
         showArtwork: urlParams.get('showArtwork') !== 'false',
         showPause: urlParams.get('showPause') !== 'false',
+        transparentBackground: urlParams.get('transparentBackground') === 'true',
 
         useSmallAlbumCover: true,
       }
@@ -57,7 +58,9 @@ include_once('lang.php');
         ...window.playerConfig,
     }"
     class="h-screen w-screen"
-    style="background-color: black;"
+    :style="{
+      'background-color': transparentBackground ? 'transparent' : '#000000',
+    }"
 >
     <div class="flex flex-row justify-center items-center h-screen">
         <div class="relative h-full w-auto flex-shrink-0">
