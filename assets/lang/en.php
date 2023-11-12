@@ -2,6 +2,7 @@
 define('IndexTitle', 'Welcome to NowPlaying for Spotify!');
 define('IndexDescription', 'Please login with your Spotify account.');
 define('IndexConnection', 'Login to Spotify');
+define('GenerateMiniPlayer', 'Generate mini player');
 define('IndexCookie', 'By clicking on \'LOGIN TO SPOTIFY\', you accept the use of cookies necessary for the proper functioning of the site.');
 
 define('defaultTitleSong', 'No music currently playing');

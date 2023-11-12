@@ -2,6 +2,7 @@
 define('IndexTitle', 'Bienvenue sur NowPlaying for Spotify !');
 define('IndexDescription', 'Veuillez vous connecter avec votre compte Spotify.');
 define('IndexConnection', 'Se connecter à Spotify');
+define('GenerateMiniPlayer', 'Générer un lecteur miniature');
 define('IndexCookie', 'En cliquant sur \'SE CONNECTER À SPOTIFY\', vous acceptez l\'utilisation de cookies nécessaires au bon fonctionnement du site.');
 
 define('defaultTitleSong', 'Aucune musique en cours de lecture');

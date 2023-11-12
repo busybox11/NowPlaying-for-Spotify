@@ -2,7 +2,7 @@
 include_once('lang.php');
 ?>
 <!DOCTYPE html>
-<html lang="<?=$lang;?>" class="h-screen w-screen bg-transparent">
+<html lang="<?=$lang;?>" class="h-screen w-screen bg-transparent overflow-hidden">
 <head>
     <title x-text="`${$store.player.playbackObj.item?.name} - ${$store.player.playbackObj.item?.artists[0].name}">Spotify Connect - Now Playing</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -82,7 +82,15 @@ include_once('lang.php');
 
         <div class="relative flex flex-col h-full w-full text-white">
             <div class="flex flex-col my-auto mx-6">
-                <h1 x-text="$store.player.playbackObj.item?.name ?? translations.defaultTitleSong" class="text-3xl font-bold line-clamp-2" style="text-wrap: balance"></h1>
+                <h1
+                  x-text="$store.player.playbackObj.item?.name ?? translations.defaultTitleSong"
+                  style="text-wrap: balance"
+                  class="text-3xl font-bold"
+                  :class="{
+                    'line-clamp-1': showAlbum,
+                    'line-clamp-2': !showAlbum,
+                  }"
+                ></h1>
 
                 <h2
                     x-text="$store.player.playbackObj.item?.artists?.map(artist => artist.name).join(', ') ?? translations.defaultArtistSong"

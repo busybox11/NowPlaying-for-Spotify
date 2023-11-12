@@ -97,7 +97,11 @@ if(isset($_GET['lang'])){
 		</div>
 	</div>
 
-	<a href="login.php" class="bg-[#15883D] px-12 py-3 rounded-full text-lg tracking-wide active:scale-95 transition"><?=IndexConnection;?></a>
+	<div class="flex flex-col gap-4">
+		<a href="login.php" class="bg-[#15883D] px-12 py-3 rounded-full text-lg tracking-wide active:scale-95 transition mx-auto"><?=IndexConnection;?></a>
+
+		<a href="login.php?generateMiniPlayer=true" class="border-b-2 text-white/70 hover:text-white border-white/50 hover:border-white/70 text-lg tracking-wide active:scale-95 transition mx-auto"><?=GenerateMiniPlayer;?></a>
+	</div>
 
 	<div class="flex flex-row justify-center gap-3 lg:gap-4 flex-wrap">
 		<a href="?lang=en">

@@ -75,4 +75,7 @@ switch(@$lang){
         $lang = 'az';
     break;
 }
+
+// Default language
+include_once 'assets/lang/en.php';
 ?>

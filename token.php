@@ -1,4 +1,5 @@
 <?php
+session_start();
 require 'vendor/autoload.php';
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
@@ -13,7 +14,6 @@ $session = new SpotifyWebAPI\Session(
 $refreshToken = $_COOKIE['refreshToken'] ?? $_GET['refreshToken'] ?? null;
 
 if (!isset($_GET['action'])) {
-
     $session->requestAccessToken($_GET['code']);
 
     $accessToken = $session->getAccessToken();
@@ -22,9 +22,7 @@ if (!isset($_GET['action'])) {
     $refreshToken = $session->getRefreshToken();
     $refreshTime = time() + 3600;
     setcookie('refreshToken', $refreshToken, time() + (3600 * 365));
-
 } elseif ($_GET['action'] == "refresh") {
-
     $session->refreshAccessToken($refreshToken);
 
     $accessToken = $session->getAccessToken();
@@ -43,6 +41,11 @@ if (isset($_GET['response']) && $_GET['response'] == "data") {
     ));
     die();
 } else {
+    if ($_SESSION['generateMiniPlayer'] == true) {
+        header('Location: generate_miniplayer.php');
+        die();
+    }
+
     header('Location: playing.php');
     die();
 }
