@@ -64,7 +64,7 @@ include_once('lang.php');
             <img
                 src="assets/images/no_song.png"
                 :src="$store.player.targetImg ?? 'assets/images/no_song.png'"
-                class="h-full w-auto flex-shrink-0"
+                class="h-full w-auto flex-shrink-0 aspect-square object-cover"
                 x-show="showArtwork"
                 x-cloak
             >
@@ -88,7 +88,7 @@ include_once('lang.php');
                   class="text-3xl font-bold"
                   :class="{
                     'line-clamp-1': showAlbum,
-                    'line-clamp-2': !showAlbum,
+                    'line-clamp-2': !showAlbum || !$store.player.playbackObj.item?.name,
                   }"
                 ></h1>
 

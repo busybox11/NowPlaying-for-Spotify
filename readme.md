@@ -12,6 +12,9 @@ Available at [nowplayi.ng](https://nowplayi.ng)
 
 ![Website screenshot](screenshots/regular.png)
 
+![Mini player generator screenshot](screenshots/miniplayer.png)
+*Mini player generator*
+
 [Status page](https://uptime.busybox.colabois.fr/status/nowplaying)
 
 ###### Dedicated Discord server: [nowplayi.ng/discord](https://nowplayi.ng/discord) - tip to me: [paypal.me/busybox11](https://paypal.me/busybox11) (thank you!)
@@ -25,6 +28,7 @@ v2.0.X
 - Fix blur edges
 - Fix Safari hardware acceleration
 - No full page reload for reauthentication
+- Mini player usage and generation
 
 <details>
   <summary>v1.6.X</summary>
@@ -83,7 +87,7 @@ HTML, TailwindCSS, JS / AlpineJS, PHP
 ## **Upcoming changes**
 
 - [X] ~~Rewrite (see [discussion #76](https://github.com/busybox11/NowPlaying-for-Spotify/discussions/76) about the possible use of web frameworks)~~
-- [ ] OBS source (In progress!)
+- [X] ~~OBS source (Done since [v2.1](https://github.com/busybox11/NowPlaying-for-Spotify/commit/994c52e06881f78f52b4a151fec11376db3edf12))~~
 - [ ] Local players support (coming with [localmusic-api](https://github.com/busybox11/localmusic-api/projects) - [Sunamu by @NyaomiDEV](https://github.com/NyaomiDEV/Sunamu))
 - [X] ~~Better config handling (e.g. automatic deployment, **HELP WANTED!**)~~
 - [ ] Themes

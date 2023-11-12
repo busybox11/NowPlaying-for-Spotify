@@ -110,7 +110,7 @@ if(isset($_GET['lang'])){
       </div>
     </div>
 
-    <div style="width: 600px;" class="bg-white/10 p-2 rounded-lg mt-8">
+    <div style="width: 550px;" class="bg-white/10 p-2 rounded-lg mt-8">
       <iframe
         :src="makeUrl()"
         class="w-full"
@@ -119,7 +119,7 @@ if(isset($_GET['lang'])){
       ></iframe>
     </div>
 
-    <div style="width: 600px;" class="flex flex-row items-center mt-3">
+    <div style="width: 550px;" class="flex flex-row items-center mt-3">
       <div class="bg-white/10 rounded-l-lg w-full">
         <input type="text" class="w-full border-0 focus:ring-[#15883D] focus:ring-2 focus:ring-inset rounded-l-lg py-2 px-3 bg-transparent outline-none" :value="makeUrl()" readonly>
       </div>
@@ -130,6 +130,8 @@ if(isset($_GET['lang'])){
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6"><path d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z" /></svg>
       </button>
     </div>
+
+    <span class="mt-4 text-white/70 hover:text-white transition">550 x 130</span>
 
     <!-- Config player -->
     <div class="flex flex-row gap-4 flex-wrap mt-4">
