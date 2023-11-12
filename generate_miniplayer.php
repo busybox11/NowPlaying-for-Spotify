@@ -170,6 +170,11 @@ if(isset($_GET['lang'])){
         </label>
       </div>
     </div>
+
+    <div style="width: 550px;" class="flex flex-row items-center text-left bg-red-800/50 px-4 py-2 rounded-lg gap-4 mt-8">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-8 w-8 flex-shrink-0" fill="currentColor"><path d="M13,13H11V7H13M13,17H11V15H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" /></svg>
+      <?=MiniPlayerEmbedCaution;?>
+    </div>
 	</div>
 
   <script src="//unpkg.com/alpinejs" defer></script>

@@ -19,4 +19,6 @@ define('IndexGoBack', 'Go back');
 
 define('streamTitleSong', 'No music currently playing');
 define('streamArtistSong', '');
+
+define('MiniPlayerEmbedCaution', 'DO NOT embed this mini player on a website. It contains a Spotify access token that can be used to control your Spotify account.')
 ?>

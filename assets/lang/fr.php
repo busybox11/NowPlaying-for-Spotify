@@ -20,4 +20,6 @@ define('IndexGoBack', 'Retourner en arrière');
 
 define('streamTitleSong', 'Pas de musique');
 define('streamArtistSong', '');
+
+define('MiniPlayerEmbedCaution', 'NE PAS intégrer ce lecteur miniature sur un site web. Il contient un jeton d\'accès Spotify qui peut être utilisé pour contrôler votre compte Spotify.')
 ?>
