@@ -1,17 +1,46 @@
 // Check if cookie refreshToken is set
 let cookie = document.cookie;
-if (!cookie.includes("refreshToken")) { window.location.replace('login.php'); }
+const cookieHasRefreshToken = cookie.includes("refreshToken");
+
+const refreshTokenParam = urlParams.get('refreshToken');
+
+if (!cookieHasRefreshToken && !refreshTokenParam) { window.location.replace('login.php'); }
 
 let refreshTime = readCookie('refreshTime');
 let spotifyApi;
+
+async function fetchAccessToken() {
+  let targetUrl = 'token.php?action=refresh&response=data';
+
+  if (!cookieHasRefreshToken && refreshTokenParam) {
+    targetUrl += `&refreshToken=${refreshTokenParam}`;
+  } else if (!cookieHasRefreshToken) {
+    // Redirect to login page
+    window.location.replace('login.php');
+  }
+
+  const response = await fetch(targetUrl);
+  const data = await response.json();
+
+  return data;
+}
+
+const useSmallAlbumCover = window.playerConfig?.useSmallAlbumCover ?? false;
 
 document.addEventListener('alpine:init', x => {
   Alpine.store('player', {
     init() {
       spotifyApi = new SpotifyWebApi();
-      spotifyApi.setAccessToken(readCookie('accessToken'));
 
-      this.poolingLoop();
+      if (cookieHasRefreshToken) {
+        spotifyApi.setAccessToken(readCookie('accessToken'));
+
+        this.poolingLoop();
+      } else if (refreshTokenParam) {
+        this.refreshToken().then(() => {
+          this.poolingLoop();
+        });
+      }
     },
 
     playbackObj: {},
@@ -28,8 +57,7 @@ document.addEventListener('alpine:init', x => {
     async refreshToken() {
       console.log('Refreshing token...');
 
-      const response = await fetch('token.php?action=refresh&response=data');
-      const data = await response.json();
+      const data = await fetchAccessToken();
 
       if (data.accessToken) {
         spotifyApi.setAccessToken(data.accessToken);
@@ -63,13 +91,22 @@ document.addEventListener('alpine:init', x => {
       }
 
       // Fetch album art
-      const imgUrl = this.playbackObj.item?.album?.images[0]?.url;
-      if (imgUrl !== this.lastPlaybackObj.item?.album?.images[0]?.url) {
+      const imgsArr = this.playbackObj.item?.album?.images;
+      const targetImg = (useSmallAlbumCover) ? imgsArr[imgsArr.length - 2]?.url : imgsArr[0]?.url;
+
+      const lastImgsArr = this.lastPlaybackObj.item?.album?.images;
+      if (lastImgsArr === undefined) {
+        this.targetImg = targetImg;
+        return;
+      }
+      const lastTargetImg = (useSmallAlbumCover) ? lastImgsArr[lastImgsArr.length - 2]?.url : lastImgsArr[0]?.url;
+
+      if (targetImg !== lastTargetImg) {
         // Load image in new element and then set it on the target
         const img = new Image();
-        img.src = (imgUrl !== undefined) ? imgUrl : 'assets/images/no_song.png'
+        img.src = (targetImg !== undefined) ? targetImg : 'assets/images/no_song.png'
         img.onload = () => {
-          this.targetImg = this.playbackObj.item?.album?.images[0]?.url;
+          this.targetImg = img.src;
         }
       }
     }

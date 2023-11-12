@@ -1,39 +1,48 @@
-<?php 
+<?php
+$lang = 'en';
+
 if(!isset($_COOKIE['lang']) || empty($_COOKIE['lang'])) {
     setcookie('lang', 'en', time() + 60*60*24*30);
 }
 
+if (isset($_GET['lang'])) {
+    setcookie('lang', $_GET['lang'], time() + 60*60*24*30);
+    $lang = $_GET['lang'];
+} else if (isset($_COOKIE['lang'])) {
+    $lang = $_COOKIE['lang'];
+}
+
 // TODO: Use single function instead of switch
-switch(@$_COOKIE['lang']){
+switch(@$lang){
     case 'ar':
         include_once 'assets/lang/ar.php';
         $lang = 'ar';
     break;
-    case 'fr': 
+    case 'fr':
         include_once 'assets/lang/fr.php';
         $lang = 'fr';
     break;
-    case 'it': 
+    case 'it':
         include_once 'assets/lang/it.php';
         $lang = 'it';
     break;
-    case 'es': 
+    case 'es':
         include_once 'assets/lang/es.php';
         $lang = 'es';
     break;
-    case 'ru': 
+    case 'ru':
         include_once 'assets/lang/ru.php';
         $lang = 'ru';
     break;
-    case 'de': 
+    case 'de':
         include_once 'assets/lang/de.php';
         $lang = 'de';
     break;
-    case 'id': 
+    case 'id':
         include_once 'assets/lang/id.php';
         $lang = 'id';
     break;
-    case 'en': default: 
+    case 'en': default:
         include_once 'assets/lang/en.php';
         $lang = 'en';
     break;

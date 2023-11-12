@@ -1,3 +1,5 @@
+const urlParams = new URLSearchParams(window.location.search);
+
 if (localStorage.getItem('deviceId') == null) {
     function makeId(length) {
         var out = '';
