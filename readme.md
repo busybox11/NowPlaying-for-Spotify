@@ -18,11 +18,13 @@ Available at [nowplayi.ng](https://nowplayi.ng)
 
 ## **Changelog**
 
-v2.0
+v2.0.X
 
 - Rewrite with TailwindCSS and AlpineJS
 - Improve performance
 - Fix blur edges
+- Fix Safari hardware acceleration
+- No full page reload for reauthentication
 
 <details>
   <summary>v1.6.X</summary>
