@@ -2,7 +2,7 @@
 include_once('lang.php');
 ?>
 <!DOCTYPE html>
-<html lang="<?=$lang;?>" class="h-screen w-screen">
+<html lang="<?=$lang;?>" class="h-screen w-screen bg-black">
 <head>
     <title x-text="`${$store.player.playbackObj.item?.name} - ${$store.player.playbackObj.item?.artists[0].name}">Spotify Connect - Now Playing</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -18,7 +18,7 @@ include_once('lang.php');
               'sans': ['Outfit', 'sans-serif']
             },
           }
-        }
+        },
       }
     </script>
 
@@ -67,14 +67,19 @@ include_once('lang.php');
         cursor: showOverlay ? 'default' : 'none'
     }"
 >
-    <div id="background-image-div"
-        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[max(115vh,115vw)] h-[max(115vh,115vw)] aspect-square bg-cover bg-center blur-2xl z-[-10] bg-cover bg-center transition-[background] duration-[2s] ease-in-out"
-        style="background-image: url('assets/images/no_song.png')"
-        :style="{
-            backgroundImage: `url(${$store.player.targetImg ?? 'assets/images/no_song.png'})`
-        }"
+    <div
+        id="background-image-div"
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 translate-z-0 w-[max(115vh,115vw)] h-[max(115vh,115vw)]"
     >
-        <div class="h-full w-full bg-black/30"></div>
+        <div
+            class="bg-cover bg-center transition-[background] duration-[2s] ease-in-out z-[-10] h-full w-full blur-2xl transform-gpu"
+            style="background-image: url('assets/images/no_song.png');"
+            :style="{
+                backgroundImage: `url(${$store.player.targetImg ?? 'assets/images/no_song.png'})`
+            }"
+        >
+            <div class="h-full w-full bg-black/30"></div>
+        </div>
     </div>
 
     <div
@@ -83,7 +88,7 @@ include_once('lang.php');
         x-transition:leave.duration.500ms
         class="settings-div fadeInOut z-30 absolute top-6 left-0 right-0 flex items-center justify-center"
     >
-        <div class="flex flex-row items-center gap-2 px-4 py-2 bg-white/10 border border-white/40 text-white/80 rounded-full">
+        <div class="flex flex-row items-center gap-2 px-4 py-2 bg-white/10 border-2 border-white/40 text-white/80 rounded-full">
             <svg onclick="fullscreen()" class="cursor-pointer" width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M6.66675 6.66666H13.3334V9.33332H9.33341V13.3333H6.66675V6.66666ZM18.6667 6.66666H25.3334V13.3333H22.6667V9.33332H18.6667V6.66666ZM22.6667 18.6667H25.3334V25.3333H18.6667V22.6667H22.6667V18.6667ZM13.3334 22.6667V25.3333H6.66675V18.6667H9.33341V22.6667H13.3334Z" fill="white"/>
             </svg>
@@ -115,7 +120,7 @@ include_once('lang.php');
                     x-show="$store.webPlayback?.isConnected ? false : ($store.player.playbackObj?.is_playing !== undefined) ? ($store.player.playbackObj?.is_playing === false) : false"
                     x-transition:enter.duration.100ms
                     x-transition:leave.duration.150ms
-                    class="absolute bottom-6 right-6 z-30 p-3 bg-black/20 border border-white/60 text-white rounded-full backdrop-blur-lg"
+                    class="absolute bottom-6 right-6 z-30 p-3 bg-black/20 border-2 border-white/60 text-white rounded-full backdrop-blur-lg"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-10 w-10" fill="currentColor"><path d="M14,19H18V5H14M6,19H10V5H6V19Z" /></svg>
                 </div>
@@ -128,7 +133,7 @@ include_once('lang.php');
                     x-show="$store.webPlayback?.isConnected ? ($store.webPlayback?.isPlaying === false) || showOverlay : false"
                     x-transition:enter.duration.100ms
                     x-transition:leave.duration.150ms
-                    class="absolute bottom-6 right-6 z-30 p-3 bg-black/20 border border-white/60 text-white rounded-full backdrop-blur-lg"
+                    class="absolute bottom-6 right-6 z-30 p-3 bg-black/20 border-2 border-white/60 text-white rounded-full backdrop-blur-lg active:scale-95 transition"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-10 w-10" fill="currentColor" x-show="$store.webPlayback?.isPlaying"><path d="M14,19H18V5H14M6,19H10V5H6V19Z" /></svg>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-10 w-10" fill="currentColor" x-show="!$store.webPlayback?.isPlaying"><path d="M8,5.14V19.14L19,12.14L8,5.14Z" /></svg>
@@ -139,12 +144,12 @@ include_once('lang.php');
                     x-show="$store.webPlayback?.isConnected && showOverlay"
                     x-transition:enter.duration.100ms
                     x-transition:leave.duration.150ms
-                    class="absolute bottom-6 left-6 z-30 flex flex-row bg-black/20 border border-white/60 text-white rounded-full backdrop-blur-lg"
+                    class="absolute bottom-6 left-6 z-30 flex flex-row bg-black/20 border-2 border-white/60 text-white rounded-full backdrop-blur-lg"
                 >
-                    <button class="px-3 py-1" @click="$store.webPlayback.previousTrack()">
+                    <button class="px-3 py-1 active:scale-95 transition" @click="$store.webPlayback.previousTrack()">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-6 w-6" fill="currentColor"><path d="M6,18V6H8V18H6M9.5,12L18,6V18L9.5,12Z" /></svg>
                     </button>
-                    <button class="px-3 py-1" @click="$store.webPlayback.nextTrack()">
+                    <button class="px-3 py-1 active:scale-95 transition" @click="$store.webPlayback.nextTrack()">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-6 w-6" fill="currentColor"><path d="M16,18H18V6H16M6,18L14.5,12L6,6V18Z" /></svg>
                     </button>
                 </div>
