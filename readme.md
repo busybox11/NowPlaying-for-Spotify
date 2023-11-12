@@ -17,7 +17,9 @@ Available at [nowplayi.ng](https://nowplayi.ng)
 
 [Status page](https://uptime.busybox.colabois.fr/status/nowplaying)
 
-###### Dedicated Discord server: [nowplayi.ng/discord](https://nowplayi.ng/discord) - tip to me: [paypal.me/busybox11](https://paypal.me/busybox11) (thank you!)
+###### Dedicated Discord server: [nowplayi.ng/discord](https://nowplayi.ng/discord)
+###### tip to me: [paypal.me/busybox11](https://paypal.me/busybox11) (thank you!)
+###### ko-fi: [ko-fi.com/busybox11](https://ko-fi.com/busybox11) (thank you!)
 
 ## **Changelog**
 
