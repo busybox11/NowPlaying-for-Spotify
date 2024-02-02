@@ -87,8 +87,7 @@ include_once('lang.php');
             <div class="flex flex-col my-auto mx-6">
                 <h1
                   x-text="$store.player.playbackObj.item?.name ?? translations.defaultTitleSong"
-                  style="text-wrap: balance"
-                  class="text-3xl font-bold"
+                  class="text-3xl font-bold text-pretty"
                   :class="{
                     'line-clamp-1': showAlbum,
                     'line-clamp-2': !showAlbum || !$store.player.playbackObj.item?.name,
@@ -97,8 +96,7 @@ include_once('lang.php');
 
                 <h2
                     x-text="$store.player.playbackObj.item?.artists?.map(artist => artist.name).join(', ') ?? translations.defaultArtistSong"
-                    style="text-wrap: balance"
-                    class="text-xl font-semibold line-clamp-1"
+                    class="text-xl font-semibold line-clamp-1 text-pretty"
                     :class="{
                         'opacity-80': !showAlbum,
                     }"
@@ -106,7 +104,7 @@ include_once('lang.php');
 
                 <h3
                     x-show="showAlbum"
-                    x-text="$store.player.playbackObj?.item?.album?.name" class="text-xl font-semibold opacity-80 line-clamp-1" style="text-wrap: balance"
+                    x-text="$store.player.playbackObj?.item?.album?.name" class="text-xl font-semibold opacity-80 line-clamp-1 text-pretty"
                 ></h3>
             </div>
 

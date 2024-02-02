@@ -151,14 +151,31 @@ include_once('lang.php');
             </div>
 
             <div class="flex flex-col lg:gap-1 xl:gap-2 w-full text-white">
-                <h1 x-text="$store.player.playbackObj.item?.name ?? translations.defaultTitleSong" class="text-4xl lg:text-7xl font-bold" style="text-wrap: balance"></h1>
-                <h2 x-text="$store.player.playbackObj.item?.artists?.map(artist => artist.name).join(', ') ?? translations.defaultArtistSong" class="text-2xl lg:text-5xl font-bold" style="text-wrap: balance"></h2>
-                <h3 x-text="$store.player.playbackObj?.item?.album?.name" class="text-xl lg:text-4xl font-semibold opacity-80" style="text-wrap: balance"></h3>
+                <h1
+                    x-text="$store.player.playbackObj.item?.name ?? translations.defaultTitleSong"
+                    class="text-4xl lg:text-7xl font-bold text-pretty">
+                </h1>
+                <h2
+                    x-text="$store.player.playbackObj.item?.artists?.map(artist => artist.name).join(', ') ?? translations.defaultArtistSong"
+                    class="text-2xl lg:text-5xl font-bold text-pretty">
+                </h2>
+                <h3
+                    x-text="$store.player.playbackObj?.item?.album?.name"
+                    class="text-xl lg:text-4xl font-semibold opacity-80 text-pretty">
+                </h3>
 
                 <div class="flex flex-col gap-2 lg:gap-3 mt-4 lg:mt-8 w-full">
                     <div class="text-xl flex flex-row justify-between w-full font-semibold">
-                        <span x-text="msToTime($store.player.playbackObj?.progress_ms)" x-show="$store.player.playbackObj?.progress_ms" x-cloak></span>
-                        <span x-text="msToTime($store.player.playbackObj?.item?.duration_ms)" x-show="$store.player.playbackObj?.item?.duration_ms" x-cloak></span>
+                        <span
+                            x-show="$store.player.playbackObj?.progress_ms"
+                            x-text="msToTime($store.player.playbackObj?.progress_ms)"
+                            x-cloak
+                        ></span>
+                        <span
+                            x-show="$store.player.playbackObj?.item?.duration_ms"
+                            x-text="msToTime($store.player.playbackObj?.item?.duration_ms)"
+                            x-cloak
+                        ></span>
                     </div>
 
                     <div class="h-3 w-full rounded-full overflow-hidden bg-white/30">
