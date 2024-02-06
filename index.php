@@ -54,8 +54,8 @@ if(isset($_GET['lang'])){
 	<div class="flex flex-col items-center justify-center">
 		<img src="assets/images/favicon.png" alt="Logo" width="100px" height="100px" class="mb-4">
 
-		<h1 class="text-3xl lg:text-4xl font-bold"><?=IndexTitle;?></h1>
-		<h2 class="text-xl lg:text-2xl font-light mb-2"><?=IndexDescription;?></h2>
+		<h1 class="text-3xl lg:text-4xl font-bold text-pretty"><?=IndexTitle;?></h1>
+		<h2 class="text-xl lg:text-2xl font-light mb-2 text-pretty"><?=IndexDescription;?></h2>
 
 		<div class="flex flex-row gap-2 mt-2">
 			<?php include 'assets/links.php'; ?>
@@ -116,6 +116,6 @@ if(isset($_GET['lang'])){
 		</a>
 	</div>
 
-	<h6 class="text-xs text-white/50 hover:text-white/80 transition"><?=IndexCookie;?></h6>
+	<h6 class="text-xs text-white/50 hover:text-white/80 transition text-pretty"><?=IndexCookie;?></h6>
 </body>
 </html>
