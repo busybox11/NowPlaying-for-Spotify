@@ -90,6 +90,7 @@ include_once('lang.php');
         x-show="showOverlay"
         x-transition:enter.duration.100ms
         x-transition:leave.duration.500ms
+        id="settings-div"
         class="settings-div fadeInOut z-30 absolute top-6 left-0 right-0 flex items-center justify-center"
     >
         <div class="flex flex-row items-center gap-2 px-4 py-2 bg-white/10 border-2 border-white/40 text-white/80 rounded-full">
@@ -153,28 +154,33 @@ include_once('lang.php');
             <div class="flex flex-col lg:gap-1 xl:gap-2 w-full text-white">
                 <h1
                     x-text="$store.player.playbackObj.item?.name ?? translations.defaultTitleSong"
+                    id="song-title"
                     class="text-4xl lg:text-7xl font-bold text-pretty">
                 </h1>
                 <h2
                     x-text="$store.player.playbackObj.item?.artists?.map(artist => artist.name).join(', ') ?? translations.defaultArtistSong"
+                    id="song-artist"
                     class="text-2xl lg:text-5xl font-bold text-pretty">
                 </h2>
                 <h3
                     x-text="$store.player.playbackObj?.item?.album?.name"
+                    id="song-album"
                     class="text-xl lg:text-4xl font-semibold opacity-80 text-pretty">
                 </h3>
 
                 <div class="flex flex-col gap-2 lg:gap-3 mt-4 lg:mt-8 w-full">
-                    <div class="text-xl flex flex-row justify-between w-full font-semibold">
+                    <div class="text-xl flex flex-row justify-between w-full font-semibold" id="progress-time">
                         <span
                             x-show="$store.player.playbackObj?.progress_ms"
                             x-text="msToTime($store.player.playbackObj?.progress_ms)"
                             x-cloak
+                            id="progress-time-now"
                         ></span>
                         <span
                             x-show="$store.player.playbackObj?.item?.duration_ms"
                             x-text="msToTime($store.player.playbackObj?.item?.duration_ms)"
                             x-cloak
+                            id="progress-time-total"
                         ></span>
                     </div>
 
@@ -191,7 +197,7 @@ include_once('lang.php');
                         ></div>
                     </div>
 
-                    <div class="flex flex-row gap-3 items-center">
+                    <div class="flex flex-row gap-3 items-center" id="player-controls">
                         <div>
                             <svg width="42" height="42" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 15H36V30H12M36 33C36.7956 33 37.5587 32.6839 38.1213 32.1213C38.6839 31.5587 39 30.7956 39 30V15C39 14.2044 38.6839 13.4413 38.1213 12.8787C37.5587 12.3161 36.7956 12 36 12H12C10.335 12 9 13.335 9 15V30C9 30.7956 9.31607 31.5587 9.87868 32.1213C10.4413 32.6839 11.2044 33 12 33H6V36H42V33H36Z" fill="white"/></svg>
                         </div>
@@ -208,6 +214,7 @@ include_once('lang.php');
         x-show="$store.webPlayback?.isAvailable && showOverlay && deviceName"
         x-transition:enter.duration.100ms
         x-transition:leave.duration.500ms
+        id="device-name"
         class="absolute bottom-8 left-12 z-30 flex flex-row items-center gap-2 px-4 py-1 bg-white/10 border border-white/40 text-white/80 rounded-full"
     >
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-6 w-6" fill="currentColor"><path d="M16.5 3H21.5C22.3 3 23 3.7 23 4.5V7.5C23 8.3 22.3 9 21.5 9H18L15 12V4.5C15 3.7 15.7 3 16.5 3M3 3C1.9 3 1 3.9 1 5V19C1 20.1 1.9 21 3 21H11C12.1 21 13 20.1 13 19V5C13 3.9 12.1 3 11 3H3M7 5C8.1 5 9 5.9 9 7S8.1 9 7 9 5 8.1 5 7 5.9 5 7 5M7 11C9.2 11 11 12.8 11 15S9.2 19 7 19 3 17.2 3 15 4.8 11 7 11M7 13C5.9 13 5 13.9 5 15S5.9 17 7 17 9 16.1 9 15 8.1 13 7 13" /></svg>
