@@ -88,6 +88,7 @@ HTML, TailwindCSS, JS / AlpineJS, PHP
 
 ## **Upcoming changes**
 
+- [ ] Floating window (PiP)
 - [X] ~~Rewrite (see [discussion #76](https://github.com/busybox11/NowPlaying-for-Spotify/discussions/76) about the possible use of web frameworks)~~
 - [X] ~~OBS source (Done since [v2.1](https://github.com/busybox11/NowPlaying-for-Spotify/commit/994c52e06881f78f52b4a151fec11376db3edf12))~~
 - [ ] Local players support (coming with [localmusic-api](https://github.com/busybox11/localmusic-api/projects) - [Sunamu by @NyaomiDEV](https://github.com/NyaomiDEV/Sunamu))
