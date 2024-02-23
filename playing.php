@@ -101,8 +101,8 @@ include_once('lang.php');
     </div>
 
     <div class="h-full w-full flex align-center justify-center z-20">
-        <div class="flex flex-col lg:flex-row gap-6 lg:gap-12 justify-center items-center px-6 lg:px-12 xl:px-0 w-full xl:w-5/6">
-            <div class="relative w-[30rem] flex-shrink-0">
+        <div class="flex flex-col landscape:flex-row lg:flex-row gap-6 lg:gap-12 justify-center items-center px-6 lg:px-12 xl:px-0 w-full xl:w-5/6">
+            <div class="relative w-[20rem] landscape:w-[20rem] landscape:lg:w-[30rem] md:w-[30rem] flex-shrink-0">
                 <img
                     src="assets/images/no_song.png"
                     :src="$store.player.targetImg ?? 'assets/images/no_song.png'"
