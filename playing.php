@@ -66,7 +66,7 @@ include_once('lang.php');
     }"
     x-init="handleMouseMove"
     @mousemove.throttle="handleMouseMove"
-    class="flex h-screen w-screen overflow-hidden"
+    class="flex h-screen w-screen overflow-hidden np_music_paused"
     :style="{
         cursor: showOverlay ? 'default' : 'none'
     }"

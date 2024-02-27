@@ -109,6 +109,10 @@ document.addEventListener('alpine:init', x => {
           this.targetImg = img.src;
         }
       }
+
+      // Set DOM classes
+      document.querySelector('body').classList.toggle('np_music_playing', this.playbackObj.is_playing);
+      document.querySelector('body').classList.toggle('np_music_paused', !this.playbackObj.is_playing);
     }
   })
 })
