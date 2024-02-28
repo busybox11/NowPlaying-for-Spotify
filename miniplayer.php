@@ -66,7 +66,7 @@ include_once('lang.php');
   }"
   x-cloak
   class="h-screen w-screen transition opacity-100"
-  :class="{ 'opacity-0': !$store.player.playbackObj.item && hideOnPauseOrEmpty }"
+  :class="{ 'opacity-0': (!$store.player.playbackObj?.item || !$store.player.playbackObj?.is_playing) && hideOnPauseOrEmpty }"
   :style="{ 'background-color': transparentBackground || ((!$store.player.playbackObj?.item || !$store.player.playbackObj?.is_playing) && hideOnPauseOrEmpty) ? 'transparent' : '#000000' }"
 >
   <div class="flex flex-row justify-center items-center h-screen">
