@@ -81,7 +81,7 @@ include_once('lang.php');
       >
 
       <div
-        x-show="showPause && $store.player.playbackObj?.is_playing === false"
+        x-show="showPause && $store.player.playbackObj?.is_playing === false && !hideOnPauseOrEmpty"
         x-cloak
         x-transition:enter.duration.100ms x-transition:leave.duration.150ms id="pause-icon"
         class="absolute bottom-[10%] right-[10%] z-30 p-3 bg-black/20 border-2 border-white/60 text-white rounded-full backdrop-blur-lg"
@@ -120,7 +120,7 @@ include_once('lang.php');
       </div>
 
       <div
-        x-show="showPause && !showArtwork && $store.player.playbackObj?.is_playing === false"
+        x-show="showPause && !showArtwork && $store.player.playbackObj?.is_playing === false && !hideOnPauseOrEmpty"
         x-cloak
         x-transition:enter.opacity.duration.100ms x-transition:leave.opacity.duration.150ms
         id="pause-icon"
