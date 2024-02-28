@@ -45,6 +45,7 @@ include_once('lang.php');
       showArtwork: urlParams.get('showArtwork') !== 'false',
       showPause: urlParams.get('showPause') !== 'false',
       transparentBackground: urlParams.get('transparentBackground') === 'true',
+      hideOnPauseOrEmpty: urlParams.get('hideOnPauseOrEmpty') === 'true',
 
       useSmallAlbumCover: true,
     }
@@ -63,8 +64,10 @@ include_once('lang.php');
 
     ...window.playerConfig,
   }"
-  class="h-screen w-screen"
-  :style="{ 'background-color': transparentBackground ? 'transparent' : '#000000' }"
+  x-cloak
+  class="h-screen w-screen transition opacity-100"
+  :class="{ 'opacity-0': !$store.player.playbackObj.item && hideOnPauseOrEmpty }"
+  :style="{ 'background-color': transparentBackground || ((!$store.player.playbackObj?.item || !$store.player.playbackObj?.is_playing) && hideOnPauseOrEmpty) ? 'transparent' : '#000000' }"
 >
   <div class="flex flex-row justify-center items-center h-screen">
     <div class="relative h-full w-auto flex-shrink-0">
