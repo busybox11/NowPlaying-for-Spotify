@@ -45,6 +45,28 @@ function setCookie(cname, cvalue, exdays) {
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
+/* WakeLock */
+let wakelock = null;
+
+/* Prevent screen from sleeping */
+function getWakelock() {
+    if ('wakeLock' in navigator) {
+        navigator.wakeLock.request('screen').then(function (wakeLock) {
+            wakelock = wakeLock;
+        }).catch(function (err) {
+            console.log(`Failed to request wake lock: ${err}`);
+        });
+    }
+}
+
+/* Release the wake lock */
+function releaseWakelock() {
+    if (wakelock !== null) {
+        wakelock.release();
+        wakelock = null;
+    }
+}
+
 /* Fullscreen */
 let elem = document.documentElement;
 
@@ -59,6 +81,7 @@ function openFullscreen() {
     } else if (elem.msRequestFullscreen) { /* IE/Edge */
         elem.msRequestFullscreen();
     }
+    getWakelock();
 }
 
 /* Close fullscreen */
@@ -72,6 +95,7 @@ function closeFullscreen() {
     } else if (document.msExitFullscreen) { /* IE/Edge */
         document.msExitFullscreen();
     }
+    releaseWakelock();
 }
 
 function fullscreen() {
