@@ -60,6 +60,11 @@ if (isset($_GET['lang'])) {
     const refreshToken = '<?= $_COOKIE['refreshToken']; ?>';
     const currentUrl = window.location.origin + window.location.pathname.slice(0, window.location.pathname.lastIndexOf('/'));
   </script>
+
+  <?php
+  require_once ('assets/analytics.php');
+  echo getAnalyticsScript();
+  ?>
 </head>
 
 <body x-data="generatePlayerData"

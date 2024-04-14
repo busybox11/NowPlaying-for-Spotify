@@ -53,6 +53,11 @@ include_once ('lang.php');
 
   <script src="assets/js/spotify-web-api.js"></script>
   <script src="assets/js/playing.js?ts=<?= time() ?>"></script>
+
+  <?php
+  require_once ('assets/analytics.php');
+  echo getAnalyticsScript();
+  ?>
 </head>
 
 <body x-data="{

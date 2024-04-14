@@ -131,6 +131,12 @@ Edit those values:
 
 Let's go back on our app's panel. You need to declare the URL where the `token.php` page is located, for a local hosting it would be in most cases `http://localhost/token.php`. Click on the green `Edit settings` button situated on the top of the page, then in the `Redirect URIs` text field, indicate yours. ***ATTENTION***: what you typed should **IMPERATIVELY** be the same as what you wrote in the two precedent files! Then click on the `SAVE` button on the very bottom of the form. Your app is declared and ready to use!
 
+## **Optional analytics script**
+
+You can include an optional analytics script, using the `ANALYTICS_SCRIPT` environment variable.
+
+If set, this variable will be included in the `<head>` part of all pages. This variable should most likely be a string containing a `<script>` tag.
+
 ## **Credits**
 Flags by [Freepik](https://www.freepik.com/) of the [www.flaticon.com](https://www.flaticon.com/) website under [Creative Commons BY 3.0](http://creativecommons.org/licenses/by/3.0/) license.
 
