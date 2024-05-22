@@ -1,3 +1,4 @@
+import Locales from "@/components/Home/Locales";
 import Image from "next/image";
 
 export default function Page(): JSX.Element {
@@ -82,113 +83,7 @@ export default function Page(): JSX.Element {
         </a>
       </div>
 
-      <div className="flex flex-row justify-center gap-3 lg:gap-4 flex-wrap">
-        <a href="?lang=en">
-          <img
-            src="/flags/uk.svg"
-            title="English"
-            className="h-8 w-8 opacity-50 hover:opacity-100 hover:scale-105 transition"
-          />
-        </a>
-        <a href="?lang=fr">
-          <img
-            src="/flags/fr.svg"
-            title="Français"
-            className="h-8 w-8 opacity-50 hover:opacity-100 hover:scale-105 transition"
-          />
-        </a>
-        <a href="?lang=it">
-          <img
-            src="/flags/it.svg"
-            title="Italiano"
-            className="h-8 w-8 opacity-50 hover:opacity-100 hover:scale-105 transition"
-          />
-        </a>
-        <a href="?lang=es">
-          <img
-            src="/flags/es.svg"
-            title="Español"
-            className="h-8 w-8 opacity-50 hover:opacity-100 hover:scale-105 transition"
-          />
-        </a>
-        <a href="?lang=ru">
-          <img
-            src="/flags/ru.svg"
-            title="Pусский"
-            className="h-8 w-8 opacity-50 hover:opacity-100 hover:scale-105 transition"
-          />
-        </a>
-        <a href="?lang=de">
-          <img
-            src="/flags/de.svg"
-            title="Deutsch"
-            className="h-8 w-8 opacity-50 hover:opacity-100 hover:scale-105 transition"
-          />
-        </a>
-        <a href="?lang=id">
-          <img
-            src="/flags/id.svg"
-            title="Indonesia"
-            className="h-8 w-8 opacity-50 hover:opacity-100 hover:scale-105 transition"
-          />
-        </a>
-        <a href="?lang=cz">
-          <img
-            src="/flags/cz.svg"
-            title="Czech"
-            className="h-8 w-8 opacity-50 hover:opacity-100 hover:scale-105 transition"
-          />
-        </a>
-        <a href="?lang=tr">
-          <img
-            src="/flags/tr.svg"
-            title="Turkish"
-            className="h-8 w-8 opacity-50 hover:opacity-100 hover:scale-105 transition"
-          />
-        </a>
-        <a href="?lang=gr">
-          <img
-            src="/flags/gr.svg"
-            title="Greece"
-            className="h-8 w-8 opacity-50 hover:opacity-100 hover:scale-105 transition"
-          />
-        </a>
-        <a href="?lang=zh_tw">
-          <img
-            src="/flags/zh_tw.svg"
-            title="Traditionnal Chinese"
-            className="h-8 w-8 opacity-50 hover:opacity-100 hover:scale-105 transition"
-          />
-        </a>
-        <a href="?lang=ar">
-          <img
-            src="/flags/ar.svg"
-            title="Arabic"
-            className="h-8 w-8 opacity-50 hover:opacity-100 hover:scale-105 transition"
-          />
-        </a>
-        <a href="?lang=eo">
-          <img
-            src="/flags/eo.svg"
-            title="Esperanto"
-            className="h-8 w-8 opacity-50 hover:opacity-100 hover:scale-105 transition"
-          />
-        </a>
-        <a href="?lang=nl">
-          <img
-            src="/flags/nl.svg"
-            title="Dutch"
-            className="h-8 w-8 opacity-50 hover:opacity-100 hover:scale-105 transition"
-          />
-        </a>
-        <a href="?lang=az">
-          <img
-            src="/flags/az.png"
-            title="Azərbaycan"
-            className="h-8 w-8 opacity-50 hover:opacity-100 hover:scale-105 transition"
-          />
-        </a>
-      </div>
+      <Locales />
 
       <h6 className="text-xs text-white/50 hover:text-white/80 transition text-pretty">
         By clicking on 'LOGIN TO SPOTIFY', you accept the use of cookies
