@@ -1,0 +1,31 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": {
+    "dev": "tsx watch ./src/index.ts",
+    "build": "tsc",
+    "start": "tsx ./src/index.ts",
+    "lint": "eslint --ext .ts src",
+    "format": "prettier --write src/**/*.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@trpc/server": "^10.45.2",
+    "express": "^4.19.2",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:^",
+    "@repo/typescript-config": "workspace:^",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.11.24",
+    "eslint": "^8.57.0",
+    "tsx": "^4.10.5",
+    "typescript": "^5.3.3"
+  }
+}
