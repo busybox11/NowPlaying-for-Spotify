@@ -11,9 +11,9 @@
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "prettier": "^3.2.5",
-    "turbo": "latest"
+    "turbo": "^1.13.3"
   },
-  "packageManager": "pnpm@8.9.0",
+  "packageManager": "pnpm@8.12.1",
   "engines": {
     "node": ">=18"
   }
