@@ -31,6 +31,7 @@ v2.0.X
 - Fix Safari hardware acceleration
 - No full page reload for reauthentication
 - Mini player usage and generation
+- Allow usage of temporary refresh tokens
 
 <details>
   <summary>v1.6.X</summary>

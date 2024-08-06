@@ -10,13 +10,15 @@ let refreshTime = readCookie('refreshTime');
 let spotifyApi;
 
 async function fetchAccessToken() {
-  let targetUrl = 'token.php?action=refresh&response=data';
-
-  if (!cookieHasRefreshToken && refreshTokenParam) {
-    targetUrl += `&refreshToken=${refreshTokenParam}`;
-  } else if (!cookieHasRefreshToken) {
+  if (!cookieHasRefreshToken && !refreshTokenParam) {
     // Redirect to login page
     window.location.replace('login.php');
+    return;
+  }
+
+  let targetUrl = 'token.php?action=refresh&response=data';
+  if (refreshTokenParam) {
+    targetUrl += `&refreshToken=${refreshTokenParam}`;
   }
 
   const response = await fetch(targetUrl);
@@ -32,7 +34,9 @@ document.addEventListener('alpine:init', x => {
     init() {
       spotifyApi = new SpotifyWebApi();
 
-      if (cookieHasRefreshToken) {
+      // Don't reuse access token if refreshToken param is passed
+      // so that we force refreshing with a new token on load
+      if (cookieHasRefreshToken && !refreshTokenParam) {
         spotifyApi.setAccessToken(readCookie('accessToken'));
 
         this.poolingLoop();

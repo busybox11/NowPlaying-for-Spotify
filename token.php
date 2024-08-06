@@ -11,26 +11,34 @@ $session = new SpotifyWebAPI\Session(
     $REDIRECT_URI = $_ENV['REDIRECT_URI'],
 );
 
-$refreshToken = $_COOKIE['refreshToken'] ?? $_GET['refreshToken'] ?? null;
+// Use the passed GET refreshToken parameter first
+// in case this is used as a not logged in miniplayer
+$refreshToken = $_GET['refreshToken'] ?? $_COOKIE['refreshToken'] ?? null;
 
 if (!isset($_GET['action'])) {
     $session->requestAccessToken($_GET['code']);
 
     $accessToken = $session->getAccessToken();
-    setcookie('accessToken', $accessToken, time() + 3600);
-    setcookie('refreshTime', time() + 3600, time() + (3600 * 365));
     $refreshToken = $session->getRefreshToken();
     $refreshTime = time() + 3600;
+
+    setcookie('accessToken', $accessToken, time() + 3600);
+    setcookie('refreshTime', time() + 3600, time() + (3600 * 365));
     setcookie('refreshToken', $refreshToken, time() + (3600 * 365));
 } elseif ($_GET['action'] == "refresh") {
     $session->refreshAccessToken($refreshToken);
 
     $accessToken = $session->getAccessToken();
-    setcookie('accessToken', $accessToken, time() + 3600);
-    setcookie('refreshTime', time() + 3600, time() + (3600 * 365));
     $refreshToken = $session->getRefreshToken();
     $refreshTime = time() + 3600;
-    setcookie('refreshToken', $refreshToken, time() + (3600 * 365));
+
+    if (!$_GET['refreshToken']) {
+        // No need to set cookies if a refresh token is passed via a GET parameter
+        // We only want to get the necessary tokens and data from a fetch() call
+        setcookie('accessToken', $accessToken, time() + 3600);
+        setcookie('refreshTime', time() + 3600, time() + (3600 * 365));
+        setcookie('refreshToken', $refreshToken, time() + (3600 * 365));
+    }
 }
 
 if (isset($_GET['response']) && $_GET['response'] == "data") {
