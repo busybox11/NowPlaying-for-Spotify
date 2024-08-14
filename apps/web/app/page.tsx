@@ -1,7 +1,8 @@
 import Locales from "@/components/Home/Locales";
+import TestTrpc from "@/components/TestTrpc";
 import Image from "next/image";
 
-export default function Page(): JSX.Element {
+export default function Page() {
   return (
     <main className="flex flex-col h-screen px-4 py-auto gap-8 items-center justify-center text-center">
       <div className="flex flex-col items-center justify-center">
@@ -89,6 +90,8 @@ export default function Page(): JSX.Element {
         By clicking on 'LOGIN TO SPOTIFY', you accept the use of cookies
         necessary for the proper functioning of the site.
       </h6>
+
+      <TestTrpc />
     </main>
   );
 }

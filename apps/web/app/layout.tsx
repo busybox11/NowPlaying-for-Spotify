@@ -14,7 +14,7 @@ export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
-}): JSX.Element {
+}) {
   return (
     <html lang="en" className="bg-background text-white">
       <link rel="icon" type="image/png" href="/favicon.png" />
