@@ -154,7 +154,7 @@ include_once ('lang.php');
                 <h1 x-text="$store.player.playbackObj.item?.name ?? translations.defaultTitleSong" id="song-title"
                     class="text-4xl lg:text-7xl font-bold text-pretty">
                 </h1>
-                <h2 x-text="$store.player.playbackObj.item?.artists?.map(artist => artist.name).join(', ') ?? translations.defaultArtistSong"
+                <h2 x-text="$store.player.playbackObj.item?.artists?.map(artist => artist.name).join(', ') ?? $store.player.playbackObj.item?.show?.publisher ?? translations.defaultArtistSong"
                     id="song-artist" class="text-2xl lg:text-5xl font-bold text-pretty">
                 </h2>
                 <h3 x-text="$store.player.playbackObj?.item?.album?.name" id="song-album"

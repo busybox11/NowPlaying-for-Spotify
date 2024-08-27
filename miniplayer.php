@@ -93,7 +93,7 @@ include_once ('lang.php');
           }"></h1>
 
         <h2
-          x-text="$store.player.playbackObj.item?.artists?.map(artist => artist.name).join(', ') ?? translations.defaultArtistSong"
+          x-text="$store.player.playbackObj.item?.artists?.map(artist => artist.name).join(', ') ?? $store.player.playbackObj.item?.show?.publisher ?? translations.defaultArtistSong"
           id="song-artist" class="text-xl font-semibold line-clamp-1 text-pretty" :class="{ 'opacity-80': !showAlbum }">
         </h2>
 

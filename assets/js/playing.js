@@ -80,7 +80,9 @@ document.addEventListener('alpine:init', x => {
         await this.refreshToken();
       }
 
-      const response = await spotifyApi.getMyCurrentPlaybackState();
+      const response = await spotifyApi.getMyCurrentPlaybackState({
+        additional_types: "episode"
+      });
       if (response) {
         this.handleChange(response);
       }
@@ -90,15 +92,17 @@ document.addEventListener('alpine:init', x => {
       this.lastPlaybackObj = this.playbackObj;
       this.playbackObj = obj;
 
+      const artists = this.playbackObj.item?.artists || [{ name: this.playbackObj.item?.show?.publisher }]
+
       if (this.playbackObj.item?.name) {
-        document.title = `${this.playbackObj.item?.name} - ${this.playbackObj.item?.artists[0].name} - NowPlaying`;
+        document.title = `${this.playbackObj.item?.name} - ${artists[0].name} - NowPlaying`;
       }
 
       // Fetch album art
-      const imgsArr = this.playbackObj.item?.album?.images;
+      const imgsArr = this.playbackObj.item?.album?.images || this.playbackObj.item?.images;
       const targetImg = (useSmallAlbumCover) ? imgsArr[imgsArr.length - 2]?.url : imgsArr[0]?.url;
 
-      const lastImgsArr = this.lastPlaybackObj.item?.album?.images;
+      const lastImgsArr = this.lastPlaybackObj.item?.album?.images || this.lastPlaybackObj.item?.images;
       if (lastImgsArr === undefined) {
         this.targetImg = targetImg;
         return;
