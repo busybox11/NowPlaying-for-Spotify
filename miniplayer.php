@@ -92,10 +92,19 @@ include_once ('lang.php');
             'line-clamp-2': !showAlbum || !$store.player.playbackObj.item?.name,
           }"></h1>
 
-        <h2
-          x-text="$store.player.playbackObj.item?.artists?.map(artist => artist.name).join(', ') ?? $store.player.playbackObj.item?.show?.publisher ?? translations.defaultArtistSong"
-          id="song-artist" class="text-xl font-semibold line-clamp-1 text-pretty" :class="{ 'opacity-80': !showAlbum }">
-        </h2>
+        <div class="flex gap-2">
+          <svg
+            x-show="$store.player.playbackObj.item?.type == 'episode'"
+            class="lucide lucide-podcast my-auto opacity-75"
+            xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          >
+            <path d="M16.85 18.58a9 9 0 1 0-9.7 0"/><path d="M8 14a5 5 0 1 1 8 0"/><circle cx="12" cy="11" r="1"/><path d="M13 17a1 1 0 1 0-2 0l.5 4.5a.5.5 0 1 0 1 0Z"/>
+          </svg>
+          <h2
+            x-text="$store.player.playbackObj.item?.artists?.map(artist => artist.name).join(', ') ?? $store.player.playbackObj.item?.show?.publisher ?? translations.defaultArtistSong"
+            id="song-artist" class="text-xl font-semibold line-clamp-1 text-pretty" :class="{ 'opacity-80': !showAlbum }">
+          </h2>
+        </div>
 
         <h3 x-show="showAlbum" x-text="$store.player.playbackObj?.item?.album?.name" id="song-album"
           class="text-xl font-semibold opacity-80 line-clamp-1 text-pretty"></h3>

@@ -84,7 +84,7 @@ HTML, TailwindCSS, JS / AlpineJS, PHP
 
 ## **Known bugs**
 
-- [ ] Podcasts aren't recognized
+- [X] ~~Podcasts aren't recognized~~ initial commit with https://github.com/busybox11/NowPlaying-for-Spotify/commit/e30a3c1d8ea703be11259e33dce4bde84ed663c7
 - [X] ~~White flash when loading new artwork~~
 
 ## **Upcoming changes**
