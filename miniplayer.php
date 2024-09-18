@@ -92,7 +92,7 @@ include_once ('lang.php');
             'line-clamp-2': !showAlbum || !$store.player.playbackObj.item?.name,
           }"></h1>
 
-        <div class="flex gap-2">
+        <div id="artist-or-podcast-container" class="flex gap-2">
           <svg
             x-show="$store.player.playbackObj.item?.type == 'episode'"
             class="lucide lucide-podcast my-auto opacity-75"
