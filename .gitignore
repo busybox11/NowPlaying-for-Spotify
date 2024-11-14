@@ -18,6 +18,7 @@ artifacts
 coverage
 *.tgz
 **/*app.config.*
+!app.config.ts
 
 # tests
 packages/router-generator/tests/**/*.gen.ts
