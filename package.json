@@ -1,0 +1,31 @@
+{
+  "name": "nowplaying",
+  "version": "3.0.0",
+  "description": "A live music visualizer",
+  "type": "module",
+  "scripts": {
+    "dev": "vinxi dev",
+    "build": "vinxi build",
+    "start": "vinxi start"
+  },
+  "keywords": [
+    "music",
+    "nowplaying",
+    "visualizer"
+  ],
+  "author": "busybox11",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "@tanstack/react-router": "^1.81.5",
+    "@tanstack/start": "^1.81.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "vinxi": "^0.4.3"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.3",
+    "typescript": "^5.6.3"
+  }
+}
