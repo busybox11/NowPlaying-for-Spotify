@@ -1,43 +1,28 @@
-import * as fs from 'node:fs'
-import { createFileRoute, useRouter } from '@tanstack/react-router'
-import { createServerFn } from '@tanstack/start'
+import * as fs from "node:fs";
+import { createFileRoute, useRouter } from "@tanstack/react-router";
+import { createServerFn } from "@tanstack/start";
+import { MiscLinks } from "@/components/MiscLinks";
 
-const filePath = 'count.txt'
-
-async function readCount() {
-  return parseInt(
-    await fs.promises.readFile(filePath, 'utf-8').catch(() => '0'),
-  )
-}
-
-const getCount = createServerFn('GET', () => {
-  return readCount()
-})
-
-const updateCount = createServerFn('POST', async (addBy: number) => {
-  const count = await readCount()
-  await fs.promises.writeFile(filePath, `${count + addBy}`)
-})
-
-export const Route = createFileRoute('/')({
+export const Route = createFileRoute("/")({
   component: Home,
-  loader: async () => await getCount(),
-})
+});
 
 function Home() {
-  const router = useRouter()
-  const state = Route.useLoaderData()
-
   return (
-    <button
-      type="button"
-      onClick={() => {
-        updateCount(1).then(() => {
-          router.invalidate()
-        })
-      }}
-    >
-      Add 1 to {state}?
-    </button>
-  )
+    <main className="flex flex-col items-center justify-center h-screen">
+      <section className="flex flex-row gap-6 items-center">
+        <img
+          src="/images/favicon.png"
+          alt="NowPlaying for Spotify"
+          className="size-24"
+        />
+
+        <div className="flex flex-col gap-4">
+          <h1 className="text-4xl font-bold">NowPlaying</h1>
+
+          <MiscLinks />
+        </div>
+      </section>
+    </main>
+  );
 }
