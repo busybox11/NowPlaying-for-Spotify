@@ -1,12 +1,26 @@
-import { ProviderMeta } from "@/types/providers/meta";
+import type {
+  IProviderClient,
+  IProviderClientConstructor,
+} from "@/types/providers/client";
 
-const providersGlob = import.meta.glob<ProviderMeta>("./*/index.ts", {
-  eager: true,
-  import: "default",
-});
+type NewProviderClient = new (
+  args: IProviderClientConstructor
+) => IProviderClient;
 
-const providers = Object.fromEntries(
-  Object.values(providersGlob).map((value) => [value.id, value])
+const providersClientGlob = import.meta.glob<NewProviderClient>(
+  "./*/client.ts",
+  {
+    eager: true,
+    import: "default",
+  }
 );
+
+const providers: [string, NewProviderClient][] = Object.entries(
+  providersClientGlob
+).map(([importPath, client]) => {
+  const [, id] = importPath.split("/");
+
+  return [id, client];
+});
 
 export default providers;

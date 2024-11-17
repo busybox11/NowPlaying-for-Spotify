@@ -7,6 +7,7 @@ import { Body, Head, Html, Meta, Scripts } from "@tanstack/start";
 import type { ReactNode } from "react";
 
 import appCss from "../styles/app.css?url";
+import { PlayerProvidersProvider } from "@/components/contexts/PlayerProviders";
 
 export const Route = createRootRoute({
   meta: () => [
@@ -34,7 +35,9 @@ export const Route = createRootRoute({
 function RootComponent() {
   return (
     <RootDocument>
-      <Outlet />
+      <PlayerProvidersProvider>
+        <Outlet />
+      </PlayerProvidersProvider>
     </RootDocument>
   );
 }

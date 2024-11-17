@@ -1,13 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { MiscLinks } from "@/components/MiscLinks";
-
-import providers from "@/providers";
+import { usePlayerProviders } from "@/components/contexts/PlayerProviders";
 
 export const Route = createFileRoute("/")({
   component: Home,
 });
 
 function Home() {
+  const providers = usePlayerProviders();
+
   return (
     <main className="flex flex-col items-center justify-center h-screen gap-12">
       <section className="flex flex-row gap-6 items-center">
@@ -25,15 +26,17 @@ function Home() {
       </section>
 
       <div className="flex flex-col gap-4">
-        {Object.values(providers).map((provider) => (
-          <button
-            key={provider.id}
-            onClick={() => provider.auth()}
-            className="border-b-2 text-white/70 hover:text-white border-white/50 hover:border-white/70 text-lg tracking-wide active:scale-95 transition mx-auto"
-          >
-            {provider.name}
-          </button>
-        ))}
+        {Object.entries(providers).map(([id, provider]) => {
+          return (
+            <button
+              key={id}
+              onClick={() => provider.authenticate()}
+              className="border-b-2 text-white/70 hover:text-white border-white/50 hover:border-white/70 text-lg tracking-wide active:scale-95 transition mx-auto"
+            >
+              {provider.meta.name}
+            </button>
+          );
+        })}
       </div>
     </main>
   );

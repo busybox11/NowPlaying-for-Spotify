@@ -1,29 +1,50 @@
 import { SPOTIFY_OAUTH_SCOPES } from "./constants";
 import {
-  AccessToken,
   SpotifyApi,
   AuthorizationCodeWithPKCEStrategy,
 } from "@spotify/web-api-ts-sdk";
 
 import { providerConfig } from "./config";
+import {
+  IProviderClient,
+  IProviderClientConstructor,
+} from "@/types/providers/client";
+import spotifyProviderMeta from "@/providers/spotify";
 
 const { VITE_SPOTIFY_CLIENT_ID, VITE_SPOTIFY_REDIRECT_URI } = providerConfig;
 
-export async function authenticate(callback: (token: AccessToken) => void) {
-  const auth = new AuthorizationCodeWithPKCEStrategy(
-    VITE_SPOTIFY_CLIENT_ID,
-    VITE_SPOTIFY_REDIRECT_URI,
-    [...SPOTIFY_OAUTH_SCOPES]
-  );
-  const client = new SpotifyApi(auth);
+export default class SpotifyProvider implements IProviderClient {
+  readonly meta = spotifyProviderMeta;
+  isAuthenticated = false;
 
-  try {
-    const { authenticated } = await client.authenticate();
+  // API event handlers
+  private onAuth: () => void;
 
-    if (authenticated) {
-      console.log("Authenticated");
+  constructor({ onAuth }: IProviderClientConstructor) {
+    this.onAuth = onAuth;
+  }
+
+  async authenticate() {
+    const auth = new AuthorizationCodeWithPKCEStrategy(
+      VITE_SPOTIFY_CLIENT_ID,
+      VITE_SPOTIFY_REDIRECT_URI,
+      [...SPOTIFY_OAUTH_SCOPES]
+    );
+    const client = new SpotifyApi(auth);
+
+    try {
+      const { authenticated } = await client.authenticate();
+
+      if (authenticated) {
+        this.isAuthenticated = true;
+        this.onAuth();
+      }
+    } catch (e) {
+      console.error(e);
     }
-  } catch (e) {
-    console.error(e);
+  }
+
+  async callback() {
+    await this.authenticate();
   }
 }
