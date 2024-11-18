@@ -7,7 +7,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
-  const providers = usePlayerProviders();
+  const { providers } = usePlayerProviders();
 
   return (
     <main className="flex flex-col items-center justify-center h-screen gap-12">

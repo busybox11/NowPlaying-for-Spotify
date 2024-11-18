@@ -3,18 +3,27 @@ import type { ReactNode } from "@tanstack/react-router";
 
 import providers from "@/providers";
 import { IProviderClient } from "@/types/providers/client";
+import { useLocalStorage } from "usehooks-ts";
 
 const PlayerProvidersContext = createContext<{
   [key: string]: IProviderClient;
 }>({});
+
+type LastUsedProvider = {
+  id: string;
+  date: number;
+} | null;
 
 export function PlayerProvidersProvider({
   children,
 }: Readonly<{
   children: ReactNode;
 }>) {
+  const [_lastUsed, setLastUsed, _removeLastUsed] =
+    useLocalStorage<LastUsedProvider>("lastUsedProvider", null);
+
   const handleAuth = useCallback((provider: string) => {
-    console.log("auth", provider);
+    setLastUsed({ id: provider, date: Date.now() });
   }, []);
 
   const value = useMemo(() => {
@@ -38,5 +47,10 @@ export function PlayerProvidersProvider({
 }
 
 export function usePlayerProviders() {
-  return useContext(PlayerProvidersContext);
+  const [lastUsed] = useLocalStorage<LastUsedProvider>("lastUsed", null);
+
+  return {
+    lastUsedProvider: lastUsed,
+    providers: useContext(PlayerProvidersContext),
+  };
 }
