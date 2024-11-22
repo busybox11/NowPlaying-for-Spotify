@@ -8,7 +8,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
-  const { providers, activePlayer, lastUsedProvider } = usePlayerProviders();
+  const { providers, lastUsedProvider } = usePlayerProviders();
 
   const { defaultProvider, otherProviders } = useMemo(() => {
     const defaultProviderId =
@@ -62,8 +62,6 @@ function Home() {
             </button>
           );
         })}
-
-        <span>currently active player {activePlayer}</span>
       </div>
     </main>
   );

@@ -11,10 +11,17 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as PlayingImport } from './routes/playing'
 import { Route as IndexImport } from './routes/index'
 import { Route as AuthCallbackProviderImport } from './routes/auth/callback.$provider'
 
 // Create/Update Routes
+
+const PlayingRoute = PlayingImport.update({
+  id: '/playing',
+  path: '/playing',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const IndexRoute = IndexImport.update({
   id: '/',
@@ -39,6 +46,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
+    '/playing': {
+      id: '/playing'
+      path: '/playing'
+      fullPath: '/playing'
+      preLoaderRoute: typeof PlayingImport
+      parentRoute: typeof rootRoute
+    }
     '/auth/callback/$provider': {
       id: '/auth/callback/$provider'
       path: '/auth/callback/$provider'
@@ -53,36 +67,41 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/playing': typeof PlayingRoute
   '/auth/callback/$provider': typeof AuthCallbackProviderRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/playing': typeof PlayingRoute
   '/auth/callback/$provider': typeof AuthCallbackProviderRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/playing': typeof PlayingRoute
   '/auth/callback/$provider': typeof AuthCallbackProviderRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth/callback/$provider'
+  fullPaths: '/' | '/playing' | '/auth/callback/$provider'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth/callback/$provider'
-  id: '__root__' | '/' | '/auth/callback/$provider'
+  to: '/' | '/playing' | '/auth/callback/$provider'
+  id: '__root__' | '/' | '/playing' | '/auth/callback/$provider'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  PlayingRoute: typeof PlayingRoute
   AuthCallbackProviderRoute: typeof AuthCallbackProviderRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  PlayingRoute: PlayingRoute,
   AuthCallbackProviderRoute: AuthCallbackProviderRoute,
 }
 
@@ -97,11 +116,15 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/playing",
         "/auth/callback/$provider"
       ]
     },
     "/": {
       "filePath": "index.tsx"
+    },
+    "/playing": {
+      "filePath": "playing.tsx"
     },
     "/auth/callback/$provider": {
       "filePath": "auth/callback.$provider.tsx"

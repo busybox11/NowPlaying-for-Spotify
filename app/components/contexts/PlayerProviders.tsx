@@ -1,5 +1,5 @@
 import { createContext, useContext, useCallback, useMemo, useRef } from "react";
-import type { ReactNode } from "@tanstack/react-router";
+import { useNavigate, type ReactNode } from "@tanstack/react-router";
 
 import providers from "@/providers";
 import { IProviderClient } from "@/types/providers/client";
@@ -22,6 +22,8 @@ export function PlayerProvidersProvider({
 }: Readonly<{
   children: ReactNode;
 }>) {
+  const navigate = useNavigate();
+
   const [_lastUsed, setLastUsed, _removeLastUsed] =
     useLocalStorage<LastUsedProvider>("lastUsedProvider", null);
   const setActivePlayer = useSetAtom(activePlayerAtom);
@@ -32,6 +34,8 @@ export function PlayerProvidersProvider({
   const handleAuth = useCallback((provider: string) => {
     setActivePlayer(provider);
     setLastUsed({ id: provider, date: Date.now() });
+
+    navigate({ to: "/playing" });
 
     // Get the specific provider instance
     const providerInstance = providerInstancesRef.current[provider];
@@ -53,7 +57,7 @@ export function PlayerProvidersProvider({
             },
           }),
         ];
-      }),
+      })
     );
 
     // Store references to provider instances
