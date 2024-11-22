@@ -7,7 +7,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
-  const { providers } = usePlayerProviders();
+  const { providers, activePlayer } = usePlayerProviders();
 
   return (
     <main className="flex flex-col items-center justify-center h-screen gap-12">
@@ -37,6 +37,8 @@ function Home() {
             </button>
           );
         })}
+
+        <span>currently active player {activePlayer}</span>
       </div>
     </main>
   );

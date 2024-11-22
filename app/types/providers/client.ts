@@ -1,7 +1,9 @@
+import { PlayerState } from "@/types/player";
 import { ProviderMeta } from "@/types/providers/meta";
 
 export interface IProviderClientConstructor {
   onAuth: () => void;
+  sendPlayerState: (playerObj: PlayerState) => void;
 }
 
 export interface IProviderClient {
@@ -11,4 +13,7 @@ export interface IProviderClient {
 
   authenticate(): Promise<void>;
   callback(): Promise<void>;
+
+  registerPlayer(): Promise<void>;
+  unregisterPlayer(): Promise<void>;
 }
