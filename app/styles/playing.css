@@ -1,0 +1,15 @@
+.custom-img-shadow {
+  box-shadow:
+    0 5px 10px rgba(0, 0, 0, 0.12),
+    0 10px 20px rgba(0, 0, 0, 0.15),
+    0 15px 28px rgba(0, 0, 0, 0.18),
+    0 20px 38px rgba(0, 0, 0, 0.2);
+}
+
+body {
+  @apply h-screen w-screen overflow-hidden;
+}
+
+#root {
+  @apply h-screen w-screen;
+}

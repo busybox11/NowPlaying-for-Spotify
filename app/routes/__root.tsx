@@ -6,6 +6,8 @@ import {
 import { Body, Head, Html, Meta, Scripts } from "@tanstack/start";
 import type { ReactNode } from "react";
 
+import "@fontsource-variable/outfit";
+
 import appCss from "../styles/app.css?url";
 import { PlayerProvidersProvider } from "@/components/contexts/PlayerProviders";
 
