@@ -21,10 +21,16 @@ export default class SpotifyProvider implements IProviderClient {
 
   // API event handlers
   private onAuth: () => void;
+  private onUnregister: () => void;
   private sendPlayerState: (playerObj: PlayerState) => void;
 
-  constructor({ onAuth, sendPlayerState }: IProviderClientConstructor) {
+  constructor({
+    onAuth,
+    onUnregister,
+    sendPlayerState,
+  }: IProviderClientConstructor) {
     this.onAuth = onAuth;
+    this.onUnregister = onUnregister;
     this.sendPlayerState = sendPlayerState;
   }
 
@@ -84,5 +90,7 @@ export default class SpotifyProvider implements IProviderClient {
       clearInterval(this._playerLoopInstance);
       this._playerLoopInstance = NaN;
     }
+
+    this.onUnregister();
   }
 }

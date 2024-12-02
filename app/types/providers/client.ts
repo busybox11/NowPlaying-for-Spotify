@@ -3,6 +3,7 @@ import { ProviderMeta } from "@/types/providers/meta";
 
 export interface IProviderClientConstructor {
   onAuth: () => void;
+  onUnregister: () => void;
   sendPlayerState: (playerObj: PlayerState) => void;
 }
 

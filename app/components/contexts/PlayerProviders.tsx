@@ -6,16 +6,16 @@ import { IProviderClient } from "@/types/providers/client";
 import { useLocalStorage } from "usehooks-ts";
 import { PlayerState } from "@/types/player";
 import { useAtomValue, useSetAtom } from "jotai";
-import { activePlayerAtom, playerStateAtom } from "@/state/player";
+import {
+  activePlayerAtom,
+  lastUsedProviderAtom,
+  playerStateAtom,
+  providersAtom,
+} from "@/state/player";
 
 const PlayerProvidersContext = createContext<{
   [key: string]: IProviderClient;
 }>({});
-
-type LastUsedProvider = {
-  id: string;
-  date: number;
-} | null;
 
 export function PlayerProvidersProvider({
   children,
@@ -24,10 +24,10 @@ export function PlayerProvidersProvider({
 }>) {
   const navigate = useNavigate();
 
-  const [_lastUsed, setLastUsed, _removeLastUsed] =
-    useLocalStorage<LastUsedProvider>("lastUsedProvider", null);
+  const setLastUsed = useSetAtom(lastUsedProviderAtom);
   const setActivePlayer = useSetAtom(activePlayerAtom);
   const setPlayerState = useSetAtom(playerStateAtom);
+  const setProviders = useSetAtom(providersAtom);
 
   const providerInstancesRef = useRef<{ [key: string]: IProviderClient }>({});
 
@@ -51,6 +51,10 @@ export function PlayerProvidersProvider({
           id,
           new provider({
             onAuth: () => handleAuth(id),
+            onUnregister: () => {
+              setActivePlayer(null);
+              navigate({ to: "/" });
+            },
             sendPlayerState: (playerObj: PlayerState) => {
               setPlayerState(playerObj);
               console.log(playerObj);
@@ -62,6 +66,7 @@ export function PlayerProvidersProvider({
 
     // Store references to provider instances
     providerInstancesRef.current = instances;
+    setProviders(instances);
     return instances;
   }, []);
 
@@ -73,11 +78,11 @@ export function PlayerProvidersProvider({
 }
 
 export function usePlayerProviders() {
-  const [lastUsed] = useLocalStorage<LastUsedProvider>("lastUsed", null);
+  const lastUsedProvider = useAtomValue(lastUsedProviderAtom);
   const activePlayer = useAtomValue(activePlayerAtom);
 
   return {
-    lastUsedProvider: lastUsed,
+    lastUsedProvider,
     providers: useContext(PlayerProvidersContext),
     activePlayer,
   };

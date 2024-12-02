@@ -10,6 +10,7 @@ import "@fontsource-variable/outfit";
 
 import appCss from "../styles/app.css?url";
 import { PlayerProvidersProvider } from "@/components/contexts/PlayerProviders";
+import { JotaiStoreProvider } from "@/state/store";
 
 export const Route = createRootRoute({
   meta: () => [
@@ -37,9 +38,11 @@ export const Route = createRootRoute({
 function RootComponent() {
   return (
     <RootDocument>
-      <PlayerProvidersProvider>
-        <Outlet />
-      </PlayerProvidersProvider>
+      <JotaiStoreProvider>
+        <PlayerProvidersProvider>
+          <Outlet />
+        </PlayerProvidersProvider>
+      </JotaiStoreProvider>
     </RootDocument>
   );
 }

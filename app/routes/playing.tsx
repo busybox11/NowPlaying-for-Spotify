@@ -4,9 +4,14 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import usePlayer from "@/hooks/usePlayer";
 
 import { twMerge } from "tailwind-merge";
+import { store } from "@/state/store";
+import { activeProviderAtom } from "@/state/player";
 
 export const Route = createFileRoute("/playing")({
   component: PlayingRouteComponent,
+  onLeave: async () => {
+    await store.get(activeProviderAtom)?.unregisterPlayer();
+  },
 });
 
 const msToTime = (ms: number) => {
