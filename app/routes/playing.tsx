@@ -60,6 +60,10 @@ function PlayingRouteComponent() {
 
   const stateProvider = playerState?.meta.provider ?? activeProvider?.meta.name;
 
+  let statePlayerStr = `${activeProvider?.meta.name ?? activePlayer}`;
+  if (statePlayerStr.toLowerCase() !== stateProvider?.toLowerCase())
+    statePlayerStr = `${stateProvider} • ${statePlayerStr}`;
+
   return (
     <main className="flex h-full w-full">
       <div
@@ -182,10 +186,7 @@ function PlayingRouteComponent() {
                 </div>
 
                 <span className="text-xl font-bold">
-                  <span>
-                    {activeProvider?.meta.name ?? activePlayer} •{" "}
-                    {stateProvider}
-                  </span>
+                  <span>{statePlayerStr}</span>
                   <span className="text-white/80 font-semibold"></span>
                 </span>
 
