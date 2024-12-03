@@ -29,12 +29,9 @@ function PlayingRouteComponent() {
     navigate({ to: "/" });
   }
 
-  const image =
-    playerState && "album" in playerState?.item ?
-      playerState?.item?.album?.images[0]?.url
-    : "assets/images/no_song.png";
+  const image = playerState?.meta.main_img_url ?? "assets/images/no_song.png";
 
-  const title = playerState?.item?.name ?? "NowPlaying";
+  const title = playerState?.item?.title ?? "NowPlaying";
   const artist =
     playerState && "artists" in playerState?.item ?
       playerState?.item?.artists?.map((artist) => artist.name).join(", ")
@@ -49,16 +46,19 @@ function PlayingRouteComponent() {
     "type" in playerState?.item &&
     playerState?.item?.type === "episode";
 
-  const isPaused = !playerState || playerState.is_playing === false;
+  const isPaused = !playerState || playerState.meta.is_playing === false;
 
-  const positionNow = playerState?.progress_ms ?? 0;
-  const positionTotal = playerState?.item?.duration_ms ?? 0;
+  const positionNow = playerState?.meta.position_ms ?? 0;
+  const positionTotal = playerState?.item.duration_ms ?? 0;
   const positionPercent = positionNow / positionTotal;
 
   const shouldAnimateProgress =
     Math.abs(
-      (playerState?.progress_ms ?? 0) - (previousPlayerState?.progress_ms ?? 0)
+      (playerState?.meta.position_ms ?? 0) -
+        (previousPlayerState?.meta.position_ms ?? 0)
     ) < 5000;
+
+  const stateProvider = playerState?.meta.provider ?? activeProvider?.meta.name;
 
   return (
     <main className="flex h-full w-full">
@@ -182,7 +182,10 @@ function PlayingRouteComponent() {
                 </div>
 
                 <span className="text-xl font-bold">
-                  <span>{activeProvider?.meta.name ?? activePlayer}</span>
+                  <span>
+                    {activeProvider?.meta.name ?? activePlayer} •{" "}
+                    {stateProvider}
+                  </span>
                   <span className="text-white/80 font-semibold"></span>
                 </span>
 

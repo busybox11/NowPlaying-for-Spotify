@@ -12,6 +12,7 @@ import {
 } from "@/types/providers/client";
 import spotifyProviderMeta from "@/providers/spotify";
 import { PlayerState } from "@/types/player";
+import makePlayerStateObj from "@/providers/spotify/utils/makePlayerStateObj";
 
 const { VITE_SPOTIFY_CLIENT_ID, VITE_SPOTIFY_REDIRECT_URI } = providerConfig;
 
@@ -81,7 +82,7 @@ export default class SpotifyProvider implements IProviderClient {
     this._playerLoopInstance = window.setInterval(async () => {
       const playerState = await this._getPlayerState();
 
-      this.sendPlayerState(playerState);
+      this.sendPlayerState(makePlayerStateObj(playerState));
     }, 1000);
   }
 

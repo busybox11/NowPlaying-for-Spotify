@@ -4,6 +4,8 @@ import {
 } from "@/types/providers/client";
 import { PlayerState } from "@/types/player";
 import webnowplayingProviderMeta from "@/providers/webnowplaying";
+import { WebNowPlayingPlayerState } from "@/providers/webnowplaying/types";
+import makePlayerStateObj from "@/providers/webnowplaying/utils/makePlayerStateObj";
 
 export default class WebNowPlayingProvider implements IProviderClient {
   readonly meta = webnowplayingProviderMeta;
@@ -25,12 +27,14 @@ export default class WebNowPlayingProvider implements IProviderClient {
   }
 
   // Private properties and methods
-  private _lastPlaybackState: PlayerState | null = null;
+  private _lastPlaybackState: WebNowPlayingPlayerState | null = null;
 
   private _handleMessage = (msg: MessageEvent) => {
     if (msg.data.type != "wnp-info" || !msg.data.player) return;
 
-    this._lastPlaybackState = msg.data.player;
+    this._lastPlaybackState = msg.data.player as WebNowPlayingPlayerState;
+
+    this.sendPlayerState(makePlayerStateObj(this._lastPlaybackState));
   };
   private _beginListening() {
     window.addEventListener("message", this._handleMessage);
