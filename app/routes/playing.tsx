@@ -1,5 +1,7 @@
 import "@/styles/playing.css";
 
+import noSong from "@/../public/images/no_song.png";
+
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import usePlayer from "@/hooks/usePlayer";
 
@@ -29,7 +31,7 @@ function PlayingRouteComponent() {
     navigate({ to: "/" });
   }
 
-  const image = playerState?.meta.main_img_url ?? "assets/images/no_song.png";
+  const image = playerState?.meta.main_img_url ?? noSong;
 
   const title = playerState?.item?.title ?? "NowPlaying";
   const artist =
