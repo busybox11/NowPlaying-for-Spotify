@@ -8,6 +8,7 @@ import usePlayer from "@/hooks/usePlayer";
 import { twMerge } from "tailwind-merge";
 import { store } from "@/state/store";
 import { activeProviderAtom } from "@/state/player";
+import usePlayingImage from "@/hooks/Playing/usePlayingImage";
 
 export const Route = createFileRoute("/playing")({
   component: PlayingRouteComponent,
@@ -32,6 +33,7 @@ function PlayingRouteComponent() {
   }
 
   const image = playerState?.meta.main_img_url ?? noSong;
+  const imageSrc = usePlayingImage(image);
 
   const title = playerState?.item?.title ?? "NowPlaying";
   const artist =
@@ -75,7 +77,7 @@ function PlayingRouteComponent() {
         <div
           className="bg-cover bg-center transition-[background] duration-[2s] ease-in-out z-[-10] h-full w-full blur-2xl transform-gpu"
           style={{
-            backgroundImage: `url(${image})`,
+            backgroundImage: `url(${imageSrc})`,
           }}
         >
           <div className="h-full w-full bg-black/30"></div>
@@ -107,7 +109,7 @@ function PlayingRouteComponent() {
         <div className="flex flex-col landscape:flex-row lg:flex-row gap-6 lg:gap-12 justify-center items-center px-6 lg:px-12 xl:px-0 w-full xl:w-5/6">
           <div className="relative w-[20rem] landscape:w-[20rem] landscape:lg:w-[30rem] md:w-[30rem] flex-shrink-0">
             <img
-              src={image}
+              src={imageSrc}
               className="rounded-2xl h-auto w-full custom-img-shadow"
             />
 
