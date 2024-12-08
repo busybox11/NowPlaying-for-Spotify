@@ -10,6 +10,7 @@ import { store } from "@/state/store";
 import { activeProviderAtom } from "@/state/player";
 import usePlayingImage from "@/hooks/Playing/usePlayingImage";
 import usePlayingProgress from "@/hooks/Playing/usePlayingProgress";
+import useMouseJiggleOverlay from "@/hooks/useMouseJiggleOverlay";
 
 export const Route = createFileRoute("/playing")({
   component: PlayingRouteComponent,
@@ -26,6 +27,7 @@ const msToTime = (ms: number) => {
 
 function PlayingRouteComponent() {
   const navigate = useNavigate();
+
   const { activePlayer, activeProvider, playerState, previousPlayerState } =
     usePlayer();
 
@@ -62,6 +64,8 @@ function PlayingRouteComponent() {
   if (statePlayerStr.toLowerCase() !== stateProvider?.toLowerCase())
     statePlayerStr = `${stateProvider} • ${statePlayerStr}`;
 
+  const showOverlay = useMouseJiggleOverlay();
+
   return (
     <main className="flex h-full w-full">
       <div
@@ -80,7 +84,10 @@ function PlayingRouteComponent() {
 
       <div
         id="settings-div"
-        className="settings-div fadeInOut z-30 absolute top-6 left-0 right-0 flex items-center justify-center"
+        className={twMerge(
+          "settings-div transition duration-500 ease-out z-30 absolute top-6 left-0 right-0 flex items-center justify-center",
+          showOverlay ? "opacity-100 duration-150" : "opacity-0"
+        )}
       >
         <div className="flex flex-row items-center gap-2 px-4 py-2 bg-white/10 border-2 border-white/40 text-white/80 rounded-full">
           <svg
