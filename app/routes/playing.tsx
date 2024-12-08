@@ -9,6 +9,7 @@ import { twMerge } from "tailwind-merge";
 import { store } from "@/state/store";
 import { activeProviderAtom } from "@/state/player";
 import usePlayingImage from "@/hooks/Playing/usePlayingImage";
+import usePlayingProgress from "@/hooks/Playing/usePlayingProgress";
 
 export const Route = createFileRoute("/playing")({
   component: PlayingRouteComponent,
@@ -32,6 +33,9 @@ function PlayingRouteComponent() {
     navigate({ to: "/" });
   }
 
+  const { positionNow, positionTotal, positionPercent, shouldAnimateProgress } =
+    usePlayingProgress(previousPlayerState, playerState);
+
   const image = playerState?.meta.main_img_url ?? noSong;
   const imageSrc = usePlayingImage(image);
 
@@ -52,16 +56,6 @@ function PlayingRouteComponent() {
 
   const isPaused = !playerState || playerState.meta.is_playing === false;
 
-  const positionNow = playerState?.meta.position_ms ?? 0;
-  const positionTotal = playerState?.item.duration_ms ?? 0;
-  const positionPercent = positionNow / positionTotal;
-
-  const shouldAnimateProgress =
-    Math.abs(
-      (playerState?.meta.position_ms ?? 0) -
-        (previousPlayerState?.meta.position_ms ?? 0)
-    ) < 5000;
-
   const stateProvider = playerState?.meta.provider ?? activeProvider?.meta.name;
 
   let statePlayerStr = `${activeProvider?.meta.name ?? activePlayer}`;
@@ -75,12 +69,12 @@ function PlayingRouteComponent() {
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 translate-z-0 w-[max(115vh,115vw)] h-[max(115vh,115vw)]"
       >
         <div
-          className="bg-cover bg-center transition-[background] duration-[2s] ease-in-out z-[-10] h-full w-full blur-2xl transform-gpu"
+          className="bg-cover bg-center transition-[background] duration-[2s] ease-in-out z-[-10] h-full w-full blur-3xl transform-gpu"
           style={{
             backgroundImage: `url(${imageSrc})`,
           }}
         >
-          <div className="h-full w-full bg-black/30"></div>
+          <div className="h-full w-full bg-black/40"></div>
         </div>
       </div>
 
@@ -106,7 +100,7 @@ function PlayingRouteComponent() {
       </div>
 
       <div className="h-full w-full flex align-center justify-center z-20">
-        <div className="flex flex-col landscape:flex-row lg:flex-row gap-6 lg:gap-12 justify-center items-center px-6 lg:px-12 xl:px-0 w-full xl:w-5/6">
+        <div className="flex flex-col landscape:flex-row lg:flex-row gap-6 lg:gap-12 xl:gap-16 justify-center items-center px-6 lg:px-12 xl:px-0 w-full xl:w-5/6">
           <div className="relative w-[20rem] landscape:w-[20rem] landscape:lg:w-[30rem] md:w-[30rem] flex-shrink-0">
             <img
               src={imageSrc}
