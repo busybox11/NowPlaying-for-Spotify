@@ -140,7 +140,7 @@ if (isset($_GET['lang'])) {
 				class="h-8 w-8 opacity-50 hover:opacity-100 hover:scale-105 transition">
 		</a>
 		<a href="?lang=lu">
-			<img src="assets/images/flags/lu.png" title="Luxembourgish"
+			<img src="assets/images/flags/lu.svg" title="Luxembourgish"
 				class="h-8 w-8 opacity-50 hover:opacity-100 hover:scale-105 transition">
 		</a>
 	</div>
