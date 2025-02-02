@@ -74,6 +74,10 @@ switch(@$lang){
         include_once 'assets/lang/az.php';
         $lang = 'az';
     break;
+    case 'lu':
+        include_once 'assets/lang/lu.php';
+        $lang = 'lu';
+    break;
 }
 
 // Default language
