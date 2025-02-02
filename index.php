@@ -139,6 +139,10 @@ if (isset($_GET['lang'])) {
 			<img src="assets/images/flags/az.png" title="Azərbaycan"
 				class="h-8 w-8 opacity-50 hover:opacity-100 hover:scale-105 transition">
 		</a>
+		<a href="?lang=lu">
+			<img src="assets/images/flags/lu.png" title="Luxembourgish"
+				class="h-8 w-8 opacity-50 hover:opacity-100 hover:scale-105 transition">
+		</a>
 	</div>
 
 	<h6 class="text-xs text-white/50 hover:text-white/80 transition text-pretty"><?= IndexCookie; ?></h6>
