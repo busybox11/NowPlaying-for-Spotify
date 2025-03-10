@@ -1,3 +1,4 @@
+import providerInstances from "@/providers/instances";
 import { PlayerState } from "@/types/player";
 import { IProviderClient } from "@/types/providers/client";
 import { atom } from "jotai";
@@ -8,7 +9,8 @@ type LastUsedProvider = {
   date: number;
 } | null;
 
-export const providersAtom = atom<Record<string, IProviderClient>>({});
+export const providersAtom =
+  atom<Record<string, IProviderClient>>(providerInstances);
 export const activePlayerAtom = atom<null | string>(null);
 export const lastUsedProviderAtom = atomWithStorage<LastUsedProvider>(
   "lastUsedProvider",

@@ -5,6 +5,7 @@ export interface IProviderClientConstructor {
   onAuth: () => void;
   onUnregister: () => void;
   sendPlayerState: (playerObj: PlayerState) => void;
+  onReady: () => void;
 }
 
 export interface IProviderClient {
@@ -17,4 +18,6 @@ export interface IProviderClient {
 
   registerPlayer(): Promise<void>;
   unregisterPlayer(): Promise<void>;
+
+  updateHandlers(handlers: IProviderClientConstructor): void;
 }

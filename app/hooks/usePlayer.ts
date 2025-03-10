@@ -2,6 +2,7 @@ import { usePlayerProviders } from "@/components/contexts/PlayerProviders";
 import { activePlayerAtom, playerStateAtom } from "@/state/player";
 import { useAtomValue } from "jotai";
 import { usePrevious } from "node_modules/@tanstack/react-router/dist/esm/utils";
+import { useDebugValue } from "react";
 
 export default function usePlayer() {
   const { providers } = usePlayerProviders();
@@ -11,6 +12,13 @@ export default function usePlayer() {
 
   const playerState = useAtomValue(playerStateAtom);
   const previousPlayerState = usePrevious(playerState);
+
+  useDebugValue({
+    activePlayer,
+    activeProvider,
+    playerState,
+    previousPlayerState,
+  });
 
   return {
     activePlayer,

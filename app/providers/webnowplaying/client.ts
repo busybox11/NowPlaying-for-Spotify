@@ -15,15 +15,17 @@ export default class WebNowPlayingProvider implements IProviderClient {
   private onAuth: () => void;
   private onUnregister: () => void;
   private sendPlayerState: (playerObj: PlayerState) => void;
-
+  private onReady: () => void;
   constructor({
     onAuth,
     onUnregister,
     sendPlayerState,
+    onReady,
   }: IProviderClientConstructor) {
     this.onAuth = onAuth;
     this.onUnregister = onUnregister;
     this.sendPlayerState = sendPlayerState;
+    this.onReady = onReady;
   }
 
   // Private properties and methods
@@ -72,11 +74,20 @@ export default class WebNowPlayingProvider implements IProviderClient {
 
   async registerPlayer() {
     this._beginListening();
+
+    this.onReady();
   }
 
   async unregisterPlayer() {
     this._endListening();
 
     this.onUnregister();
+  }
+
+  updateHandlers(handlers: IProviderClientConstructor) {
+    this.onAuth = handlers.onAuth;
+    this.onUnregister = handlers.onUnregister;
+    this.sendPlayerState = handlers.sendPlayerState;
+    this.onReady = handlers.onReady;
   }
 }

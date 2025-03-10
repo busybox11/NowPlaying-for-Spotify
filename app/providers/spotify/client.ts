@@ -24,15 +24,18 @@ export default class SpotifyProvider implements IProviderClient {
   private onAuth: () => void;
   private onUnregister: () => void;
   private sendPlayerState: (playerObj: PlayerState) => void;
+  private onReady: () => void;
 
   constructor({
     onAuth,
     onUnregister,
     sendPlayerState,
+    onReady,
   }: IProviderClientConstructor) {
     this.onAuth = onAuth;
     this.onUnregister = onUnregister;
     this.sendPlayerState = sendPlayerState;
+    this.onReady = onReady;
   }
 
   // Private properties and methods
@@ -52,17 +55,28 @@ export default class SpotifyProvider implements IProviderClient {
     return playerState;
   }
 
+  private async _playerLoop() {
+    const playerState = await this._getPlayerState();
+
+    this.sendPlayerState(makePlayerStateObj(playerState));
+  }
+
   // Public implemented methods
 
   async authenticate() {
-    const auth = new AuthorizationCodeWithPKCEStrategy(
-      VITE_SPOTIFY_CLIENT_ID,
-      VITE_SPOTIFY_REDIRECT_URI,
-      [...SPOTIFY_OAUTH_SCOPES]
-    );
-    this._client = new SpotifyApi(auth);
-
     try {
+      if (this.isAuthenticated && this._client?.currentUser) {
+        this.onAuth();
+        return;
+      }
+
+      const auth = new AuthorizationCodeWithPKCEStrategy(
+        VITE_SPOTIFY_CLIENT_ID,
+        VITE_SPOTIFY_REDIRECT_URI,
+        [...SPOTIFY_OAUTH_SCOPES]
+      );
+      this._client = new SpotifyApi(auth);
+
       const { authenticated } = await this._client.authenticate();
       this.isAuthenticated = authenticated;
 
@@ -71,6 +85,9 @@ export default class SpotifyProvider implements IProviderClient {
       }
     } catch (e) {
       console.error(e);
+      this.onUnregister();
+
+      throw e;
     }
   }
 
@@ -79,11 +96,15 @@ export default class SpotifyProvider implements IProviderClient {
   }
 
   async registerPlayer() {
-    this._playerLoopInstance = window.setInterval(async () => {
-      const playerState = await this._getPlayerState();
+    // Initial call for faster response
+    this._playerLoop().then(() => {
+      this.onReady();
+    });
 
-      this.sendPlayerState(makePlayerStateObj(playerState));
-    }, 1000);
+    this._playerLoopInstance = window.setInterval(
+      () => this._playerLoop(),
+      1000
+    );
   }
 
   async unregisterPlayer() {
@@ -93,5 +114,12 @@ export default class SpotifyProvider implements IProviderClient {
     }
 
     this.onUnregister();
+  }
+
+  updateHandlers(handlers: IProviderClientConstructor) {
+    this.onAuth = handlers.onAuth;
+    this.onUnregister = handlers.onUnregister;
+    this.sendPlayerState = handlers.sendPlayerState;
+    this.onReady = handlers.onReady;
   }
 }
