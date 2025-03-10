@@ -1,7 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { MiscLinks } from "@/components/MiscLinks";
-import { usePlayerProviders } from "@/components/contexts/PlayerProviders";
-import { useMemo } from "react";
 import ProvidersBtns from "@/components/index/ProvidersBtns";
 
 export const Route = createFileRoute("/")({

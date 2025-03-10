@@ -1,38 +1,30 @@
-import {
-  Outlet,
-  ScrollRestoration,
-  createRootRoute,
-} from "@tanstack/react-router";
-import { Body, Head, Html, Meta, Scripts } from "@tanstack/start";
+import { HeadContent, Outlet, createRootRoute } from "@tanstack/react-router";
+import { Scripts } from "@tanstack/react-start";
 import type { ReactNode } from "react";
 
 import "@fontsource-variable/outfit";
 
-import appCss from "../styles/app.css?url";
+import "../styles/app.css";
+
 import { PlayerProvidersProvider } from "@/components/contexts/PlayerProviders";
 import { JotaiStoreProvider } from "@/state/store";
 
 export const Route = createRootRoute({
-  meta: () => [
-    {
-      charSet: "utf-8",
-    },
-    {
-      name: "viewport",
-      content: "width=device-width, initial-scale=1",
-    },
-    {
-      title: "NowPlaying",
-    },
-  ],
-  links: () => [
-    {
-      rel: "stylesheet",
-      href: appCss,
-    },
-  ],
+  head: () => ({
+    meta: [
+      {
+        charSet: "utf-8",
+      },
+      {
+        name: "viewport",
+        content: "width=device-width, initial-scale=1",
+      },
+      {
+        title: "NowPlaying",
+      },
+    ],
+  }),
   component: RootComponent,
-  notFoundComponent: () => <h1>404 - Not Found</h1>,
 });
 
 function RootComponent() {
@@ -49,15 +41,15 @@ function RootComponent() {
 
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <Html>
-      <Head>
-        <Meta />
-      </Head>
-      <Body>
+    <html>
+      <head>
+        <title>NowPlaying</title>
+        <HeadContent />
+      </head>
+      <body>
         {children}
-        <ScrollRestoration />
         <Scripts />
-      </Body>
-    </Html>
+      </body>
+    </html>
   );
 }
