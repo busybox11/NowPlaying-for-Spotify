@@ -3,9 +3,8 @@ import { useNavigate, type ReactNode } from "@tanstack/react-router";
 
 import providers from "@/providers";
 import { IProviderClient } from "@/types/providers/client";
-import { useLocalStorage } from "usehooks-ts";
 import { PlayerState } from "@/types/player";
-import { useAtomValue, useSetAtom } from "jotai";
+import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import {
   activePlayerAtom,
   lastUsedProviderAtom,
@@ -24,25 +23,34 @@ export function PlayerProvidersProvider({
 }>) {
   const navigate = useNavigate();
 
-  const setLastUsed = useSetAtom(lastUsedProviderAtom);
+  const [lastUsed, setLastUsed] = useAtom(lastUsedProviderAtom);
+
   const setActivePlayer = useSetAtom(activePlayerAtom);
   const setPlayerState = useSetAtom(playerStateAtom);
   const setProviders = useSetAtom(providersAtom);
 
   const providerInstancesRef = useRef<{ [key: string]: IProviderClient }>({});
 
-  const handleAuth = useCallback((provider: string) => {
-    setActivePlayer(provider);
-    setLastUsed({ id: provider, date: Date.now() });
+  const handleAuth = useCallback(
+    (provider: string) => {
+      setActivePlayer(provider);
 
-    navigate({ to: "/playing" });
+      console.log(lastUsed, provider);
+      if (lastUsed && lastUsed.id !== provider) {
+        setPlayerState(null);
+      }
+      setLastUsed({ id: provider, date: Date.now() });
 
-    // Get the specific provider instance
-    const providerInstance = providerInstancesRef.current[provider];
-    if (providerInstance) {
-      providerInstance.registerPlayer();
-    }
-  }, []);
+      navigate({ to: "/playing" });
+
+      // Get the specific provider instance
+      const providerInstance = providerInstancesRef.current[provider];
+      if (providerInstance) {
+        providerInstance.registerPlayer();
+      }
+    },
+    [lastUsed]
+  );
 
   const value = useMemo(() => {
     const instances = Object.fromEntries(
@@ -57,7 +65,6 @@ export function PlayerProvidersProvider({
             },
             sendPlayerState: (playerObj: PlayerState) => {
               setPlayerState(playerObj);
-              console.log(playerObj);
             },
           }),
         ];
