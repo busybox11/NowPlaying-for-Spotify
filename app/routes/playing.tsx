@@ -7,15 +7,22 @@ import usePlayer from "@/hooks/usePlayer";
 
 import { twMerge } from "tailwind-merge";
 import { store } from "@/state/store";
-import { activeProviderAtom } from "@/state/player";
+import { activeProviderAtom, playerStateAtom } from "@/state/player";
 import usePlayingImage from "@/hooks/Playing/usePlayingImage";
 import usePlayingProgress from "@/hooks/Playing/usePlayingProgress";
 import useMouseJiggleOverlay from "@/hooks/useMouseJiggleOverlay";
+
+import { LuLogOut, LuMaximize2 } from "react-icons/lu";
+import PlayingLoad from "@/components/playing/PlayingLoad";
 
 export const Route = createFileRoute("/playing")({
   component: PlayingRouteComponent,
   onLeave: async () => {
     await store.get(activeProviderAtom)?.unregisterPlayer();
+    store.set(playerStateAtom, null);
+    console.log("unregistered player");
+    console.log(store.get(activeProviderAtom));
+    console.log(store.get(playerStateAtom));
   },
 });
 
@@ -26,14 +33,11 @@ const msToTime = (ms: number) => {
 };
 
 function PlayingRouteComponent() {
-  const navigate = useNavigate();
-
   const { activePlayer, activeProvider, playerState, previousPlayerState } =
     usePlayer();
+  const navigate = useNavigate();
 
-  if (!activePlayer) {
-    navigate({ to: "/" });
-  }
+  const showLoading = activePlayer === null;
 
   const { positionNow, positionTotal, positionPercent, shouldAnimateProgress } =
     usePlayingProgress(previousPlayerState, playerState);
@@ -43,13 +47,13 @@ function PlayingRouteComponent() {
 
   const title = playerState?.item?.title ?? "NowPlaying";
   const artist =
-    playerState && "artists" in playerState?.item ?
-      playerState?.item?.artists?.map((artist) => artist.name).join(", ")
-    : "NowPlaying";
+    playerState && "artists" in playerState?.item
+      ? playerState?.item?.artists?.map((artist) => artist.name).join(", ")
+      : "NowPlaying";
   const album =
-    playerState && "album" in playerState?.item ?
-      playerState?.item?.album?.name
-    : "NowPlaying";
+    playerState && "album" in playerState?.item
+      ? playerState?.item?.album?.name
+      : "NowPlaying";
 
   const isEpisode =
     playerState &&
@@ -67,7 +71,9 @@ function PlayingRouteComponent() {
   const showOverlay = useMouseJiggleOverlay();
 
   return (
-    <main className="flex h-full w-full">
+    <main className="relative flex h-full w-full">
+      {showLoading && <PlayingLoad />}
+
       <div
         id="background-image-div"
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 translate-z-0 w-[max(115vh,115vw)] h-[max(115vh,115vw)]"
@@ -89,26 +95,31 @@ function PlayingRouteComponent() {
           showOverlay ? "opacity-100 duration-150" : "opacity-0"
         )}
       >
-        <div className="flex flex-row items-center gap-2 px-4 py-2 bg-white/10 border-2 border-white/40 text-white/80 rounded-full">
-          <svg
+        <div className="flex flex-row items-center gap-3 px-4 py-2 bg-white/10 border-2 border-white/40 text-white/80 rounded-full">
+          <button
             className="cursor-pointer"
-            width="28"
-            height="28"
-            viewBox="0 0 32 32"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
+            onClick={() => {
+              console.log("Maximize");
+            }}
           >
-            <path
-              d="M6.66675 6.66666H13.3334V9.33332H9.33341V13.3333H6.66675V6.66666ZM18.6667 6.66666H25.3334V13.3333H22.6667V9.33332H18.6667V6.66666ZM22.6667 18.6667H25.3334V25.3333H18.6667V22.6667H22.6667V18.6667ZM13.3334 22.6667V25.3333H6.66675V18.6667H9.33341V22.6667H13.3334Z"
-              fill="white"
-            />
-          </svg>
+            <LuMaximize2 className="size-5" />
+          </button>
+
+          <button
+            className="cursor-pointer"
+            onClick={async () => {
+              await activeProvider?.unregisterPlayer();
+              navigate({ to: "/" });
+            }}
+          >
+            <LuLogOut className="size-5" />
+          </button>
         </div>
       </div>
 
       <div className="h-full w-full flex align-center justify-center z-20">
         <div className="flex flex-col landscape:flex-row lg:flex-row gap-6 lg:gap-12 xl:gap-16 justify-center items-center px-6 lg:px-12 xl:px-0 w-full xl:w-5/6">
-          <div className="relative w-[20rem] landscape:w-[20rem] landscape:lg:w-[30rem] md:w-[30rem] flex-shrink-0">
+          <div className="relative w-[20rem] landscape:w-[20rem] landscape:lg:w-[30rem] md:w-[30rem] shrink-0">
             <img
               src={imageSrc}
               className="rounded-2xl h-auto w-full custom-img-shadow"

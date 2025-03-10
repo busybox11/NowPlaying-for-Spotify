@@ -1,5 +1,10 @@
-import { HeadContent, Outlet, createRootRoute } from "@tanstack/react-router";
-import { Scripts } from "@tanstack/react-start";
+import {
+  HeadContent,
+  Outlet,
+  createRootRoute,
+  Scripts,
+} from "@tanstack/react-router";
+
 import type { ReactNode } from "react";
 
 import "@fontsource-variable/outfit";
@@ -25,6 +30,16 @@ export const Route = createRootRoute({
     ],
   }),
   component: RootComponent,
+  errorComponent: () => (
+    <div>
+      <p>Error</p>
+    </div>
+  ),
+  notFoundComponent: () => (
+    <div>
+      <p>Not found</p>
+    </div>
+  ),
 });
 
 function RootComponent() {
@@ -43,8 +58,11 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html>
       <head>
-        <title>NowPlaying</title>
         <HeadContent />
+        <script
+          crossOrigin="anonymous"
+          src="//unpkg.com/react-scan/dist/auto.global.js"
+        />
       </head>
       <body>
         {children}
