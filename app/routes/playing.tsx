@@ -20,9 +20,6 @@ export const Route = createFileRoute("/playing")({
   onLeave: async () => {
     await store.get(activeProviderAtom)?.unregisterPlayer();
     store.set(playerStateAtom, null);
-    console.log("unregistered player");
-    console.log(store.get(activeProviderAtom));
-    console.log(store.get(playerStateAtom));
   },
 });
 
@@ -108,8 +105,9 @@ function PlayingRouteComponent() {
           <button
             className="cursor-pointer"
             onClick={async () => {
+              await navigate({ to: "/" });
+
               await activeProvider?.unregisterPlayer();
-              navigate({ to: "/" });
             }}
           >
             <LuLogOut className="size-5" />
