@@ -47,9 +47,17 @@ export type PlayerMeta = {
   provider?: string;
 };
 
+type PlayerDevice = {
+  id?: string;
+  name: string;
+  type?: "computer" | "phone" | "tablet" | "speaker" | "tv" | "other" | string;
+  volume_percent?: number;
+};
+
 export type PlayerObj = {
   item: PlayerTrackItem | PlayerEpisodeItem;
   meta: PlayerMeta;
+  device?: PlayerDevice;
 };
 
 export type PlayerState = PlayerObj | null;

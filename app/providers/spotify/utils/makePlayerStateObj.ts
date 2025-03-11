@@ -59,6 +59,12 @@ export default function makePlayerStateObj(
         .images[0]?.url,
       provider: "spotify",
     },
+    device: {
+      id: state.device.id ?? undefined,
+      name: state.device.name,
+      type: state.device.type.toLowerCase(),
+      volume_percent: state.device.volume_percent ?? undefined,
+    },
   };
 
   return playerObj;
