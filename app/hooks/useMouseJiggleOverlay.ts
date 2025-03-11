@@ -6,10 +6,12 @@ export default function useMouseJiggleOverlay() {
   useEffect(() => {
     const handleMouseMove = () => {
       setShowOverlay(true);
+      document.body.style.cursor = "default";
 
       window.clearTimeout(timeout);
       timeout = setTimeout(() => {
         setShowOverlay(false);
+        document.body.style.cursor = "none";
       }, 6000);
     };
 
