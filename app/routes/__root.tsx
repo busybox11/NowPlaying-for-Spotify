@@ -5,13 +5,12 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 
-import favicon from "/images/favicon.png?url";
-
 import type { ReactNode } from "react";
 
-import "@fontsource-variable/outfit";
+import favicon from "/images/favicon.png?url";
 
-import "../styles/app.css";
+import fontCss from "@fontsource-variable/outfit?url";
+import appCss from "@/styles/app.css?url";
 
 import { PlayerProvidersProvider } from "@/components/contexts/PlayerProviders";
 import { JotaiStoreProvider } from "@/state/store";
@@ -34,6 +33,14 @@ export const Route = createRootRoute({
       {
         rel: "icon",
         href: favicon,
+      },
+      {
+        rel: "stylesheet",
+        href: appCss,
+      },
+      {
+        rel: "stylesheet",
+        href: fontCss,
       },
     ],
   }),

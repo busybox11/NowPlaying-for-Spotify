@@ -1,4 +1,4 @@
-import "@/styles/playing.css";
+import playingCss from "@/styles/playing.css?url";
 
 import noSong from "/images/no_song.png?url";
 
@@ -19,6 +19,14 @@ import AlbumArt from "@/components/playing/AlbumArt";
 import SongInfo from "@/components/playing/SongInfo";
 
 export const Route = createFileRoute("/playing")({
+  head: () => ({
+    links: [
+      {
+        rel: "stylesheet",
+        href: playingCss,
+      },
+    ],
+  }),
   component: PlayingRouteComponent,
   onLeave: async () => {
     await store.get(activeProviderAtom)?.unregisterPlayer();
