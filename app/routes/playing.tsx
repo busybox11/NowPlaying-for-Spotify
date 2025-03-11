@@ -105,9 +105,9 @@ function PlayingRouteComponent() {
             title={title || undefined}
             artist={artist || undefined}
             album={album || undefined}
-            positionNow={positionNow}
-            positionTotal={positionTotal}
-            positionPercent={positionPercent}
+            positionNow={positionNow ?? undefined}
+            positionTotal={positionTotal ?? undefined}
+            positionPercent={positionPercent ?? undefined}
             shouldAnimateProgress={shouldAnimateProgress}
             device={device ?? null}
             DeviceIcon={DeviceIcon}

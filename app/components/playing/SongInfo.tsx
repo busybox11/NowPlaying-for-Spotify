@@ -5,9 +5,9 @@ interface SongInfoProps {
   title?: string;
   artist?: string;
   album?: string;
-  positionNow: number;
-  positionTotal: number;
-  positionPercent: number;
+  positionNow?: number;
+  positionTotal?: number;
+  positionPercent?: number;
   shouldAnimateProgress: boolean;
   device: { name?: string } | null;
   DeviceIcon: React.ComponentType<{ className?: string }>;
@@ -34,6 +34,9 @@ const SongInfo = ({
   statePlayerStr,
   isEpisode,
 }: SongInfoProps) => {
+  const progressNow = positionNow ? msToTime(positionNow) : "--:--";
+  const progressTotal = positionTotal ? msToTime(positionTotal) : "--:--";
+
   return (
     <div className="flex flex-col lg:gap-1 xl:gap-2 w-full text-white">
       <h1
@@ -62,8 +65,22 @@ const SongInfo = ({
           className="text-xl flex flex-row justify-between w-full font-semibold"
           id="progress-time"
         >
-          <span id="progress-time-now">{msToTime(positionNow)}</span>
-          <span id="progress-time-total">{msToTime(positionTotal)}</span>
+          <span
+            id="progress-time-now"
+            className={twMerge(
+              "text-white",
+              !positionNow && "text-white/50",
+              positionNow && shouldAnimateProgress && "animate-pulse"
+            )}
+          >
+            {progressNow}
+          </span>
+          <span
+            id="progress-time-total"
+            className={twMerge("text-white", !positionTotal && "text-white/50")}
+          >
+            {progressTotal}
+          </span>
         </div>
 
         <div className="h-3 w-full rounded-full overflow-hidden bg-white/30">
@@ -75,7 +92,7 @@ const SongInfo = ({
                 "transition-all duration-1000 ease-linear"
             )}
             style={{
-              width: `${positionPercent * 100}%`,
+              width: `${positionPercent ?? 0 * 100}%`,
             }}
           />
         </div>
