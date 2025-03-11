@@ -21,7 +21,13 @@ export default function useMouseJiggleOverlay() {
     handleMouseMove();
 
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
+      try {
+        window.removeEventListener("mousemove", handleMouseMove);
+        document.body.style.cursor = "unset";
+        window.clearTimeout(timeout);
+      } catch (e) {
+        console.error(e);
+      }
     };
   }, []);
 
