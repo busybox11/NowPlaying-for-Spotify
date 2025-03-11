@@ -2,8 +2,8 @@ import { memo } from "react";
 import { twMerge } from "tailwind-merge";
 
 interface SongInfoProps {
-  title: string;
-  artist: string;
+  title?: string;
+  artist?: string;
   album?: string;
   positionNow: number;
   positionTotal: number;

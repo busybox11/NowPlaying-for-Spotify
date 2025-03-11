@@ -47,15 +47,15 @@ function PlayingRouteComponent() {
   const image = playerState?.meta.main_img_url ?? noSong;
   const imageSrc = usePlayingImage(image);
 
-  const title = playerState?.item?.title ?? "NowPlaying";
+  const title = playerState?.item?.title;
   const artist =
-    playerState && "artists" in playerState?.item
-      ? playerState?.item?.artists?.map((artist) => artist.name).join(", ")
-      : "NowPlaying";
+    playerState &&
+    "artists" in playerState?.item &&
+    playerState?.item?.artists?.map((artist) => artist.name).join(", ");
   const album =
-    playerState && "album" in playerState?.item
-      ? playerState?.item?.album?.name
-      : "NowPlaying";
+    playerState &&
+    "album" in playerState?.item &&
+    playerState?.item?.album?.name;
 
   const isEpisode =
     playerState &&
@@ -81,8 +81,12 @@ function PlayingRouteComponent() {
     statePlayerStr = `${currentProvider} • ${playerName}`;
   }
 
+  const titleStr = title ? `${title} - ${artist} • NowPlaying` : "NowPlaying";
+
   return (
     <main className="relative flex h-full w-full">
+      <title>{titleStr}</title>
+
       {showLoading && <PlayingLoad />}
 
       <Background imageSrc={imageSrc} />
@@ -98,9 +102,9 @@ function PlayingRouteComponent() {
           <AlbumArt imageSrc={imageSrc} isPaused={Boolean(isPaused)} />
 
           <SongInfo
-            title={title}
-            artist={artist}
-            album={album}
+            title={title || undefined}
+            artist={artist || undefined}
+            album={album || undefined}
             positionNow={positionNow}
             positionTotal={positionTotal}
             positionPercent={positionPercent}
