@@ -1,7 +1,7 @@
 import { usePlayerProviders } from "@/components/contexts/PlayerProviders";
 import usePlayer from "@/hooks/usePlayer";
-
-export default function PlayingLoad() {
+import { memo } from "react";
+const PlayingLoad = () => {
   const { activePlayer } = usePlayer();
   const { lastUsedProvider, providers } = usePlayerProviders();
 
@@ -33,4 +33,6 @@ export default function PlayingLoad() {
       </div>
     </div>
   );
-}
+};
+
+export default memo(PlayingLoad);
