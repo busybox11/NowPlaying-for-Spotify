@@ -32,7 +32,6 @@ type PlayerEpisodeItem = {
   show?: PlayerShowItem;
   season?: number;
   episode?: number;
-  duration_ms?: number;
 
   type: "episode";
   url?: string;

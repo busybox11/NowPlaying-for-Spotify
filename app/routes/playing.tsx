@@ -1,6 +1,6 @@
 import "@/styles/playing.css";
 
-import noSong from "@/../public/images/no_song.png";
+import noSong from "/images/no_song.png?url";
 
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import usePlayer from "@/hooks/usePlayer";
@@ -14,6 +14,7 @@ import useMouseJiggleOverlay from "@/hooks/useMouseJiggleOverlay";
 
 import { LuLogOut, LuMaximize2 } from "react-icons/lu";
 import PlayingLoad from "@/components/playing/PlayingLoad";
+import useActiveWakeLock from "@/hooks/useActiveWakeLock";
 
 export const Route = createFileRoute("/playing")({
   component: PlayingRouteComponent,
@@ -30,6 +31,8 @@ const msToTime = (ms: number) => {
 };
 
 function PlayingRouteComponent() {
+  useActiveWakeLock();
+
   const { activePlayer, activeProvider, playerState, previousPlayerState } =
     usePlayer();
   const navigate = useNavigate();

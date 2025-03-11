@@ -5,10 +5,11 @@ export default function usePlayingProgress(
   playerState: PlayerState
 ) {
   const positionNow = playerState?.meta.position_ms ?? 0;
-  const positionTotal = playerState?.item.duration_ms ?? 0;
+  const positionTotal = playerState?.meta.duration_ms ?? 0;
   const positionPercent = positionNow / positionTotal;
 
   const shouldAnimateProgress =
+    playerState?.item.url === previousPlayerState?.item.url &&
     Math.abs(
       (playerState?.meta.position_ms ?? 0) -
         (previousPlayerState?.meta.position_ms ?? 0)

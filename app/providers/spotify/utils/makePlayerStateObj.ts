@@ -4,7 +4,6 @@ import type { PlaybackState } from "@spotify/web-api-ts-sdk";
 function makeItemObj(item: PlaybackState["item"]): PlayerObj["item"] {
   const baseObj = {
     title: item.name,
-    duration_ms: item.duration_ms,
     url: item.external_urls.spotify,
   };
 
@@ -30,9 +29,8 @@ function makeItemObj(item: PlaybackState["item"]): PlayerObj["item"] {
       name: artist.name,
       url: artist.external_urls.spotify,
     })),
-    album:
-      album ?
-        {
+    album: album
+      ? {
           name: album.name,
           url: album.external_urls.spotify,
         }

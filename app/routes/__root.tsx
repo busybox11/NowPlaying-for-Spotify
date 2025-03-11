@@ -5,6 +5,8 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 
+import favicon from "/images/favicon.png?url";
+
 import type { ReactNode } from "react";
 
 import "@fontsource-variable/outfit";
@@ -26,6 +28,12 @@ export const Route = createRootRoute({
       },
       {
         title: "NowPlaying",
+      },
+    ],
+    links: [
+      {
+        rel: "icon",
+        href: favicon,
       },
     ],
   }),
