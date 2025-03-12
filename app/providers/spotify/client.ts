@@ -3,12 +3,14 @@ import {
   SpotifyApi,
   AuthorizationCodeWithPKCEStrategy,
   PlaybackState,
+  type UserProfile,
 } from "@spotify/web-api-ts-sdk";
 
 import { providerConfig } from "./config";
 import {
   IProviderClient,
   IProviderClientConstructor,
+  type IProviderClientAuthenticationInfo,
 } from "@/types/providers/client";
 import spotifyProviderMeta from "@/providers/spotify";
 import { PlayerState } from "@/types/player";
@@ -17,15 +19,6 @@ import makePlayerStateObj from "@/providers/spotify/utils/makePlayerStateObj";
 const { VITE_SPOTIFY_CLIENT_ID, VITE_SPOTIFY_REDIRECT_URI } = providerConfig;
 
 export default class SpotifyProvider implements IProviderClient {
-  readonly meta = spotifyProviderMeta;
-  isAuthenticated = false;
-
-  // API event handlers
-  private onAuth: () => void;
-  private onUnregister: () => void;
-  private sendPlayerState: (playerObj: PlayerState) => void;
-  private onReady: () => void;
-
   constructor({
     onAuth,
     onUnregister,
@@ -36,16 +29,30 @@ export default class SpotifyProvider implements IProviderClient {
     this.onUnregister = onUnregister;
     this.sendPlayerState = sendPlayerState;
     this.onReady = onReady;
+
+    const auth = new AuthorizationCodeWithPKCEStrategy(
+      VITE_SPOTIFY_CLIENT_ID,
+      VITE_SPOTIFY_REDIRECT_URI,
+      [...SPOTIFY_OAUTH_SCOPES]
+    );
+    this._client = new SpotifyApi(auth);
   }
 
+  readonly meta = spotifyProviderMeta;
+  isAuthenticated = false;
+
+  // API event handlers
+  private onAuth: () => void;
+  private onUnregister: () => void;
+  private sendPlayerState: (playerObj: PlayerState) => void;
+  private onReady: () => void;
+
   // Private properties and methods
-  private _client: SpotifyApi | null = null;
+  private _client: SpotifyApi;
   private _playerLoopInstance: number = NaN;
   private _lastPlaybackState: PlaybackState | null = null;
 
   private async _getPlayerState() {
-    if (!this._client) return null;
-
     const playerState = await this._client.player.getPlaybackState(
       undefined,
       "episode"
@@ -69,13 +76,6 @@ export default class SpotifyProvider implements IProviderClient {
         this.onAuth();
         return;
       }
-
-      const auth = new AuthorizationCodeWithPKCEStrategy(
-        VITE_SPOTIFY_CLIENT_ID,
-        VITE_SPOTIFY_REDIRECT_URI,
-        [...SPOTIFY_OAUTH_SCOPES]
-      );
-      this._client = new SpotifyApi(auth);
 
       const { authenticated } = await this._client.authenticate();
       this.isAuthenticated = authenticated;
@@ -113,6 +113,22 @@ export default class SpotifyProvider implements IProviderClient {
     const playerState = await this._getPlayerState();
 
     return makePlayerStateObj(playerState);
+  }
+
+  async getAuthenticationInfo() {
+    const user = await this._client.currentUser.profile();
+
+    return {
+      authenticated: this.isAuthenticated,
+      isLoading: false,
+      data: {
+        name: user.display_name,
+        id: user.id,
+        username: user.display_name,
+        profile_url: user.external_urls.spotify,
+        avatar: user.images[0].url,
+      },
+    };
   }
 
   async unregisterPlayer() {

@@ -1,6 +1,7 @@
 import {
   IProviderClient,
   IProviderClientConstructor,
+  type IProviderClientAuthenticationInfo,
 } from "@/types/providers/client";
 import { PlayerState } from "@/types/player";
 import webnowplayingProviderMeta from "@/providers/webnowplaying";
@@ -80,6 +81,14 @@ export default class WebNowPlayingProvider implements IProviderClient {
 
   async getPlayerState() {
     return makePlayerStateObj(this._lastPlaybackState);
+  }
+
+  async getAuthenticationInfo() {
+    return {
+      authenticated: true,
+      isLoading: false,
+      data: null,
+    };
   }
 
   async unregisterPlayer() {

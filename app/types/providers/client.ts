@@ -8,6 +8,19 @@ export interface IProviderClientConstructor {
   onReady: () => void;
 }
 
+export interface IProviderClientAuthenticationInfo {
+  authenticated: boolean;
+  isLoading: boolean;
+  data: {
+    name: string;
+    id?: string;
+    username?: string;
+    profile_url?: string;
+    avatar?: string;
+    email?: string;
+  } | null;
+}
+
 export interface IProviderClient {
   readonly meta: ProviderMeta;
 
@@ -20,6 +33,7 @@ export interface IProviderClient {
   unregisterPlayer(): Promise<void>;
 
   getPlayerState(): Promise<PlayerState>;
+  getAuthenticationInfo(): Promise<IProviderClientAuthenticationInfo>;
 
   updateHandlers(handlers: IProviderClientConstructor): void;
 }
