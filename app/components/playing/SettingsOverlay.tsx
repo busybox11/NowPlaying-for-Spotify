@@ -23,9 +23,9 @@ const SettingsOverlay = ({ onUnregisterPlayer }: SettingsOverlayProps) => {
         showOverlay ? "opacity-100 duration-150" : "opacity-0"
       )}
     >
-      <div className="flex flex-row items-center gap-3 px-4 py-2 bg-white/10 border-2 border-white/40 text-white/80 rounded-full">
+      <div className="flex flex-row items-center gap-3 px-4 py-2 bg-black/10 border-2 border-white/40 text-white/80 ring-1 ring-black/40 rounded-full">
         <button className="cursor-pointer" onClick={toggleFullScreen}>
-          {isFullScreen ? (
+          {!isFullScreen ? (
             <LuMaximize2 className="size-5" />
           ) : (
             <LuMinimize2 className="size-5" />
