@@ -88,7 +88,7 @@ const SongInfo = ({
           </span>
         </div>
 
-        <div className="relative h-3 w-full rounded-full overflow-hidden bg-white/20 ring-2 ring-white/25 ring-inset shadow-sm">
+        <div className="relative h-3 w-full rounded-full overflow-hidden bg-white/20 ring-2 ring-white/25 border border-black/50 ring-inset shadow-sm">
           <div
             id="progressbar"
             className={twMerge(
