@@ -1,5 +1,6 @@
 import { memo } from "react";
 import { twMerge } from "tailwind-merge";
+import { useTranslation } from "react-i18next";
 
 interface SongInfoProps {
   title?: string;
@@ -34,6 +35,8 @@ const SongInfo = ({
   statePlayerStr,
   isEpisode,
 }: SongInfoProps) => {
+  const { t } = useTranslation();
+
   const progressNow = positionNow ? msToTime(positionNow) : "--:--";
   const progressTotal = positionTotal ? msToTime(positionTotal) : "--:--";
 
@@ -43,13 +46,13 @@ const SongInfo = ({
         id="song-title"
         className="text-4xl lg:text-7xl font-bold text-pretty"
       >
-        {title}
+        {title ?? t("playing.default_title_song")}
       </h1>
       <h2
         id="song-artist"
         className="text-2xl lg:text-5xl font-bold text-pretty"
       >
-        {artist}
+        {artist ?? t("playing.default_artist_song")}
       </h2>
       {album && (
         <h3
