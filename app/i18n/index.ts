@@ -21,8 +21,6 @@ i18n
       default: ["en"],
     },
 
-    debug: true,
-
     supportedLngs: Object.keys(locales),
 
     interpolation: {

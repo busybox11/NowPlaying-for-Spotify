@@ -79,6 +79,7 @@ function ProviderBtn({ provider }: { provider: IProviderClient }) {
                   <LuPause
                     className="inline-block -mt-0.5 size-4 mr-1.5 -ml-0.5"
                     fill="currentColor"
+                    stroke="transparent"
                   />
                 )}
 
