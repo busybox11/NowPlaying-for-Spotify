@@ -1,9 +1,12 @@
 import { usePlayerProviders } from "@/components/contexts/PlayerProviders";
 import usePlayer from "@/hooks/usePlayer";
 import { memo } from "react";
+import { useNavigate } from "@tanstack/react-router";
+
 const PlayingLoad = () => {
   const { activePlayer } = usePlayer();
   const { lastUsedProvider, providers } = usePlayerProviders();
+  const navigate = useNavigate();
 
   if (activePlayer === null) {
     if (lastUsedProvider?.id) {
@@ -12,6 +15,8 @@ const PlayingLoad = () => {
         console.log("registering player");
         provider.authenticate();
       }
+    } else {
+      navigate({ to: "/" });
     }
   }
 
