@@ -107,6 +107,14 @@ export default class SpotifyProvider implements IProviderClient {
     );
   }
 
+  async getPlayerState() {
+    if (!this._client) return null;
+
+    const playerState = await this._getPlayerState();
+
+    return makePlayerStateObj(playerState);
+  }
+
   async unregisterPlayer() {
     if (this._playerLoopInstance) {
       clearInterval(this._playerLoopInstance);

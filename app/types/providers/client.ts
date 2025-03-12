@@ -19,5 +19,7 @@ export interface IProviderClient {
   registerPlayer(): Promise<void>;
   unregisterPlayer(): Promise<void>;
 
+  getPlayerState(): Promise<PlayerState>;
+
   updateHandlers(handlers: IProviderClientConstructor): void;
 }

@@ -78,6 +78,10 @@ export default class WebNowPlayingProvider implements IProviderClient {
     this.onReady();
   }
 
+  async getPlayerState() {
+    return makePlayerStateObj(this._lastPlaybackState);
+  }
+
   async unregisterPlayer() {
     this._endListening();
 
