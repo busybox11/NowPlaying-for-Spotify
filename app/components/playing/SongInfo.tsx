@@ -67,11 +67,7 @@ const SongInfo = ({
         >
           <span
             id="progress-time-now"
-            className={twMerge(
-              "text-white",
-              !positionNow && "text-white/50",
-              positionNow && shouldAnimateProgress && "animate-pulse"
-            )}
+            className={twMerge("text-white", !positionNow && "text-white/50")}
           >
             {progressNow}
           </span>
@@ -92,7 +88,7 @@ const SongInfo = ({
                 "transition-all duration-1000 ease-linear"
             )}
             style={{
-              width: `${positionPercent ?? 0 * 100}%`,
+              width: `${(positionPercent ?? 0) * 100}%`,
             }}
           />
         </div>
