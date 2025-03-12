@@ -14,7 +14,7 @@ import PlayingLoad from "@/components/playing/PlayingLoad";
 import useActiveWakeLock from "@/hooks/useActiveWakeLock";
 import usePlayingDevice from "@/hooks/Playing/usePlayingDevice";
 import Background from "@/components/playing/Background";
-import SettingsOverlay from "@/components/playing/SettingsOverlay";
+import SettingsOverlay from "@/components/playing/PlayerOverlay";
 import AlbumArt from "@/components/playing/AlbumArt";
 import SongInfo from "@/components/playing/SongInfo";
 
