@@ -4,7 +4,7 @@ import type { IProviderClient } from "@/types/providers/client";
 import { useTranslation } from "react-i18next";
 import { useMemo, useState } from "react";
 
-import { LuRefreshCcw } from "react-icons/lu";
+import { LuRefreshCw } from "react-icons/lu";
 
 const defaultProviderSymbol = Symbol("default");
 
@@ -61,7 +61,7 @@ export default function ProvidersBtns() {
         >
           {isProviderAuth === defaultProviderSymbol && (
             <div className="absolute -right-2 -top-2 flex items-center justify-center bg-[#15883D] ring-4 ring-[#000020] p-1.5 rounded-full">
-              <LuRefreshCcw className="size-5 animate-spin" />
+              <LuRefreshCw className="size-5 animate-spin" />
             </div>
           )}
           {t("index.connection", { provider: defaultProvider.meta.name })}
@@ -78,7 +78,7 @@ export default function ProvidersBtns() {
 
               {isProviderAuth === provider.meta.id && (
                 <div className="absolute -right-8 h-full top-0 bottom-0 flex items-center justify-center">
-                  <LuRefreshCcw className="size-4 animate-spin" />
+                  <LuRefreshCw className="size-4 animate-spin" />
                 </div>
               )}
             </button>

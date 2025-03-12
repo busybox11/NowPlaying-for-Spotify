@@ -1,37 +1,28 @@
 import { usePlayerProviders } from "@/components/contexts/PlayerProviders";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import type { IProviderClient } from "@/types/providers/client";
-import { Suspense, use } from "react";
-import { LuMusic, LuArrowRight, LuRefreshCcw, LuPause } from "react-icons/lu";
+import { Suspense } from "react";
+import { LuMusic, LuArrowRight, LuPause, LuRefreshCw } from "react-icons/lu";
 import { twMerge } from "tailwind-merge";
-import { PlayerState } from "@/types/player/index";
+
+import {
+  useProviderAuthenticationInfo,
+  useProviderPlayingState,
+} from "@/hooks/Providers/providerHooks";
 
 function ProviderBtn({ provider }: { provider: IProviderClient }) {
-  const [playingState, setPlayingState] = useState<PlayerState | null>(null);
-
   // TODO: VERY INITIAL BAD WIP that doesnt even work in the first place without logging in manually first
   // A more desired implementation would be to:
   // - Trigger auth on known logged in providers
   // - Subscribe to player state changes, similar to updateHandlers approach (but ephemeral)
   // - Don't trigger onAuth for this subscription
-  useEffect(() => {
-    const fetchState = async () => {
-      const state = await provider.getPlayerState();
-      setPlayingState(state);
-    };
+  const playingState = useProviderPlayingState(provider, true);
+  const authenticationInfo = useProviderAuthenticationInfo(provider);
 
-    const interval = setInterval(fetchState, 1000);
-    fetchState();
-
-    return () => clearInterval(interval);
-  }, [provider]);
-
-  const [authenticatingProvider, setAuthenticatingProvider] = useState<
-    string | null
-  >(null);
+  const [authenticatingProvider, setAuthenticatingProvider] = useState(false);
 
   const handleAuthProvider = async (provider: IProviderClient) => {
-    setAuthenticatingProvider(provider.meta.id);
+    setAuthenticatingProvider(true);
     try {
       await provider.authenticate();
     } catch (e) {
@@ -46,7 +37,12 @@ function ProviderBtn({ provider }: { provider: IProviderClient }) {
       }}
       className="cursor-pointer flex flex-row gap-3 items-center hover:bg-white/5 border-1 border-transparent hover:border-black/50 hover:ring-1 hover:ring-white/30 transition-colors duration-200 ease-out rounded-full p-2 group"
     >
-      <div className="bg-black/20 ring-1 ring-white/20 border-1 border-black/50 rounded-full p-3 aspect-square shrink-0">
+      <div
+        className={twMerge(
+          "bg-black/20 ring-1 ring-white/20 border-1 border-black/50 rounded-full p-3 aspect-square shrink-0",
+          playingState?.meta.is_playing && "bg-[#1ab85210] ring-[#1ab85280]"
+        )}
+      >
         {provider.meta.icon ? (
           <img
             src={provider.meta.icon}
@@ -59,7 +55,24 @@ function ProviderBtn({ provider }: { provider: IProviderClient }) {
       </div>
 
       <div className="flex flex-col text-start w-full min-w-0">
-        <span>{provider.meta.name}</span>
+        <span>
+          {provider.meta.name}
+          {!!authenticationInfo && authenticationInfo?.data !== null && (
+            <>
+              <span className="mx-1 text-white/50"> • </span>
+              {authenticationInfo.data.avatar && (
+                <img
+                  src={authenticationInfo.data.avatar}
+                  alt={authenticationInfo.data.name}
+                  className="inline-flex -mt-1 mr-1.5 size-3 rounded-full"
+                />
+              )}
+              <span className="text-white/50">
+                {authenticationInfo?.data.name}
+              </span>
+            </>
+          )}
+        </span>
         <span
           className={twMerge(
             "block items-center truncate text-sm text-white/50",
@@ -101,11 +114,11 @@ function ProviderBtn({ provider }: { provider: IProviderClient }) {
       <div
         className={twMerge(
           "flex-row gap-2 items-center ml-auto mr-4 hidden group-hover:block",
-          authenticatingProvider === provider.meta.id && "opacity-100"
+          authenticatingProvider && "opacity-100"
         )}
       >
-        {authenticatingProvider === provider.meta.id ? (
-          <LuRefreshCcw className="size-4 animate-spin" />
+        {authenticatingProvider ? (
+          <LuRefreshCw className="size-4 animate-spin" />
         ) : (
           <LuArrowRight className="size-4" />
         )}
