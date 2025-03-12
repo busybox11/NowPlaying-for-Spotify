@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { MiscLinks } from "@/components/MiscLinks";
-import ProvidersBtns from "@/components/index/ProvidersBtns";
-
+import ProvidersSelect from "@/components/index/ProvidersSelect";
 export const Route = createFileRoute("/")({
   component: Home,
 });
@@ -23,7 +22,7 @@ function Home() {
         </div>
       </section>
 
-      <ProvidersBtns />
+      <ProvidersSelect />
     </main>
   );
 }

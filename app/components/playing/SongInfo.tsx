@@ -63,32 +63,38 @@ const SongInfo = ({
         </h3>
       )}
 
-      <div className="flex flex-col gap-2 lg:gap-3 mt-4 lg:mt-8 w-full">
+      <div className="flex flex-col mt-4 lg:mt-8 w-full">
         <div
-          className="text-xl flex flex-row justify-between w-full font-semibold"
+          className="text-xl flex flex-row justify-between w-full font-semibold mb-2"
           id="progress-time"
         >
           <span
             id="progress-time-now"
-            className={twMerge("text-white", !positionNow && "text-white/50")}
+            className={twMerge(
+              "text-sm text-white",
+              !positionNow && "text-white/50"
+            )}
           >
             {progressNow}
           </span>
           <span
             id="progress-time-total"
-            className={twMerge("text-white", !positionTotal && "text-white/50")}
+            className={twMerge(
+              "text-sm text-white",
+              !positionTotal && "text-white/50"
+            )}
           >
             {progressTotal}
           </span>
         </div>
 
-        <div className="h-3 w-full rounded-full overflow-hidden bg-white/30">
+        <div className="relative h-3 w-full rounded-full overflow-hidden bg-white/20 ring-2 ring-white/25 ring-inset shadow-sm">
           <div
             id="progressbar"
             className={twMerge(
               "h-full bg-white",
               shouldAnimateProgress &&
-                "transition-all duration-1000 ease-linear"
+                "transition-all duration-1000 ease-linear z-10"
             )}
             style={{
               width: `${(positionPercent ?? 0) * 100}%`,
@@ -96,7 +102,10 @@ const SongInfo = ({
           />
         </div>
 
-        <div className="flex flex-row gap-4 items-center" id="player-controls">
+        <div
+          className="flex flex-row gap-4 items-center mt-3"
+          id="player-controls"
+        >
           <DeviceIcon className="size-6" />
 
           <span className="text-xl">
