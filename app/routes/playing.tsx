@@ -76,7 +76,8 @@ function PlayingRouteComponent() {
   const currentProvider = playerState?.meta.provider;
   if (
     currentProvider &&
-    currentProvider.toLowerCase() !== statePlayerStr.toLowerCase()
+    currentProvider.toLowerCase() !== statePlayerStr.toLowerCase() &&
+    currentProvider !== playerState?.device?.id
   ) {
     statePlayerStr = `${currentProvider} • ${playerName}`;
   }

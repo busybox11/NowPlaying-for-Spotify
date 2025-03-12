@@ -25,13 +25,15 @@ export default function makePlayerStateObj(
       is_playing: state.state === 0,
       shuffle_state: state.shuffle,
       repeat_state:
-        state.repeat === 1 ? "track"
-        : state.repeat === 2 ? "context"
-        : "off",
+        state.repeat === 1 ? "track" : state.repeat === 2 ? "context" : "off",
       position_ms: state.position * 1000,
       duration_ms: state.duration * 1000,
       main_img_url: state.cover,
       provider: state.name,
+    },
+    device: {
+      id: state.name,
+      name: state.name,
     },
   };
 
