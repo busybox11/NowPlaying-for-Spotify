@@ -1,0 +1,29 @@
+{
+  "index": {
+    "title": "Bonvenon al NowPlaying for Spotify!",
+    "description": "Bonvolu ensaluti kun via konto Spotify.",
+    "connection": "Ensaluti kun {{provider}}",
+    "cookie": "Alklakante 'ENSALUTI SPOTIFY', vi akceptas la uzadon de kuketoj necesataj por la bona funkciado de la retejo."
+  },
+  "playing": {
+    "default_title_song": "Neniu muziko nune ludantas",
+    "default_artist_song": "Bonvolu atendi kelkajn sekundojn, dum la statuto ĝisdatiĝas",
+    "content_types": {
+      "ad": "Reklamo"
+    }
+  },
+  "miniplayer": {
+    "generate": "Generi mini-ludilon"
+  },
+  "common": {
+    "by": "de",
+    "error": "Eraro",
+    "actions": {
+      "go_back": "Reiri"
+    }
+  },
+  "errors": {
+    "404": "Tiu retpaĝo ne ekzistas. Ĉu vi provus kodumi min?",
+    "403": "Alirpermeso malpermesita"
+  }
+}

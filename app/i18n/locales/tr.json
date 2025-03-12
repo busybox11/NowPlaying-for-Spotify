@@ -1,0 +1,29 @@
+{
+  "index": {
+    "title": "Spotify için NowPlaying'e hoşgeldiniz!",
+    "description": "Lütfen Spotify hesabınız ile giriş yapın.",
+    "connection": "{{provider}} ile giriş yap",
+    "cookie": "'SPOTIFY İLE GİRİŞ YAP' tıklayarak, sitenin düzgün çalışması için gerekli olan çerezlerin kullanımını kabul etmiş olursunuz."
+  },
+  "playing": {
+    "default_title_song": "Herhangi bir müzik çalmıyor.",
+    "default_artist_song": "Durumunuz güncellenirken lütfen birkaç saniye bekleyin",
+    "content_types": {
+      "ad": "Reklam"
+    }
+  },
+  "miniplayer": {
+    "generate": "Mini oynatıcı oluştur"
+  },
+  "common": {
+    "by": "tarafından",
+    "error": "Hata",
+    "actions": {
+      "go_back": "Geri git"
+    }
+  },
+  "errors": {
+    "404": "Böyle bir sayfa bulunmamakta. Beni hacklemeye mi çalışıyorsun?",
+    "403": "Erişim yasak"
+  }
+}

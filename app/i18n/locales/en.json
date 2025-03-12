@@ -1,0 +1,30 @@
+{
+  "index": {
+    "title": "Welcome to NowPlaying for Spotify!",
+    "description": "Please login with your Spotify account.",
+    "connection": "Login with {{provider}}",
+    "cookie": "By clicking on 'LOGIN TO SPOTIFY', you accept the use of cookies necessary for the proper functioning of the site."
+  },
+  "playing": {
+    "default_title_song": "No music currently playing",
+    "default_artist_song": "Please wait a few seconds while status is updating",
+    "content_types": {
+      "ad": "Advertisement"
+    }
+  },
+  "miniplayer": {
+    "generate": "Generate mini player",
+    "embedCaution": "DO NOT embed this mini player on a website. It contains a Spotify access token that can be used to control your Spotify account."
+  },
+  "common": {
+    "by": "by",
+    "error": "Error",
+    "actions": {
+      "go_back": "Go back"
+    }
+  },
+  "errors": {
+    "404": "This page doesn't exist. Ain't you trying to hack me?",
+    "403": "Forbidden access"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "index": {
+    "title": "Vítejte v aplikaci NowPlaying pro Spotify!",
+    "description": "Přihlaste se pomocí svého účtu Spotify.",
+    "connection": "Přihlásit se pomocí {{provider}}",
+    "cookie": "Kliknutím na 'PŘIHLÁSIT SE DO SPOTIFY' souhlasíte s používáním souborů cookie nezbytných pro správné fungování stránek."
+  },
+  "playing": {
+    "default_title_song": "Žádná hudba se momentálně nepřehrává",
+    "default_artist_song": "Počkejte prosím několik sekund, než se stav aktualizuje.",
+    "content_types": {
+      "ad": "Reklama"
+    }
+  },
+  "miniplayer": {
+    "generate": "Vytvořit mini přehrávač"
+  },
+  "common": {
+    "by": "vyrobený",
+    "error": "Error",
+    "actions": {
+      "go_back": "Vrátit se zpět"
+    }
+  },
+  "errors": {
+    "404": "Tato stránka neexistuje. Nesnažíte se mě hacknout?",
+    "403": "Přístup zakázán"
+  }
+}

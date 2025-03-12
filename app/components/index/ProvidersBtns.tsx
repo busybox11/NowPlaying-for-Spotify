@@ -1,6 +1,7 @@
 import ClientOnly from "@/components/ClientOnly";
 import { usePlayerProviders } from "@/components/contexts/PlayerProviders";
 import type { IProviderClient } from "@/types/providers/client";
+import { useTranslation } from "react-i18next";
 import { useMemo, useState } from "react";
 
 import { LuRefreshCcw } from "react-icons/lu";
@@ -8,6 +9,8 @@ import { LuRefreshCcw } from "react-icons/lu";
 const defaultProviderSymbol = Symbol("default");
 
 export default function ProvidersBtns() {
+  const { t } = useTranslation();
+
   const [isProviderAuth, setIsProviderAuth] = useState<
     typeof defaultProviderSymbol | string | null
   >(null);
@@ -61,7 +64,7 @@ export default function ProvidersBtns() {
               <LuRefreshCcw className="size-5 animate-spin" />
             </div>
           )}
-          Login with {defaultProvider.meta.name}
+          {t("index.connection", { provider: defaultProvider.meta.name })}
         </button>
 
         {Object.entries(otherProviders).map(([key, provider]) => {

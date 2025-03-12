@@ -26,6 +26,15 @@ importers:
       dotenv:
         specifier: ^16.4.7
         version: 16.4.7
+      i18next:
+        specifier: ^24.2.2
+        version: 24.2.2(typescript@5.8.2)
+      i18next-browser-languagedetector:
+        specifier: ^8.0.4
+        version: 8.0.4
+      i18next-http-backend:
+        specifier: ^3.0.2
+        version: 3.0.2
       jotai:
         specifier: ^2.12.1
         version: 2.12.1(@types/react@19.0.10)(react@19.0.0)
@@ -35,6 +44,9 @@ importers:
       react-dom:
         specifier: ^19.0.0
         version: 19.0.0(react@19.0.0)
+      react-i18next:
+        specifier: ^15.4.1
+        version: 15.4.1(i18next@24.2.2(typescript@5.8.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react-icons:
         specifier: ^5.5.0
         version: 5.5.0(react@19.0.0)
@@ -167,6 +179,10 @@ packages:
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
+
+  '@babel/runtime@7.26.10':
+    resolution: {integrity: sha512-2WJMeRQPHKSPemqk/awGrAiuFfzBmOIPXKizAsVhWH9YJqLZ0H+HS4c8loHGgW6utJ3E/ejXQUsiGaQy2NZ9Fw==}
+    engines: {node: '>=6.9.0'}
 
   '@babel/template@7.26.9':
     resolution: {integrity: sha512-qyRplbeIpNZhmzOysF/wFMuP9sctmh2cFzRAZOn1YapxBsE1i9bJIY586R/WBLfLcmcBlM8ROBiQURnnNy+zfA==}
@@ -1503,6 +1519,9 @@ packages:
     resolution: {integrity: sha512-onMB0OkDjkXunhdW9htFjEhqrD54+M94i6ackoUkjHKbRnXdyEyKRelp4nJ1kAz32+s27jP1FsebpJCVl0BsvA==}
     engines: {node: '>=18.0'}
 
+  cross-fetch@4.0.0:
+    resolution: {integrity: sha512-e4a5N8lVvuLgAWgnCrLr2PP0YyDOTHa9H/Rj54dirp61qXnNq46m82bRhNqIA5VccJtWBvPTFRV3TtvHUKPB1g==}
+
   cross-spawn@7.0.6:
     resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
     engines: {node: '>= 8'}
@@ -1819,6 +1838,9 @@ packages:
   hookable@5.5.3:
     resolution: {integrity: sha512-Yc+BQe8SvoXH1643Qez1zqLRmbA5rCL+sSmk6TVos0LWVfNIB7PGncdlId77WzLGSIB5KaWgTaNTs2lNVEI6VQ==}
 
+  html-parse-stringify@3.0.1:
+    resolution: {integrity: sha512-KknJ50kTInJ7qIScF3jeaFRpMpE8/lfiTdzf/twXyPBLAGrLRTmkz3AdTnKeh40X8k9L2fdYwEp/42WGXIRGcg==}
+
   http-errors@2.0.0:
     resolution: {integrity: sha512-FtwrG/euBzaEjYeRqOgly7G0qviiXoJWnvEH2Z1plBdXgbyjv34pHTSb9zoeHMyDy33+DWy5Wt9Wo+TURtOYSQ==}
     engines: {node: '>= 0.8'}
@@ -1841,6 +1863,20 @@ packages:
   human-signals@5.0.0:
     resolution: {integrity: sha512-AXcZb6vzzrFAUE61HnN4mpLqd/cSIwNQjtNWR0euPm6y0iqx3G4gOXaIDdtdDwZmhwe82LA6+zinmW4UBWVePQ==}
     engines: {node: '>=16.17.0'}
+
+  i18next-browser-languagedetector@8.0.4:
+    resolution: {integrity: sha512-f3frU3pIxD50/Tz20zx9TD9HobKYg47fmAETb117GKGPrhwcSSPJDoCposXlVycVebQ9GQohC3Efbpq7/nnJ5w==}
+
+  i18next-http-backend@3.0.2:
+    resolution: {integrity: sha512-PdlvPnvIp4E1sYi46Ik4tBYh/v/NbYfFFgTjkwFl0is8A18s7/bx9aXqsrOax9WUbeNS6mD2oix7Z0yGGf6m5g==}
+
+  i18next@24.2.2:
+    resolution: {integrity: sha512-NE6i86lBCKRYZa5TaUDkU5S4HFgLIEJRLr3Whf2psgaxBleQ2LC1YW1Vc+SCgkAW7VEzndT6al6+CzegSUHcTQ==}
+    peerDependencies:
+      typescript: ^5
+    peerDependenciesMeta:
+      typescript:
+        optional: true
 
   ieee754@1.2.1:
     resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}
@@ -2365,6 +2401,19 @@ packages:
     peerDependencies:
       react: ^19.0.0
 
+  react-i18next@15.4.1:
+    resolution: {integrity: sha512-ahGab+IaSgZmNPYXdV1n+OYky95TGpFwnKRflX/16dY04DsYYKHtVLjeny7sBSCREEcoMbAgSkFiGLF5g5Oofw==}
+    peerDependencies:
+      i18next: '>= 23.2.3'
+      react: '>= 16.8.0'
+      react-dom: '*'
+      react-native: '*'
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+      react-native:
+        optional: true
+
   react-icons@5.5.0:
     resolution: {integrity: sha512-MEFcXdkP3dLo8uumGI5xN3lDFNsRtrjbOEKDLD7yv76v4wpnEq2Lt2qeHaQOr34I/wPN3s3+N08WkQ+CW37Xiw==}
     peerDependencies:
@@ -2409,6 +2458,9 @@ packages:
   redis-parser@3.0.0:
     resolution: {integrity: sha512-DJnGAeenTdpMEH6uAJRK/uiyEIH9WVsUmoLwzudwGJUwZPp80PDBWPHXSAGNPwNvIXAbe7MSUB1zQFugFml66A==}
     engines: {node: '>=4'}
+
+  regenerator-runtime@0.14.1:
+    resolution: {integrity: sha512-dYnhHh0nJoMfnkZs6GmmhFknAGRrLznOu5nc9ML+EJxGvrx6H7teuevqVqCuPcPK//3eDrrjQhehXVx9cnkGdw==}
 
   require-directory@2.1.1:
     resolution: {integrity: sha512-fGxEI7+wsG9xrvdjsrlmL22OMTTiHRwAMroiEeMgq8gzoLC/PQr7RsRDSTLUg/bZAZtF+TVIkHc6/4RIKrui+Q==}
@@ -2908,6 +2960,10 @@ packages:
       yaml:
         optional: true
 
+  void-elements@3.1.0:
+    resolution: {integrity: sha512-Dhxzh5HZuiHQhbvTW9AMetFfBHDMYpo23Uo9btPXgdYP+3T5S+p+jgNy7spra+veYhBP2dCSgxR/i2Y02h5/6w==}
+    engines: {node: '>=0.10.0'}
+
   webidl-conversions@3.0.1:
     resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}
 
@@ -3086,6 +3142,10 @@ snapshots:
     dependencies:
       '@babel/core': 7.26.9
       '@babel/helper-plugin-utils': 7.26.5
+
+  '@babel/runtime@7.26.10':
+    dependencies:
+      regenerator-runtime: 0.14.1
 
   '@babel/template@7.26.9':
     dependencies:
@@ -4769,6 +4829,12 @@ snapshots:
 
   croner@9.0.0: {}
 
+  cross-fetch@4.0.0:
+    dependencies:
+      node-fetch: 2.7.0
+    transitivePeerDependencies:
+      - encoding
+
   cross-spawn@7.0.6:
     dependencies:
       path-key: 3.1.1
@@ -5097,6 +5163,10 @@ snapshots:
 
   hookable@5.5.3: {}
 
+  html-parse-stringify@3.0.1:
+    dependencies:
+      void-elements: 3.1.0
+
   http-errors@2.0.0:
     dependencies:
       depd: 2.0.0
@@ -5125,6 +5195,22 @@ snapshots:
   httpxy@0.1.7: {}
 
   human-signals@5.0.0: {}
+
+  i18next-browser-languagedetector@8.0.4:
+    dependencies:
+      '@babel/runtime': 7.26.10
+
+  i18next-http-backend@3.0.2:
+    dependencies:
+      cross-fetch: 4.0.0
+    transitivePeerDependencies:
+      - encoding
+
+  i18next@24.2.2(typescript@5.8.2):
+    dependencies:
+      '@babel/runtime': 7.26.10
+    optionalDependencies:
+      typescript: 5.8.2
 
   ieee754@1.2.1: {}
 
@@ -5657,6 +5743,15 @@ snapshots:
       react: 19.0.0
       scheduler: 0.25.0
 
+  react-i18next@15.4.1(i18next@24.2.2(typescript@5.8.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+    dependencies:
+      '@babel/runtime': 7.26.10
+      html-parse-stringify: 3.0.1
+      i18next: 24.2.2(typescript@5.8.2)
+      react: 19.0.0
+    optionalDependencies:
+      react-dom: 19.0.0(react@19.0.0)
+
   react-icons@5.5.0(react@19.0.0):
     dependencies:
       react: 19.0.0
@@ -5702,6 +5797,8 @@ snapshots:
   redis-parser@3.0.0:
     dependencies:
       redis-errors: 1.2.0
+
+  regenerator-runtime@0.14.1: {}
 
   require-directory@2.1.1: {}
 
@@ -6204,6 +6301,8 @@ snapshots:
       terser: 5.39.0
       tsx: 4.19.3
       yaml: 2.7.0
+
+  void-elements@3.1.0: {}
 
   webidl-conversions@3.0.1: {}
 

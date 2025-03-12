@@ -1,0 +1,29 @@
+{
+  "index": {
+    "title": "Witamy w NowPlaying for Spotify !",
+    "description": "Zaloguj się za pomocą swojego konta Spotify.",
+    "connection": "Zaloguj się za pomocą {{provider}}",
+    "cookie": "Poprzez kliknięcie na 'Zaloguj się do Spotify', wyrażasz zgodę na używanie plików cookies niezbędnych do prawidłowego funkcjonowania strony."
+  },
+  "playing": {
+    "default_title_song": "Brak odtwarzania muzyki",
+    "default_artist_song": "Proszę poczekać kilka sekund na aktualizację.",
+    "content_types": {
+      "ad": "Reklama"
+    }
+  },
+  "miniplayer": {
+    "generate": "Generuj mini-odtwarzacz"
+  },
+  "common": {
+    "by": "z",
+    "error": "Błąd",
+    "actions": {
+      "go_back": "Cofnij się"
+    }
+  },
+  "errors": {
+    "404": "Ta strona nie istnieje. Czy nie próbujesz mnie zhakować?",
+    "403": "Dostęp zabroniony"
+  }
+}

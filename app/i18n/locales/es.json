@@ -1,0 +1,29 @@
+{
+  "index": {
+    "title": "Bienvenido a NowPlaying for Spotify !",
+    "description": "Por favor, inicia sesión con tu cuenta Spotify.",
+    "connection": "Iniciar sesión con {{provider}}",
+    "cookie": "Haciendo clic en 'INICIAR SESIÓN EN SPOTIFY', usted acepta el uso de las cookies necesarias para el buen funcionamiento del sitio."
+  },
+  "playing": {
+    "default_title_song": "No hay música",
+    "default_artist_song": "Por favor, espere unos segundos para la actualización",
+    "content_types": {
+      "ad": "Publicidad"
+    }
+  },
+  "miniplayer": {
+    "generate": "Generar reproductor mini"
+  },
+  "common": {
+    "by": "de",
+    "error": "Error",
+    "actions": {
+      "go_back": "Regresa"
+    }
+  },
+  "errors": {
+    "404": "Esta página no existe. ¿No estás tratando de hackearme?",
+    "403": "Acceso prohibido"
+  }
+}

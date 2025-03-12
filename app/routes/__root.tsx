@@ -15,6 +15,10 @@ import appCss from "@/styles/app.css?url";
 import { PlayerProvidersProvider } from "@/components/contexts/PlayerProviders";
 import { JotaiStoreProvider } from "@/state/store";
 
+import "@/i18n";
+import { I18nextProvider } from "react-i18next";
+import i18n from "@/i18n";
+
 export const Route = createRootRoute({
   head: () => ({
     meta: [
@@ -60,11 +64,13 @@ export const Route = createRootRoute({
 function RootComponent() {
   return (
     <RootDocument>
-      <JotaiStoreProvider>
-        <PlayerProvidersProvider>
-          <Outlet />
-        </PlayerProvidersProvider>
-      </JotaiStoreProvider>
+      <I18nextProvider i18n={i18n}>
+        <JotaiStoreProvider>
+          <PlayerProvidersProvider>
+            <Outlet />
+          </PlayerProvidersProvider>
+        </JotaiStoreProvider>
+      </I18nextProvider>
     </RootDocument>
   );
 }

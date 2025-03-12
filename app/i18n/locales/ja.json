@@ -1,0 +1,29 @@
+{
+  "index": {
+    "title": "NowPlaying for Spotifyようこそ !",
+    "description": "Spotifyのアカウントでログインしてください。",
+    "connection": "{{provider}}でログイン",
+    "cookie": "をクリックすることで 'SPOTIFYにログイン', お客様は、本サイトの適切な機能のために必要なクッキーの使用に同意するものとします。"
+  },
+  "playing": {
+    "default_title_song": "音楽の演奏はありません",
+    "default_artist_song": "更新のために数秒お待ちください...。",
+    "content_types": {
+      "ad": "広告"
+    }
+  },
+  "miniplayer": {
+    "generate": "ミニプレーヤーを生成"
+  },
+  "common": {
+    "by": "から",
+    "error": "エラー",
+    "actions": {
+      "go_back": "戻ろう"
+    }
+  },
+  "errors": {
+    "404": "そのページは存在しません。私をハッキングしようとしてるんじゃないの？",
+    "403": "アクセス禁止"
+  }
+}

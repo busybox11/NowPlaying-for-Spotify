@@ -1,0 +1,29 @@
+{
+  "index": {
+    "title": "Spotify üçün NowPlaying'ə xoş gəldiniz!",
+    "description": "Zəhmət olmasa Spotify hesabınız ilə giriş edin.",
+    "connection": "{{provider}} ilə daxil olun",
+    "cookie": "'SPOTIFY İLE GİRİŞ ET' basaraq, saytın düzgün çalışması üçün lazım olan çərəzlərin istifadəsini qəbul etmiş olursunuz."
+  },
+  "playing": {
+    "default_title_song": "Her hansı bir musiqi ifa edilmir.",
+    "default_artist_song": "Statusunuz güncəllənərkən zəhmət olmasa bir neçə saniyə gözləyin.",
+    "content_types": {
+      "ad": "Reklam"
+    }
+  },
+  "miniplayer": {
+    "generate": "Mini pleyeri yarat"
+  },
+  "common": {
+    "by": "tərəfindən",
+    "error": "Xəta",
+    "actions": {
+      "go_back": "Geri get"
+    }
+  },
+  "errors": {
+    "404": "Belə bir səhifə yoxdur. Məni hacklamağamı çalışırsan?",
+    "403": "Giriş qadağandır"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "index": {
+    "title": "Selamat datang di NowPlaying untuk Spotify !",
+    "description": "Silakan login dengan akun Spotify Anda.",
+    "connection": "Masuk dengan {{provider}}",
+    "cookie": "Dengan mengklik 'LOGIN KE SPOTIFY', Anda menerima penggunaan cookie yang diperlukan untuk memfungsikan situs dengan benar."
+  },
+  "playing": {
+    "default_title_song": "Tidak ada musik yang sedang diputar",
+    "default_artist_song": "Harap tunggu beberapa detik saat status sedang diperbarui",
+    "content_types": {
+      "ad": "Iklan"
+    }
+  },
+  "miniplayer": {
+    "generate": "Buat pemutar mini"
+  },
+  "common": {
+    "by": "oleh",
+    "error": "Kesalahan",
+    "actions": {
+      "go_back": "Kembali"
+    }
+  },
+  "errors": {
+    "404": "Halaman ini tidak ada. Apakah Anda tidak mencoba meretas saya ?",
+    "403": "Akses dilarang"
+  }
+}

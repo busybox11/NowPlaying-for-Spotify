@@ -1,0 +1,30 @@
+{
+  "index": {
+    "title": "歡迎來到 NowPlaying For Spotify!",
+    "description": "請登入你的Spotify帳號",
+    "connection": "使用 {{provider}} 登入",
+    "cookie": "單擊\"使用Spotify登入\"，即表示您接受使用網站正常運行所需的Cookie"
+  },
+  "playing": {
+    "default_title_song": "當前沒有音樂播放",
+    "default_artist_song": "狀態資訊正在更新中，請等待幾秒鐘...",
+    "content_types": {
+      "ad": "廣告"
+    }
+  },
+  "miniplayer": {
+    "generate": "生成迷你播放器",
+    "embedCaution": "請勿將迷你播放器嵌入在任何網站，它可以包含了可以存取你的Spotify帳號的憑證。"
+  },
+  "common": {
+    "by": "演出者",
+    "error": "錯誤",
+    "actions": {
+      "go_back": "返回"
+    }
+  },
+  "errors": {
+    "404": "該頁面不存在。你是想試圖想駭入嗎？",
+    "403": "禁止存取"
+  }
+}

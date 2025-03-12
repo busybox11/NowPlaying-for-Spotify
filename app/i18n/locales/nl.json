@@ -1,0 +1,29 @@
+{
+  "index": {
+    "title": "Welkom bij NowPlaying voor Spotify!",
+    "description": "Log in met je Spotify-account.",
+    "connection": "Inloggen met {{provider}}",
+    "cookie": "Door te klikken op 'LOGIN TO SPOTIFY', accepteert u het gebruik van cookies die nodig zijn voor de goede werking van de site."
+  },
+  "playing": {
+    "default_title_song": "Momenteel speelt er geen muziek",
+    "default_artist_song": "Wacht een paar seconden terwijl de status wordt bijgewerkt",
+    "content_types": {
+      "ad": "Advertentie"
+    }
+  },
+  "miniplayer": {
+    "generate": "Genereer mini-speler"
+  },
+  "common": {
+    "by": "door",
+    "error": "Error",
+    "actions": {
+      "go_back": "Ga terug"
+    }
+  },
+  "errors": {
+    "404": "Deze pagina bestaat niet. Probeer je me niet te hacken?",
+    "403": "Toegang verboden"
+  }
+}
