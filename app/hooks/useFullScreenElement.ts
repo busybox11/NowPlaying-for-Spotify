@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 const targetDefaultElement = () => {
   if (typeof document !== "undefined") {
@@ -16,11 +16,17 @@ export default function useFullScreenElement(element?: HTMLElement) {
   const toggleFullScreen = useCallback(() => {
     if (document.fullscreenElement) {
       document.exitFullscreen();
+      setIsFullScreen(false);
     } else {
       elementRef.current?.requestFullscreen();
+      setIsFullScreen(true);
     }
+  }, []);
 
-    setIsFullScreen(document.fullscreenElement === elementRef.current);
+  useEffect(() => {
+    document.addEventListener("fullscreenchange", () => {
+      setIsFullScreen(document.fullscreenElement === elementRef.current);
+    });
   }, []);
 
   return {
