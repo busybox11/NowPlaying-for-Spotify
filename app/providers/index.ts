@@ -1,11 +1,6 @@
-import type {
-  IProviderClient,
-  IProviderClientConstructor,
-} from "@/types/providers/client";
+import type { IProviderClient } from "@/types/providers/client";
 
-type NewProviderClient = new (
-  args: IProviderClientConstructor
-) => IProviderClient;
+type NewProviderClient = new () => IProviderClient;
 
 const providersClientGlob = import.meta.glob<NewProviderClient>(
   "./*/client.ts",

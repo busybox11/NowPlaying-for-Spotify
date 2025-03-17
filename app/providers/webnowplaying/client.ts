@@ -1,32 +1,24 @@
 import {
   IProviderClient,
-  IProviderClientConstructor,
-  type IProviderClientAuthenticationInfo,
+  type IProviderClientInternalEvents,
+  type ProviderClientEventDataMap,
+  type ProviderClientEventTypes,
 } from "@/types/providers/client";
-import { PlayerState } from "@/types/player";
 import webnowplayingProviderMeta from "@/providers/webnowplaying";
 import { WebNowPlayingPlayerState } from "@/providers/webnowplaying/types";
 import makePlayerStateObj from "@/providers/webnowplaying/utils/makePlayerStateObj";
+import EventManager from "@/utils/eventManager";
+import type { PlayerState } from "@/types/player";
 
 export default class WebNowPlayingProvider implements IProviderClient {
+  private eventManager = new EventManager<ProviderClientEventDataMap>();
+  private onPlayerStateCallback: (playerState: PlayerState) => void;
+
   readonly meta = webnowplayingProviderMeta;
   isAuthenticated = false;
 
-  // API event handlers
-  private onAuth: () => void;
-  private onUnregister: () => void;
-  private sendPlayerState: (playerObj: PlayerState) => void;
-  private onReady: () => void;
-  constructor({
-    onAuth,
-    onUnregister,
-    sendPlayerState,
-    onReady,
-  }: IProviderClientConstructor) {
-    this.onAuth = onAuth;
-    this.onUnregister = onUnregister;
-    this.sendPlayerState = sendPlayerState;
-    this.onReady = onReady;
+  constructor() {
+    this.onPlayerStateCallback = () => {};
   }
 
   // Private properties and methods
@@ -37,7 +29,7 @@ export default class WebNowPlayingProvider implements IProviderClient {
 
     this._lastPlaybackState = msg.data.player as WebNowPlayingPlayerState;
 
-    this.sendPlayerState(makePlayerStateObj(this._lastPlaybackState));
+    this.onPlayerStateCallback(makePlayerStateObj(this._lastPlaybackState));
   };
   private _beginListening() {
     window.addEventListener("message", this._handleMessage);
@@ -66,7 +58,7 @@ export default class WebNowPlayingProvider implements IProviderClient {
     );
     this.isAuthenticated = true;
 
-    this.onAuth();
+    this.eventManager.triggerEvent("onAuth");
   }
 
   async callback() {
@@ -76,7 +68,7 @@ export default class WebNowPlayingProvider implements IProviderClient {
   async registerPlayer() {
     this._beginListening();
 
-    this.onReady();
+    this.eventManager.triggerEvent("onReady");
   }
 
   async getPlayerState() {
@@ -94,13 +86,17 @@ export default class WebNowPlayingProvider implements IProviderClient {
   async unregisterPlayer() {
     this._endListening();
 
-    this.onUnregister();
+    this.eventManager.triggerEvent("onUnregister");
   }
 
-  updateHandlers(handlers: IProviderClientConstructor) {
-    this.onAuth = handlers.onAuth;
-    this.onUnregister = handlers.onUnregister;
-    this.sendPlayerState = handlers.sendPlayerState;
-    this.onReady = handlers.onReady;
+  registerEvent<K extends ProviderClientEventTypes>(
+    eventType: K,
+    callback: (data: ProviderClientEventDataMap[K]) => void
+  ): () => void {
+    return this.eventManager.registerEvent(eventType, callback);
+  }
+
+  registerInternalEvents(events: IProviderClientInternalEvents) {
+    this.onPlayerStateCallback = events.onPlayerState;
   }
 }

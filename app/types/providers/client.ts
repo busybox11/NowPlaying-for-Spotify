@@ -1,12 +1,14 @@
 import { PlayerState } from "@/types/player";
 import { ProviderMeta } from "@/types/providers/meta";
 
-export interface IProviderClientConstructor {
-  onAuth: () => void;
-  onUnregister: () => void;
-  sendPlayerState: (playerObj: PlayerState) => void;
-  onReady: () => void;
+export interface ProviderClientEventDataMap {
+  onAuth: void;
+  onUnregister: void;
+  onReady: void;
+  onError: { message: string };
 }
+
+export type ProviderClientEventTypes = keyof ProviderClientEventDataMap;
 
 export interface IProviderClientAuthenticationInfo {
   authenticated: boolean;
@@ -19,6 +21,10 @@ export interface IProviderClientAuthenticationInfo {
     avatar?: string;
     email?: string;
   } | null;
+}
+
+export interface IProviderClientInternalEvents {
+  onPlayerState: (playerState: PlayerState) => void;
 }
 
 export interface IProviderClient {
@@ -35,5 +41,9 @@ export interface IProviderClient {
   getPlayerState(): Promise<PlayerState>;
   getAuthenticationInfo(): Promise<IProviderClientAuthenticationInfo>;
 
-  updateHandlers(handlers: IProviderClientConstructor): void;
+  registerEvent<K extends ProviderClientEventTypes>(
+    eventType: K,
+    callback: (data: ProviderClientEventDataMap[K]) => void
+  ): () => void;
+  registerInternalEvents(events: IProviderClientInternalEvents): void;
 }

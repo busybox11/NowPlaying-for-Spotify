@@ -8,7 +8,6 @@ import {
 import { useNavigate, type ReactNode } from "@tanstack/react-router";
 
 import { IProviderClient } from "@/types/providers/client";
-import { PlayerState } from "@/types/player";
 import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import {
   activePlayerAtom,
@@ -59,22 +58,33 @@ export function PlayerProvidersProvider({
   );
 
   useEffect(() => {
+    const unregisterEvents: (() => void)[] = [];
+
     // Attach handlers to all provider instances
     for (const [id, provider] of Object.entries(providers)) {
-      provider.updateHandlers({
-        onAuth: () => handleAuth(id),
-        onUnregister: () => {
+      const onAuthUnregister = provider.registerEvent("onAuth", () =>
+        handleAuth(id)
+      );
+      const onUnregisterEventUnregister = provider.registerEvent(
+        "onUnregister",
+        () => {
           setActivePlayer(null);
           navigate({ to: "/" });
-        },
-        sendPlayerState: (playerObj: PlayerState) => {
+        }
+      );
+
+      unregisterEvents.push(onAuthUnregister, onUnregisterEventUnregister);
+
+      provider.registerInternalEvents({
+        onPlayerState: (playerObj) => {
           setPlayerState(playerObj);
-        },
-        onReady: () => {
-          navigate({ to: "/playing" });
         },
       });
     }
+
+    return () => {
+      unregisterEvents.forEach((unregister) => unregister());
+    };
   }, []);
 
   return (

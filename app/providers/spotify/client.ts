@@ -3,32 +3,28 @@ import {
   SpotifyApi,
   AuthorizationCodeWithPKCEStrategy,
   PlaybackState,
-  type UserProfile,
 } from "@spotify/web-api-ts-sdk";
 
 import { providerConfig } from "./config";
 import {
   IProviderClient,
-  IProviderClientConstructor,
-  type IProviderClientAuthenticationInfo,
+  type IProviderClientInternalEvents,
+  type ProviderClientEventDataMap,
+  type ProviderClientEventTypes,
 } from "@/types/providers/client";
 import spotifyProviderMeta from "@/providers/spotify";
-import { PlayerState } from "@/types/player";
 import makePlayerStateObj from "@/providers/spotify/utils/makePlayerStateObj";
+import EventManager from "@/utils/eventManager";
+import type { PlayerState } from "@/types/player";
 
 const { VITE_SPOTIFY_CLIENT_ID, VITE_SPOTIFY_REDIRECT_URI } = providerConfig;
 
 export default class SpotifyProvider implements IProviderClient {
-  constructor({
-    onAuth,
-    onUnregister,
-    sendPlayerState,
-    onReady,
-  }: IProviderClientConstructor) {
-    this.onAuth = onAuth;
-    this.onUnregister = onUnregister;
-    this.sendPlayerState = sendPlayerState;
-    this.onReady = onReady;
+  private eventManager = new EventManager<ProviderClientEventDataMap>();
+  private onPlayerStateCallback: (playerState: PlayerState) => void;
+
+  constructor() {
+    this.onPlayerStateCallback = () => {};
 
     const auth = new AuthorizationCodeWithPKCEStrategy(
       VITE_SPOTIFY_CLIENT_ID,
@@ -40,12 +36,6 @@ export default class SpotifyProvider implements IProviderClient {
 
   readonly meta = spotifyProviderMeta;
   isAuthenticated = false;
-
-  // API event handlers
-  private onAuth: () => void;
-  private onUnregister: () => void;
-  private sendPlayerState: (playerObj: PlayerState) => void;
-  private onReady: () => void;
 
   // Private properties and methods
   private _client: SpotifyApi;
@@ -65,7 +55,7 @@ export default class SpotifyProvider implements IProviderClient {
   private async _playerLoop() {
     const playerState = await this._getPlayerState();
 
-    this.sendPlayerState(makePlayerStateObj(playerState));
+    this.onPlayerStateCallback(makePlayerStateObj(playerState));
   }
 
   // Public implemented methods
@@ -73,7 +63,7 @@ export default class SpotifyProvider implements IProviderClient {
   async authenticate() {
     try {
       if (this.isAuthenticated && this._client?.currentUser) {
-        this.onAuth();
+        this.eventManager.triggerEvent("onAuth");
         return;
       }
 
@@ -81,11 +71,13 @@ export default class SpotifyProvider implements IProviderClient {
       this.isAuthenticated = authenticated;
 
       if (authenticated) {
-        this.onAuth();
+        this.eventManager.triggerEvent("onAuth");
       }
     } catch (e) {
       console.error(e);
-      this.onUnregister();
+      this.eventManager.triggerEvent("onError", {
+        message: (e as Error).message,
+      });
 
       throw e;
     }
@@ -98,7 +90,7 @@ export default class SpotifyProvider implements IProviderClient {
   async registerPlayer() {
     // Initial call for faster response
     this._playerLoop().then(() => {
-      this.onReady();
+      this.eventManager.triggerEvent("onReady");
     });
 
     this._playerLoopInstance = window.setInterval(
@@ -137,13 +129,23 @@ export default class SpotifyProvider implements IProviderClient {
       this._playerLoopInstance = NaN;
     }
 
-    this.onUnregister();
+    this.eventManager.triggerEvent("onUnregister");
   }
 
-  updateHandlers(handlers: IProviderClientConstructor) {
-    this.onAuth = handlers.onAuth;
-    this.onUnregister = handlers.onUnregister;
-    this.sendPlayerState = handlers.sendPlayerState;
-    this.onReady = handlers.onReady;
+  /**
+   * Register a callback for an event type
+   * @param eventType Key of the event type to register a callback for
+   * @param callback Callback function to be called when the event type is triggered
+   * @returns Unregister function to remove the callback
+   */
+  registerEvent<K extends ProviderClientEventTypes>(
+    eventType: K,
+    callback: (data: ProviderClientEventDataMap[K]) => void
+  ) {
+    return this.eventManager.registerEvent(eventType, callback);
+  }
+
+  registerInternalEvents(events: IProviderClientInternalEvents) {
+    this.onPlayerStateCallback = events.onPlayerState;
   }
 }
