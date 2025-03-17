@@ -3,6 +3,7 @@ import {
   type TanStackStartInputConfig,
 } from "@tanstack/react-start/config";
 import viteTsConfigPaths from "vite-tsconfig-paths";
+import tailwindcss from "@tailwindcss/vite";
 
 type ViteConfig = Exclude<
   TanStackStartInputConfig["vite"],
@@ -17,6 +18,7 @@ export default defineConfig({
       viteTsConfigPaths({
         projects: ["./tsconfig.json"],
       }) as PluginOption,
+      tailwindcss(),
     ],
   },
 });
