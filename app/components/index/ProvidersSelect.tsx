@@ -2,13 +2,20 @@ import { usePlayerProviders } from "@/components/contexts/PlayerProviders";
 import { useState } from "react";
 import type { IProviderClient } from "@/types/providers/client";
 import { Suspense } from "react";
-import { LuMusic, LuArrowRight, LuPause, LuRefreshCw } from "react-icons/lu";
+import {
+  LuMusic,
+  LuArrowRight,
+  LuPause,
+  LuRefreshCw,
+  LuPictureInPicture,
+} from "react-icons/lu";
 import { twMerge } from "tailwind-merge";
 
 import {
   useProviderAuthenticationInfo,
   useProviderPlayingState,
 } from "@/hooks/Providers/providerHooks";
+import { useNavigate } from "@tanstack/react-router";
 
 function ProviderBtn({ provider }: { provider: IProviderClient }) {
   // TODO: VERY INITIAL BAD WIP that doesnt even work in the first place without logging in manually first
@@ -19,10 +26,23 @@ function ProviderBtn({ provider }: { provider: IProviderClient }) {
   const playingState = useProviderPlayingState(provider, true);
   const authenticationInfo = useProviderAuthenticationInfo(provider);
 
+  const navigate = useNavigate();
+
   const [authenticatingProvider, setAuthenticatingProvider] = useState(false);
 
-  const handleAuthProvider = async (provider: IProviderClient) => {
+  const handleAuthProvider = async (
+    provider: IProviderClient,
+    target: "playing" | "miniplayer/generate" = "playing"
+  ) => {
     setAuthenticatingProvider(true);
+    const unregister = provider.registerEvent("onReady", () => {
+      setAuthenticatingProvider(false);
+
+      navigate({ to: `/${target}` });
+
+      unregister();
+    });
+
     try {
       await provider.authenticate();
     } catch (e) {
@@ -33,9 +53,9 @@ function ProviderBtn({ provider }: { provider: IProviderClient }) {
   return (
     <button
       onClick={() => {
-        handleAuthProvider(provider);
+        handleAuthProvider(provider, "playing");
       }}
-      className="cursor-pointer flex flex-row gap-3 items-center hover:bg-white/5 border-1 border-transparent hover:border-black/50 hover:ring-1 hover:ring-white/30 transition-colors duration-200 ease-out rounded-full p-2 group"
+      className="cursor-pointer flex flex-row gap-1 items-center hover:bg-white/5 border-1 border-transparent hover:border-black/50 hover:ring-1 hover:ring-white/30 transition-colors duration-200 ease-out rounded-full p-2 group"
     >
       <div
         className={twMerge(
@@ -54,7 +74,7 @@ function ProviderBtn({ provider }: { provider: IProviderClient }) {
         )}
       </div>
 
-      <div className="flex flex-col text-start w-full min-w-0">
+      <div className="ml-2 flex flex-col text-start w-full min-w-0">
         <span>
           {provider.meta.name}
           {!!authenticationInfo && authenticationInfo?.data !== null && (
@@ -110,6 +130,22 @@ function ProviderBtn({ provider }: { provider: IProviderClient }) {
           </Suspense>
         </span>
       </div>
+
+      <a
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+
+          handleAuthProvider(provider, "miniplayer/generate");
+        }}
+        className={twMerge(
+          "flex-row gap-2 items-center ml-auto mr-3 hidden group-hover:block hover:bg-white/5 hover:ring-1 hover:ring-white/30 cursor-pointer transition-colors duration-200 ease-out rounded-full p-3",
+          authenticatingProvider && "opacity-100"
+        )}
+        href={"#"}
+      >
+        <LuPictureInPicture className="size-4" />
+      </a>
 
       <div
         className={twMerge(

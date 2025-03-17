@@ -15,7 +15,7 @@ function Home() {
           className="size-24"
         />
 
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-3">
           <h1 className="text-4xl font-bold">NowPlaying</h1>
 
           <MiscLinks />
