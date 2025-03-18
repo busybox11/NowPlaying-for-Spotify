@@ -1,8 +1,8 @@
-import providers from "@/providers";
+import { clientProviders } from "@/providers";
 
 // Initialize provider instances without handlers
 const providerInstances = Object.fromEntries(
-  providers.map(([id, Provider]) => {
+  clientProviders.map(([id, Provider]) => {
     return [id, new Provider()];
   })
 );

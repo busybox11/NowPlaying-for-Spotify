@@ -6,7 +6,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import usePlayer from "@/hooks/usePlayer";
 
 import { store } from "@/state/store";
-import { activeProviderAtom, playerStateAtom } from "@/state/player";
+import { activeProviderAtom } from "@/state/player";
 import usePlayingImage from "@/hooks/Playing/usePlayingImage";
 import usePlayingProgress from "@/hooks/Playing/usePlayingProgress";
 
@@ -30,7 +30,6 @@ export const Route = createFileRoute("/playing")({
   component: PlayingRouteComponent,
   onLeave: async () => {
     await store.get(activeProviderAtom)?.unregisterPlayer();
-    store.set(playerStateAtom, null);
   },
 });
 

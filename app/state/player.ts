@@ -1,6 +1,6 @@
+import type ProviderClientBase from "@/providers/_abstractions/client";
 import providerInstances from "@/providers/instances";
 import { PlayerState } from "@/types/player";
-import { IProviderClient } from "@/types/providers/client";
 import { atom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
 
@@ -10,12 +10,13 @@ type LastUsedProvider = {
 } | null;
 
 export const providersAtom =
-  atom<Record<string, IProviderClient>>(providerInstances);
+  atom<Record<string, ProviderClientBase>>(providerInstances);
 export const activePlayerAtom = atom<null | string>(null);
 export const lastUsedProviderAtom = atomWithStorage<LastUsedProvider>(
   "lastUsedProvider",
   null
 );
+export const playersStateAtom = atom<Record<string, PlayerState>>({});
 
 export const activeProviderAtom = atom((get) => {
   const activePlayer = get(activePlayerAtom);
@@ -27,4 +28,11 @@ export const activeProviderAtom = atom((get) => {
   return providers[activePlayer];
 });
 
-export const playerStateAtom = atom<PlayerState>(null);
+export const playerStateAtom = atom((get) => {
+  const activePlayer = get(activePlayerAtom);
+  const playersState = get(playersStateAtom);
+
+  if (!activePlayer) return null;
+
+  return playersState[activePlayer];
+});

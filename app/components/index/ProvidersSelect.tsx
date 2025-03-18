@@ -1,6 +1,5 @@
 import { usePlayerProviders } from "@/components/contexts/PlayerProviders";
 import { useState } from "react";
-import type { IProviderClient } from "@/types/providers/client";
 import { Suspense } from "react";
 import {
   LuMusic,
@@ -16,8 +15,9 @@ import {
   useProviderPlayingState,
 } from "@/hooks/Providers/providerHooks";
 import { useNavigate } from "@tanstack/react-router";
+import type ProviderClientBase from "@/providers/_abstractions/client";
 
-function ProviderBtn({ provider }: { provider: IProviderClient }) {
+function ProviderBtn({ provider }: { provider: ProviderClientBase }) {
   // TODO: VERY INITIAL BAD WIP that doesnt even work in the first place without logging in manually first
   // A more desired implementation would be to:
   // - Trigger auth on known logged in providers
@@ -31,7 +31,7 @@ function ProviderBtn({ provider }: { provider: IProviderClient }) {
   const [authenticatingProvider, setAuthenticatingProvider] = useState(false);
 
   const handleAuthProvider = async (
-    provider: IProviderClient,
+    provider: ProviderClientBase,
     target: "playing" | "miniplayer/generate" = "playing"
   ) => {
     setAuthenticatingProvider(true);
@@ -168,9 +168,9 @@ export default function ProvidersSelect() {
 
   return (
     <div className="flex flex-col gap-1 w-96 bg-white/5 backdrop-blur-sm rounded-2xl p-2 border-2 border-black/50 ring-1 ring-white/15 shadow-lg">
-      {Object.values(providers).map((provider) => (
-        <ProviderBtn key={provider.meta.id} provider={provider} />
-      ))}
+      {Object.values(providers).map((provider) => {
+        return <ProviderBtn key={provider.meta.id} provider={provider} />;
+      })}
     </div>
   );
 }

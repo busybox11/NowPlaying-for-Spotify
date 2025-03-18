@@ -1,10 +1,10 @@
 import ClientOnly from "@/components/ClientOnly";
 import { usePlayerProviders } from "@/components/contexts/PlayerProviders";
-import type { IProviderClient } from "@/types/providers/client";
 import { useTranslation } from "react-i18next";
 import { useMemo, useState } from "react";
 
 import { LuRefreshCw } from "react-icons/lu";
+import ProviderClientBase from "@/providers/_abstractions/client";
 
 const defaultProviderSymbol = Symbol("default");
 
@@ -36,7 +36,7 @@ export default function ProvidersBtns() {
   }, [providers, lastUsedProvider]);
 
   const handleAuthProvider = async (
-    provider: IProviderClient,
+    provider: ProviderClientBase,
     isDefault: boolean
   ) => {
     if (isDefault) {

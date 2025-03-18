@@ -10,7 +10,6 @@ build
 */build
 dist
 .output
-lib
 es
 artifacts
 .rpt2_cache

@@ -14,16 +14,22 @@ import {
 } from "@/types/providers/client";
 import spotifyProviderMeta from "@/providers/spotify";
 import makePlayerStateObj from "@/providers/spotify/utils/makePlayerStateObj";
-import EventManager from "@/utils/eventManager";
+import EventManager from "@/lib/eventManager";
 import type { PlayerState } from "@/types/player";
+import ProviderClientBase from "@/providers/_abstractions/client";
 
 const { VITE_SPOTIFY_CLIENT_ID, VITE_SPOTIFY_REDIRECT_URI } = providerConfig;
 
-export default class SpotifyProvider implements IProviderClient {
+export default class SpotifyProvider
+  extends ProviderClientBase
+  implements IProviderClient
+{
   private eventManager = new EventManager<ProviderClientEventDataMap>();
   private onPlayerStateCallback: (playerState: PlayerState) => void;
 
   constructor() {
+    super();
+
     this.onPlayerStateCallback = () => {};
 
     const auth = new AuthorizationCodeWithPKCEStrategy(

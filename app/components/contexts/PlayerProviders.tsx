@@ -7,17 +7,17 @@ import {
 } from "react";
 import { useNavigate, type ReactNode } from "@tanstack/react-router";
 
-import { IProviderClient } from "@/types/providers/client";
 import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import {
   activePlayerAtom,
   lastUsedProviderAtom,
-  playerStateAtom,
+  playersStateAtom,
   providersAtom,
 } from "@/state/player";
+import type ProviderClientBase from "@/providers/_abstractions/client";
 
 const PlayerProvidersContext = createContext<{
-  [key: string]: IProviderClient;
+  [key: string]: ProviderClientBase;
 }>({});
 
 export function PlayerProvidersProvider({
@@ -28,24 +28,22 @@ export function PlayerProvidersProvider({
   const navigate = useNavigate();
 
   const [lastUsed, setLastUsed] = useAtom(lastUsedProviderAtom);
+  const [activePlayer, setActivePlayer] = useAtom(activePlayerAtom);
+  const [playersState, setPlayersStateAtom] = useAtom(playersStateAtom);
 
   const providers = useAtomValue(providersAtom);
 
-  const setActivePlayer = useSetAtom(activePlayerAtom);
-  const setPlayerState = useSetAtom(playerStateAtom);
-
   useDebugValue({
+    activePlayer,
     lastUsed,
     providers,
+    playersState,
   });
 
   const handleAuth = useCallback(
     (provider: string) => {
       setActivePlayer(provider);
 
-      if (lastUsed && lastUsed.id !== provider) {
-        setPlayerState(null);
-      }
       setLastUsed({ id: provider, date: Date.now() });
 
       // Get the specific provider instance
@@ -75,9 +73,14 @@ export function PlayerProvidersProvider({
 
       unregisterEvents.push(onAuthUnregister, onUnregisterEventUnregister);
 
+      // Register internal events
       provider.registerInternalEvents({
         onPlayerState: (playerObj) => {
-          setPlayerState(playerObj);
+          // Only set the player state if the provider is the active player
+          setPlayersStateAtom((prev) => ({
+            ...prev,
+            [id]: playerObj,
+          }));
         },
       });
     }

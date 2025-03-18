@@ -7,10 +7,14 @@ import {
 import webnowplayingProviderMeta from "@/providers/webnowplaying";
 import { WebNowPlayingPlayerState } from "@/providers/webnowplaying/types";
 import makePlayerStateObj from "@/providers/webnowplaying/utils/makePlayerStateObj";
-import EventManager from "@/utils/eventManager";
+import EventManager from "@/lib/eventManager";
 import type { PlayerState } from "@/types/player";
+import ProviderClientBase from "@/providers/_abstractions/client";
 
-export default class WebNowPlayingProvider implements IProviderClient {
+export default class WebNowPlayingProvider
+  extends ProviderClientBase
+  implements IProviderClient
+{
   private eventManager = new EventManager<ProviderClientEventDataMap>();
   private onPlayerStateCallback: (playerState: PlayerState) => void;
 
@@ -18,6 +22,8 @@ export default class WebNowPlayingProvider implements IProviderClient {
   isAuthenticated = false;
 
   constructor() {
+    super();
+
     this.onPlayerStateCallback = () => {};
   }
 
