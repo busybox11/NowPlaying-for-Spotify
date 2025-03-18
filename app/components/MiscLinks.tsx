@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { SiGithub, SiDiscord, SiPaypal, SiKofi } from "react-icons/si";
 
 const LINKS = [
@@ -23,7 +24,7 @@ const LINKS = [
   },
 ];
 
-export function MiscLinks() {
+export const MiscLinks = memo(() => {
   return (
     <div className="flex flex-row gap-4 flex-wrap">
       {LINKS.map((link) => (
@@ -33,4 +34,4 @@ export function MiscLinks() {
       ))}
     </div>
   );
-}
+});

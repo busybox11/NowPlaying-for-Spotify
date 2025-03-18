@@ -4,17 +4,66 @@ import usePlayer from "@/hooks/usePlayer";
 import { createFileRoute, Navigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import {
+  LuBookImage,
+  LuClock4,
+  LuDisc3,
+  LuDroplet,
+  LuEyeOff,
+  LuPause,
+} from "react-icons/lu";
 import { twMerge } from "tailwind-merge";
 
 export const Route = createFileRoute("/miniplayer/generate")({
   component: RouteComponent,
 });
 
+function MiniPlayerPropItem({
+  Icon,
+  id,
+  value,
+  toggle,
+}: {
+  Icon: React.ComponentType<{ className?: string }>;
+  id: string;
+  value: boolean;
+  toggle: () => void;
+}) {
+  return (
+    <div className="flex flex-row gap-3 items-center">
+      <input
+        type="checkbox"
+        id={id}
+        checked={value}
+        onChange={toggle}
+        className="accent-[#1ab852] size-4"
+      ></input>
+      <label htmlFor={id}>
+        <Icon className="size-6" />
+      </label>
+    </div>
+  );
+}
+
+const MINI_PLAYER_PROPS_ICONS: Record<
+  keyof MiniPlayerProps,
+  React.ComponentType<{ className?: string }>
+> = {
+  showAlbum: LuDisc3,
+  showArtwork: LuBookImage,
+  showProgress: LuClock4,
+  showPause: LuPause,
+  transparentBackground: LuDroplet,
+  hideOnPauseOrEmpty: LuEyeOff,
+};
+
 function RouteComponent() {
   const { activePlayer } = usePlayer();
   const { t } = useTranslation();
 
-  const [miniPlayerProps, setMiniPlayerProps] = useState<MiniPlayerProps>({
+  const [miniPlayerProps, setMiniPlayerProps] = useState<
+    Required<MiniPlayerProps>
+  >({
     showAlbum: true,
     showArtwork: true,
     showProgress: true,
@@ -48,22 +97,34 @@ function RouteComponent() {
       </section>
 
       <div className="flex flex-col gap-6">
-        <section className="bg-white/5 backdrop-blur-sm rounded-2xl p-2 border-2 border-black/50 ring-1 ring-white/15 shadow-lg">
+        <section className="flex flex-col gap-2 bg-white/5 backdrop-blur-sm rounded-2xl p-2 border-2 border-black/50 ring-1 ring-white/15 shadow-lg">
           <div
             className={twMerge(
-              "h-[130px] w-[550px] rounded-lg overflow-hidden",
-              !miniPlayerProps.transparentBackground && "ring-2 ring-black"
+              "rounded-xl p-1 border-1 border-transparent",
+              !miniPlayerProps.transparentBackground &&
+                "ring-2 ring-black border-white/10 bg-black shadow-lg"
             )}
           >
-            <iframe
-              src={`/miniplayer?${Object.entries(miniPlayerProps)
-                .map(([key, value]) => `${key}=${value}`)
-                .join("&")}`}
-              width="100%"
-              height="130px"
-              frameBorder="0"
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            ></iframe>
+            <div className="h-[130px] w-[550px] rounded-lg overflow-hidden">
+              <MiniPlayer {...miniPlayerProps} />
+            </div>
+          </div>
+
+          <div className="flex flex-row mx-6 justify-between gap-2 my-2">
+            {Object.entries(miniPlayerProps).map(([key, value]) => (
+              <MiniPlayerPropItem
+                key={key}
+                Icon={MINI_PLAYER_PROPS_ICONS[key as keyof MiniPlayerProps]}
+                id={key}
+                value={value}
+                toggle={() =>
+                  setMiniPlayerProps({
+                    ...miniPlayerProps,
+                    [key]: !value,
+                  })
+                }
+              />
+            ))}
           </div>
         </section>
       </div>

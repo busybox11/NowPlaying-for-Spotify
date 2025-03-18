@@ -75,7 +75,7 @@ export default function MiniPlayer({
           {showArtwork && showPause && isPaused && !hideOnPauseOrEmpty && (
             <div
               id="pause-icon"
-              className="absolute bottom-[10%] right-[10%] z-30 p-2 bg-black/20 border-2 border-white/60 text-white rounded-full backdrop-blur-lg"
+              className="absolute bottom-[10%] right-[10%] z-30 p-2 bg-black/30 border-2 border-white/50 text-white rounded-full backdrop-blur-lg"
             >
               <LuPause
                 className="size-8"
