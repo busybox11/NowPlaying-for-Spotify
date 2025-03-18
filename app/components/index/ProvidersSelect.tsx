@@ -150,7 +150,7 @@ function ProviderBtn({ provider }: { provider: ProviderClientBase }) {
       <div
         className={twMerge(
           "flex-row gap-2 items-center ml-auto mr-4 hidden group-hover:block",
-          authenticatingProvider && "opacity-100"
+          authenticatingProvider && "flex opacity-100"
         )}
       >
         {authenticatingProvider ? (
