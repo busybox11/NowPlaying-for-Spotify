@@ -6,6 +6,15 @@ export default function makePlayerStateObj(
 ): PlayerState {
   if (!state) return null;
 
+  // Sometimes, WNP reports position in seconds and duration in ms.
+  // Normalize to ms for consistency
+  const normalizeToMs = (value: number): number => {
+    return value > 100000 ? value : value * 1000;
+  };
+
+  const duration = normalizeToMs(state.duration);
+  const position = normalizeToMs(state.position);
+
   const playerObj: PlayerState = {
     item: {
       title: state.title,
@@ -18,7 +27,7 @@ export default function makePlayerStateObj(
         name: state.album,
         images: [state.cover],
       },
-      duration_ms: state.duration * 1000,
+      duration_ms: duration,
       type: "track",
     },
     meta: {
@@ -26,8 +35,8 @@ export default function makePlayerStateObj(
       shuffle_state: state.shuffle,
       repeat_state:
         state.repeat === 1 ? "track" : state.repeat === 2 ? "context" : "off",
-      position_ms: state.position * 1000,
-      duration_ms: state.duration * 1000,
+      position_ms: position,
+      duration_ms: duration,
       main_img_url: state.cover,
       provider: state.name,
     },
