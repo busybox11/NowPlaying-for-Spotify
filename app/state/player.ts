@@ -1,5 +1,5 @@
 import type ProviderClientBase from "@/providers/_abstractions/client";
-import providerInstances from "@/providers/instances";
+import providerInstances from "@/providers/clientInstances";
 import { PlayerState } from "@/types/player";
 import { atom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
