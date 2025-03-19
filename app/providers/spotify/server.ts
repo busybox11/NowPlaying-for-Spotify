@@ -45,11 +45,12 @@ export default class SpotifyProviderServer extends ProviderServerBase {
       accessToken,
       refreshToken,
     }).then(() => {
-      this._playerLoopInstance = setInterval(this._playerLoop, 1000);
+      this._playerLoopInstance = setInterval(() => this._playerLoop(), 1000);
     });
 
     this.registerEvent("onPlayerState", (playerState) => {
-      console.log(playerState);
+      // TODO: Implement sockets
+      console.log("Player state update");
     });
   }
 

@@ -20,6 +20,13 @@ class ServerProvider {
 
     return this._instances.get(instanceId);
   }
+
+  createInstance(instanceId: string, ...args: any[]) {
+    const newInstance = new (this._provider as new (
+      ...args: any[]
+    ) => ProviderServerBase)(...args);
+    this._instances.set(instanceId, newInstance);
+  }
 }
 
 export default class ServerProvidersManager {
