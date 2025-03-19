@@ -12,7 +12,6 @@ const PlayingLoad = () => {
     if (lastUsedProvider?.id) {
       const provider = providers[lastUsedProvider.id];
       if (provider) {
-        console.log("registering player");
         provider.authenticate();
       }
     } else {

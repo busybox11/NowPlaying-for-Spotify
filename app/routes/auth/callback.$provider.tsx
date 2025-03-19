@@ -19,8 +19,6 @@ function RouteComponent() {
 
   useEffect(() => {
     providers[provider].callback().then(() => {
-      console.log("Authenticated");
-
       navigate({
         to: "/",
         replace: true,
