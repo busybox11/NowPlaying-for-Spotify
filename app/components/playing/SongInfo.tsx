@@ -10,7 +10,7 @@ interface SongInfoProps {
   positionTotal?: number;
   positionPercent?: number;
   shouldAnimateProgress: boolean;
-  device: { name?: string } | null;
+  device?: { name?: string } | null;
   DeviceIcon: React.ComponentType<{ className?: string }>;
   statePlayerStr: string | undefined;
   isEpisode: boolean;

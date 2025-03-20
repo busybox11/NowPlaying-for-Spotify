@@ -1,3 +1,5 @@
+import { useCallback } from "react";
+
 import playingCss from "@/styles/playing.css?url";
 
 import noSong from "/images/no_song.png?url";
@@ -83,6 +85,10 @@ function PlayingRouteComponent() {
 
   const titleStr = title ? `${title} - ${artist} • NowPlaying` : "NowPlaying";
 
+  const onUnregisterHandler = useCallback(async () => {
+    await activeProvider?.unregisterPlayer();
+  }, [activeProvider]);
+
   return (
     <main className="relative flex h-full w-full">
       <title>{titleStr}</title>
@@ -91,11 +97,7 @@ function PlayingRouteComponent() {
 
       <Background imageSrc={imageSrc} />
 
-      <SettingsOverlay
-        onUnregisterPlayer={async () => {
-          await activeProvider?.unregisterPlayer();
-        }}
-      />
+      <SettingsOverlay onUnregisterPlayer={onUnregisterHandler} />
 
       <div className="h-full w-full flex align-center justify-center z-20">
         <div className="flex flex-col landscape:flex-row lg:flex-row gap-6 lg:gap-12 xl:gap-16 justify-center items-center px-6 lg:px-12 xl:px-0 w-full xl:w-5/6">
@@ -109,7 +111,7 @@ function PlayingRouteComponent() {
             positionTotal={positionTotal ?? undefined}
             positionPercent={positionPercent ?? undefined}
             shouldAnimateProgress={shouldAnimateProgress}
-            device={device ?? null}
+            device={device}
             DeviceIcon={DeviceIcon}
             statePlayerStr={statePlayerStr}
             isEpisode={Boolean(isEpisode)}

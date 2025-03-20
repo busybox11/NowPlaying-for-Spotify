@@ -23,7 +23,10 @@ export default function usePlayingDevice(
   previousPlayerState: PlayerState,
   playerState: PlayerState
 ) {
-  const device = playerState?.device ?? previousPlayerState?.device;
+  const device = useMemo(
+    () => playerState?.device ?? previousPlayerState?.device,
+    [playerState, previousPlayerState]
+  );
 
   const DeviceIcon = useMemo(() => {
     if (!device) return DEVICE_TYPES_ICONS.other;
