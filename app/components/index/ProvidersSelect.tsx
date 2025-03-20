@@ -1,5 +1,5 @@
 import { usePlayerProviders } from "@/components/contexts/PlayerProviders";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Suspense } from "react";
 import {
   LuMusic,
@@ -10,37 +10,46 @@ import {
 } from "react-icons/lu";
 import { twMerge } from "tailwind-merge";
 
-import {
-  useProviderAuthenticationInfo,
-  useProviderPlayingState,
-} from "@/hooks/Providers/providerHooks";
+import { useProviderAuthenticationInfo } from "@/hooks/Providers/providerHooks";
 import { useNavigate } from "@tanstack/react-router";
 import type ProviderClientBase from "@/providers/_abstractions/client";
+import { useAtomValue } from "jotai";
+import { playersStateAtom } from "@/state/player";
 
 function ProviderBtn({ provider }: { provider: ProviderClientBase }) {
   // TODO: VERY INITIAL BAD WIP that doesnt even work in the first place without logging in manually first
   // A more desired implementation would be to:
-  // - Trigger auth on known logged in providers
-  // - Subscribe to player state changes, similar to updateHandlers approach (but ephemeral)
   // - Don't trigger onAuth for this subscription
-  const playingState = useProviderPlayingState(provider, true);
+
+  const playingStates = useAtomValue(playersStateAtom);
+  const playingState = playingStates[provider.meta.id];
+
   const authenticationInfo = useProviderAuthenticationInfo(provider);
 
   const navigate = useNavigate();
 
   const [authenticatingProvider, setAuthenticatingProvider] = useState(false);
+  const shouldUnregister = useRef<boolean>(true);
 
   const handleAuthProvider = async (
     provider: ProviderClientBase,
     target: "playing" | "miniplayer/generate" = "playing"
   ) => {
     setAuthenticatingProvider(true);
+    shouldUnregister.current = false;
+
     const unregister = provider.registerEvent("onReady", () => {
       setAuthenticatingProvider(false);
 
-      navigate({ to: `/${target}` });
+      navigate({ to: `/${target}` }).then(() => {
+        unregister();
+      });
+    });
 
-      unregister();
+    const authUnregister = provider.registerEvent("onAuth", async () => {
+      await provider.registerPlayer();
+
+      authUnregister();
     });
 
     try {
@@ -49,6 +58,18 @@ function ProviderBtn({ provider }: { provider: ProviderClientBase }) {
       console.error(e);
     }
   };
+
+  useEffect(() => {
+    if (provider.isAuthenticated) {
+      provider.registerPlayer();
+    }
+
+    return () => {
+      if (shouldUnregister.current) {
+        provider.unregisterPlayer();
+      }
+    };
+  }, []);
 
   return (
     <button
@@ -124,8 +145,10 @@ function ProviderBtn({ provider }: { provider: ProviderClientBase }) {
                     .map((artist) => artist.name)
                     .join(", ")}
               </>
-            ) : (
+            ) : provider.isAuthenticated ? (
               "Not playing"
+            ) : (
+              "Not authenticated"
             )}
           </Suspense>
         </span>

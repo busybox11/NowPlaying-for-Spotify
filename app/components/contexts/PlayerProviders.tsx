@@ -5,9 +5,9 @@ import {
   useDebugValue,
   useEffect,
 } from "react";
-import { useNavigate, type ReactNode } from "@tanstack/react-router";
+import { type ReactNode } from "@tanstack/react-router";
 
-import { useAtom, useAtomValue, useSetAtom } from "jotai";
+import { useAtom, useAtomValue } from "jotai";
 import {
   activePlayerAtom,
   lastUsedProviderAtom,
@@ -25,8 +25,6 @@ export function PlayerProvidersProvider({
 }: Readonly<{
   children: ReactNode;
 }>) {
-  const navigate = useNavigate();
-
   const [lastUsed, setLastUsed] = useAtom(lastUsedProviderAtom);
   const [activePlayer, setActivePlayer] = useAtom(activePlayerAtom);
   const [playersState, setPlayersStateAtom] = useAtom(playersStateAtom);
@@ -45,12 +43,6 @@ export function PlayerProvidersProvider({
       setActivePlayer(provider);
 
       setLastUsed({ id: provider, date: Date.now() });
-
-      // Get the specific provider instance
-      const providerInstance = providers[provider];
-      if (providerInstance) {
-        providerInstance.registerPlayer();
-      }
     },
     [lastUsed]
   );
@@ -63,15 +55,8 @@ export function PlayerProvidersProvider({
       const onAuthUnregister = provider.registerEvent("onAuth", () =>
         handleAuth(id)
       );
-      const onUnregisterEventUnregister = provider.registerEvent(
-        "onUnregister",
-        () => {
-          setActivePlayer(null);
-          navigate({ to: "/" });
-        }
-      );
 
-      unregisterEvents.push(onAuthUnregister, onUnregisterEventUnregister);
+      unregisterEvents.push(onAuthUnregister);
 
       // Register internal events
       provider.registerInternalEvents({
