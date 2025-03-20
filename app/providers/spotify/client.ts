@@ -38,6 +38,12 @@ export default class SpotifyProvider
       [...SPOTIFY_OAUTH_SCOPES]
     );
     this._client = new SpotifyApi(auth);
+
+    auth.getAccessToken().then(async (accessToken) => {
+      if (accessToken) {
+        this.isAuthenticated = true;
+      }
+    });
   }
 
   readonly meta = spotifyProviderMeta;
@@ -98,6 +104,10 @@ export default class SpotifyProvider
     this._playerLoop().then(() => {
       this.eventManager.triggerEvent("onReady");
     });
+
+    if (this._playerLoopInstance) {
+      clearInterval(this._playerLoopInstance);
+    }
 
     this._playerLoopInstance = window.setInterval(
       () => this._playerLoop(),

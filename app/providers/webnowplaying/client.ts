@@ -19,12 +19,17 @@ export default class WebNowPlayingProvider
   private onPlayerStateCallback: (playerState: PlayerState) => void;
 
   readonly meta = webnowplayingProviderMeta;
-  isAuthenticated = false;
+  isAuthenticated = true;
 
   constructor() {
     super();
 
     this.onPlayerStateCallback = () => {};
+
+    // TODO: Find a way to detect extension and set isAuthenticated to true on init?
+    if (typeof window === "undefined") return;
+
+    this.authenticate();
   }
 
   // Private properties and methods
@@ -49,7 +54,7 @@ export default class WebNowPlayingProvider
       "*"
     );
     window.removeEventListener("message", this._handleMessage);
-    this.isAuthenticated = false;
+    // this.isAuthenticated = false;
   }
 
   // Public implemented methods
@@ -62,7 +67,7 @@ export default class WebNowPlayingProvider
       },
       "*"
     );
-    this.isAuthenticated = true;
+    // this.isAuthenticated = true;
 
     this.eventManager.triggerEvent("onAuth");
   }
