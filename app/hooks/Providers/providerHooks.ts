@@ -14,7 +14,7 @@ export function useProviderPlayingState(
 
   useEffect(() => {
     const fetchState = async () => {
-      if (!enabled || !provider) return;
+      if (!enabled || !provider || !provider.isAuthenticated) return;
 
       const state = await provider.getPlayerState();
 
@@ -38,7 +38,7 @@ export function useProviderAuthenticationInfo(
 
   useEffect(() => {
     const fetchAuthenticationInfo = async () => {
-      if (!provider) return;
+      if (!provider || !provider.isAuthenticated) return;
 
       const info = await provider.getAuthenticationInfo();
       setAuthenticationInfo(info);
