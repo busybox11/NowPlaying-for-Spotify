@@ -12,6 +12,11 @@ type ViteConfig = Exclude<
 type PluginOption = Exclude<ViteConfig["plugins"], undefined>[number];
 
 export default defineConfig({
+  react: {
+    babel: {
+      presets: ["jotai/babel/preset"],
+    },
+  },
   vite: {
     plugins: [
       // this is the plugin that enables path aliases
