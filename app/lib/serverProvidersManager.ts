@@ -14,18 +14,23 @@ class ServerProvider {
   }
 
   getInstance(instanceId: string) {
-    if (!this._instances.has(instanceId)) {
-      this._instances.set(instanceId, new this._provider());
-    }
-
     return this._instances.get(instanceId);
   }
 
-  createInstance(instanceId: string, ...args: any[]) {
+  createInstance(instanceId: string, ...args: any[]): ProviderServerBase {
+    if (this._instances.has(instanceId)) {
+      return this._instances.get(instanceId)!;
+    }
+
     const newInstance = new (this._provider as new (
       ...args: any[]
     ) => ProviderServerBase)(...args);
     this._instances.set(instanceId, newInstance);
+    return newInstance;
+  }
+
+  removeInstance(instanceId: string): boolean {
+    return this._instances.delete(instanceId);
   }
 }
 
