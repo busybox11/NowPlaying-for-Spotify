@@ -20,11 +20,15 @@ function RouteComponent() {
   useEffect(() => {
     providers[provider].callback().then(() => {
       navigate({
-        to: "/",
+        to: "/playing",
         replace: true,
       });
     });
   }, []);
 
-  return <h1>Authenticating...</h1>;
+  return (
+    <main className="flex items-center justify-center h-screen">
+      <h1>Authenticating...</h1>
+    </main>
+  );
 }
