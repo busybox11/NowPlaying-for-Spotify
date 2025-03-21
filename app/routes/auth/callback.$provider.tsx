@@ -19,6 +19,8 @@ function RouteComponent() {
 
   useEffect(() => {
     providers[provider].callback().then(() => {
+      providers[provider].registerPlayer();
+
       navigate({
         to: "/playing",
         replace: true,
