@@ -12,15 +12,10 @@ const PlayingLoad = () => {
     if (lastUsedProvider?.id) {
       const provider = providers[lastUsedProvider.id];
       if (provider) {
-        provider
-          .authenticate()
-          .then(() => {
-            provider.registerPlayer();
-          })
-          .catch((e) => {
-            console.error(e);
-            navigate({ to: "/" });
-          });
+        provider.authenticate().catch((e) => {
+          console.error(e);
+          navigate({ to: "/" });
+        });
       }
     } else {
       navigate({ to: "/" });

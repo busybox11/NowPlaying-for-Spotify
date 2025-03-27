@@ -1,13 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { MiscLinks } from "@/components/MiscLinks";
 import ProvidersSelect from "@/components/index/ProvidersSelect";
-import { store } from "@/state/store";
-import { activeProviderAtom } from "@/state/player";
 export const Route = createFileRoute("/")({
   component: Home,
-  onEnter: async () => {
-    await store.get(activeProviderAtom)?.unregisterPlayer();
-  },
 });
 
 function Home() {

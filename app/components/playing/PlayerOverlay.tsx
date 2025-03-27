@@ -7,10 +7,6 @@ import useFullScreenElement from "@/hooks/useFullScreenElement";
 import usePlayer from "@/hooks/usePlayer";
 import { useProviderAuthenticationInfo } from "@/hooks/Providers/providerHooks";
 
-interface PlayerOverlayProps {
-  onUnregisterPlayer: () => Promise<void>;
-}
-
 function PlayerSettingsOverlay({ show }: { show: boolean }) {
   const { isFullScreen, toggleFullScreen } = useFullScreenElement();
 
@@ -35,13 +31,7 @@ function PlayerSettingsOverlay({ show }: { show: boolean }) {
   );
 }
 
-function ProviderOverlay({
-  show,
-  onUnregisterPlayer,
-}: {
-  show: boolean;
-  onUnregisterPlayer: () => Promise<void>;
-}) {
+function ProviderOverlay({ show }: { show: boolean }) {
   const navigate = useNavigate();
   const { activeProvider } = usePlayer();
 
@@ -88,7 +78,6 @@ function ProviderOverlay({
           className="cursor-pointer ml-3 p-3 transition hover:bg-white/10 hover:ring-1 hover:ring-inset hover:ring-white/20 rounded-full"
           onClick={async () => {
             await navigate({ to: "/" });
-            await onUnregisterPlayer();
           }}
         >
           <LuLogOut className="size-5" />
@@ -98,17 +87,14 @@ function ProviderOverlay({
   );
 }
 
-const PlayerOverlay = ({ onUnregisterPlayer }: PlayerOverlayProps) => {
+const PlayerOverlay = () => {
   const showOverlay = useMouseJiggleOverlay();
 
   return (
     <>
       <PlayerSettingsOverlay show={showOverlay} />
 
-      <ProviderOverlay
-        show={showOverlay}
-        onUnregisterPlayer={onUnregisterPlayer}
-      />
+      <ProviderOverlay show={showOverlay} />
     </>
   );
 };

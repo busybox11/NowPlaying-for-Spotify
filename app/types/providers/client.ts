@@ -8,6 +8,10 @@ export interface ProviderClientEventDataMap {
   onError: { message: string };
 }
 
+export interface ProviderPlayerHandler {
+  unregister: () => void;
+}
+
 export type ProviderClientEventTypes = keyof ProviderClientEventDataMap;
 
 export interface IProviderClientAuthenticationInfo {

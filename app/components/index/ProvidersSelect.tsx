@@ -15,11 +15,14 @@ import { useNavigate } from "@tanstack/react-router";
 import type ProviderClientBase from "@/providers/_abstractions/client";
 import { useAtomValue } from "jotai";
 import { playersStateAtom } from "@/state/player";
+import useProviderHandler from "@/hooks/Providers/useProviderHandler";
 
 function ProviderBtn({ provider }: { provider: ProviderClientBase }) {
   // TODO: VERY INITIAL BAD WIP that doesnt even work in the first place without logging in manually first
   // A more desired implementation would be to:
   // - Don't trigger onAuth for this subscription
+
+  useProviderHandler(provider);
 
   const playingStates = useAtomValue(playersStateAtom);
   const playingState = playingStates[provider.meta.id];
@@ -59,18 +62,6 @@ function ProviderBtn({ provider }: { provider: ProviderClientBase }) {
     }
   };
 
-  useEffect(() => {
-    if (provider.isAuthenticated) {
-      provider.registerPlayer();
-    }
-
-    return () => {
-      if (shouldUnregister.current) {
-        provider.unregisterPlayer();
-      }
-    };
-  }, []);
-
   return (
     <button
       onClick={() => {
@@ -80,7 +71,7 @@ function ProviderBtn({ provider }: { provider: ProviderClientBase }) {
     >
       <div
         className={twMerge(
-          "bg-black/20 ring-1 ring-white/20 border-1 border-black/50 rounded-full p-3 aspect-square shrink-0",
+          "bg-black/20 ring-1 ring-white/20 border-1 border-black/50 rounded-full p-3 aspect-square shrink-0 transition",
           playingState?.meta.is_playing && "bg-[#1ab85210] ring-[#1ab85280]"
         )}
       >

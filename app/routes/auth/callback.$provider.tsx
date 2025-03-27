@@ -2,6 +2,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 
 import { useEffect } from "react";
 import { usePlayerProviders } from "@/components/contexts/PlayerProviders";
+import useProviderHandler from "@/hooks/Providers/useProviderHandler";
 
 export const Route = createFileRoute("/auth/callback/$provider")({
   component: RouteComponent,
@@ -13,7 +14,12 @@ function RouteComponent() {
 
   const { providers } = usePlayerProviders();
 
-  if (!providers[provider]) {
+  const targetProvider = providers[provider];
+  useProviderHandler(
+    targetProvider.isAuthenticated ? targetProvider : undefined
+  );
+
+  if (!targetProvider) {
     return <h1>Provider not found</h1>;
   }
 

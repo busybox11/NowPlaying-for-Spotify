@@ -45,7 +45,7 @@ function PlayingRouteComponent() {
   const { positionNow, positionTotal, positionPercent, shouldAnimateProgress } =
     usePlayingProgress(previousPlayerState, playerState);
 
-  const image = playerState?.meta.main_img_url ?? noSong;
+  const image = playerState?.meta.main_img_url || noSong;
   const imageSrc = usePlayingImage(image);
 
   const title = playerState?.item?.title;
@@ -97,7 +97,7 @@ function PlayingRouteComponent() {
 
       <Background imageSrc={imageSrc} />
 
-      <SettingsOverlay onUnregisterPlayer={onUnregisterHandler} />
+      <SettingsOverlay />
 
       <div className="h-full w-full flex align-center justify-center z-20">
         <div className="flex flex-col landscape:flex-row lg:flex-row gap-6 lg:gap-12 xl:gap-16 justify-center items-center px-6 lg:px-12 xl:px-0 w-full xl:w-5/6">
