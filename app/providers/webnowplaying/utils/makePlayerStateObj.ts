@@ -6,6 +6,17 @@ export default function makePlayerStateObj(
 ): PlayerState {
   if (!state) return null;
 
+  // Sometimes WNP sends empty states in their structured JSON format.
+  // This is a workaround to prevent empty states from being processed.
+  if (
+    state.id == 0 &&
+    state.name == "" &&
+    state.artist == "" &&
+    state.album == "" &&
+    state.cover == ""
+  )
+    return null;
+
   // Sometimes, WNP reports position in seconds and duration in ms.
   // Normalize to ms for consistency
   const normalizeToMs = (value: number): number => {
