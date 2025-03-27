@@ -24,7 +24,9 @@ export default class SpotifyProvider
   extends ProviderClientBase
   implements IProviderClient
 {
-  private eventManager = new EventManager<ProviderClientEventDataMap>();
+  private eventManager = new EventManager<ProviderClientEventDataMap>(
+    "SpotifyProvider"
+  );
   private onPlayerStateCallback: (playerState: PlayerState) => void;
 
   constructor() {

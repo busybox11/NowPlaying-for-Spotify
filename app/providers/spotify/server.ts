@@ -29,7 +29,9 @@ type SpotifyProviderAuthParams = {
 type SpotifyProviderServerConstructor = SpotifyProviderAuthParams;
 
 export default class SpotifyProviderServer extends ProviderServerBase {
-  private eventManager = new EventManager<ProviderServerEventDataMap>();
+  private eventManager = new EventManager<ProviderServerEventDataMap>(
+    "SpotifyProviderServer"
+  );
 
   constructor({ accessToken, refreshToken }: SpotifyProviderServerConstructor) {
     super();

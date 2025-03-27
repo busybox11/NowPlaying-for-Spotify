@@ -8,6 +8,11 @@ const logger = (...args: any[]) => {
 };
 
 class EventManager<T extends Record<string, any>> {
+  public debugLabel?: string;
+  constructor(debugLabel?: string) {
+    this.debugLabel = debugLabel;
+  }
+
   private eventCallbacks: {
     [K in keyof T]?: ((data: T[K]) => void)[];
   } = {};
@@ -16,7 +21,10 @@ class EventManager<T extends Record<string, any>> {
     eventType: K,
     callback: (data: T[K]) => void
   ): () => void {
-    logger(`Registering event: ${String(eventType)}`, callback);
+    logger(
+      `${this.debugLabel} Registering event: ${String(eventType)}`,
+      callback
+    );
 
     if (!this.eventCallbacks[eventType]) {
       this.eventCallbacks[eventType] = [];
@@ -24,7 +32,10 @@ class EventManager<T extends Record<string, any>> {
     this.eventCallbacks[eventType]!.push(callback);
 
     return () => {
-      logger(`Unregistering event: ${String(eventType)}`, callback);
+      logger(
+        `${this.debugLabel} Unregistering event: ${String(eventType)}`,
+        callback
+      );
 
       this.eventCallbacks[eventType] = this.eventCallbacks[eventType]!.filter(
         (cb) => cb !== callback
@@ -33,7 +44,7 @@ class EventManager<T extends Record<string, any>> {
   }
 
   triggerEvent<K extends keyof T>(eventType: K, data?: T[K]) {
-    logger(`Triggering event: ${String(eventType)}`, data);
+    logger(`${this.debugLabel} Triggering event: ${String(eventType)}`, data);
 
     this.eventCallbacks[eventType]?.forEach((callback) => callback(data!));
   }

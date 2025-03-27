@@ -15,7 +15,9 @@ export default class WebNowPlayingProvider
   extends ProviderClientBase
   implements IProviderClient
 {
-  private eventManager = new EventManager<ProviderClientEventDataMap>();
+  private eventManager = new EventManager<ProviderClientEventDataMap>(
+    "WebNowPlayingProvider"
+  );
   private onPlayerStateCallback: (playerState: PlayerState) => void;
 
   readonly meta = webnowplayingProviderMeta;
@@ -37,6 +39,8 @@ export default class WebNowPlayingProvider
 
   private _handleMessage = (msg: MessageEvent) => {
     if (msg.data.type != "wnp-info" || !msg.data.player) return;
+
+    console.log(msg.data.player);
 
     this._lastPlaybackState = msg.data.player as WebNowPlayingPlayerState;
 
