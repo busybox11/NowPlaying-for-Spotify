@@ -18,7 +18,7 @@ export default abstract class ProviderClientBase implements IProviderClient {
     const handler: ProviderPlayerHandler = {
       unregister: () => {
         this._playerHandlers = this._playerHandlers.filter(
-          (h) => h !== handler
+          (h) => h !== handler,
         );
 
         // Wait to account for async events and component changes
@@ -30,7 +30,7 @@ export default abstract class ProviderClientBase implements IProviderClient {
       },
     };
 
-    if (this._playerHandlers.length < 1) {
+    if (this._playerHandlers.length < 1 && this.isAuthenticated) {
       this.registerPlayer();
     }
 
@@ -41,7 +41,7 @@ export default abstract class ProviderClientBase implements IProviderClient {
 
   abstract registerEvent<K extends ProviderClientEventTypes>(
     eventType: K,
-    callback: (data: ProviderClientEventDataMap[K]) => void
+    callback: (data: ProviderClientEventDataMap[K]) => void,
   ): () => void;
   abstract getPlayerState(): Promise<PlayerState>;
   abstract getAuthenticationInfo(): Promise<IProviderClientAuthenticationInfo>;
