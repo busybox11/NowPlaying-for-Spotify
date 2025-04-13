@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import fallbackImage from "/images/no_song.png?url";
+
+const IMAGE_LOAD_TIMEOUT = 1000;
 
 export default function usePlayingImage(image: string) {
   // Keep the last image in the cache
@@ -6,12 +9,22 @@ export default function usePlayingImage(image: string) {
   const [lastImage, setLastImage] = useState(image);
 
   useEffect(() => {
+    let timeout: NodeJS.Timeout;
     if (image === lastImage) return;
 
     const imageObj = new Image();
     imageObj.src = image;
     imageObj.onload = () => {
       setLastImage(imageObj.src);
+      clearTimeout(timeout);
+    };
+
+    timeout = setTimeout(() => {
+      setLastImage(fallbackImage);
+    }, IMAGE_LOAD_TIMEOUT);
+
+    return () => {
+      clearTimeout(timeout);
     };
   }, [image]);
 
