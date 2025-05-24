@@ -30,6 +30,8 @@ async function fetchAccessToken() {
 const useSmallAlbumCover = window.playerConfig?.useSmallAlbumCover ?? false;
 
 document.addEventListener('alpine:init', x => {
+  const serverPlaybackState = window.serverPlaybackState || null;
+
   Alpine.store('player', {
     init() {
       spotifyApi = new SpotifyWebApi();
@@ -45,12 +47,16 @@ document.addEventListener('alpine:init', x => {
           this.poolingLoop();
         });
       }
+
+      if (serverPlaybackState) {
+        this.handleChange(serverPlaybackState);
+      }
     },
 
-    playbackObj: {},
+    playbackObj: serverPlaybackState || {},
     lastPlaybackObj: {},
 
-    targetImg: 'assets/images/no_song.png',
+    targetImg: serverPlaybackState?.item?.album?.images[0]?.url || 'assets/images/no_song.png',
 
     async poolingLoop() {
       setInterval(async () => {
@@ -98,7 +104,14 @@ document.addEventListener('alpine:init', x => {
         document.title = `${this.playbackObj.item?.name} - ${artists[0].name} - NowPlaying`;
       }
 
-      // Fetch album art
+      this._handleAlbumArtChange();
+
+      // Set DOM classes
+      document.querySelector('body').classList.toggle('np_music_playing', this.playbackObj.is_playing);
+      document.querySelector('body').classList.toggle('np_music_paused', !this.playbackObj.is_playing);
+    },
+
+    _handleAlbumArtChange() {
       const imgsArr = this.playbackObj.item?.album?.images || this.playbackObj.item?.images;
       const targetImg = (useSmallAlbumCover) ? imgsArr[imgsArr.length - 2]?.url : imgsArr[0]?.url;
 
@@ -117,10 +130,6 @@ document.addEventListener('alpine:init', x => {
           this.targetImg = img.src;
         }
       }
-
-      // Set DOM classes
-      document.querySelector('body').classList.toggle('np_music_playing', this.playbackObj.is_playing);
-      document.querySelector('body').classList.toggle('np_music_paused', !this.playbackObj.is_playing);
     }
   })
 })

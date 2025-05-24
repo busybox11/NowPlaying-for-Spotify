@@ -1,5 +1,19 @@
 <?php
 include_once ('lang.php');
+
+$currentPlayback = null;
+
+try {
+    if (isset($_COOKIE['accessToken'])) {
+        require_once 'lib/spotify_api.php';
+
+        $api->setAccessToken($_COOKIE['accessToken']);
+
+        $currentPlayback = $api->getMyCurrentPlaybackInfo();
+    }
+} catch (Exception $e) {
+    echo $e->getMessage();
+}
 ?>
 <!DOCTYPE html>
 <html lang="<?= $lang; ?>" class="h-screen w-screen bg-transparent overflow-hidden">
@@ -53,6 +67,14 @@ include_once ('lang.php');
 
   <script src="assets/js/spotify-web-api.js"></script>
   <script src="assets/js/playing.js?ts=<?= time() ?>"></script>
+
+  <script>
+    try {
+      window.serverPlaybackState = <?= json_encode($currentPlayback); ?>
+    } catch (e) {
+      console.log(e)
+    }
+  </script>
 
   <?php
   require_once ('assets/analytics.php');
