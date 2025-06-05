@@ -89,6 +89,14 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
       <body>
         {children}
         <Scripts />
+
+        {import.meta.env.VITE_ADDITIONAL_SCRIPTS && (
+          <div
+            dangerouslySetInnerHTML={{
+              __html: String(import.meta.env.VITE_ADDITIONAL_SCRIPTS),
+            }}
+          />
+        )}
       </body>
     </html>
   );
