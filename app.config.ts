@@ -26,4 +26,9 @@ export default defineConfig({
       tailwindcss(),
     ],
   },
+  routers: {
+    public: {
+      dir: "./public",
+    },
+  },
 });

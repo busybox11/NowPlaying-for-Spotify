@@ -7,8 +7,6 @@ import {
 
 import type { ReactNode } from "react";
 
-import favicon from "/images/favicon.png?url";
-
 import fontCss from "@fontsource-variable/outfit?url";
 import appCss from "@/styles/app.css?url";
 
@@ -36,7 +34,7 @@ export const Route = createRootRoute({
     links: [
       {
         rel: "icon",
-        href: favicon,
+        href: "/images/favicon.png",
       },
       {
         rel: "stylesheet",

@@ -1,4 +1,4 @@
-import noSong from "/images/no_song.png?url";
+import noSong from "@/assets/no_song.png";
 import { useTranslation } from "react-i18next";
 import usePlayingImage from "@/hooks/Playing/usePlayingImage";
 import usePlayingProgress from "@/hooks/Playing/usePlayingProgress";

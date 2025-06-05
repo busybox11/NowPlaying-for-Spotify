@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import fallbackImage from "/images/no_song.png?url";
+import fallbackImage from "@/assets/no_song.png";
 
 const IMAGE_LOAD_TIMEOUT = 1000;
 

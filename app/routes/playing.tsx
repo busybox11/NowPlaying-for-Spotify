@@ -2,7 +2,7 @@ import { useCallback } from "react";
 
 import playingCss from "@/styles/playing.css?url";
 
-import noSong from "/images/no_song.png?url";
+import noSong from "@/assets/no_song.png";
 
 import { createFileRoute } from "@tanstack/react-router";
 import usePlayer from "@/hooks/usePlayer";
