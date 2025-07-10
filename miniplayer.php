@@ -109,7 +109,7 @@ try {
     <div class="relative flex flex-col h-full w-full text-white">
       <div class="flex flex-col my-auto mx-6">
         <h1 x-text="$store.player.playbackObj.item?.name ?? translations.defaultTitleSong" id="song-title"
-          class="text-3xl font-bold text-pretty" :class="{
+          class="text-3xl font-bold text-pretty truncate w-full break-all" :class="{
             'line-clamp-1': showAlbum,
             'line-clamp-2': !showAlbum || !$store.player.playbackObj.item?.name,
           }"></h1>
