@@ -39,18 +39,12 @@ if (isset($_GET['lang'])) {
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200..900&display=swap" rel="stylesheet">
 
-	<script src="https://cdn.tailwindcss.com/"></script>
-	<script>
-		tailwind.config = {
-			theme: {
-				extend: {
-					fontFamily: {
-						'sans': ['Outfit', 'sans-serif']
-					},
-				}
-			}
-		}
-	</script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --font-sans: 'Outfit', sans-serif;
+    }
+  </style>
 
 	<?php
 	require_once ('assets/analytics.php');

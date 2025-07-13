@@ -26,18 +26,12 @@ try {
     content="NowPlaying is a smooth Spotify Connect visualizer, updating in real-time and with playback support." />
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
 
-  <script src="https://cdn.tailwindcss.com/"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            'sans': ['Outfit', 'sans-serif']
-          },
-        }
-      },
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --font-sans: 'Outfit', sans-serif;
     }
-  </script>
+  </style>
 
   <style>
     [x-cloak] {
@@ -109,7 +103,7 @@ try {
     <div class="relative flex flex-col h-full w-full text-white">
       <div class="flex flex-col my-auto mx-6">
         <h1 x-text="$store.player.playbackObj.item?.name ?? translations.defaultTitleSong" id="song-title"
-          class="text-3xl font-bold text-pretty truncate w-full break-all" :class="{
+          class="text-3xl font-bold text-pretty truncate w-full wrap-anywhere" :class="{
             'line-clamp-1': showAlbum,
             'line-clamp-2': !showAlbum || !$store.player.playbackObj.item?.name,
           }"></h1>
@@ -129,7 +123,7 @@ try {
         </div>
 
         <h3 x-show="showAlbum" x-text="$store.player.playbackObj?.item?.album?.name" id="song-album"
-          class="text-xl font-semibold opacity-80 line-clamp-1 text-pretty"></h3>
+          class="text-xl opacity-80 line-clamp-1 text-pretty"></h3>
       </div>
 
       <div x-show="showPause && !showArtwork && $store.player.playbackObj?.is_playing === false && !hideOnPauseOrEmpty"

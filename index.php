@@ -39,7 +39,7 @@ if (isset($_GET['lang'])) {
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200..900&display=swap" rel="stylesheet">
 
-	<script src="https://cdn.tailwindcss.com/"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 	<script>
 		tailwind.config = {
 			theme: {

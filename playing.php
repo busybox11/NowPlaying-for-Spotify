@@ -27,18 +27,12 @@ try {
         content="NowPlaying is a smooth Spotify Connect visualizer, updating in real-time and with playback support." />
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
 
-    <script src="https://cdn.tailwindcss.com/"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        'sans': ['Outfit', 'sans-serif']
-                    },
-                }
-            },
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+        @theme {
+        --font-sans: 'Outfit', sans-serif;
         }
-    </script>
+    </style>
 
     <style>
         .custom-img-shadow {
